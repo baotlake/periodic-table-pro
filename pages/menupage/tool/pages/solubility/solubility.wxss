@@ -1,0 +1,104 @@
+@import '../../../../data/template.wxss';
+.solubility-table-block{
+  position:relative;
+  display:flex;
+  width:750rpx;
+  background-color:#303030;
+  padding:38rpx 0 0 0;
+}
+.table-v-th{
+  padding:60rpx 0 0 20rpx;
+  top:100rpx;
+  left:0rpx;
+  width:80rpx;
+  background-color:#353535;
+  color:#fff;
+}
+.s-v-th-box{
+  position:relative;
+  height:100rpx;
+  line-height:100rpx;
+  margin:1rpx 0 0 0;
+}
+.solubility-table{
+  position:relative;
+  width:650rpx;
+}
+.table-r-th{
+  position:relative;
+  display:flex;
+  width:1600rpx;
+  height:60rpx;
+  background-color:#353535;
+  color:#fff;
+}
+.r-th-box{
+  display:block;
+  width:100rpx;
+  text-align:center;
+  margin:0 1rpx 0 0;
+}
+.table-body{
+  color:#fff;
+}
+.s-v-th-box{
+  width:100rpx;
+  height:100rpx;
+}
+.body-tr{
+  display:flex;
+  width:1600rpx;
+}
+.body-box{
+  display:block;
+  margin:1rpx 1rpx 0 0 ;
+  width:100rpx;
+  height:100rpx;
+  text-align:center;
+  line-height:100rpx;
+  font-size:32rpx;
+  color:#000;
+}
+.chartexplain{
+  padding:100rpx;
+  background-color:#333;
+  text-align:center;
+  color:#fff;
+}
+.key-tr{
+  display:flex;
+  background-color:#666;
+  width:540rpx;
+}
+.key-tr:last-child{
+  padding: 0 0 1rpx 0;
+}
+.key-th{
+  display:block;
+  width:140rpx;
+  height:90rpx;
+  line-height:90rpx;
+  background-color:#333;
+  margin:1rpx 0 0 1rpx;
+}
+.key-td{
+  display:block;
+  width:400rpx;
+  height:90rpx;
+  line-height:90rpx;
+  background-color:#333;
+  margin:1rpx 1rpx 0 1rpx;
+}
+.hover{
+  opacity:0.6;
+}
+
+.statusbar{
+  position: fixed;
+  top:0;
+  left:0;
+  width:750rpx;
+  height:38rpx;
+  background-color: #000;
+  opacity:0.6;
+}

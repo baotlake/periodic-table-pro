@@ -1,0 +1,13 @@
+<!--pages/menupage/reward/reward.wxml-->
+<import src="../../data/template.wxml" />
+
+<view class="rewardPage">
+  <text class="rewardText">如何赞赏？截屏当前页面，进入微信扫一扫，选择截屏图片，感谢您的支持！</text>
+  <image class="WXreward" src="{{rootPath}}data/image/WXreward.jpg" bindtap="reward">
+  </image>
+  <text class="rewardNote">支持元素周期表Pro,给开发者一杯咖啡</text>
+</view>
+
+ <template is="foot" data="{{rootPath,style:'position:absolute;'}}"/>
+ <template is="statusBar" data="{{style:'background-color:#0c9afe;'}}"/>
+ <template is="navigationBar-Back" data="{{rootPath,style:'background-color:#000;opacity:0.2;'}}"/>

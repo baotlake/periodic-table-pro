@@ -1,0 +1,35 @@
+@import '../../data/template.wxss';
+.toolpage{
+  background-color:#223;
+}
+
+.navigationbar{
+  position:fixed;
+  display:block;
+  top: 50rpx;
+  left:0rpx;
+  width: 750rpx;
+  height:60rpx;
+  border: 1rpx solid #aaa;
+  color:#fff;
+}
+.navigation_back{
+  position:absolute;
+  left:10rpx;
+  width:60rpx;
+  height:60rpx;
+}
+
+
+.tp-itemlist{
+  position:relative;
+  padding: 300rpx 20rpx;
+  text-align:center;
+}
+.tp-item{
+  margin:20rpx 0;
+  padding:30rpx 40rpx;
+  background-color:#334;
+  color:#fff;
+  border-radius:4rpx;
+}

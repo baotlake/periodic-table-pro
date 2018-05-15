@@ -1,0 +1,17 @@
+<!--pages/menupage/instruction/instruction.wxml-->
+<import src="../../data/template.wxml" />
+<view class="instructionPage">
+  <view class="tipContent">
+    <block wx:for="{{tipList}}" wx:key="{{code}}">
+      <view class="instructionText">{{item}}</view>
+    </block>
+  </view>
+  <template is="QAHow" data="{{rootPath,style:'margin-top:260rpx;'}}"/>
+  <template is="foot" data="{{rootPath,style:'position:relative;top:30rpx;'}}"/>
+</view>
+
+
+
+  
+  <template is="statusBar" data="{{style:'background-color:#ede3e7;'}}"/>
+  <template is="navigationBar-Back" data="{{rootPath,style:'background-color:#aaa;opacity:0.5;'}}"/>

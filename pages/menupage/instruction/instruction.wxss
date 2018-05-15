@@ -1,0 +1,17 @@
+/* pages/menupage/instruction/instruction.wxss */
+@import '../../data/template.wxss';
+
+.instructionPage{
+  height:100vh;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#ede3e7), to(#d1c2d3));
+  text-align:center;
+  padding:60rpx 0 0 0;
+}
+.tipContent{
+  padding: 0 60rpx;
+}
+.instructionText{
+  font-size:32rpx;
+  color:#666;
+  margin: 0 0 60rpx 0;
+}

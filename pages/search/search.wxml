@@ -1,0 +1,65 @@
+<!--pages/search/search.wxml-->
+<import src="../data/template.wxml"/>
+<view class="searchPage">
+  <view class="searchBoxContent">
+    <icon class="searchIcon" type="search"/>
+    <input class="searchInput" type="text" confirm-type="search" bindinput="input" bindfocus="inputFocus" placeholder="搜索" bindconfirm="searchGo" value="{{inputValue}}" style="opacity:{{inputOpacity}};"></input>
+    <view class="searchClearContent" bindtap="clearInput" hover-class="hoverClear">
+      <icon class="searchClear" type="cancel" color="#888" hidden="{{clearIcon}}" bindtap="clearInput"/>
+    </view>
+    <image class="searchLoading" src="{{rootPath}}data/image/icon/loading.gif" hidden="{{loadingShow}}"></image>
+  </view>
+
+
+  <view class="resultContent">
+    <scroll-view class="elemLineContent" scroll-x>
+      <view class="elemLine" style="width:{{60 + 130*matchElem.length}}rpx;">
+        <block wx:for="{{matchElem}}" wx:key="{{code}}">
+          <template is="elembox" data="{{e_list:item,signColor,style:'background-color:#232328;border:1rpx solid #888;color:#fff;margin:auto;'}}" />
+        </block>
+      </view>
+    </scroll-view>
+    <scroll-view class="CFCalculatorContent" style="height:{{(CF.length<2) ? '200rpx':'400rpx'}};" scroll-y>
+      <view class="CFbd" wx:for="{{CF}}" wx:key="{{code}}">
+        <template is="CFCalculator" data="{{CF:item}}" />
+      </view>
+    </scroll-view>
+    <view class="CFCDeclare">根据您输入的化学式计算！</view>
+    
+    <!--template is="ChemicalFormula" data="{{text:'AaZz2Na2CO     3+'}}" /-->
+
+  </view>
+  <template is="foot" data="{{rootPath,style:'position:absolute;color:#fff;',imageStyle:'border:1px solid #888;'}}"/>
+</view>
+
+
+<template is="statusBar" data="{{bd_Color:'#223'}}"></template>
+<template is="navigationBar-Back" data="{{rootPath,style:'background-color:#334;opacity:0.5;'}}"></template>
+
+
+
+<template name="indicatorLine">
+
+</template>
+
+<template name="CFCalculator">
+  <!--data:CF,数组,0为化学式，1为分子质量-->
+  <view class="CFCalculator">
+      <view class="CFCalculatorName">
+        <text style="font-size:26rpx;">相对分子质量\n</text>
+        <text style="font-size:36rpx;">计算器</text>
+      </view>
+      <view class="CFCF">
+        <view class="CFCFName">分子式</view>
+        <template is="ChemicalFormula" data="{{text:CF[0]}}" />
+      </view>
+      <view class="CFResult">
+        <view class="CFResultName">相对分子质量</view>
+        <view class="CFResultValue">{{CF[1]}}</view>
+      </view>
+  </view>
+</template>
+
+
+
+

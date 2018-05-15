@@ -1,0 +1,296 @@
+/**index.wxss**/
+@import "../data/template.wxss";
+#background{
+  background:#222;
+}
+.mainui{
+  display:block;
+  
+}
+.navigation{
+  position:relative;
+}
+.navigationbar{
+  position:fixed;
+  top: 0rpx;
+  left:0rpx;
+  width: 750rpx;
+  height: 100rpx;
+  padding:36rpx 0 0 0;
+  background-color:#222;
+  overflow-x:hidden;
+}
+.maintb{
+  position:relative;
+  top:100rpx;
+}
+.topbrim{
+  display: flex;
+  left: 0rpx;
+  top:0rpx; 
+  width: 2196rpx;
+}
+.topbrimperiod{
+  /*TopBrim-Period*/
+  width: 120rpx;
+  height: 36rpx;
+}
+.brim{
+  /*Parent of the LeftBrim*/
+  position:absolute;
+  top:36rpx;
+  width:36rpx;
+  height: 1586rpx;
+  padding:36rpx 0 0 0;
+}
+.racename{
+  /*TopBrim-PeriodName*/
+  font-size: 30rpx;
+  text-align:center;
+  color:#fff;
+  height: 36rpx; 
+}
+.statusbar{
+  display:flex;
+  position: fixed;
+  top:0px;
+  left:0px;
+  width:750rpx;
+  height:36rpx;
+}
+.main{
+  display:flex;
+  position: absolute;
+  left: 36rpx;
+  top: 36rpx;
+  width:750rpx;
+  height: 1586rpx;
+  color:#fff;
+  /*visibility: hidden;*/
+  padding:0 0 36rpx 0;
+}
+.period{
+  display:flex;
+  width: 2196rpx;
+  height: 140rpx;
+}
+
+.search{
+  display:block;
+  position:fixed;
+  top:58rpx;
+  left: 39%;
+  width:160rpx;
+  height:64rpx;
+
+}
+.searchbd{
+  width:100%;
+  height:100%;
+  background-color:#000;
+  opacity:0.3;
+  border-radius: 32rpx;
+  border:1px solid #888;
+}
+.searchText{
+  position:absolute;
+  top:0;
+  left:0;
+  padding:0 20rpx;
+  color:#888;
+  font-size:30rpx;
+  line-height:66rpx;  
+}
+.searchicon{
+  position:absolute;
+  top:13rpx;
+  left:98rpx;
+}
+
+.QM_moveArea{
+  position:fixed;
+  right:6%;
+  bottom:12%;
+  width:1rpx;
+  height:40%;
+}
+.quickMenuContent{
+  display:flex;
+
+}
+.QM_vertical{
+  position:fixed;
+  right:6%;
+  bottom:12%;
+  width:90rpx;
+  height:40%;
+}
+.QM_V_bd{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-color:#333;
+  opacity:0.8;
+  border:1rpx solid #aaa;
+  border-radius:20rpx;
+}
+.QM_menu{
+  position:relative;
+  padding:6rpx;
+  text-align:center;
+  color:#fff;
+}
+/*.quickMenu{
+  border-radius:45rpx;
+  position:fixed;
+  right:6%;
+  bottom:12%;
+  display:block;
+  width:90rpx;
+  height:90rpx;
+}
+*/
+.QM_tipContent{
+  position:absolute;
+  width:300rpx;
+  height:1rpx;
+}
+.QM_tip{
+  position:relative;
+  width:200rpx;
+  height:90rpx;
+}
+.QM_tip_bd{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-color:#333;
+  border-radius:20rpx;
+  border:1rpx solid #aaa;
+  opacity:0.8;
+}
+.QM_tipText{
+  position:relative;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  font-size:32rpx;
+  text-align:center;
+  line-height:90rpx;
+  color:#fff;
+}
+.menuImage{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border:1rpx solid #888;
+}
+.movebox{
+  position:absolute;
+  right:6%;
+  bottom:12%;
+  display:block;
+  width:90rpx;
+  height:90rpx;
+  border-radius:50%;
+}
+
+.test{
+  position: fixed;
+}
+.hovertest{
+  opacity:0.5;
+}
+
+.n_m{
+  position:fixed;
+  top:60rpx;
+  left:30rpx;
+  width:60rpx;
+  height:60rpx;
+}
+
+
+.leftpageblock{
+  left:0rpx;
+  top:0rpx;
+  position:fixed;
+  width:750rpx;
+  height: 100vh;
+  overflow-x:auto;
+}
+.scroll_content{
+  position:relative;
+  display:flex;
+  /**width:1050rpx;*/
+}
+.leftpage{
+  display:block;
+  position:relative;
+  width:600rpx;
+  height:100vh;
+  background-color:#334;
+}
+.leftpageopacity{
+  position:absolute;
+  left:0;
+  top:0;
+  width:750rpx;
+  height:100vh;
+  background-color:#333;
+  opacity:0.4;
+}
+.menu-list{
+  margin:0 20rpx;
+}
+.leftpage_item{ 
+  margin:0rpx 0;
+  display:flex;
+  padding:30rpx;
+  align-content:center;
+  border-radius:4rpx;
+  /*border-color: #aaa transparent transparent transparent ;*/
+}
+.tap-lp-item{
+  opacity:0.4;
+}
+.l_i_image{
+  width:50rpx;
+  height: 50rpx;
+  border-radius:50%;
+}
+.l_i_text{
+  color:#fff;
+  flex:1;
+  line-height:50rpx;
+  padding: 0 0 0 30rpx;
+}
+
+.freeFixedPage{
+  position:fixed;
+}
+.fullMasking{
+  width:750rpx;
+  height:100vh;
+  background-color: #000;
+  opacity:0.3;
+}
+.selectbottomdata{
+  display:block;
+  position:absolute;
+  top:400rpx;
+  left:175rpx;
+  width:400rpx;
+  height:400rpx;
+  background-color: #fff;
+  border-radius:10%;
+  opacity:0.8;
+}
+.s_b_d_picker{
+  position:absolute;
+  top:0rpx;
+  left:180rpx;
+  width:200rpx;
+  height:400rpx;
+}

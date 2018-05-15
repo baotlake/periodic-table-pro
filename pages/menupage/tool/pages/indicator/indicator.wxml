@@ -1,0 +1,56 @@
+<import src="../../../../data/template.wxml"/>
+
+<movable-area class="indicatorChartBlock">
+  <scroll-view scroll-x  class="scrollView-x">
+  <view class="scrollView-x-Content">
+    <view class="indicatorContent-bg">
+      <block wx:for="{{8}}" wx:key="{{code}}">
+        <view class="PHcolumn">
+          <text class="PHvalue">{{item*2}}</text>
+        </view>
+      </block>
+    </view>
+    <scroll-view scroll-y class="scrollView-y">
+      <view class="indicatorContent">
+        <block wx:for="{{indexlist[i_listIndex]}}" wx:for-item="i" wx:key="{{code}}">
+          <view class="indicator-tr" style="">
+          
+            <view wx:if="{{indicators[i][3][0]!='fff'}}" class="colorBox" style="left:{{indicators[i][2][0]*para}}rpx;width:{{(indicators[i][2][1]-indicators[i][2][0])*para}}rpx;background:-webkit-gradient(linear,0% 0%,100% 0%,from(#{{indicators[i][3][0]}}),to(#{{indicators[i][3][1]}}));"></view>
+            <view wx:else class="colorBox" style="left:{{indicators[i][2][0]*para}}rpx;width:{{(indicators[i][2][1]-indicators[i][2][0])*para}}rpx;background:-webkit-gradient(linear,0% 0%,100% 0%,from(transparent),to(#{{indicators[i][3][1]}}));border:1px solid #ddd;">
+            </view>
+
+            <view wx:if="{{indicators[i][2][1]<=7}}" class="indicator-Name" style="left:{{indicators[i][2][1]*para}}rpx">{{indicators[i][1]}}
+            <text style="font-size:24rpx;padding:0 10rpx">{{indicators[i][2][0]}}-{{indicators[i][2][1]}}</text>
+            </view>
+            <view wx:else class="indicator-Name-align" style="right:{{1500-indicators[i][2][0]*para}}rpx;text-align:right;">
+              <view class="indicator-Name">{{indicators[i][1]}}
+                <text style="font-size:24rpx;padding:0 10rpx;">{{indicators[i][2][0]}}-{{indicators[i][2][1]}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+    <movable-view direction="vertical" y="400" class="scaleplate" inertia="true" friction="6">
+      <block wx:for="{{8}}" wx:for-item="i" wx:key="{{code}}">
+        <view class="scaleplate-big">
+          <view class="scaleplate-big-value">{{i*2}}</view>
+          <block wx:if="{{i<=6}}" wx:for="{{4}}" wx:key="{{code}}">
+            <view class="scaleplate-little"></view>
+          </block>
+        </view>
+      </block>
+    </movable-view>
+  </view>
+  </scroll-view>
+</movable-area>
+
+<view class="option">
+  <view class="optionText">仅显示常用指示剂</view>
+  <switch checked bindchange="switchChange"/>
+</view>
+
+<view class="indicatorExplain">对变色较复杂的指示剂适当做了简化。</view>
+
+<template is="statusBar" data="{{style:'background:-webkit-gradient(linear,0% 0%,100% 0%,from(#ff0),to(#bf01fe));'}}"/>
+<template is="navigationBar-Back" data="{{rootPath,style:'background-color:#aaa;border-color:#222;opacity:0.5;'}}"/>

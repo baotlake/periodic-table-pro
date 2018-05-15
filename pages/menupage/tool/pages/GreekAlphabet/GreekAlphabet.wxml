@@ -1,0 +1,23 @@
+<!--pages/menupage/tool/pages/GreekAlphabet/GreekAlphabet.wxml-->
+<import src="../../../../data/template.wxml"/>
+
+<view class="gaTable">
+  <view class="gatr">
+      <view class="gath" id="gatdA">大写</view>
+      <view class="gath" id="gatdB">小写</view>
+      <view class="gath" id="gatdC">名字</view>
+      <view class="gath" id="gatdD">音标</view>
+  </view>
+  <block wx:for="{{greekAlphabetlist}}" wx:key="{{code}}">
+    <view class="gatr">
+      <view class="gatd" id="gatdA" hover-class="hover" bindtap="tap" data-text="{{item[0]}}">{{item[0]}}</view>
+      <view class="gatd" id="gatdB" hover-class="hover" bindtap="tap" data-text="{{item[1]}}">{{item[1]}}</view>
+      <view class="gatd" id="gatdC" hover-class="hover" bindtap="tap" data-text="{{item[2]}}">{{item[2]}}</view>
+      <view class="gatd" id="gatdD" hover-class="hover" bindtap="tap" data-text="{{item[3]}}">{{item[3]}}</view>
+    </view>
+  </block>
+</view>
+
+
+<template is="statusBar" data="{{style:'background-color:#055eb0;'}}"/>
+<template is="navigationBar-Back" data="{{rootPath,style:'background-color:#aaa;border-color:#111;opacity:0.5;'}}"/>

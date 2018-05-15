@@ -1,0 +1,128 @@
+<!--index.wxml-->
+<import src="../data/template.wxml"/>
+<view class="mainui">
+  <view class="navigation">
+    <view class="navigationbar">
+    </view>
+  </view>
+  <view  class="maintb">
+    
+
+    <brim class="brim" style=" background-color: {{uicolor[0].leftbrim}};">
+    <leftBrim class="leftBrim" wx:for="{{periodNumber}}" wx:for-item="pn" wx:key="{{code}}">
+      <view style="width: 36rpx; height: 140rpx; text-align: center;">
+        <text class="periodnumber" style="position: relative; top: 36rpx;color:#fff;">{{pn}}</text>
+      </view>
+    </leftBrim>
+    </brim>
+
+    <!--主表格框架-->
+    <scroll-view scroll-x scroll-y class="main" id="background">
+      <topBrim class="topbrim" style="background: {{uicolor[0].topbrim}}; ">
+      <view class="topbrimperiod" wx:for="{{periodName}}" wx:for-item="p" wx:key="{{code}}" style="">
+        <view class="racename">
+          {{p}}
+        </view>
+      </view>
+    </topBrim>
+      <!--主表格部分-->
+      <view class="period" wx:for="{{tabledata}}" wx:for-item="a" wx:key="{{code}}">
+        <block wx:for="{{periodId}}" wx:for-item="id" wx:key="{{code}}">
+          <template is="elembox" data="{{e_list:a[id],signColor,bottomdata:bottomdatalist[a[id][0]]}}"/>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<!--状态栏-->
+<template is="statusBar" data="{{bd_Color:'#222'}}"></template>
+<!--菜单按钮-->
+<image class="n_m" bindtap="openleftpage" src="../data/image/icon/menu.png"></image>
+<!--搜索按钮-->
+<view class="search" bindtap="search" style="display:;">
+  <view class="searchbd" />
+  <view class="searchText">搜索</view>
+  <icon type="search" size="20" class="searchicon"></icon>
+</view>
+
+
+<!--quick menu-->
+<movable-area class="QM_moveArea" style="{{QM_moveArea_style}}">
+  <view class="quickMenuContent" hidden="{{QM_Show}}">
+    <view class="QM_vertical">
+      <view class="QM_V_bd"></view>
+      <block wx:for="{{QMList}}" wx:key="{{code}}">
+        <view class="QM_menu" style="height:{{426/QMList.length}}rpx;line-height:{{426/QMList.length}}rpx;">{{item['name']}}</view>
+      </block>
+    </view>
+  </view>
+  <!--view class="quickMenu" bindtap="openMenu" hover-class="hovertest" style="">
+    <image class="menuImage" src="../data/image/avatar.png"></image>
+  </view-->
+  <movable-view class="QM_tipContent" direction="vertical" x="-143" y="{{QM_tip_y}}" damping="900">
+    <view class="QM_tip" hidden="{{QM_Show}}">
+      <view class="QM_tip_bd"></view>
+      <view class="QM_tipText">{{QM_tipText}}</view>
+    </view>
+  </movable-view>
+  <movable-view class="movebox" style="{{QM_movebox_style}}" direction="vertical" htouchmove="" vtouchmove="" bindtouchstart="QM_TouchStart" bindtouchend="QM_TouchEnd" y="{{moveBox_y}}" x="-90" inertia="true" out-of-bounds="true" htouchmove="" vtouchmove="" bindchange="QM_change" friction="5">
+    <image class="menuImage" src="../data/image/avatar.png"></image>
+  </movable-view>
+</movable-area>
+
+
+<!--LeftPage-->
+<scroll-view scroll-x="false" class="leftpageblock" style="display:{{leftpage}};" bindtouchstart="pull_lp" bindscrolltolower="closeleftpage" scroll-left="1">
+  <view class="scroll_content" style="display:{{leftpage}};">
+    <view class="leftpageopacity" bindtap="closeleftpage"></view>
+    <view class="leftpage">
+      <template is="userinfo" data="{{userInfo,hasUserInfo,canIUse,rootPath}}"></template>
+      <view class="menu-list" wx:for="{{menulist}}">
+        <navigator class="leftpage_item" hover-class="tap-lp-item" style="" bindtap="" url="{{item['url']}}">
+          <view class="l_i_image" style="background-color:{{item['bd']}}"></view>
+          <text class="l_i_text" >{{item['title']}}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+
+<!--sub Page-->
+<view class="freeFixedPage" style="display:{{(selectbottomdata) ? 'block':'none'}};" bindtap="closeSubPage">
+  <view class="fullMasking"></view>
+  <view wx:if="{{selectbottomdata}}" class="selectbottomdata">
+    <view style="position:relative;top:120rpx;left:40rpx;width:122rpx;background-color:#333;color:#fff;">
+      <template is="elembox" style="position:relative;top:40rpx;" data="{{e_list:longpressElem,bottomdata:bottomdatalist[longpressElem[0]],signColor}}"/>
+    </view>
+    <picker-view indicator-style="height:100rpx;" class="s_b_d_picker" style="" bindchange="bindPickerChange" indicator-style="">
+      <picker-view-column style="border-radius:30rpx;">
+        <view wx:for="{{bottomdataitem}}" style="line-height:100rpx;text-align:center;" wx:key="{{code}}">{{item['name']}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view wx:elif="{{share}}" class="">
+
+  </view>
+</view>
+
+
+
+<!--Select Bottom Data Page>
+<view class="freeFixedPage" style="display:none" bindtap="close_selectbottomdata">
+  <view class="fullMasking"></view>
+  <view class="selectbottomdata">
+    <view style="position:relative;top:120rpx;left:40rpx;width:122rpx;background-color:#333;color:#fff;">
+      <template is="elembox" style="position:relative;top:40rpx;" data="{{e_list:longpressElem,bottomdata:bottomdatalist[longpressElem[0]],signColor}}"/>
+    </view>
+    <picker-view indicator-style="height:100rpx;" class="s_b_d_picker" style="" bindchange="bindPickerChange" indicator-style="">
+      <picker-view-column style="border-radius:30rpx;">
+        <view wx:for="{{bottomdataitem}}" style="line-height:100rpx;text-align:center;" wx:key="{{code}}">{{item['name']}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view -->
+
+
+
