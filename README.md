@@ -14,5 +14,4 @@
 此项目源文件仅可用作学习用途。
 
 如要在微信开发工具中运行，请把`./data/.data_part.js`重命名为`./data/data.js`，data_part.js中仅保留了部分元素的详细信息。
-原项目`./data/image/spectral`中的图片未上传至Github,此目录下为元素的原子光谱图片，图片命名方式为`H.png`,`Ac.png`。
-
+原项目`./data/image/spectral`中的图片未上传至Github,此目录下为元素的原子光谱图片，图片命名方式为`H.png`, `Ac.png`。
