@@ -1,0 +1,155 @@
+/* pages/menupage/tool/pages/UnitConversion/UnitConversion.wxss */
+@import "../../template/template.wxss";
+
+.UnitConversionPage{
+  display:block;
+  position:absulute;
+  width:750rpx;
+  height:100vh;
+  background-color:#eee;
+}
+.page-title{
+  position:relative;
+  left:20px;
+  top:18pt;
+  font-size:17pt;
+  color:#555;
+}
+
+
+.scrollBar{
+  position:relative;
+  display:block;
+  width:100%;
+  height:80rpx;
+  background-color:#fff;
+}
+.BarBox{
+  width:120rpx;
+  height:100%;
+  line-height:80rpx;
+  display:inline-block;
+  text-align:center;
+  font-size:28rpx;
+}
+.scrollBarContent{
+  width:auto;
+  display:inline-flex;
+  height:100%;
+}
+.mainBlock{
+  position:relative;
+  display:block;
+  width:100%;
+  height:600rpx;
+  background-color:#fff;
+  box-shadow: 0 2px 3px #aaa;
+}
+.inforItem{
+  width:calc(100% - 40rpx);
+  height:100rpx;
+  display:flex;
+  padding: 10rpx 20rpx;
+}
+.info-item-icon{
+  width:40rpx;
+  height:40rpx;
+  margin:30rpx 10rpx;
+  transition: transform 0.3s;
+}
+.inforItemInput{
+  width:36%;
+  height:50rpx;
+  margin:auto 10rpx;
+  padding:10rpx;
+  text-align:center;
+  z-index:0;
+  border: 1px solid #aaa;
+  border-radius:3px;
+  font-size:28rpx;
+}
+.pickerBox{
+  width:100rpx;
+  height:60rpx;
+  background-color:#000;
+  color:#f00;
+}
+
+
+
+
+
+.myMultiPicker{
+  position:fixed;
+  z-index:999;
+}
+.fullMasking{
+  position:fixed;
+  width:750rpx;
+  height:100vh;
+  left:0;
+  top:0;
+  background-color: #000;
+  opacity:0.3;
+}
+.pickerBlock{
+  position:fixed;
+  width:700rpx;
+  height:40vh;
+  bottom:0;
+  left:0;
+  background-color:#fff;
+  text-align:center;
+  padding:25rpx;
+}
+.myMultiPickerCancel{
+  width:120rpx;
+  height:80rpx;
+  line-height:80rpx;
+  position:absolute;
+  display:inline-block;
+  top:0;
+  left:0;
+  color:#999;
+  font-size:30rpx;
+}
+.myMultiPickerOk{
+  width:120rpx;
+  height:80rpx;
+  line-height:80rpx;
+  position:absolute;
+  display:inline-block;
+  top:0;
+  right:0;
+  color:#0f0;
+  font-size:30rpx;
+}
+.MultiPickerRankTitle{
+  position:relative;
+  margin-top:80rpx;
+  left:0;
+  display:inline-block;
+  margin-left:auto;
+  margin-right:auto;
+}
+.myMultiPickerView{
+  position:relative;
+  width:100%;
+  height:300rpx;
+}
+.myMultiPickerViewColumn{
+  height:100%;
+}
+.PickerColumnBox{
+  line-height:30px;
+  font-size:12px;
+}
+.PickerColumnBoxActive{
+  line-height:30px;
+  font-size:12px;
+  color:#0f0;
+}
+.pickerBox-class{
+  display:block;
+  
+}

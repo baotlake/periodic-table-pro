@@ -1,0 +1,47 @@
+<!--pages/menupage/tool/pages/UnitConversion/UnitConversion.wxml-->
+<import src="../../template/template.wxml"/>
+<view class="UnitConversionPage">
+  <view style="width:100%;height:69px;"></view>
+  <scroll-view scroll-x scroll-into-view="box14" class="scrollBar">
+    <view class="scrollBarContent">
+      <block wx:for="{{UnitList}}">
+        <view class="BarBox" id="box{{index}}" data-id="{{index}}" bindtap="switchUnitKind" style="{{(index==currentUnitID)?'height:calc(100% - 2px);border-bottom:2px solid #00f;':''}}">{{item['UnitKindName']}}</view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view class="mainBlock">
+    <block wx:for="{{5}}">
+      <view class="inforItem">
+        <image wx:if="{{fixedBoxID != index}}" class="info-item-icon" src="../../data/image/icon/fixed.png" data-index="{{index}}" bindtap="fixedInputBoxId" style="opacity:0.3;transition:scale(0.8);transition:transform 0.3s;"></image>
+        <image wx:else class="info-item-icon" src="../../data/image/icon/fixed.png" style="transform:scale(1);transition:transform 0.3s;"></image>
+        <input class="inforItemInput" value="{{showValue[0][index]}}" type="text" placeholder="输入" confirm-type="done" data-index="{{index}}" data-value="{{value}}" bindconfirm="inputChange"></input>
+        <!--showValue[1]含义已变更 picker class="inforItemInput" bindchange="" data-index="{{index}}" bindcolumnchange="pickerValueChange" value="{{showValue[1][index]}}" mode="multiSelector" range="{{UnitList[currentUnitID]['Unit']}}" range-key="zhName">m{{showValue[2][index]}}</picker-->
+        <view class="inforItemInput" data-index="{{index}}" bindtap="showMyMultiPicker">{{UnitList[currentUnitID]['Unit'][showValue[1][index][0]][showValue[1][index][1]]['zhName']}}
+        {{(UnitList[currentUnitID]['Unit'][showValue[1][index][0]][showValue[1][index][1]]['sign'])?' (' + UnitList[currentUnitID]['Unit'][showValue[1][index][0]][showValue[1][index][1]]['sign'] + ')':''}}</view>
+      </view>
+    </block>
+  </view>
+
+  <template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+
+</view>
+
+  <view class="myMultiPicker" style="{{(isShow)?'visibility:visible;':'visibility:hidden;'}}" >
+    <view class="fullMasking" bindtap="hideMyMultiPicker"/>
+    <view class="pickerBlock">
+      <view class="myMultiPickerCancel" style="" bindtap="hideMyMultiPicker">取消</view>
+      <view class="myMultiPickerOk" style="" bindtap="hideMyMultiPicker">确定</view>
+      <block wx:for="{{rankTip}}">
+        <view class="MultiPickerRankTitle" style="width:{{700/3}}rpx;">{{item}}</view>
+      </block>
+      <picker-view class="myMultiPickerView"  bindchange="myMultiPickerBindChange{{(!isShow)? '_del':''}}">
+          <picker-view-column  wx:for="{{range}}" wx:for-item="subRange" wx:for-index="rangeindex" wx:for-key="" class="myMultiPickerViewColumn" >
+            <view wx:for="{{(!isShow)? '':subRange}}" wx:for-item="unitItem" class="{{(nowSlideRank==rangeindex)?'PickerColumnBoxActive':'PickerColumnBox'}}" >{{unitItem['zhName']}}{{(unitItem['sign'])?' (' + unitItem['sign'] + ')':''}}</view>
+            <!--# picker Bug: 如果picker-view-column内的view for长度不变，内部其他数据变化，view高度会变为0，解决：for中加入判断 for长度每次都会发生变化 #-->
+          </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+
+  

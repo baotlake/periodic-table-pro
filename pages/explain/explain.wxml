@@ -1,0 +1,138 @@
+<!--pages/detail/explain/explain.wxml-->
+<import src="../../template/template.wxml"/>
+<view class="explain-page">
+  <!--下面是正文内容-->
+  <block wx:for="{{pageInfo}}">
+    <template is="tem-paragraph" data="{{data:item,sectionControl:sectionControl,id:index}}" />
+  </block>
+
+  <!--右侧索引-->
+  <movable-area class="indexMoveArea">
+    <movable-view class="indexMoveView" direction="horizontal" x="{{indexX}}" bindchange="indexBindChange" bindtap="showIndex" inertia="true" damping="50">
+      <scroll-view class="indexesBlock" scroll-y bindtap="showIndex">
+        <view class="DEIndexes">
+          <block wx:for="{{indexList}}" wx:for-item="info">
+            <view class="indexBox" hover-class="tapIndexBox" bindtap="tapIndex" data-index="{{index}}">
+              <text class="{{info['style']}}">{{info['title']}}</text>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </movable-view>
+  </movable-area>
+</view>
+
+<!--template is="navigationBar-Back" data="{{rootPath,style:'background-color:#aaa;opacity:0.5;'}}"></template-->
+<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+
+
+
+
+
+
+<!--段落模板 paragraph template-->
+<template name="tem-paragraph">
+  <!--模板数据：一个对象，变量名为data;主要数据储存在object的一个标签下的列表中，标签为p、div、h之类，可通过data[-type]获取标签名-->
+  <view class="tem-p">
+    <block wx:for="{{data[data['-type']]}}" wx:for-item="c_item">
+      <template is="{{c_item['-type']}}" data="{{data:c_item,classList:data['-class']}}" />
+    </block>
+  </view>
+</template>
+
+<!--直接内容模板，如下，直接显示数据的模板
+数据结构：一个变量名为data的对象,主要数据储存在data['text'] or data['img']等中，具体是啥，可通过data['-type']查询
+文本：
+  data['text']同样为一个对象，文本在data['text']['#text']中，另有-style,-class等提供样式信息，需要 注意-class是列表-->
+<template name="text">
+  <text class="{{data['text']['-class'][0]}} {{data['text']['-class'][1]}} {{classList[0]}} {{classList[1]}}">{{data['text']['#text']}}</text>
+</template>
+
+<template name="sub">
+  <!--弃用，改用class显示-->
+  <sub class="">{{data['sub']['#text']}}</sub>
+</template>
+
+<template name="sup">
+  <!--弃用，改用class显示-->
+  <sup class="">{{data['sup']['#text']}}</sup>
+</template>
+
+<template name="MathML">
+  <!--数据格式：data =
+  {"MathML": {
+							"#text": "O2", 
+							"-alttext": "{\\displaystyle {\\ce {O2}}}", 
+							"-style": "", 
+							"-url": "https://wikimedia.org/api/...",
+              "-path": "data/wikipedia/H-xxx.png"
+							"-class": []
+						}, 
+						"-type": "ChemicalFormula",
+						"-data-type":"",
+						"-show-as":""
+			},
+    根据-show-as值判断如何显示，-show-as = 'image' or 'ChemicalFormula'
+    -data-type提供简单的类型信息，供参考
+    -->
+  <block wx:if="{{data['MathML']['-path'].length > 1}}">
+    <image src="cloud://test-c59f6a.7465-test-c59f6a/{{data['MathML']['-path']}}" mode="aspectFit" style="{{data['MathML']['-style']}}width:{{data['MathML']['-width']}}px;height:{{data['MathML']['-height']}}px;"></image>
+  </block>
+  <block wx:elif="{{data['-show-as'] == 'ChemicalFormula'}}">
+    <template is="ChemicalFormula" data="{{text:data['MathML']['#text'],style:'color:#000;'}}" />
+  </block>
+</template>
+
+<template name="img">
+  <!--数据格式 data=
+      # 图片信息
+    image_info = {
+        # 有说明文字的图片
+        "img": {
+            "url": "",
+            "caption":"",
+            "-style": "",
+            "-class": [],
+            "data": {},
+        },
+        "-type": "img"
+    }-->
+  <image class="" src="cloud://test-c59f6a.7465-test-c59f6a/{{data['img']['-path']}}{{data['img']['-style']}}" mode="{{(data['img']['data']['mode'])? data['img']['data']['mode']:'widthFix'}}" style="{{(data['img']['-width'] < 100)? 'width:'+data['img']['-width']+'px;height:'+data['img']['-height']+'px;':''}}" />
+  <!--text class="" style="">{{data['img']['caption']}}</text-->
+</template>
+
+
+<template name="note">
+  <view class="tem-note">{{data['text']}}</view>
+</template>
+
+<template name="h1">
+  <view class="tem-h1" style="color:#0f0;">{{data['#text']}}</view>
+</template>
+
+<template name="h2">
+  <view class="tem-h2" style="color:#0f0;">{{data['#text']}}</view>
+</template>
+
+<template name="h3">
+  <view class="tem-h3" style="color:#0f0;">{{data['#text']}}</view>
+</template>
+
+<template name="link">
+  <text class="tem-link" style="{{data['style']}}" data-url="{{data['url']}}" bindtap="tapLink">{{data['text']}}</text>
+</template>
+
+<template name="section">
+  <!--??-->
+  <view class="tem-section-title" id="section{{id}}" data-index="{{id}}" bindtap="doSectionControl" style="{{(data['title'])?'':'height:0;'}}" hover-class="tem-section-title-hover">
+    <image wx:if="{{data['titleSrc']}}" class="tem-section-title-icon" src="{{data['titleSrc']}}" />
+    <text class="tem-section-title-text">{{data['title']}}</text>
+    <image wx:if="{{data['title']}}" class="tem-section-flod-icon" src="../../data/image/icon/{{(sectionControl[id])?'':'un'}}fold.png" />
+  </view>
+  <view class="tem-section-content" hidden="{{(sectionControl[id])?true:false}}">
+    <block wx:for="{{data['pageInfo']}}" wx:for-item="info">
+      <template is="{{info['type']}}" data="{{data:info['data'],id:index}}" />
+    </block>
+  </view>
+</template>
+

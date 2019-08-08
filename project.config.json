@@ -1,17 +1,19 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
-		"es6": true,
+		"urlCheck": false,
+		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
+	"libVersion": "2.7.0",
 	"appid": "wx20e649abe5acb0bc",
-	"projectname": "%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8",
+	"projectname": "%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8Pro",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

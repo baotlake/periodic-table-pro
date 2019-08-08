@@ -3,24 +3,33 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
-    "pages/detail/explain/explain",
-    "pages/menupage/tool/tool",
-    "pages/menupage/tool/pages/solubility/solubility",
-    "pages/menupage/tool/pages/indicator/indicator",
-    "pages/menupage/tool/pages/GreekAlphabet/GreekAlphabet",
-    "pages/menupage/tool/pages/si/si",
-    "pages/menupage/custom/custom",
-    "pages/menupage/about/about",
-    "pages/menupage/propose/propose",
-    "pages/menupage/instruction/instruction",
-    "pages/menupage/reward/reward",
-    "pages/search/search"
+    "pages/explain/explain",
+    "pages/search/search",
+    "toolpages/tool/tool",
+    "toolpages/solubility/solubility",
+    "toolpages/indicator/indicator",
+    "toolpages/GreekAlphabet/GreekAlphabet",
+    "toolpages/si/si",
+    "toolpages/UnitConversion/UnitConversion",
+    "menupages/custom/custom",
+    "menupages/about/about",
+    "menupages/propose/propose",
+    "menupages/instruction/instruction",
+    "menupages/reward/reward",
+    "menupages/share/share",
+    "pages/settings/settings"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationStyle":"custom",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white"
-  }
+    "navigationStyle": "custom",
+    "pageOrientation": "auto"
+  },
+  "plugins": {
+  },
+  "resizable": true,
+  "cloud": true,
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList":[
+    "wx16b955041265aaf5"
+  ]
 }

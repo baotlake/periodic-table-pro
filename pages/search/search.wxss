@@ -1,61 +1,19 @@
 /* pages/search/search.wxss */
-@import "../data/template.wxss";
+@import "../../template/template.wxss";
 
 .searchPage{
   position:absolute;
   width:750rpx;
-  height:100vh;
-  background-color:#223;
+  height:110vh;
+  background-color:#eee;
 }
-.searchBoxContent{
-  position:relative;
-  top:200rpx;
-  width:60%;
-  height:80rpx;
-  margin:10rpx auto;
-  border-radius:10rpx;
-  border:1rpx solid #aaa;
-}
-.searchInput{
-  position:relative;
-  left:60rpx;
-  width:80%;
-  height:100%;
-  color:#fff;
-}
-.searchIcon{
-  position:absolute;
-  top:18rpx;
-  left:12rpx;
-}
-.searchClearContent{
-  position:absolute;
-  top:0;
-  right:0;
-  width:80rpx;
-  height:80rpx;
-}
-.searchClear{
-  position:relative;
-  top:18rpx;
-  left:18rpx;
-}
-.hoverClear{
-  opacity:0.3;
-}
-.searchLoading{
-  position:relative;
-  width:60rpx;
-  height:60rpx;
-  left:44%;
-  top:8rpx;
-}
+
 .resultContent{
   position:relative;
   top:300rpx;
   width:100%;
   height:60vh;
-  background-color:#223;
+  /*background-color:#223;*/
 }
 .elemLineContent{
   width:750rpx;
@@ -78,7 +36,7 @@
   height:60rpx;
   font-size:26rpx;
   text-align:right;
-  color:#888;
+  color:#666;
   margin:0 auto;
 }
 
@@ -96,12 +54,12 @@
   position:relative;
   width:30%;
   height:100%;
-  color:#fff;
+  color:#000;
   text-align:center;
   line-height:60rpx;
-  background-color:#66c;
-  border-bottom:1px solid #66c;
-  border-top:1px solid #66c;
+  background-color:#a7a8bd;
+  border-bottom:1px solid #a7a8bd;
+  border-top:1px solid #a7a8bd;
 }
 .CFCF{
   position:relative;
@@ -109,28 +67,29 @@
   height:100%;
   text-align:center;
   line-height:66rpx;
-  border-bottom:1px solid #66c;
-  border-top:1px solid #66c;
+  border-bottom:1px solid #a7a8bd;
+  border-top:1px solid #a7a8bd;
 }
 .CFCFName{
   font-size:26rpx;
-  color:#fff;
+  color:#000;
 }
 .CFResult{
   position:relative;
   width:30%;
   height:100%;
   text-align:center;
-  background-color:#66c;
+  background-color:#a7a8bd;
   line-height:66rpx;
-  border-bottom:1px solid #66c;
-  border-top:1px solid #66c;
+  border-bottom:1px solid #a7a8bd;
+  border-top:1px solid #a7a8bd;
 }
 .CFResultName{
   font-size:26rpx;
-  color:#fff;
+  color:#000;
 }
 .CFResultValue{
   font-size:36rpx;
-  color:#fff;
+  color:#000;
 }
+

@@ -1,0 +1,144 @@
+@import '../../template/template.wxss';
+
+.indicatorChartBlock{
+  position:relative;
+  width:750rpx;
+  height:80vh;
+  background-color:#222;
+  margin:69px 0 0 0;
+}
+.scrollView-x{
+  position:relative;
+  width:100%;
+  height:100%;
+  background-color:#fff;
+}
+.scrollView-x-Content{
+  position:relative;
+  width:1500rpx;
+  height:100%;
+}
+.scrollView-y{
+  position:relative;
+  top:5%;
+  width:100%;
+  height:95%;
+}
+.indicatorContent-bg{
+  position:absolute;
+  top:0;
+  left:0;
+  display:flex;
+  height:100%;
+  background-color:#eee;
+  margin: 0 30rpx;
+}
+.PHcolumn{
+  position:relative;
+  width:199rpx;
+  height:100%;
+  background-color:#fff;
+  margin:0 0 0 1rpx;
+}
+.PHcolumn:last-child{
+  width:60rpx;
+}
+.PHvalue{
+  display:block;
+  line-height:60rpx;
+  position:relative;
+  left:-10rpx;
+  background-color:#fff;
+
+}
+.indicatorContent{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  padding:20rpx 0 0 30rpx;
+}
+.indicator-tr{
+  position:relative;
+  width:100%;
+  margin:20rpx 0;
+}
+.colorBox{
+  position:absolute;
+  display:block;
+  top:0;
+  height:60rpx;
+}
+.indicator-Name{
+  position:relative;
+  top:0;
+  height:60rpx;
+  font-size:30rpx;
+  line-height:60rpx;
+  padding: 0 30rpx 0 30rpx;
+}
+.indicator-Name-align{
+  position:relative;
+  top:0;
+}
+.scaleplateBlock{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+.scaleplate{
+  display:flex;
+  width:100%;
+  height:60rpx;
+  background: -webkit-gradient(linear,0% 100%,0% 0%,from(#eee), to(transparent));
+  /*-webkit-gradient(linear, 0% 0%, 0% 100%,from(transparent), to(#000));*/
+  padding: 0 0 0 30rpx;
+}
+.scaleplate-big{
+  position:relative;
+  display:flex;
+  width:2rpx;
+  height:100%;
+  background-color:#000;
+  margin:0 198rpx 0 0;
+}
+.scaleplate-big:last-child{
+  margin: 0 30rpx 0 0;
+}
+.scaleplate-big-value{
+  position:absolute;
+  top:22rpx;
+  left:10rpx;
+  font-size:26rpx;
+}
+.scaleplate-little{
+  position:relative;
+  width:0rpx;
+  height:50%;
+  background-color:#666;
+  padding:0 0 0 2rpx;
+  margin:0 0 0 40rpx;
+}
+
+.option{
+  position:relative;
+  display:flex;
+  margin:20rpx 20rpx;
+  padding:20rpx 30rpx;
+  flex:1;
+}
+.optionText{
+  font-size:30rpx;
+  flex:1;
+  line-height:64rpx;
+}
+
+.indicatorExplain{
+  width:750rpx;
+  font-size:26rpx;
+  color:#aaa;
+  text-align:center;
+}

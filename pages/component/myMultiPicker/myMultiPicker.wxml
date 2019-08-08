@@ -1,0 +1,19 @@
+  <view class="pickerBox-class" style="{{pickerBoxClass}}" bindtap="showMyMultiPicker">{{nowSelectValue['zhName']}}
+  </view>
+  <view class="myMultiPicker" hidden="{{!isShow}}">
+    <view class="fullMasking" bindtap="hideMyMultiPicker"/>
+    <view class="pickerBlock" hidden="{{!isShow}}">
+      <view class="myMultiPickerCancel" style="" bindtap="hideMyMultiPicker">取消</view>
+      <view class="myMultiPickerOk" style="" bindtap="hideMyMultiPicker">确定</view>
+      <block wx:for="{{rankTip}}">
+        <view class="MultiPickerRankTitle" style="width:{{700/3}}rpx;">{{item}}</view>
+      </block>
+      <picker-view class="myMultiPickerView" bindchange="myMultiPickerBindChange">
+        <block wx:for="{{range}}" wx:for-item="subRange" wx:for-index="rangeindex">
+          <picker-view-column class="myMultiPickerViewColumn">
+            <view wx:for="{{subRange}}" class="PickerColumnBox" style="color:{{(nowSlideRank==rangeindex)?'#0f0;':'#999;'}};">{{item['zhName']}}</view>
+          </picker-view-column>
+        </block>
+      </picker-view>
+    </view>
+  </view>

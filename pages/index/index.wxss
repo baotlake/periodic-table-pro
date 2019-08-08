@@ -1,54 +1,76 @@
 /**index.wxss**/
-@import "../data/template.wxss";
-#background{
-  background:#222;
+@import "../../template/template.wxss";
+
+.index-page{
+  /*
+  -webkit-transform:rotate(90deg);
+  transform:rotate(90deg);
+  */
 }
-.mainui{
-  display:block;
-  
-}
-.navigation{
-  position:relative;
-}
-.navigationbar{
+.mainui-movearea{
   position:fixed;
-  top: 0rpx;
-  left:0rpx;
-  width: 750rpx;
-  height: 100rpx;
-  padding:36rpx 0 0 0;
-  background-color:#222;
-  overflow-x:hidden;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  /*background-color:#222;*/
 }
+
 .maintb{
   position:relative;
-  top:100rpx;
+  width:29.3cm;
+  height:20.3cm;
+  padding:2cm 0 0 0;
+}
+.pt-table{
+  /*
+  -webkit-transform:rotate(90deg);
+  transform:rotate(90deg);
+  */
+  /*background-color:#222;*/
+  display:flex;
 }
 .topbrim{
-  display: flex;
+  display: block;
   left: 0rpx;
   top:0rpx; 
+  height:0.5cm;
+  line-height:0.5cm;
+  /*
   width: 2196rpx;
+  */
 }
-.topbrimperiod{
-  /*TopBrim-Period*/
-  width: 120rpx;
-  height: 36rpx;
-}
-.brim{
-  /*Parent of the LeftBrim*/
+.leftbrim{
+  /*
   position:absolute;
-  top:36rpx;
   width:36rpx;
   height: 1586rpx;
-  padding:36rpx 0 0 0;
+
+  !!!width宽度无效
+
+  */
+  width:0.5cm;
+  padding:0.5cm 0 0 0;
+  display:block;
+  height:14.4cm;
 }
-.racename{
-  /*TopBrim-PeriodName*/
-  font-size: 30rpx;
+.period-name{
+  width: 100%; 
+  height: 1.8cm;
+  line-height:1.8cm; 
+  text-align:center; 
+  font-size:0.4cm;
+}
+.family-name{
+  /*
+  TopBrim-PeriodName
+  height: 36rpx;
+  */
+  display:inline-block;
+  font-size: 0.4cm;
   text-align:center;
-  color:#fff;
-  height: 36rpx; 
+  width:1.6cm;
+  height: 100%;
 }
 .statusbar{
   display:flex;
@@ -59,126 +81,53 @@
   height:36rpx;
 }
 .main{
-  display:flex;
-  position: absolute;
-  left: 36rpx;
+  position: relative;
+  /*
   top: 36rpx;
-  width:750rpx;
+  visibility: hidden;
+  width:2160rpx;
   height: 1586rpx;
-  color:#fff;
-  /*visibility: hidden;*/
   padding:0 0 36rpx 0;
+  left: 36rpx;
+  */
+  color:#fff;
+  
+
 }
 .period{
+  /*
+  width:2160rpx;
+  */
   display:flex;
-  width: 2196rpx;
-  height: 140rpx;
 }
 
 .search{
-  display:block;
-  position:fixed;
-  top:58rpx;
-  left: 39%;
-  width:160rpx;
-  height:64rpx;
-
+  position:relative;
+  height:28pt;
+  width:28pt;
+  top:18pt;
+  left:calc( 100vw - 100pt);
+  border-radius:50%;
+  visibility:visible;
 }
-.searchbd{
+.search-hover{
+  background-color:#555;
+  opacity:0.9;
+}
+.search-icon{
   width:100%;
   height:100%;
-  background-color:#000;
-  opacity:0.3;
-  border-radius: 32rpx;
-  border:1px solid #888;
-}
-.searchText{
-  position:absolute;
-  top:0;
-  left:0;
-  padding:0 20rpx;
-  color:#888;
-  font-size:30rpx;
-  line-height:66rpx;  
-}
-.searchicon{
-  position:absolute;
-  top:13rpx;
-  left:98rpx;
+  border-radius:50%;
 }
 
 .QM_moveArea{
   position:fixed;
-  right:6%;
+  /*right:6%;
   bottom:12%;
-  width:1rpx;
-  height:40%;
-}
-.quickMenuContent{
-  display:flex;
-
-}
-.QM_vertical{
-  position:fixed;
-  right:6%;
-  bottom:12%;
-  width:90rpx;
-  height:40%;
-}
-.QM_V_bd{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-color:#333;
-  opacity:0.8;
-  border:1rpx solid #aaa;
-  border-radius:20rpx;
-}
-.QM_menu{
-  position:relative;
-  padding:6rpx;
-  text-align:center;
-  color:#fff;
-}
-/*.quickMenu{
-  border-radius:45rpx;
-  position:fixed;
-  right:6%;
-  bottom:12%;
-  display:block;
-  width:90rpx;
-  height:90rpx;
-}
-*/
-.QM_tipContent{
-  position:absolute;
-  width:300rpx;
-  height:1rpx;
-}
-.QM_tip{
-  position:relative;
-  width:200rpx;
-  height:90rpx;
-}
-.QM_tip_bd{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-color:#333;
-  border-radius:20rpx;
-  border:1rpx solid #aaa;
-  opacity:0.8;
-}
-.QM_tipText{
-  position:relative;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  font-size:32rpx;
-  text-align:center;
-  line-height:90rpx;
-  color:#fff;
+  */
+  width:100vw;
+  height:100vh;
+  visibility:hidden;
 }
 .menuImage{
   width:100%;
@@ -188,12 +137,41 @@
 }
 .movebox{
   position:absolute;
-  right:6%;
-  bottom:12%;
   display:block;
-  width:90rpx;
-  height:90rpx;
+  width:36pt;
+  height:36pt;
   border-radius:50%;
+  visibility:visible;
+  top:calc(100vh - 2cm);
+  left:calc(100vw - 2cm);
+}
+
+.QM-main-view{
+  position:fixed;
+  width:90vw;
+  height:80vh;
+  bottom:5vh;
+  left:5vw;
+  background-color:#eee;
+  /*opacity:0.9;*/
+  border-radius:10px;
+  /*border: 1px solid #aaa;*/
+  visibility:visible;
+}
+.QM-close-button{
+  position:absolute;
+  top:0;
+  right:0;
+  width: 20px;
+  height:20px;
+  margin:10px;
+}
+.tb-scale-tip{
+  display:block;
+  width:100%;
+  text-align:center;
+  color:#555;
+  font-size:16px;
 }
 
 .test{
@@ -205,70 +183,113 @@
 
 .n_m{
   position:fixed;
-  top:60rpx;
-  left:30rpx;
-  width:60rpx;
-  height:60rpx;
+  top:18pt;
+  left:10pt;
+  width:28pt;
+  height:28pt;
 }
 
 
 .leftpageblock{
-  left:0rpx;
+  left:-300px;
   top:0rpx;
   position:fixed;
-  width:750rpx;
+  width:600px;
   height: 100vh;
-  overflow-x:auto;
+  visibility:hidden;
 }
 .scroll_content{
   position:relative;
   display:flex;
+  width:300px;
+  visibility:visible;
   /**width:1050rpx;*/
+}
+@media (orientation:landscape){
+  /*横屏*/
+  .scroll_content{
+    height:100.1vw;
+  }
+  .leftpage{
+    height:100.1vw;
+  }
+  .leftpageopacity{
+    height:100.1vw;
+  }
+}
+@media (orientation:portrait){
+  /**竖屏*/
+  .scroll_content{
+    height:100.1vh;
+  }
+  .leftpage{
+    height:100.1vh;
+  }
+  .leftpageopacity{
+    height:100.1vh;
+  }
 }
 .leftpage{
   display:block;
   position:relative;
-  width:600rpx;
-  height:100vh;
+  width:100%;
   background-color:#334;
 }
 .leftpageopacity{
   position:absolute;
   left:0;
   top:0;
-  width:750rpx;
-  height:100vh;
-  background-color:#333;
+  width:calc(300px + 2mm);
   opacity:0.4;
+  /*background-color:#888;*/
+}
+.lpmasking{
+  width:200vw;
+  background-color:#000;
+  transition:background 1s ease-in;
+  -moz-transition:background 1s ease-in ;
+  -webkit-transition:background 1s ease-in;
 }
 .menu-list{
-  margin:0 20rpx;
+  margin:0;
 }
 .leftpage_item{ 
-  margin:0rpx 0;
+  position:relative;
+  margin:0rpx 10px;
   display:flex;
-  padding:30rpx;
+  padding:15px;
   align-content:center;
-  border-radius:4rpx;
+  border-radius:2px;
   /*border-color: #aaa transparent transparent transparent ;*/
+}
+.left_item_button{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:-4px;
+  left:-4px;
+  opacity:0;
 }
 .tap-lp-item{
   opacity:0.4;
 }
 .l_i_image{
-  width:50rpx;
-  height: 50rpx;
+  width:25px;
+  height: 25px;
   border-radius:50%;
 }
 .l_i_text{
-  color:#fff;
   flex:1;
-  line-height:50rpx;
-  padding: 0 0 0 30rpx;
+  line-height:25px;
+  padding: 0 0 0 15px;
+  font-size:18px;
 }
+
 
 .freeFixedPage{
   position:fixed;
+  top:0;
+  left:0;
 }
 .fullMasking{
   width:750rpx;
@@ -279,18 +300,74 @@
 .selectbottomdata{
   display:block;
   position:absolute;
-  top:400rpx;
-  left:175rpx;
-  width:400rpx;
-  height:400rpx;
+  top:calc( (100vh - 5cm) / 2 );
+  left:calc( (100vw - 5cm) / 2);
+  width:5cm;
+  height:5cm;
   background-color: #fff;
   border-radius:10%;
   opacity:0.8;
 }
 .s_b_d_picker{
   position:absolute;
-  top:0rpx;
-  left:180rpx;
-  width:200rpx;
-  height:400rpx;
+  top:10%;
+  left:46%;
+  width:40%;
+  height:80%;
 }
+
+.guide{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#eee;
+}
+.guideSwiper{
+  position:relative;
+  top:200rpx;
+  width:600rpx;
+  height:800rpx;
+  margin:0 auto;
+  background-color:#fff;
+}
+.guideSwiperImage{
+  width:100%;
+  height:100%;
+}
+.guideButton{
+  position:relative;
+  top:300rpx;
+  width:300rpx;
+}
+
+.statusbar{
+  position: fixed;
+  top:0;
+  left:0;
+  width:750rpx;
+  height:38rpx;
+  background-color: #222;
+  opacity:0.8;
+}
+.QM-toolbar{
+  width:100%;
+  text-align:center;
+  padding:20px 0;
+}
+.QM-toolbar-title{
+  display:block;
+  font-size:20px;
+}
+
+
+
+.test{
+  display:block;
+  width:1.917ex;
+  height:1.676ex;
+  /*background-image:url('data:image/svg+xml, <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.917ex" height="3.676ex" style="vertical-align: -1.338ex;" viewBox="0 -1006.6 2116.8 1582.7" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">\n<title id="MathJax-SVG-1-Title">{\\displaystyle ^{1}\\textstyle \\sum _{g}}</title>\n<defs aria-hidden="true">\n<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path>\n<path stroke-width="1" id="E1-MJSZ1-2211" d="M61 748Q64 750 489 750H913L954 640Q965 609 976 579T993 533T999 516H979L959 517Q936 579 886 621T777 682Q724 700 655 705T436 710H319Q183 710 183 709Q186 706 348 484T511 259Q517 250 513 244L490 216Q466 188 420 134T330 27L149 -187Q149 -188 362 -188Q388 -188 436 -188T506 -189Q679 -189 778 -162T936 -43Q946 -27 959 6H999L913 -249L489 -250Q65 -250 62 -248Q56 -246 56 -239Q56 -234 118 -161Q186 -81 245 -11L428 206Q428 207 242 462L57 717L56 728Q56 744 61 748Z"></path>\n<path stroke-width="1" id="E1-MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path>\n</defs>\n<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">\n <use transform="scale(0.707)" xlink:href="#E1-MJMAIN-31" x="0" y="583"></use>\n<g transform="translate(620,0)">\n <use xlink:href="#E1-MJSZ1-2211" x="0" y="0"></use>\n <use transform="scale(0.707)" xlink:href="#E1-MJMATHI-67" x="1494" y="-405"></use>\n</g>\n</g>\n</svg>');*/
+  background-image:url('cloud://test-c59f6a.7465-test-c59f6a/elemens_image/Ac.jpg');
+}
+

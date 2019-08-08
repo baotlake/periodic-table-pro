@@ -1,5 +1,7 @@
 // pages/search/search.js
-var getdata = require('../data/data.js')
+var getdata = require('../../data/data.js')
+const app = getApp()
+
 var CFElemList = []
 var setCFElemList=false
 
@@ -9,8 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rootPath: '../',
-    clearIcon: true,
+    rootPath: '../../',
     signColor: {},
     inputValue:'',
     matchElem: [['1', 'H', '氢', '1.00794', 'h'], ['35', 'Br', '溴', '79.904', 'f'],],
@@ -18,6 +19,26 @@ Page({
     CF:[['HBr','80.9119'],],
     loadingShow:true,
     inputOpacity:1,
+    systemInfo:null,
+    hiddenClearIcon:true,
+    navigationBarData: {
+      "full": false,  //wdith满宽，及box-shadow阴影
+      "info": [   //控制按钮列表，比如 返回、主页
+        {
+          "tem": "navigationBack",
+        }, {
+          "tem": "searchBoxContent",
+          "data": {
+            //"title": "搜索",
+          }
+        },
+      ],
+      "bd": "",    //navigationBar的样式
+      "color": "black",    //white black,图标及字体的颜色
+      "maskStyle": "",
+      "style":""
+    },
+
 
   },
 
@@ -26,7 +47,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      signColor: getdata.getSignColor()
+      signColor: getdata.getSignColor(),
+      systemInfo: app.globalData.systemInfo,
     })
   },
 
@@ -76,11 +98,27 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    var shareObj = {
+      title: '发现我的闪光点，发现你的"镁"！',
+      desc: '发现我的闪光点，发现你的"镁"！',
+      path: '/pages/index/index',
+      imageUrl: '../../data/image/share.jpg',
+      success: function (res) {
+
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      }
+    }
+    return shareObj
   },
-  navigationBarBack: function () {
+  navigateToBack: function () {
     wx.navigateBack()
   },
+  
   input:function(e){
     console.log(e.detail)
     if(e.detail.value){
@@ -88,13 +126,13 @@ Page({
         inputOpacity: 1
       })
     }
-    if(e.detail.value && this.data.clearIcon){
+    if (e.detail.value && this.data.hiddenClearIcon){
       this.setData({
-        clearIcon:false
+        hiddenClearIcon : false
       })
-    }else if(!e.detail.value && !this.data.clearIcon){
+    } else if (!e.detail.value && !this.data.hiddenClearIcon){
       this.setData({
-        clearIcon:true
+        hiddenClearIcon : true
       })
     }
   },
@@ -114,8 +152,15 @@ Page({
       loadingShow:false
     })
     var valueList = judgeType(word)
-    this.setPageData(valueList[0], valueList[1])
-    console.log(valueList[1])
+    try{
+      this.setPageData(valueList[0], valueList[1])
+      console.log(valueList[1])
+    }catch(e){
+      console.log(e)
+    }
+    this.setData({
+      loadingShow: true
+    })
   },
 
   setPageData:function(who,value){
@@ -139,6 +184,7 @@ Page({
       loadingShow: true
     })
   },
+
   openDetailPage: function (e) {
       console.log('点击元素')
       //console.log(e.currentTarget.dataset.tapordinal)

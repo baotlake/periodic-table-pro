@@ -1,0 +1,186 @@
+/* pages/detail/explain/explain.wxss */
+@import "../../template/template.wxss";
+.explain-page{
+  padding-top:80px;
+}
+.DEBlock{
+  position:relative;
+  width:100%;
+  height:100%;
+
+}
+.DE{
+  position:relative;
+  padding:120rpx 38rpx;
+}
+.indexMoveArea{
+  position:fixed;
+  top:0;
+  right:-350rpx;
+  width:750rpx;
+  height:1px;
+}
+.indexMoveView{
+  position:relative;
+  width:400rpx;
+  height:100vh;
+}
+.indexesBlock{
+  position:absolute;
+  top:0;
+  right:0;
+  width:300rpx;
+  height:100%;
+  background-color:#eee;
+  padding:0 25rpx;
+  box-shadow:0 0 3px #aaa;
+  opacity:0.96;
+}
+.DEIndexes{
+  position:relative;
+  padding:100rpx 0;
+}
+.indexBox{
+  width:80%;
+  height:100rpx;
+  line-height:100rpx;
+  text-align:center;
+  margin:auto;
+}
+.tapIndexBox{
+  opacity:0.3;
+}
+
+/*文本-start*/
+
+
+/*文本-end*/
+
+
+/** template 
+*/
+
+
+
+.tem-illustration{
+  width:61.8%;
+  margin-left:auto;
+  margin-right:auto;
+}
+.tem-illustration-image{
+  width:100%;
+}
+
+.tem-section-title{
+  width:calc(100% - 30px);
+  height:80rpx;
+  border-bottom: 1px solid #aaa;
+  margin:0 15px;
+  line-height:80rpx;
+  color:#555;
+  font-size:42rpx;
+}
+.tem-section-title-hover{
+  background-color:#eee;
+}
+.tem-section-title-icon{
+  display:inline-block;
+  width:60rpx;
+  height:60rpx;
+  margin:10rpx 0;
+}
+.tem-section-title-text{
+  display:inline-flex;
+  vertical-align:top;
+}
+.tem-section-flod-icon{
+  display:inline-block;
+  width:60rpx;
+  height:60rpx;
+  margin:10rpx 0;
+  position:absolute;
+  right:15px;
+}
+.tem-section-content{
+  padding:5px 15px 0 15px;
+}
+
+.tem-text{
+  text-indent:60rpx;
+  font-size:28rpx;
+  line-height:60rpx;
+  color:#555;
+  padding:0 40rpx;
+}
+.tem-h1{
+  font-size:46rpx;
+  padding: 0 40rpx;
+}
+.tem-h3{
+  font-size:36rpx;
+  padding: 0 40rpx;
+}
+
+.tem-note{
+  text-indent:60rpx;
+  font-size:32rpx;
+  line-height:32rpx;
+  color:#888;
+  background-color:#eaeaea;
+  margin:10rpx 40rpx;
+  padding: 10rpx;
+  border-radius:6rpx;
+}
+
+.tem-link{
+  color:#55f;
+  font-size:32rpx;
+  line-height:60rpx;
+}
+
+.tem-image-fullwidth{
+  width:100%;
+}
+.tem-image-inline{
+  height:60rpx;
+  display:inline-block;
+  vertical-align:bottom;  
+}
+
+/*段落样式*/
+.tem-p{
+  font-size:14pt;
+  line-height:40px;
+  padding:10px 15px;
+}
+
+/*模拟一些HTML的标签样式，例如sup、sub、等*/
+
+text{
+  font-size:100%;
+}
+sup{
+  font-size:50%;
+  vertical-align:super;
+}
+.sup{
+  font-size:50%;
+  vertical-align:super;
+}
+sub{
+  font-size:50%;
+  vertical-align:sub;
+}
+.sub{
+  font-size:50%;
+  vertical-align:sub;
+}
+.h1{
+  font-size:200%;
+}
+.h2{
+  font-size:160%;
+}
+.h3{
+  font-size:130%;
+}

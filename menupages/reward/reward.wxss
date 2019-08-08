@@ -1,0 +1,32 @@
+/* pages/menupage/reward/reward.wxss */
+@import '../../template/template.wxss';
+
+.rewardPage{
+  padding:160rpx 0 0 0;
+  height:100vh;
+  background-color:#fff;
+  text-align:center;
+}
+
+.rewardText{
+  display:block;
+  padding:20rpx 40rpx;
+  color:#888;
+  font-size:26rpx;
+}
+.rewardNote{
+  display:block;
+  margin:40rpx 0 0 0;
+  color:#474b4c;
+  font-size:36rpx;
+}
+.WXreward{
+  display:block;
+  position:relative;
+  width:700rpx;
+  height:700rpx;
+  margin:auto;
+}
+.shareButton{
+  margin:40rpx;
+}

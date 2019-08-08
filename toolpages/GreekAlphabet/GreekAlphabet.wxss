@@ -1,0 +1,38 @@
+/* pages/menupage/tool/pages/GreekAlphabet/GreekAlphabet.wxss */
+@import '../../template/template.wxss';
+
+.gaTable{
+  width:750rpx;
+  background-color:#055eb0;
+  padding:1rpx 0 1rpx 0;
+}
+.gatr{
+  display:flex;
+  text-align:center;
+  margin:1rpx 0 0 0;
+}
+.gath{
+  background-color:#7694c2;
+  margin: 0 0 0 1rpx;
+  padding:20rpx 0 20rpx 0;
+}
+.gatd{
+  background-color:#fff;
+  margin: 0 0 0 1rpx;
+  padding:20rpx 0 20rpx 0;
+}
+#gatdA{
+  width:90rpx;
+}
+#gatdB{
+  width:90rpx;
+}
+#gatdC{
+  width:300rpx;
+}
+#gatdD{
+  width:270rpx;
+}
+.hover{
+  opacity:0.5;
+}

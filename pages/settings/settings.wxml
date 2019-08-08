@@ -1,0 +1,13 @@
+<!--pages/settings/settings.wxml-->
+<import src="../../template/template.wxml"/>
+<view class="settings-page"/>
+
+<view class="content" wx:for="{{pageInfo['item']}}" wx:for-item="item" style="padding-top:calc({{systemInfo['statusBarHeight']}}px + 46px);">
+  <view class="switch-settings">
+    <view class="switch-settings-title">{{item['title']}}</view>
+    <switch class="switch-settings-switech" checked="{{item['data']['value']}}" bindchange="{{item['function']}}" aria-label="主题颜色"/>
+  </view>
+</view>
+
+
+<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />

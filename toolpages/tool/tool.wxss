@@ -1,0 +1,54 @@
+@import '../../template/template.wxss';
+.toolpage{
+  background-color:#223;
+}
+
+.navigationbar{
+  position:fixed;
+  display:block;
+  top: 50rpx;
+  left:0rpx;
+  width: 750rpx;
+  height:60rpx;
+  border: 1rpx solid #aaa;
+  color:#fff;
+}
+.navigation_back{
+  position:absolute;
+  left:10rpx;
+  width:60rpx;
+  height:60rpx;
+}
+
+
+.tp-itemlist{
+  position:relative;
+  top:200rpx;
+  padding: 100rpx 20rpx;
+  text-align:center;
+}
+.tp-item{
+  margin:20rpx 0;
+  padding:30rpx 40rpx;
+  background-color:#334;
+  color:#fff;
+  border-radius:4rpx;
+}
+
+.tool-item{
+  display:flex;
+  align-items:center;
+  height:100px;
+  width:calc(100% - 40px);
+  left:20px;
+  background-color:#fff;
+}
+.tool-item-icon{
+  width:40px;
+  height:40px;
+  padding:0 20px;
+}
+.tool-item-title{
+  height:40px;
+  line-height:40px;
+}

@@ -1,0 +1,62 @@
+/**折叠展开项 */
+function foldMenu(e, ownerInstance){
+  console.log('wxs ---- foldMenu ----wxs')
+  // var subClass = e.currentTarget.dataset.subClass;
+  // var parClass = e.currentTarget.dataset.parClass;
+  var index = e.currentTarget.dataset.index;
+  console.log('foldMenu - index ->', index)
+  var subItem = ownerInstance.selectAllComponents('.fold-' + index);
+  var icon = ownerInstance.selectComponent('.fold-i-' + index);
+  var atomStructure = ownerInstance.selectComponent('.atomStructure')
+  if(icon.hasClass('fold')){
+    icon.removeClass('fold')
+    for(var i=0; i<subItem.length;i++){
+      subItem[i].setStyle({
+        height:'auto',
+        opacity: '1',
+        'margin-top': '1'
+      })
+    }
+    if (atomStructure.hasClass('a-'+index)){
+      atomStructure.setStyle({
+        display: 'block'
+      })
+    }
+  }else{
+    icon.addClass('fold')
+    for (var i = 0; i < subItem.length; i++) {
+      subItem[i].setStyle({
+        height: '0px',
+        opacity: '0',
+        'margin-top': '0'
+      })
+    }
+    if (atomStructure.hasClass('a-' + index)) {
+      atomStructure.setStyle({
+        display: 'none'
+      })
+    }
+  }
+  
+}
+
+/**折叠项目需要Height有初值，但是不同类型的项Height不同，写此函数判断，并返回相应的值 */
+function infoBarHeight(is, name){
+  console.log('is---',is);
+  console.log('name----',name);
+  if(is != 'template'){
+    return '61px'
+  }else{
+    if (name == "spectralblock"){
+      return '140px'
+    } else if (name == "atomStructure"){
+      return '245px'
+    }
+  }
+}
+
+
+module.exports = {
+  foldMenu: foldMenu,
+  infoBarHeight: infoBarHeight
+}

@@ -1,0 +1,15 @@
+<!--pages/menupage/reward/reward.wxml-->
+<import src="../../template/template.wxml" />
+
+<view class="rewardPage">
+  <text class="rewardText">您可以通过赏赞开发者或者分享小程序来支持元素周期表Pro</text>
+  <text class="rewardText">点击图片保存到手机（或者截屏）进入微信扫一扫→从相册选择图片→赏赞给开发者</text>
+  <text class="rewardText">非常感谢您对元素周期表Pro的支持，您的认可是我们开发的动力</text>
+  <image class="WXreward" src="../../data/image/WXreward.jpg" data-path="cloud://periodictable-761124.7065-periodictable/UI/WXreward.jpg" bindtap="preview" bindtap_del="reward">
+  </image>
+  <text class="rewardNote"></text>
+  <button open-type="share" class="shareButton" type="primary">分享</button>
+</view>
+
+ <template is="foot" data="{{rootPath,style:'position:relative;'}}"/>
+<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />

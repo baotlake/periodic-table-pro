@@ -1,0 +1,185 @@
+<!--元素框 element box-->
+<template name="elembox">
+  <!--data: e_list;bottomdata;border_color;borderleft_color;bordertop_color;-->
+  <block wx:if="{{e_list[0]}}">
+    <!--元素数据不为空 显示元素信息-->
+    <view class="elembox" hover-class="tapbox" data-tapordinal="{{e_list[0]}}" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindtap="openDetailPage" bindlongpress="bindlongpress" style="{{style}}">
+      <view class="ordinal" style="background: -webkit-gradient(linear, 100% 0%, 0% 0%,from(transparent), to({{signColor[e_list[4]]}}));">{{e_list[0]}}</view>
+      <view class="symbol">{{e_list[1]}}</view>
+      <view class="name">{{e_list[2]}}</view>
+      <view wx:if="{{!bottomdata}}" class="atomic">{{e_list[3]}}</view>
+      <view wx:else class="atomic">{{bottomdata}}</view>
+      <!--<view class="colorsign" style="border-color: transparent {{e_list[4]}} {{e_list[4]}} transparent"></view>-->
+    </view>
+  </block>
+  <view wx:else class="box">
+    <!--元素信息为空，显示空白框-->
+  </view>
+</template>
+
+
+
+<template name="userinfo">
+  <!--LaftPage UserInfo & BackImage-->
+  <view class="userinfo">
+    <image class="backimage" src="../../data/image/background.jpg"></image>
+      <view bindtap="bindViewTap" class="userinfo-avatar" background-size="cover">
+        <open-data type="userAvatarUrl" class="userAvatarOD"></open-data>
+      </view>
+      <!--text bindtap="bindViewTap" class="userinfo-nickname">{{userInfo.nickName}}</text-->
+      <open-data type="userNickName" class="userinfo-nickname"></open-data>
+      <text class="signature">生活便是寻找新知识。</text>
+  </view>
+</template>
+
+<template name="foot">
+  <view class="foot" style="{{style}}">
+    <image class="footImage" src="../../data/image/avatar.png" style="{{imageStyle}}"></image>
+    <view class="footText">元素周期表Pro</view>
+  </view>
+</template>
+
+<template name="statusBar">
+  <!--StatusBar-状态栏-->
+  <view class="statusbar" style="background-color:{{bd_Color}};{{style}}{{(systemInfo.statusBarHeight)? 'height:'+ systemInfo.statusBarHeight + 'px':''}}"></view>
+</template>
+
+
+<template name="QAHow">
+  <view class="QABlock" style="{{style}}">
+    <view class="QAText">元素周期表Pro 怎么样？</view>
+    <view class="buttonBlock">
+      <button open-type="contact">吐槽</button>
+      <navigator class="yesButton" url="../../menupages/reward/reward">
+        <button type="primary">支持</button>
+      </navigator>
+    </view>
+  </view>
+</template>
+
+
+<template name="ChemicalFormula">
+  <!--上标^开头，正负号结尾,屏蔽'^'-->
+  <text class="ChemicalFormula" style="{{style}}">
+    <block wx:for="{{text.length}}" wx:for-item="i" wx:key="{{code}}">
+      <text wx:if="{{text[i-1]=='^' && text[i]>=0 && (text[i+1]=='-' || text[i+1]=='+')}}" class="CFSup" style="{{supStyle}}">{{text[i]}}</text>
+      <text wx:elif="{{text[i-1]>0 && text[i]>=0 && (text[i+1]=='-' || text[i+1]=='+')}}" class="CFSup" style="{{supStyle}}">{{text[i]}}</text>
+      <text wx:elif="{{text[i]>=0}}" class="CFSub" style="{{subStyle}}">{{text[i]}}</text>
+      <text wx:elif="{{text[i]=='-' || text[i]=='+'}}" class="CFSup" style="{{supStyle}}">{{text[i]}}</text>
+      <text wx:elif="{{text[i]=='^'}}"></text>
+      <text wx:else class="CFNormal">{{text[i]}}</text>
+      <!--text>|</text-->
+    </block>
+  </text>
+</template>
+
+<template name="share">
+  <view class="shareBlock" style="{{style}}">
+    <button open-type="share" type="default" plain="false" style="{{buttonStyle}}">分享
+    </button>
+  </view>
+</template>
+
+
+<!--界限 2018/09/01 界限-->
+
+<!--空父容器-->
+<template name="parentView">
+  <view class="" style="{{data['style']}}">
+    <block wx:for="{{data['pageInfo']}}" wx:for-item="info">
+      <template is="{{info['type']}}" data="{{data:info['data'],id:index}}" />
+    </block>
+  </view>
+</template>
+
+<!--navigate Bar 自定义的导航条-->
+<template name="myNavigationBar">
+  <!--自定义的顶部导航条，支持悬浮按钮样式或者完整导航条样式-->
+  <!--参数说明：
+    必要参数：data = {
+    "full": false,  //wdith满宽，及box-shadow阴影
+    "info": [                                           //控制按钮列表，比如 返回、主页
+      {
+        "tem": "navigationCustom",                      //tem-navigationBar是父容器，里面可嵌套子模板，可扩展
+        "data":{
+          "icon_w":"../../data/image/icon/menu_d5_w.png", //白色图标路径，黑色主题
+          "icon_b":"../../data/image/icon/menu_d5_b.png", //黑色图标路径，白色主题
+          "bindtap":"openleftpage",                     //点击按钮触发的事件
+          "key":"icon_b"                                //使用哪种图标
+        }
+      }, {
+        //"tem": "navigationTitle",
+        "data":{
+          "title":"元素周期表Pro"
+        }
+      },{
+        "tem":"navigationCustom",
+        "data":{
+          "icon_b":"../../data/image/icon/search_d5.png",
+          "icon_w":""
+          "bindtap":"search",
+          "style":"position:absolute;left:calc(100vw - 90pt - 46px);"
+          "key":"icon_b"
+        }
+      }
+    ],
+      其他参数：systemInfo,systemInfo添加菜单按钮界限对象systemInfo['MenuButtonBounding']-->
+  <view wx:if="{{systemInfo['haveMenuButtonBounding']}}" class="tem-navigationBar {{(data['full'])? '':'' }}" 
+        style="{{(data['full'])?'width:100%; top:0;  padding-top:' + systemInfo['statusBarHeight'] +'px;    box-shadow:0 0 3px #aaa;' : 'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}      'height:'{{systemInfo['MenuButtonBounding']['height']}}'px;'      {{(data['bd'])? data['bd']:''}}     {{(data['color'] == 'white')?'color:#fff;':'color:#555;'}}   {{data['style']}}">
+    <!-- 误差大   用wx.getMenuBottonBoundingClientRect()确定位置，若无法使用请使用下方兼容方法-->
+    <view wx:if="{{data['maskStyle']}}" class="tem-navigationBar-mask" style="{{data['maskStyle']}}" />
+    <block wx:for="{{data['info']}}" >
+      <template is="{{item['tem']}}" data="{{data:item['data'],commonIcon:data['commonIcon'],controlList:controlList}}"/>
+    </block>
+  </view>
+  <view wx:else class="tem-navigationBar {{(data['full'])? '':'' }}" 
+        style="{{(data['full'])?'width:100%; top:0;  padding-top:' + systemInfo['statusBarHeight'] +'px;    box-shadow:0 0 3px #aaa;' : 'top:calc(' + systemInfo['statusBarHeight']+'px + 2px);'}}   height:46px;     {{(data['bd'])? data['bd']:''}}     {{(data['color'] == 'white')?'color:#fff;':'color:#555;'}}   {{data['style']}}">
+    <!--无wx.getMenuButtonBoundingClientRect()兼容-->
+    <view wx:if="{{data['maskStyle']}}" class="tem-navigationBar-mask" style="{{data['maskStyle']}}" />
+    <block wx:for="{{data['info']}}" >
+      <template is="{{item['tem']}}" data="{{data:item['data'],commonIcon:data['commonIcon'],controlList:controlList,color:data['color']}}"/>
+    </block>
+  </view>
+</template>
+
+<template name="navigationBack">
+  <!--参数说明：data-->
+  <image class="tem-navigation-icon" hover-class="tem-navigation-icon-hover" src="{{(data['key'])? data[data['key']]:''}}{{(!data['key'] & data[commonIcon])?'data[data[commonIcon]]':''}}{{(!data['key'] & !data[commonIcon])?'../../data/image/icon/back.png':''}}" bindtap="navigateToBack" style="{{data['style']}}"/>
+</template>
+
+<template name="navigationTitle">
+  <view class="tem-navigation-title" style="{{(color == 'white') ? 'color:#fff;':'color:#555;'}} {{data['style']}}">{{data['title']}}</view>
+</template>
+
+<template name="navigationHome">
+  <image class="tem-navigation-icon" hover-class="tem-navigation-icon-hover" src="{{(data['key'])? data[data['key']]:data[commonIcon]}}" bindtap="navigateToHome" style="{{data['style']}}" />
+</template>
+
+<template name="navigationCustom">
+  <image class="tem-navigation-icon" hover-class="tem-navigation-icon-hover" src="{{(data['key'])? data[data['key']]:data[commonIcon]}}" bindtap="{{data['bindtap']}}" style="{{data['style']}}" />
+  <view wx:if="{{data['dot']}}" class="unread-dot" bindtap="{{data['bindtap']}}"></view>
+</template>
+
+<!--Search page;-->
+<template name="searchBoxContent">
+  <view class="searchBoxContent">
+    <input class="searchInput" id="searchPageSearchInput" placeholder-class="searchInput-placeholder" type="text" adjust-position = "false" confirm-type="search" bindinput="input" bindfocus="inputFocus" placeholder="搜索" bindconfirm="searchGo" bindblur="searchGo" value="{{controlList[1]}}" style="opacity:{{inputOpacity}};" focus="true"></input>
+    <image class="searchClear" src="../../data/image/svg/close.svg" color="#888" hidden="{{controlList[0]}}" bindtap="clearInput"/>
+  </view>
+</template>
+
+<template name="rect-tool-button">
+  <!--参数说明:data={
+    "icon":"url",      //图标url
+    "text":"[标题]",   //图标标题
+    "bindtap":"",
+    "url":"",
+    "data":{
+      "":""
+    }
+  }-->
+  <view class="tem-rect-tool-button" data-path="{{data['url']}}" data-data="{{data['data']}}" bindtap="{{data['bindtap']}}" >
+    <image class="tem-rect-tool-image" src="{{data['icon']}}"></image>
+    <view class="tem-rect-tool-text">{{data['text']}}</view>
+  </view>
+</template>

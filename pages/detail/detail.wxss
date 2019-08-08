@@ -1,115 +1,312 @@
-@import "../data/template.wxss";
-
+@import "../../template/template.wxss";
+.detail-page-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-color:#161616;
+}
 .detailpage{
   overflow-x:hidden;
   position:absolute;
-  top: 38rpx;
-  width:750rpx;
-  background-color:#161616;
+  top: 0;
+  width:100vw;
   color: #fff;
 }
-.statusbar{
-  position: fixed;
-  width:750rpx;
-  height:38rpx;
-  background-color: #000;
-  opacity:0.8;
-}
-.navigationbar{
-  position:fixed;
-  display:block;
-  top: 58rpx;
-  left:20rpx;
-  width: 66rpx;
-  height:66rpx;
-  border: 1rpx solid #aaa;
-  border-radius:20rpx;
-  color:#fff;
-  /*
-  background-color: #303030;
-  opacity:0.4;
-  */
-}
-.navigation_back{
-  width:100%;
-  height:100%;
-}
 
-.detail-list-bd{
-  padding:0rpx 30rpx 40rpx;
-}
 
-.noneElem{
+
+.detailimageblock{
   position:relative;
-  height:100vh;
-  background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#fff), to(#eeeeff));
+  display:block;
+  width:100%;
+  height:75vw;
+  font-size:4.5vw;
 }
-.noneElemText{
-  padding:60rpx;
-  color:#000;
-  font-size:56rpx;
-}
-
-/*template
 .detailimage{
+  display:flex;
   width:100%;
   height:100%;
-  background:#f00;
+  /**height:566rpx;*/
+}
+.imagegradient{
+  position:absolute;
+  top:0%;
+  left:0rpx;
+  width:100%;
+  height:100%;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(transparent), to(#000));
+  opacity: 0.6;
+}
+.d_classtag{
+  position:absolute;
+  top:52%;
+  left:-0.32em;
+  display:block;
+  width:25%;
+  height:10%;
+  line-height:1.75em;
+  border-radius: 0.32em;
+  font-size: 0.9em;
+  text-align: center;
+  }
+.elemIntro{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:80%;
+  height:38%;
+  padding: 0 10%;
+  display:flex;
+  flex-wrap:wrap;
+}
+.d_symbol{
+  position:relative;
+  top:5%;
+  height:70%;
+  font-size: 3.4em;
+  line-height:1.3em;
+  font-weight:500;
+  text-align:center;
+  padding:0 0.15em;
+  color: #fff;
+}
+.subBox{
+  position:relative;
+  top:5%;
+  height:70%;
+  display:block;
+}
+.d_name{
+  position:relative;
+  height:40%;
+  margin:10% 0 0 0;
+  font-size: 1em;
+  line-height:1.85em;
+  font-weight:500;
+  color:#fff;
+  display:inline-block;
+
+}
+.d_ordinal{
+  position:relative;
+  height:40%;
+  margin:10% 0 0 0;
+  line-height:1.85em;
+  font-size: 1em;
+  padding:0 0.3125em;
+  display:inline-block;
+}
+.d_enname{
+  position:relative;
+  display:block;
+  font-size: 1em;
+  line-height:1.85em;
+  height:45%;
+  margin: 0 0 5% 0;
+}
+.d_atomic{
+  position:relative;
+  height:20%;
+  top:-0.31em;
+  padding:0 0.65em;
+  font-size:0.81em;
+  display:block;
+  width:100%;
+}
+.wikipedia-icon{
+  position:absolute;
+  height:30px;
+  width:30px;
+  bottom:10px;
+  right:20px;
 }
 
+/*template*/
 .headline{
-  height:120rpx;
-  border: 1rpx solid;
-  border-color: #fff transparent transparent transparent;
+  margin:10px 10px 0;
+  padding:15px;
+  background-color:#202025;
+  /*border: 1px solid;
+  border-color: #888;*/
+  /*border-color: #888 transparent transparent transparent;*/
+  display:flex;
+  border-radius:2px;
 }
-.icon{
-  position: relative;
-  top: 16rpx;
-  left: 16rpx;
-  width:90rpx;
-  height:90rpx;
+.fold-icon{
+  width:30px;
+  height:30px;
+  margin:0 10px 0 0;
+  border-radius:50%;
+  transition:height,transform 1s;
+}
+.fold-icon:hover{
+  background-color:#aaa;
+  opacity:0.8;
 }
 .p_h_t{
   position: relative; 
-  top: 0rpx;
-  left: 36rpx;
-  font-size: 42rpx;
+  line-height:30px;
+  font-size: 18px;
+  flex: 1;
+}
+.icon{
+  position: relative;
+  width:30px;
+  height:30px;
+}
+.infobar-content{
+  overflow:hidden;
+  position:relative;
+  height:auto;
+  transition:all 0.5s;
+}
+.infobar-fold{
+  height:0;
+  visibility:collapse;
+  left:100000px;
+  /**
+  transition:transform 1s;
+  -moz-transition:transform 1s;
+  -webkit-transition: transform 1s;
+  */
 }
 .infobar{
- height: 120rpx;
- border: 1rpx solid;
- border-color: #888 transparent transparent transparent; 
+ margin:2rpx 10px;
+ padding:10px 30px 8px 30px;
+ background-color:#202025;
+ /*border: 1px solid;
+ border-color:#555;*/
+ /*border-color: #555 transparent transparent transparent; */
+ line-height:20px;
+ border-radius:2px;
 }
 .p_i_t{
   display:block;
   position:relative;
-  top: 16rpx;
-  left: 36rpx;
-  font-size: 36rpx;
+  font-size: 16px;
 }
 .p_i_i{
   position:relative;
-  top: 16rpx;
-  left: 36rpx;
-  font-size: 26rpx;
+  font-size: 12px;
+}
+.fold{
+  transform: rotate(540deg);
 }
 
+
 .spectral{
+  margin:1px 10px;
   position: relative;
-  height: 140rpx;
-  border: 1rpx solid;
-  border-color: #000 transparent transparent transparent;
+  padding:15px;
+  background-color:#202025;
+  height:110px;
+  /*border: 1px solid;
+  border-color:#555;*/
+  /*border-color: #888 transparent transparent transparent;*/
 }
 .s_i{
   position: relative;
-  top: 12rpx;
-  width: 100vh;
-  height: 90rpx;
+  bottom:0;
+  height: 45px;
+  width:100%;
 }
 .s_t{
   position: relative;
-  font-size: 32rpx;
-  left: 300rpx;
-  top: -8rpx;
+  top:0;
+  display:block;
+  font-size: 15px;
+  text-align:center;
+  height:20px;
 }
-*/
+
+
+/*原子结构图*/
+/*Canvas画布*/
+.atomStructure{
+  position:relative;
+  display:block;
+  margin:1px 10px;
+  padding:15px 30px 10px 30px;
+  background-color:#202025;
+  border-radius:2px;
+}
+.eleShellTitle{
+  display:block;
+  height:30px;
+  font-size:18px;
+}
+.canvas{
+  position:relative;
+  width:260px;
+  left:calc((100% - 260px) / 2);
+  /*background-color:#202025;*/
+}
+.eleShell{
+  display:block;
+  height:30px;
+  line-height:30px;
+  font-size:16px;
+}
+
+
+.enterExplain{
+  position:relative;
+  top:-25px;
+  left:calc(100vw - 60px);
+  height:50px;
+  line-height:50px;
+  width:50px;
+  text-align:center;
+  border-radius:50%;
+  background-color:#333;
+  color:#fefefe;
+}
+
+@media (orientation:landscape){
+/*@media (max-height:100vw){*/
+  /**横屏 两栏*/
+  .detailpage{
+    width:50vw;
+  }
+  .spectral{
+    /**原子光谱*/
+    position:fixed;
+    visibility:visible;
+    top:10px;
+    right:0;
+    width:calc(50vw - 50px);
+  }
+  .atomStructure{
+    /**原子层结构*/
+    position:fixed;
+    visibility:visible;
+    top:calc(140px + 20px);
+    right:0;
+    width:calc(50vw - 80px);
+  }
+  .detailimageblock{
+    /** */
+    height:calc(0.75 * 50vw);
+    font-size:2.25vw;
+  }
+
+  
+  @media (min-width:10){
+    .enterExplain_a{
+    background-color:#f00;
+    }
+
+  }
+}
+@media (orientation:portrait){
+/*@media (min-height:100vw){*/
+  /**竖屏模式*/
+  @media (min-width:10cm) and (max-width:12cm){
+    .detailimageblock_del{
+      font-size:16px;
+    }
+  }
+}
+

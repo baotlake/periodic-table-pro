@@ -1,0 +1,47 @@
+<import src="../../template/template.wxml"/>
+<view class="page" >
+  <view class="solubility-table-block" style="">
+    <view class="table-v-th">
+      <block wx:for="{{solubilitydata_th[1]}}" wx:key="{{code}}">
+        <view class="s-v-th-box" style="">
+          <template is="ChemicalFormula" data="{{text:item['symbol'],style:'font-size:26rpx;'}}" />
+        </view>
+      </block>
+    </view>
+
+    <scroll-view scroll-x class="solubility-table">
+      <view class="table-r-th">
+        <view class="r-th-box" wx:for="{{solubilitydata_th[0]}}" wx:key="{{code}}">
+          <template is="ChemicalFormula" data="{{text:item['symbol'],style:'font-size:26rpx;'}}" />
+        </view>
+      </view>
+      <view class="table-body">
+        <view class="body-tr" wx:for="{{solubilitydata_bd}}" wx:for-item="i" wx:key="{{code}}">
+          <block wx:for="{{i}}" wx:key="{{code}}">
+            <view class="body-box" style="background:{{solubilityexplain[item][2]}}" hover-class="hover">
+            {{solubilityexplain[item][0]}}
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="table-r-th">
+        <view class="r-th-box" wx:for="{{solubilitydata_th[0]}}" wx:key="{{code}}">
+          <template is="ChemicalFormula" data="{{text:item['symbol'],style:'font-size:26rpx;'}}" />
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="chartexplain">
+    <text style="line-height:100rpx;">注释:</text>
+    <view class="key-tr" wx:for="{{['s','ss','i','w','r','x']}}" wx:key="{{code}}">
+      <view class="key-th">{{solubilityexplain[item][0]}}</view>
+      <view class="key-td">{{solubilityexplain[item][3]}}</view>
+    </view>
+  </view>
+  <view style="padding:30px;">
+    <ad unit-id="adunit-13bf819e014b247a"></ad>
+  </view>
+</view>
+
+<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />

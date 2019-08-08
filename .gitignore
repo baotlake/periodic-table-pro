@@ -1,0 +1,18 @@
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# Node.js
+node_modules/
+
+#元素周期表Pro
+data/image/spectral
+data/data.js

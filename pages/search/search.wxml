@@ -1,16 +1,6 @@
 <!--pages/search/search.wxml-->
-<import src="../data/template.wxml"/>
+<import src="../../template/template.wxml"/>
 <view class="searchPage">
-  <view class="searchBoxContent">
-    <icon class="searchIcon" type="search"/>
-    <input class="searchInput" type="text" confirm-type="search" bindinput="input" bindfocus="inputFocus" placeholder="搜索" bindconfirm="searchGo" value="{{inputValue}}" style="opacity:{{inputOpacity}};"></input>
-    <view class="searchClearContent" bindtap="clearInput" hover-class="hoverClear">
-      <icon class="searchClear" type="cancel" color="#888" hidden="{{clearIcon}}" bindtap="clearInput"/>
-    </view>
-    <image class="searchLoading" src="{{rootPath}}data/image/icon/loading.gif" hidden="{{loadingShow}}"></image>
-  </view>
-
-
   <view class="resultContent">
     <scroll-view class="elemLineContent" scroll-x>
       <view class="elemLine" style="width:{{60 + 130*matchElem.length}}rpx;">
@@ -24,17 +14,20 @@
         <template is="CFCalculator" data="{{CF:item}}" />
       </view>
     </scroll-view>
-    <view class="CFCDeclare">根据您输入的化学式计算！</view>
+    <view class="CFCDeclare">搜索框输入，根据您输入的化学式计算！</view>
     
     <!--template is="ChemicalFormula" data="{{text:'AaZz2Na2CO     3+'}}" /-->
 
   </view>
-  <template is="foot" data="{{rootPath,style:'position:absolute;color:#fff;',imageStyle:'border:1px solid #888;'}}"/>
+  <template is="foot" data="{{rootPath,style:'position:absolute;color:#000;',imageStyle:'border:1px solid #888;'}}"/>
+  <!--view style="position:relative;padding:5%;bottom:0;top:500rpx;">
+    <ad unit-id="adunit-f193400be826d8ea"></ad>
+  </view-->
 </view>
 
 
-<template is="statusBar" data="{{bd_Color:'#223'}}"></template>
-<template is="navigationBar-Back" data="{{rootPath,style:'background-color:#334;opacity:0.5;'}}"></template>
+<!--ControlList 导航条控制数据据列于数组中-->
+<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo,controlList:[hiddenClearIcon,inputValue]}}" />
 
 
 
@@ -51,7 +44,7 @@
       </view>
       <view class="CFCF">
         <view class="CFCFName">分子式</view>
-        <template is="ChemicalFormula" data="{{text:CF[0]}}" />
+        <template is="ChemicalFormula" data="{{text:CF[0],style:'color:#000;'}}" />
       </view>
       <view class="CFResult">
         <view class="CFResultName">相对分子质量</view>
@@ -59,6 +52,7 @@
       </view>
   </view>
 </template>
+
 
 
 

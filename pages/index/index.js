@@ -1,7 +1,12 @@
 //index.js
 //获取应用实例
-var getdata = require('../data/data.js')
+var getdata = require('../../data/data.js')
 const app = getApp()
+const db = wx.cloud.database()      // 获取数据库引用
+var that
+//var Parser = require('../../utils/xmlParse-lib/dom-parser.js')
+
+
 
 
 var menubar = false
@@ -10,119 +15,268 @@ var tapelem = "35";
 var lastMB_source = ''
 //记录滑动提示框上次位置
 var QM_tip_y = 0
+var SUMx = 0
+var lastX =null
+
 
 
 Page({
   data: {
-    rootPath: '../',
+    systemInfo:null,
     //userInfo: {},
     //hasUserInfo: false,
     //canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
-  periodName: ["I A", "II A", "III B", "IV B", "V B", "VI B", "VII B", "VIII", "VIII", "VIII", "I B", "II B", "III A", "IV A", "V A", "VI A", "VII A", "0"],
-  periodId: ['ia', 'iia', 'iiib', 'ivb', 'vb', 'vib', 'viib', 'viiia', 'viiib', 'viiic', 'ib', 'iib', 'iiia', 'iva', 'va', 'via', 'viia','o'],
-  periodNumber: [1,2,3,4,5,6,7,8," "," "," "],
-  tabledata :[],
-  signColor: {},
-
-  uicolor: [
-    /*Brim*/ { "leftbrim": "#202020", "topbrim": "#202020", "": "", "": "", "": "",},
-    /*Border*/{ "borderbox": "#3f3f3c", "borderleft": "#303030", "bordertop": "#303030", "": "", "": "",    },
-    /*Text*/{ "": "", "": "", "": "", "": "", "": "", "": "", "": "", "": "", "": "",},
-    ],
+    //t
     
+    tbScale:1,
+
+    periodName: ["I A", "II A", "III B", "IV B", "V B", "VI B", "VII B", "VIII", "VIII", "VIII", "I B", "II B", "III A", "IV A", "V A", "VI A", "VII A", "0"],
+    periodId: ['ia', 'iia', 'iiib', 'ivb', 'vb', 'vib', 'viib', 'viiia', 'viiib', 'viiic', 'ib', 'iib', 'iiia', 'iva', 'va', 'via', 'viia','o'],
+    periodNumber: [1,2,3,4,5,6,7,8],
+    tabledata :[],
+    signColor: {},
 
     menulist:[
-      { 'id':'tool','title': '工具栏', 'url': '../menupage/tool/tool','bd':'#cec6c0'},
-      { 'id': '', 'title': '关注生态环境', 'url': '../menupage/propose/propose', 'bd': '#49b3fd'},
-      { 'id': '', 'title': '意见反馈', 'url': '../menupage/custom/custom', 'bd': '#6646f1'},
-      { 'id': '', 'title': '关于', 'url': '../menupage/about/about', 'bd': '#dfb741'},
-      { 'id': '', 'title': '使用说明', 'url': '../menupage/instruction/instruction', 'bd': '#c8adc4'},
-
+      { 'id':'tool','title': '工具栏', 'url': '../../toolpages/tool/tool','bd':'#cec6c0'},
+      { 'id': '', 'title': '保护生态环境', 'url': '../../menupages/propose/propose', 'bd': '#49b3fd'},
+      { 'id': '', 'title': '意见反馈', 'url': '../../menupages/custom/custom', 'bd': '#6646f1'},
+      { 'id': '', 'title': '关于', 'url': '../../menupages/about/about', 'bd': '#dfb741'},
+      { 'id': '', 'title': '使用说明', 'url': '../../menupages/instruction/instruction', 'bd': '#c8adc4'},
+      { 'id':'button', 'title':'分享', 'type':'share', 'bd':'#f00'},
+      {'':'','title':'设置','url':'../../pages/settings/settings','bd':'#d3d3d3'}
       ],
-  subPage:"none",
-  menubar:"none",  
-  leftpage:"none",
-  selectbottomdata:false,
-  bottomdata:'质量数',
-  bottomdatalist:[],
-  bottomdataitem: [
-    { 'id': 'aw', 'name': '原子量' },
-    { 'id': '', 'name': '电负性' },
-    { 'id': '', 'name': '英文名' },
-    { 'id': '', 'name': '拼 音' },
-    //注意空格
-    { 'id': '','name': '原子半径' }, 
-    { 'id': '', 'name': '共价半径' },
-    
-    ],
-  longpressElem:[],
-  moveBox_y:500,
-  QM_tip_y:170,
-  QM_Show:true,
-  QM_tipText:'上下滑动',
-  QMList: [
-      { 'name': '工', 'url': '../menupage/tool/tool','tip':'工具栏' },
-      { 'name': '溶', 'url': '../menupage/tool/pages/solubility/solubility','tip':'溶解性表' },
-      { 'name': 'α', 'url': '../menupage/tool/pages/GreekAlphabet/GreekAlphabet', 'tip': '希腊字母表' },
-      { 'name': 'PH', 'url': '../menupage/tool/pages/indicator/indicator', 'tip': '酸碱指示剂' },
-      { 'name': '关', 'url': '../menupage/about/about', 'tip': '关于'},
-      //{ 'name': '测', 'url': '../detail/explain/explain', 'tip': '测试' },
-    ],
 
+    subPage:"none",
+    leftPageX:0,
+    selectbottomdata:false,
+    bottomdata:'质量数',
+    bottomdatalist:[],
+    bottomdataitem: [
+      { 'id': 'aw', 'name': '原子量' },
+      { 'id': '', 'name': '电负性' },
+      { 'id': '', 'name': '英文名' },
+      { 'id': '', 'name': '拼 音' },
+      //注意空格
+      { 'id': '','name': '原子半径' }, 
+      { 'id': '', 'name': '共价半径' },
+      {'id':'','name':'价电子构型'}
+      
+      ],
+    longpressElem:[],
+    moveBox_y:500,
+      guide:false,
+    guideUrl:[
+      '../../data/image/guide/page1.png',
+      '../../data/image/guide/page2.png',
+      //'../../data/image/guide/page3.png'
+    ],
+    currentSwiper:0,
+    guideTip:'下一步',
+    tbMoveareaStyle: '',
+    tbMoveViewStyle:'',
+    QM_mainViewShow:false,
+    tb_x:0,
+    tb_y:0,
+    navigationBarData:{
+      "full": false,  //wdith满宽，及box-shadow阴影
+      "info": [   //控制按钮列表，比如 返回、主页
+        {
+          "tem": "navigationCustom",
+          "data":{
+            "icon_w":"../../data/image/icon/menu_w.png",
+            "icon_b":"../../data/image/icon/menu_b.png",
+            "bindtap":"openleftpage",
+            "key":"", //如空，则按照navigationBarData['color']
+            "dot":false
+          }
+        }, {
+          //"tem": "navigationTitle",
+          "data":{
+            "title":"元素周期表Pro"
+          }
+        },{
+          "tem":"navigationCustom",
+          "data":{
+            "icon_w":"../../data/image/icon/search_d5.png",
+            "icon_b":"../../data/image/icon/search_d5_b.png",
+            "bindtap":"search",
+            "style":"position:absolute;left:calc(100vw - 90pt - 46px);",
+            "key":""
+          }
+        }
+      ],
+      //"bd": "background-color:#fff;",    //navigationBar的样式
+      "commonIcon": "icon_w",    //white black,图标及字体的颜色
+      "maskStyle": "",
+    },
+    QM_tool_list: [
+      {
+        "icon": "../../data/image/svg/solubility.svg",
+        "text": "溶解性表",
+        "bindtap": "MyNavigateTo",
+        "url":"../../toolpages/solubility/solubility",
+        "data": {
+          "": ""
+        }
+      }, {
+        "icon": "../../data/image/svg/pH.svg",
+        "text": "pH指示剂",
+        "bindtap": "MyNavigateTo",
+        "url": "../../toolpages/indicator/indicator",
+        "data": {
+          "": ""
+        }
+      }, {
+        "icon": "../../data/image/svg/Alphabet.svg",
+        "text": "希腊字母",
+        "bindtap": "MyNavigateTo",
+        "url": "../../toolpages/GreekAlphabet/GreekAlphabet",
+        "data": {
+          "": ""
+        }
+      }, {
+        "icon": "../../data/image/svg/ruler.svg",
+        "text": "单位转换",
+        "bindtap": "MyNavigateTo",
+        "url": "../../toolpages/UnitConversion/UnitConversion",
+        "data": {
+          "": ""
+        }
+      }, {
+        "icon": "../../data/image/svg/toolsbar.svg",
+        "text": "工具栏",
+        "bindtap": "MyNavigateTo",
+        "url": "../../toolpages/tool/tool",
+        "data": {
+          "": ""
+        }
+      },
+    ]
+  
   },
   
 
   //事件处理函数
   onLoad: function () {
+    that = this
+    this.setData({
+      systemInfo: app.globalData.systemInfo,
+      UIstyle:app.globalData.appUI['white']['index']
+    })
+    console.log('Index onLoad')
+    console.log(app.globalData.systemInfo)
 
+    //判断是否初次打开，并读取使用信息
+    try {
+      var useLog = wx.getStorageSync('useLog')
+      if (useLog) {
+        // Do something with return value
+        console.log('useLog:'.concat(useLog))
+      } else {
+        this.setData({
+          guide: true,
+        })
+        useLog = 0
+      }
+    } catch (e) {
+      // Do something when catch error
+      //console.log('')
+    }
+
+    // wx.getSystemInfo({
+    //   success:function(res) {
+    //     console.log('getSystemInfo success')
+    //     console.log(res)
+    //   },
+    //   fail:function(){
+    //     console.log('获取系统信息错误')
+    //   }
+    // })
+
+    //加载元素信息
     this.setData({
       //tabledata: table_data
       tabledata: getdata.getTableData(),
       signColor: getdata.getSignColor()
     })
+
+    this.refreshPage()
+
+    // var xmlParser = new Parser.DOMParser();
+    // var doc = xmlParser.parseFromString('<to>dfsfdfsd</to>')
+    // console.log(doc)
+
+    // console.log('============数据库测试==============')
+    // const _ = db.command
+    // db.collection('wikipedia_data_json').where({
+    //   ordinal:_.eq(9)
+    // }).get({
+    //   success(res){
+    //     console.log('===========where=========')
+    //     console.log(res.data)
+    //   },
+    //   fail(res){
+    //     console.log('=======where fail=======')
+    //     console.log(res)
+    //   }
+    // })
+
+    // db.collection('wikipedia_data_json').where({
+    //   ordinal: _.eq(9)
+    // }).field({
+    //   entry_info:true
+    // }).get({
+    //   success(res){
+    //     console.log('======where + field =====')
+    //     console.log(res)
+    //   }
+    // })
+
+    // db.collection('wikipedia_data_json').field({
+    //   ordinal:9,
+    //   entry_info:true
+    // }).get({
+    //   success(res){
+    //     console.log('=============field===========')
+    //     console.log(res.data)
+    //   },
+    //   fail(res){
+    //     console.log('========field fail==========')
+    //     console.log(res)
+    //   }
+    // })
+
+    // db.collection('wikipedia_data_json').doc('5c79e46466d3d872be6bc5a4').get({
+    //   success(res){
+    //     console.log('====doc====')
+    //     console.log(res.data)
+    //   },
+    //   fail(res){
+    //     console.log('====doc fail=====')
+    //     console.log(res)
+    //   }
+    // })
+
+    // wx.navigateTo({
+    //   url:'../../pages/explain/explain'
+    // })
+
     
+  },
 
-    /*
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-      
-    }
-    */
-
+  onShow:function(){
+    this.refreshPage()
   },
 
 
- ///////用户点击右上角分享
+  //用户点击右上角分享
+  
   onShareAppMessage: function (options) {
     var shareObj={
-      title:'元素周期表Pro',
-      desc: '最好用的化学元素周期表，让你感到相见恨晚！',
+      title:'发现我的闪光点，发现你的"镁"！',
+      desc: '发现我的闪光点，发现你的"镁"！',
       path:'/pages/index/index',
-      imageUrl:'/pages/data/image/elemimage/Br.jpg',
+      imageUrl:'../../data/image/share.jpg',
       success:function(res){
 
       },
@@ -136,6 +290,55 @@ Page({
     return shareObj
   },
 
+  //主表格缩放适配
+  tbZoom:function(Scale){
+    this.setData({
+      tbScale:Scale.toFixed(1)
+    })
+    // console.log(e)
+    // console.log('NodesRef.fields TEST')
+    // wx.createSelectorQuery().select('#tbmovearea').fields({
+    //   dataset: true,
+    //   size: true,
+    //   scrollOffset: true,
+    //   properties: ['scrollX', 'scrollY'],
+    //   computedStyle: ['margin', 'backgroundColor']
+    // }, function (res) {
+    //   res.dataset // 节点的dataset
+    //   res.width // 节点的宽度
+    //   res.height // 节点的高度
+    //   res.scrollLeft // 节点的水平滚动位置
+    //   res.scrollTop // 节点的竖直滚动位置
+    //   res.scrollX // 节点 scroll-x 属性的当前值
+    //   res.scrollY // 节点 scroll-y 属性的当前值
+    //   // 此处返回指定要返回的样式名
+    //   res.margin
+    //   res.backgroundColor
+    //   console.log(res)
+    //   tbMoveAreaQuery = res
+    // }).exec()
+    // wx.createSelectorQuery().select('#tbmoveview').fields({
+    //   dataset: true,
+    //   size: true,
+    //   scrollOffset: true,
+    //   properties: ['scrollX', 'scrollY'],
+    //   computedStyle: ['margin', 'backgroundColor']
+    // }, function (res) {
+    //   res.dataset // 节点的dataset
+    //   res.width // 节点的宽度
+    //   res.height // 节点的高度
+    //   res.scrollLeft // 节点的水平滚动位置
+    //   res.scrollTop // 节点的竖直滚动位置
+    //   res.scrollX // 节点 scroll-x 属性的当前值
+    //   res.scrollY // 节点 scroll-y 属性的当前值
+    //   // 此处返回指定要返回的样式名
+    //   res.margin
+    //   res.backgroundColor
+    //   //console.log(res)
+    // }).exec()
+  },
+
+
   bindTouchStart:function(e){
     this.startTime = e.timeStamp
   },
@@ -148,13 +351,15 @@ Page({
     if(this.endTime - this.startTime < 350){
       tapelem = event.currentTarget.dataset.tapordinal
       getdata.setTapElem(tapelem)
-      wx.navigateTo({
-        url:'../detail/detail',
-      })
+      if (tapelem.length <=3){
+        wx.navigateTo({
+          url: '../detail/detail' + '?id=' + tapelem
+        })
+      }
     }
   },
 
-  selectBottomData:function(e){
+  bindlongpress:function(e){
     tapelem = e.currentTarget.dataset.tapordinal
     this.setData({
       longpressElem:getdata.getElemBoxData(tapelem),
@@ -164,8 +369,10 @@ Page({
   },
 
   closeSubPage:function(){
+    console.log('closeSubPage:function()')
     this.setData({
-      selectbottomdata: false
+      selectbottomdata: false,
+      //guide:false,//点击穿透，弃用
     })
   },
 
@@ -187,22 +394,6 @@ Page({
     wx.reportAnalytics('elem_longpress', {
     });
   },
-  openMenu: function(){
-    wx.navigateTo({
-      url:'../menupage/about/about'
-    })
-    if(menubar){
-      menubar=false
-      this.setData({
-        //menubar:"none"
-      })
-    }else{
-      menubar=true
-      this.setData({
-        //menubar:"block"
-      })
-    }
-  },
   closeDetailPage: function(){
     this.setData({
       detail: 'none',
@@ -211,39 +402,71 @@ Page({
   gettapelem:function(){
     return tapelem
   },
-  openleftpage:function(){
-    this.setData({
-      leftpage:"flex",
-    })
-  },
-  pull_lp:function(){
-    this.setData({ 
-      lp_width:'750rpx',
-      leftpage: "flex"
+
+  lpXbindChange:function(e){
+    // 滑动左边菜单页面触发
+    // console.log(e.detail)    
+    //console.log(SUMx)
+    if (lastX != null && e.detail.source == 'touch') {
+      SUMx += e.detail.x - lastX
+    }
+
+    if (e.detail.source == 'touch') {
+      lastX = e.detail.x
+      lpTimer = setTimeout(this.touchlp, 690)
+    } else if (SUMx >= 10 && e.detail.source != 'touch') {
+      //console.log('page向右') 打开菜单
+      SUMx = 0
+      this.setData({
+        leftPageX: 300
       })
+    } else if (SUMx <10 && e.detail.source != 'touch' && SUMx != 0) {
+      //console.log('向左') 关闭菜单
+      SUMx = 0
+      this.setData({
+        leftPageX: 0
+      })
+    }
+
+  },
+  touchlp:function(){
+    console.log('------touch lp ---------------')
+    if (SUMx >=6){
+      this.openleftpage
+    }else{
+      this.closeleftpage
+    }
+  },
+  openleftpage: function () {
+    // console.log('----------open left page---------')
+    this.setData({
+      leftPageX: 300
+    })
   },
   closeleftpage:function(){
+    // console.log('----------close left page---------')
     this.setData({
-      leftpage:"none",
-      lp_width: '20rpx',
+      leftPageX:0,
     })
   },
-
-  /*
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  */
   
   opentoolpage:function(){
     wx.navigateTo({
       url:'../tool/tool'
     })
+  },
+
+  tapMoveBox:function(){
+    if (this.data.QM_mainViewShow){
+      this.setData({
+        QM_mainViewShow:false
+      })
+    }else{
+      this.setData({
+        QM_mainViewShow: true
+      })
+    }
+
   },
 
   QM_TouchStart:function(){
@@ -257,14 +480,13 @@ Page({
       moveBox_y: 500,
       QM_Show: true,
     })
-    console.log(e.detail)
+    //console.log(e.detail)
   },
   QM_change:function(e){
     //console.log(e.detail)
-    //console.log(e.detail.source)
-    var index = this.data.QMList.length, max = 213
-    var boxY = e.detail.y + 20
-    if(e.detail.source=='touch'){
+    var index = this.data.QMList.length, max = 238
+    var boxY = e.detail.y + 22
+    if(e.detail.source!=''){
       //console.log('拖动滑块')
       for (var i = 1; i <= index; i++) {
         var y = max / index * (i - 1)
@@ -280,8 +502,8 @@ Page({
           break
         }
       }
-    }else{
-      if(lastMB_source=='touch'){
+    }else if(e.detail.source==''){
+      if(lastMB_source!=''){
         //console.log('拖动停止')
         for(var i=1;i<=index;i++){
           //console.log(i)
@@ -308,16 +530,126 @@ Page({
     }
     lastMB_source = e.detail.source
   },
-  MyNavigateTo:function(path){
-    wx.navigateTo({
-      url: path
-    })
+
+
+  MyNavigateTo:function(p){
+    //参数p可能为字符串或事件,事件传参在data-path中
+    if (typeof(p) == 'string'){
+      wx.navigateTo({
+        url: path
+      })
+    }else if(typeof(p) == 'object'){
+      wx.navigateTo({
+        url:p.currentTarget.dataset.path
+      })
+    }
+
   },
   search:function(){
     wx.navigateTo({
       url:'../search/search'
     })
+  },
+
+
+  swiperChange:function(){
+    this.swiperNextPage()
+  },
+
+  swiperNextPage:function(){
+    this.data.currentSwiper
+    if (this.data.currentSwiper < this.data.guideUrl.length-1){
+      this.setData({
+        currentSwiper: this.data.currentSwiper + 1
+      })
+    } else if (this.data.currentSwiper == this.data.guideUrl.length - 1 && this.data.guideTip != '开始使用'){
+      this.setData({
+        //currentSwiper: this.data.currentSwiper,
+        guideTip: '开始使用',
+      })
+    } else if (this.data.guideTip == '开始使用'){
+      this.setData({
+        guide:false,
+      })
+    }
+
+    // switch(this.data.currentSwiper){
+    //   case 0:
+    //     console.log('case 0')
+    //     this.setData({
+    //       currentSwiper: this.data.currentSwiper + 1
+    //     })
+    //     break
+    //   case 1:
+    //     console.log('case 1')
+    //     this.setData({
+    //       currentSwiper: this.data.currentSwiper + 1,
+    //       guideTip:'开始使用',
+    //     })
+    //     break
+    //   case 2:
+    //     console.log('case 2')
+    //     this.setData({
+    //       guide:false,
+    //     })
+    //     break
+    // }
+    console.log(this.data.guide)
+
+  },
+  tbScaleSliderChange:function(e){
+    that.tbZoom(e.detail.value)
+    console.log(e.detail.value)
+  },
+
+  // 打开英语划词阅读程序
+  GoCheckWord:function(e){
+    wx.navigateToMiniProgram({
+      appId:'wx16b955041265aaf5',
+      path:'pages/bookshelf/bookshelf',
+    })
+  },
+
+  refreshPage:function(){
+    // 刷新页面，判断是否需要setData
+
+    // UIstyle & app.globalData.appSet['theme']
+
+    var theme = app.globalData.appSet['theme']
+    if (this.data.UIstyle != app.globalData.appUI[theme]['index']){
+      this.setData({
+        UIstyle: app.globalData.appUI[theme]['index']
+      })
+    }
+    
+    //UIstyle 与 navigationBar 主题颜色同步 !先刷新页面主题，再同步主题
+
+    if (this.data.navigationBarData['commonIcon'] == 'icon_b' & this.data.UIstyle['icon'] =='white'){
+      // 主题白，将navigationBar图标主题改为白色
+      console.log('=>统一为白色主题，深色图标')
+      var commonIcon = 'navigationBarData.commonIcon'
+      this.setData({
+        [commonIcon]:'icon_w'
+      })
+    } else if (this.data.navigationBarData['commonIcon'] == 'icon_w' & this.data.UIstyle['icon'] =='black'){
+      // 主题黑，将navigationBar图标主题改为黑
+      console.log('=>统一为黑色主题,白色图标')
+      console.log(this.data.UIstyle.icon)
+      var commonIcon = 'navigationBarData.commonIcon'
+      this.setData({
+        [commonIcon]: 'icon_b'
+      })
+    }
+
+    // SystemInfo & app.globalData.systemInfo
+    if (this.data.systemInfo != app.globalData.systemInfo){
+      this.setData({
+        systemInfo: app.globalData.systemInfo
+      })
+    }
+
   }
+
 //page
 })
 
