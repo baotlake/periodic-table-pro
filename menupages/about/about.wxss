@@ -1,16 +1,21 @@
 /* pages/menupage/about/about.wxss */
 @import '../../template/template.wxss';
+@import '../../theme.wxss';
+@import '../../common.wxss';
 
 .aboutPage{
-  position:absolute;
+  position:relative;
   left:0;
   top:0;
-  height:100vh;
-  background:-webkit-gradient(linear,0% 100%,0% 0%,from(#eeeeff),to(#fff));
+  min-height:100vh;
+  /*background:-webkit-gradient(linear,0% 100%,0% 0%,from(#eeeeff),to(#fff));*/
+  background-color:rgb(var(--back-color-2));
+  color:rgba(var(--fore-color-1), 0.5);
+  padding-bottom:2rem;
 }
 .appInfo{
   position:relative;
-  margin:170rpx 0 0 0;
+  margin:0 auto 0 auto;
   display:block;
   width:750rpx;
   height:220rpx;
@@ -19,26 +24,27 @@
 }
 .appAvatar{
   display:block;
-  width:140rpx;
-  height:140rpx;
+  width:4rem;
+  height:4rem;
   border-radius:50%;
   margin:auto;
+  border:2px solid rgba(var(--fore-color-1), 0.3);
 }
 .appName{
   position:relative;
-  line-height:90rpx;
-  margin:20rpx 0 0 0;
-  font-size:36rpx;
+  line-height:1.5rem;
+  padding:1rem 0 0 0;
+  font-size:1.2rem;
 }
 
 .aboutExplain{
-  padding: 0 60rpx 0 60rpx;
-  font-size:26rpx;
+  padding: 0 2rem 0 2rem;
+  font-size:1rem;
   text-align:center;
 }
 .explainText{
   display:block;
-  margin:30rpx 0 0 0;
+  margin:1rem 0 0 0;
   color:#888;
 }
 

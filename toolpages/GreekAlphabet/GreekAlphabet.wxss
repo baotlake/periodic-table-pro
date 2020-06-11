@@ -1,23 +1,30 @@
 /* pages/menupage/tool/pages/GreekAlphabet/GreekAlphabet.wxss */
 @import '../../template/template.wxss';
+@import '../../theme.wxss';
+@import '../../common.wxss';
 
 .gaTable{
-  width:750rpx;
-  background-color:#055eb0;
+  width:100vw;
+  /*background-color:#055eb0;*/
+  background-color:rgb(var(--back-color-1));
+  color:rgb(var(--fore-color-1));
   padding:1rpx 0 1rpx 0;
 }
 .gatr{
   display:flex;
   text-align:center;
   margin:1rpx 0 0 0;
+  justify-content: center;
 }
 .gath{
-  background-color:#7694c2;
+  /*background-color:#7694c2;*/
+  background-color:rgba(5,94,176,0.5);
   margin: 0 0 0 1rpx;
   padding:20rpx 0 20rpx 0;
 }
 .gatd{
-  background-color:#fff;
+  /*background-color:#fff;*/
+  background-color:rgb(var(--back-color-2));
   margin: 0 0 0 1rpx;
   padding:20rpx 0 20rpx 0;
 }

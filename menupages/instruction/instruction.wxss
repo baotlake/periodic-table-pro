@@ -1,17 +1,36 @@
 /* pages/menupage/instruction/instruction.wxss */
 @import '../../template/template.wxss';
+@import '../../theme.wxss';
+@import '../../common.wxss';
 
 .instructionPage{
-  height:100vh;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#ede3e7), to(#d1c2d3));
+  min-height:100vh;
+  /*background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#ede3e7), to(#d1c2d3));*/
+  background-color:rgb(var(--back-color-2));
   text-align:center;
-  padding:69px 0 0 0;
+  position:relative;
 }
 .tipContent{
-  padding: 0 60rpx;
+  padding: 0 10px;
 }
-.instructionText{
-  font-size:32rpx;
-  color:#666;
-  margin: 0 0 60rpx 0;
+.instruction-image{
+  max-width:25rem;
+  margin:auto;
+}
+.instruction-text{
+  font-size:1rem;
+  color:rgba(var(--fore-color-1),0.5);
+  line-height:3rem;
+  max-width:25rem;
+  margin:auto;
+  padding-top:3rem;
+}
+.other-label{
+  padding:5rem 0;
+}
+
+@media (max-width:25rem){
+  .instruction-image{
+    max-width:15rem;
+  }
 }

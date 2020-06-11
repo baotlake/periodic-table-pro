@@ -1,10 +1,10 @@
 <import src="../../template/template.wxml"/>
-<view class="page" >
-  <view class="solubility-table-block" style="">
+<view class="page  {{theme}}" >
+  <view class="solubility-table-block" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
     <view class="table-v-th">
       <block wx:for="{{solubilitydata_th[1]}}" wx:key="{{code}}">
         <view class="s-v-th-box" style="">
-          <template is="ChemicalFormula" data="{{text:item['symbol'],style:'font-size:26rpx;'}}" />
+          <template is="ChemicalFormula" data="{{text:item['symbol']}}" />
         </view>
       </block>
     </view>
@@ -12,7 +12,7 @@
     <scroll-view scroll-x class="solubility-table">
       <view class="table-r-th">
         <view class="r-th-box" wx:for="{{solubilitydata_th[0]}}" wx:key="{{code}}">
-          <template is="ChemicalFormula" data="{{text:item['symbol'],style:'font-size:26rpx;'}}" />
+          <template is="ChemicalFormula" data="{{text:item['symbol']}}" />
         </view>
       </view>
       <view class="table-body">
@@ -26,7 +26,7 @@
       </view>
       <view class="table-r-th">
         <view class="r-th-box" wx:for="{{solubilitydata_th[0]}}" wx:key="{{code}}">
-          <template is="ChemicalFormula" data="{{text:item['symbol'],style:'font-size:26rpx;'}}" />
+          <template is="ChemicalFormula" data="{{text:item['symbol']}}" />
         </view>
       </view>
     </scroll-view>
@@ -44,4 +44,10 @@
   </view>
 </view>
 
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
+<view class="navigation-bar-full {{theme}}" style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon" hover-class="fold" />
+    </view>
+    <view class="navigation-title">溶解性表</view>
+</view>

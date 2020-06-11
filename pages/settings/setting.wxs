@@ -1,0 +1,40 @@
+function svg(theme, name){
+    if(theme.search('#') == 0 || theme.search('rgb') != -1){
+      // theme 为颜色值， 直接使用
+      var color = theme;
+    }else{
+      if (theme.search('w') != -1) {
+        // 白色主题
+        var color = "rgb(35,35,40)";
+      } else {
+        // 深色主题
+        var color = "rgb(255,255,255)";
+      }
+    }
+  
+    var svg_theme_dark = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1001"><defs><style>.cls-1{fill:#232328;}</style></defs><title>theme</title><rect class="cls-1" x="0.5" y="0.5" width="999" height="1000"/></svg>';
+
+    var svg_theme_light = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1001"><defs><style>.cls-1{fill:#ffffff;}</style></defs><title>theme</title><rect class="cls-1" x="0.5" y="0.5" width="999" height="1000"/></svg>';
+
+    var encodeURI = '';
+    switch (name){
+      case "theme-dark":
+        encodeURI = encodeURIComponent(svg_theme_dark);
+        break;
+      case 'theme-light':
+        encodeURI = encodeURIComponent(svg_theme_light);
+        break;
+      default:
+        encodeURI = encodeURIComponent(svg_theme_dark);
+        break;
+    }
+  
+    var svgUrl = 'data:image/svg+xml,' + encodeURI;
+  
+    return svgUrl
+  }
+
+
+  module.exports={
+      svg:svg
+  }

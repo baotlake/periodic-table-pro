@@ -1,7 +1,7 @@
 <!--pages/menupage/tool/pages/GreekAlphabet/GreekAlphabet.wxml-->
 <import src="../../template/template.wxml"/>
 
-<view class="gaTable" style="padding-top:calc({{systemInfo['statusBarHeight']}}px + 46px);">
+<view class="gaTable {{theme}}" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
   <view class="gatr">
       <view class="gath" id="gatdA">大写</view>
       <view class="gath" id="gatdB">小写</view>
@@ -19,4 +19,11 @@
 </view>
 
 
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
+<view class="navigation-bar-full {{theme}}" 
+    style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+    </view>
+    <view class="navigation-title">希腊字母</view>
+</view>

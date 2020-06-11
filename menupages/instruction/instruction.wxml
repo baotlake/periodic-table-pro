@@ -1,16 +1,30 @@
 <!--pages/menupage/instruction/instruction.wxml-->
 <import src="../../template/template.wxml" />
-<view class="instructionPage">
+<view class="instructionPage {{theme}}" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
   <view class="tipContent">
-    <block wx:for="{{tipList}}" wx:key="{{code}}">
-      <view class="instructionText">{{item}}</view>
-    </block>
+      <view class="instruction-text">长按元素后可切换显示元素底部的数据类型</view>
+      <image class="instruction-image" src="../../data/image/press-pop-up.jpg" mode="aspectFit"></image>
+      <view class="instruction-text">酸碱指示剂界面的标尺可以拖动</view>
+      <image class="instruction-image" src="../../data/image/ruler.jpg" mode="aspectFit"></image>
+      <view class="instruction-text">点击希腊字母表中对应字母即可将其复制到剪切板</view>
+      <view class="instruction-text">搜索栏输入化学式可自动计算相对分子质量</view>
+      <image class="instruction-image" src="../../data/image/search.jpg" mode="aspectFit"></image>
   </view>
-  <template is="QAHow" data="{{rootPath,style:'margin-top:260rpx;'}}"/>
-  <template is="foot" data="{{rootPath,style:'position:relative;top:30rpx;'}}"/>
+  <view class="other-label">
+    <template is="QAHow" data="{{rootPath}}"/>
+    <template is="foot" data="{{rootPath}}"/>
+  </view>
 </view>
 
 
 
   
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
+<view class="navigation-bar {{theme}}" 
+    style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+    </view>
+    <view class="navigation-title">使用说明</view>
+</view>
+

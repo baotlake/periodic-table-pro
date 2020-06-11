@@ -1,5 +1,5 @@
+
 var data = require('../../data/data.js')
-var getordail = require('../index/index.js')
 var that
 const app = getApp()
 const db = wx.cloud.database({
@@ -26,7 +26,9 @@ function dbGet(){
   })  
 }
 
+
 Page({
+  
   data: {
     detail_data:[],
     signColor:{
@@ -50,42 +52,42 @@ Page({
     },
     cloud_image:'',
     systemInfo:null,
-    navigationBarData:{
-      "full": false,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-          "data": {
-            'icon_w':'../../data/image/icon/back_w.png',
-            'style':'background-color:rgba(1,1,1,0.2);box-shadow: inset 0 0 1px #fff;',
-            'key':'icon_w'
-          }
-        }
-      ],
-      //"bd": "background-color:#fff;",    //navigationBar的样式
-      "color": "black",    //white black,图标及字体的颜色
-      "maskStyle": ""
-    },
-    UIstyle:{
-      'page':'background-color:#efefef;','item':'background-color:#fff;color:#555;','iconstyle':'black'
-    }
+    
+    theme:"detail-d",
 
   },
+
   onLoad: function (options) {
+    
     that = this
-    console.log(options)
-    tapelem = getordail.gettapelem()
+    console.log('options', options)
+    // tapelem = getordail.gettapelem()
+    tapelem =options && options.id;
     eps = data.geteleShellData(tapelem)
-    var theme = app.globalData.appSet['theme']
     this.setData({
       detail_data: data.detaildata(),
       systemInfo: app.globalData.systemInfo,
-      UIstyle:app.globalData.appUI[theme]['detail']
     })
 
     // 获取数据库信息
     dbGet()
 
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'detail-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'detail-d';
+        break;
+    }
+    
+    this.setData({
+      theme:theme,
+    })
+    
     // 监听窗口尺寸变化事件 not function Error
     // wx.onWindowResize(function (res) {
     //   console.log('======Window Resize callback======')
@@ -127,7 +129,8 @@ Page({
     clearInterval(this.interval)
   },
   onShow(){
-    this.interval = setInterval(this.drawAtom, 30)
+    // // this.interval = setInterval(this.drawAtom, 30)
+    // this.drawAtom();
   },
   onResize(res){
     console.log('======onResize======')
@@ -160,6 +163,16 @@ Page({
     wx.navigateBack()
   },
 
+  previewImage:function(e){
+    console.log('e', e);
+
+    var url = e.target.dataset && e.target.dataset.url;
+    wx.previewImage({
+      urls: [url],
+      current:url,
+    })
+  },
+
   //test
   enterExplain:function(){
     wx.navigateTo({
@@ -190,7 +203,7 @@ Page({
   onReady:function(){
     this.t = 0
     this.drawAtom()
-    this.interval = setInterval(this.drawAtom, 25)  
+    this.interval = setInterval(this.drawAtom, 50)  
   },
 
 
@@ -207,7 +220,7 @@ Page({
       context.beginPath(0)
       context.arc(x,y,r,0,Math.PI*2)
       
-      if(that.data.UIstyle['iconstyle']=='black'){
+      if(that.data.theme.includes('w')){
         context.setStrokeStyle('#363636')
         context.setFillStyle('#363636')
       }else{
@@ -228,7 +241,7 @@ Page({
       context.arc(0, 0, r, 0, Math.PI*2,true)
       //context.setStrokeStyle('rgba(1,1,1,1)')
       //context.setFillStyle("#fff") 
-      if (that.data.UIstyle['iconstyle'] == 'black') {
+      if (that.data.theme.includes('w')) {
         context.setStrokeStyle('#888') 
       } else {
         context.setStrokeStyle('#999') 
@@ -280,17 +293,6 @@ Page({
   onUnload:function(){
     clearInterval(this.interval)
   },
-
-  previewImage:function(e){
-    /**预览图片 */
-    list = e.currentTarget.dataset.url
-    current = e.currentTarget.dataset.current
-    if(typeof(list) == 'string') list = [list];
-    if(!current) current = 0;
-    wx.previewImage({
-      urls:list,
-      current:list[current],
-    })
-  }
+  
 
 })

@@ -26,14 +26,27 @@ Page({
       "commonIcon": "icon_b",
       "maskStyle": ""
     },
+    theme:'ui-w',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      systemInfo: app.globalData.systemInfo
+      systemInfo: app.globalData.systemInfo,
+      theme:theme
     })
   },
 

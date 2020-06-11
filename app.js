@@ -5,32 +5,24 @@ App({
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
-    var useLog = wx.getStorageSync('useLog')
-    var readAppSet = wx.getStorageSync('appSet')
+    var useLog = wx.getStorageSync('useLog');
+    useLog  = parseInt(useLog) + 1;
+    if(isNaN(useLog)) useLog = 1;
+    wx.setStorageSync('useLog', useLog);
 
-    if(useLog){
-      if(readAppSet){
-        // console.log('readAppSet=>'.concat(readAppSet))
-        // console.log(readAppSet)
-        this.globalData.appSet = readAppSet
-      }else{
-        // 旧版兼容，老用户未主动设置白色主题，保持旧有的深色主题
-        this.globalData.appSet.theme = 'dark'
-        wx.setStorage({
-          'key':'appSet',
-          'data': this.globalData.appSet
-        })
-      }
+    
+
+    var theme = wx.getStorageSync('theme');
+
+    if(theme.length > 0){
+      // 有 theme 存档
     }else{
-      // uselog为空,未打开过
-      useLog = 0
+      theme = "defaul-dark";
+      wx.setStorageSync('theme',theme);
     }
 
-    //写入 使用记录
-    wx.setStorage({
-      key: "useLog",
-      data: useLog + 1
-    })
+    this.globalData.theme = theme;
+    this.globalData.useLog = useLog;
 
     // 登录
     wx.login({
@@ -85,49 +77,30 @@ App({
       this.globalData.systemInfo['haveMenuButtonBounding'] = false
     }
     
-    console.log(this.globalData.systemInfo)
+    // console.log(this.globalData.systemInfo)
 
     //初始化云服务
     wx.cloud.init({
       env:{
-        "storage": "test-c59f6a",
-        "database":"test-c59f6a",
-        "functions":"test-c59f6a"
+        "storage": "云环境id",
+        "database":"云环境id",
+        "functions":"云环境id"
       },
       traceUser:true,
     })
     // console.log('----appSet----')
     // console.log(this.globalData.appSet)
+
+  },
+  refresh:function(){
+    if(wx.getMenuButtonBoundingClientRect){
+      this.globalData.systemInfo['MenuButtonBounding'] = wx.getMenuButtonBoundingClientRect();
+    }
   },
   globalData: {
     userInfo: null,
     systemInfo:null,
-    appSet:{
-      'theme':'white',
-    },
-      appUI:{
-      'dark':{
-        'index':{
-          'name': '深色主题',
-          'tb': { 'iconstyle': 'black', 'leftbrim': 'background-color:#202020;color:#fff;', 'topbrim': 'background-color:#202020;color:#fff;', 'elembox': 'background-color:#232328;color:#fff;', 'pagebg': 'background-color:#222;color:#fff;', },
-          'lp': { 'bg': 'background-color:#334;color:#fff;', '': '' },
-          'icon': 'white'
-        },
-        'detail':{
-
-        }
-      },
-      'white':{
-        'index':{
-          'name':'白色主题',
-          'tb': { 'iconstyle': 'white', 'leftbrim': 'background-color:#fff;color:#555;', 'periodNameBox': 'box-shadow:0 0 1px #f3f3f3;', 'topbrim': 'background-color:#fff;color:#555;', 'familyNameBox': 'box-shadow:0 0 1px #f3f3f3;',  'elembox': 'background-color:#fff;box-shadow:0 0 1px #f3f3f3;color:#444;', 'pagebg': 'background-color:#fff;color:#555;', },
-          'lp': { 'bg': 'background-color:#f8f8f8;color:#555;', 'itemstyle': 'background-color:#fff;margin:1px 0 0 0;' },
-          'icon': 'black'
-        },
-        'detail': {
-          'page': 'background-color:#efefef;', 'item': 'background-color:#fff;color:#555;', 'iconstyle': 'black'
-        }
-      }
-    },
+    theme:'default-dark',
+    useLog:1,
   }
 })

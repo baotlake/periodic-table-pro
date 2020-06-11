@@ -19,7 +19,10 @@ Page({
       },{
         'name': '单位换算（测试）',
         'url': '../UnitConversion/UnitConversion'
-      },/* {
+      },/*{
+        'name': '数据统计',
+        'url': '../statistics/statistics'
+      },{
         'name': '正在开发功能（空）',
         'url': '../../pages/explain/explain'
       },{
@@ -42,31 +45,24 @@ Page({
         'url': ''
       },*/
       ],
-    navigationBarData: {
-      "full": false,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-          "data":{
-            "icon_w":"../../data/image/icon/back_w.png",
-            "key":"icon_w"
-          }
-        }, {
-          "tem": "navigationTitle",
-          "data": {
-            "title": "工具栏",
-            "style":"color:#fff;"
-          }
-        },
-      ],
-      "bd": "",    //navigationBar的样式
-      "color": "white",    //white black,图标及字体的颜色
-      "maskStyle": ""
-    },
+    theme:'ui',
+
   },
   onLoad: function () {
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      systemInfo: app.globalData.systemInfo
+      systemInfo: app.globalData.systemInfo,
+      theme:theme
     })
 
     // 插屏广告

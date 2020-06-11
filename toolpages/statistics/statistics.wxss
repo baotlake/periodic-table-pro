@@ -1,0 +1,74 @@
+@import '../../template/template.wxss';
+@import '../../theme.wxss';
+@import '../../common.wxss';
+
+.s-textarea{
+    height:300rpx;
+    background-color:rgb(var(--back-color-1));
+}
+
+.s-table{
+    display:flex;
+    flex-wrap:nowrap;
+    --border:1px solid rgba(var(--fore-color-2),0.6);
+}
+.s-td{
+    /*min-width:2.8em;*/
+}
+.s-tr{
+    display:block;
+    min-width:2.8em;
+    height:1.4em;
+    text-align:center;
+    border-left:var(--border);
+    border-top:var(--border);
+    padding:2px;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.s-row-number{
+    color:rgba(var(--fore-color-1), 0.4);
+}
+.s-td:first-child{
+    /*行号列*/
+    opacity:0.6;
+}
+.s-tr:first-child{
+    /*表头行*/
+    font-weight:700;
+}
+.s-td:last-child{
+    border-right:var(--border);
+}
+.s-tr:last-child{
+    border-bottom:var(--border);
+}
+
+
+.s-table-wrapper{
+    overflow:scroll;
+    width:100vw;
+    left:-10px;
+}
+.flex{
+    display:flex;
+}
+.sub-nav-bar{
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    flex-wrap:nowrap;
+    margin-bottom:10px;
+}
+.sub-nav-bar > view{
+    width:5em;
+    font-size:1em;
+    padding:20px 5px 10px 5px;
+    text-align:center;
+    box-sizing:border-box;
+}
+.sub-nav-selected{
+    border-bottom:2px solid #faf !important;
+    color:#faf !important;
+}

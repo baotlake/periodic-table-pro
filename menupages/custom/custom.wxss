@@ -1,31 +1,37 @@
 /* pages/menupage/custom/custom.wxss */
 @import '../../template/template.wxss';
+@import '../../theme.wxss';
+@import '../../common.wxss';
 
+.pt-page{
+  
+}
 .body-up{
   display:block;
   text-align:center;
-  padding:160rpx 60rpx 30rpx 60rpx;
-  background-color:#ddd;
+  padding:60px 20px 20px 20px;
+  background-color:rgb(var(--back-color-1));
+  max-width:25rem;
+  box-sizing:border-box;
+  margin:auto;
 }
 .custom-explain-image{
   display:block;
-  width:330rpx;
-  height:214rpx;
+  width:15rem;
+  height:10rem;
   margin:auto;
 }
 .explain{
-  font-size:30rpx;
-  color:#666;
+  font-size:1rem;
+  color:rgba(var(--fore-color-1),0.5);
 }
 .page-body{
   height:50vh;
+  max-width:25rem;
+  margin:auto;
 }
 .page-body-wrapper{
   text-align:center;
-}
-.page-body-title{
-  font-size:32rpx;
-  color:#888;
 }
 .page-body-line{
   margin:40rpx;

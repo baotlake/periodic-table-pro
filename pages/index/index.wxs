@@ -1,0 +1,18 @@
+
+
+function tapLeftPageSwitch(e, ownerInstance){
+  var icon = ownerInstance.selectComponent('.nav-menu-icon');
+  if (icon.hasClass('css-icon-menu-fold')){
+    icon.removeClass('css-icon-menu-fold');
+    ownerInstance.callMethod('closeLeftPage')
+  }else{
+    icon.addClass('css-icon-menu-fold');
+    ownerInstance.callMethod('openLeftPage')
+  }
+
+}
+
+module.exports = {
+  tapLeftPageSwitch: tapLeftPageSwitch,
+
+}

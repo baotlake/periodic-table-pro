@@ -14,34 +14,31 @@ Page({
       '3:希腊字母怎么输？工具栏-希腊字母表，点击对应字母即可复制到剪切板!',
       //'4:更快打开工具栏？上下滑动主屏幕右下角的图标即可！',
       '4:搜索、相对分子质量计算器功能上线，不用记相对分子质量喽！',
-      '如有发现错误请联系客服,感谢您的支持！',
+      '如有发现错误请反馈意见给开发者,感谢您的支持！',
       '',
     ],
     systemInfo:null,
-    navigationBarData: {
-      "full": false,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-        }, {
-          "tem": "navigationTitle",
-          "data": {
-            "title": "使用说明"
-          }
-        }
-      ],
-      //"bd": "background-color:#fff;",    //navigationBar的样式
-      "color": "white",    //white black,图标及字体的颜色
-      "maskStyle": ""
-    },
+    theme:'ui-w',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      systemInfo: app.globalData.systemInfo
+      systemInfo: app.globalData.systemInfo,
+      theme:theme
     })
   },
 

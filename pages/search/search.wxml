@@ -1,20 +1,23 @@
 <!--pages/search/search.wxml-->
 <import src="../../template/template.wxml"/>
-<view class="searchPage">
+<wxs module="common" src="../../common.wxs" />
+
+<view class="search-page {{theme}}" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
   <view class="resultContent">
     <scroll-view class="elemLineContent" scroll-x>
       <view class="elemLine" style="width:{{60 + 130*matchElem.length}}rpx;">
         <block wx:for="{{matchElem}}" wx:key="{{code}}">
-          <template is="elembox" data="{{e_list:item,signColor,style:'background-color:#232328;border:1rpx solid #888;color:#fff;margin:auto;'}}" />
+          <template is="elembox" data="{{elementData:item,signColor,style:'background-color:#232328;border:1rpx solid #888;color:#fff;margin:auto;'}}" />
         </block>
       </view>
     </scroll-view>
-    <scroll-view class="CFCalculatorContent" style="height:{{(CF.length<2) ? '200rpx':'400rpx'}};" scroll-y>
-      <view class="CFbd" wx:for="{{CF}}" wx:key="{{code}}">
-        <template is="CFCalculator" data="{{CF:item}}" />
-      </view>
+    <scroll-view class="CFCalculatorContent" scroll-y>
+      <template is="calc-items" data="{{CF:['分子式','相对分子质量']}}" />
+      <block  wx:for="{{CF}}" wx:key="{{code}}">
+        <template is="calc-items" data="{{CF:item}}" />
+      </block>
     </scroll-view>
-    <view class="CFCDeclare">搜索框输入，根据您输入的化学式计算！</view>
+    <view class="CFCDeclare">搜索框内输入化学式，根据您输入的化学式计算！\n 请注意辨别大小写，例如：Cn与CN。</view>
     
     <!--template is="ChemicalFormula" data="{{text:'AaZz2Na2CO     3+'}}" /-->
 
@@ -27,7 +30,26 @@
 
 
 <!--ControlList 导航条控制数据据列于数组中-->
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo,controlList:[hiddenClearIcon,inputValue]}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo,controlList:[hiddenClearIcon,inputValue]}}" /-->
+<view class="navigation-bar-full {{theme}}" 
+      style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon" hover-class="fold" />
+    </view>
+
+  <view class="search-box-content" style="max-height:{{systemInfo['MenuButtonBounding']['height']}}px">
+      <input class="search-input" id="searchPageSearchInput" 
+        placeholder-class="searchInput-placeholder" type="text" 
+        adjust-position = "false" confirm-type="search"
+        bindinput="input" bindfocus="inputFocus" 
+        placeholder="搜索" bindconfirm="searchGo" 
+        bindblur="searchGo" value="{{inputValue}}" 
+        focus="true"
+      ></input>
+    <view class="search-clear" style='background:url("{{common.svg(theme,"delete")}}") no-repeat;' hidden="{{hiddenClearIcon}}" bindtap="clearInput"/>
+    </view>
+
+</view>
 
 
 
@@ -35,23 +57,35 @@
 
 </template>
 
+<template name="calc-items">
+  <view class="calc-items">
+    <view class="calc-items-formula">
+      <template is="ChemicalFormula" data="{{text:CF[0]}}" />
+    </view>
+    <view class="clac-items-value">
+      {{CF[1]}}
+    </view>
+  </view>
+</template>
+
 <template name="CFCalculator">
   <!--data:CF,数组,0为化学式，1为分子质量-->
-  <view class="CFCalculator">
-      <view class="CFCalculatorName">
-        <text style="font-size:26rpx;">相对分子质量\n</text>
-        <text style="font-size:36rpx;">计算器</text>
+  <view class="cf-calculator">
+      <view class="cf-calculator-name">
+        <text style="font-size:1rem;">相对分子质量\n</text>
+        <text style="font-size:1.2rem;">计算器</text>
       </view>
-      <view class="CFCF">
-        <view class="CFCFName">分子式</view>
+      <view class="cf-cf">
+        <view class="cf-cf-name">分子式</view>
         <template is="ChemicalFormula" data="{{text:CF[0],style:'color:#000;'}}" />
       </view>
-      <view class="CFResult">
-        <view class="CFResultName">相对分子质量</view>
-        <view class="CFResultValue">{{CF[1]}}</view>
+      <view class="cf-result">
+        <view class="cf-result-name">相对分子质量</view>
+        <view class="cf-result-value">{{CF[1]}}</view>
       </view>
   </view>
 </template>
+
 
 
 

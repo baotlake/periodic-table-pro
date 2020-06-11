@@ -1,0 +1,98 @@
+
+<view class="pt-page {{theme}}" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
+    <view class="">
+        <view class="flex sub-nav-bar">
+            <view 
+                class="{{subNavSelected=='0' ? 'sub-nav-selected' :''}}"
+                data-index="0"
+                bindtap="handleTapSubNav"
+            >对比数据</view>
+            <view 
+                class="{{subNavSelected=='1' ? 'sub-nav-selected' :''}}"
+                data-index="1"
+                bindtap="handleTapSubNav"
+            >统计数据</view>
+            <view 
+                class="{{subNavSelected=='2' ? 'sub-nav-selected' :''}}"
+                data-index="2"
+                bindtap="handleTapSubNav"
+            >统计选项</view>
+            <view 
+                class="{{subNavSelected=='3' ? 'sub-nav-selected' :''}}"
+                data-index="3"
+                bindtap="handleTapSubNav"
+            >统计结果</view>
+        </view>
+
+        <block wx:if="{{subNavSelected=='0'}}">
+            <textarea 
+                class="s-textarea label"
+                value="{{contrastInput}}"
+                maxlength="-1" 
+                placeholder="对比数据"
+                bindconfirm="handleContrastInputConfirm"
+                bindblur="handleContrastInputConfirm"
+            ></textarea>
+            <view class="s-table-wrapper label">
+                <template is="table" data="{{tableData:contrastingData}}"></template>
+            </view>
+        </block>
+        <block wx:elif="{{subNavSelected=='1'}}">
+            <textarea 
+                class="s-textarea label"
+                value="{{statisticsInput}}"
+                maxlength="-1" 
+                placeholder="统计数据"
+                bindconfirm="handleStatisticsInputConfirm"
+                bindblur="handleStatisticsInputConfirm"
+            ></textarea>
+            <view class="s-table-wrapper label">
+                <template is="table" data="{{tableData:statisticalData}}"></template>
+            </view>
+        </block>
+        <block wx:elif="{{subNavSelected=='2'}}">
+            <view>
+                差异，新增，缺少
+                合计，平均
+                
+            </view>
+        </block>
+        <block wx:elif="{{subNavSelected=='3'}}">
+
+        </block>
+        
+    </view>
+</view>
+
+
+
+
+
+<view class="navigation-bar-full {{theme}}" 
+style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+<view class="navigation-icon" bindtap="navigateToBack">
+  <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+</view>
+<view class="navigation-title">数据统计</view>
+</view>
+
+
+<template name="table">
+    <!--td列为tr行的父元素，方便使每列的宽度一至-->
+    <view class="s-table">
+        <!--行号-->
+        <view class="s-td">
+            <block wx:for="{{tableData}}">
+                <text class="s-tr s-row-number">{{index}}</text>
+            </block>
+        </view>
+        <!--表格内容-->
+        <block wx:for="{{tableData[0]}}" wx:for-index="column">
+            <view class="s-td">
+                <block wx:for="{{tableData}}" wx:for-item="rowList">
+                    <text class="s-tr" selectable="true">{{rowList[column]}}</text>
+                </block>
+            </view>
+        </block>
+    </view>
+</template>

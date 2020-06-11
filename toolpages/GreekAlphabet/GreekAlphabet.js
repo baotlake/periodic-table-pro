@@ -36,30 +36,27 @@ Page({
       ['Ψ', 'ψ', 'psi, ψι', "[psaɪ]"],
       ['Ω', 'ω', 'omega, ωμέγα', "[ˈəʊmɪgə] / [oʊˈmegə]"],
     ],
-    navigationBarData: {
-      "full": true,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-        }, {
-          "tem": "navigationTitle",
-          "data": {
-            "title": "希腊字母",
-          }
-        },
-      ],
-      "bd": "",    //navigationBar的样式
-      "color": "white",    //white black,图标及字体的颜色
-      "maskStyle": "background-color:#055eb0;opacity:0.9;"
-    },
+    theme:'ui'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      systemInfo:app.globalData.systemInfo
+      systemInfo:app.globalData.systemInfo,
+      theme:theme
     })
   },
 

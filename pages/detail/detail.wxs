@@ -12,7 +12,7 @@ function foldMenu(e, ownerInstance){
     icon.removeClass('fold')
     for(var i=0; i<subItem.length;i++){
       subItem[i].setStyle({
-        height:'auto',
+        'max-height':'999px',
         opacity: '1',
         'margin-top': '1'
       })
@@ -26,7 +26,7 @@ function foldMenu(e, ownerInstance){
     icon.addClass('fold')
     for (var i = 0; i < subItem.length; i++) {
       subItem[i].setStyle({
-        height: '0px',
+        'max-height': '0px',
         opacity: '0',
         'margin-top': '0'
       })
@@ -40,23 +40,14 @@ function foldMenu(e, ownerInstance){
   
 }
 
-/**折叠项目需要Height有初值，但是不同类型的项Height不同，写此函数判断，并返回相应的值 */
-function infoBarHeight(is, name){
-  console.log('is---',is);
-  console.log('name----',name);
-  if(is != 'template'){
-    return '61px'
-  }else{
-    if (name == "spectralblock"){
-      return '140px'
-    } else if (name == "atomStructure"){
-      return '245px'
-    }
-  }
+function electronShellFormat(str){
+  var electronShellList = str.split(',');
+  var formatStr = electronShellList.join('-');
+  return formatStr;
 }
 
 
 module.exports = {
   foldMenu: foldMenu,
-  infoBarHeight: infoBarHeight
+  esFormat: electronShellFormat
 }

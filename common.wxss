@@ -1,0 +1,207 @@
+
+.navigation-bar{
+  position:fixed;
+  display:inline-flex;
+  width:100%;
+  color:rgb(var(--fore-color-1));
+  padding: 0 10px;
+  box-sizing:border-box;
+  max-height:31px;
+  align-items:center;
+}
+
+.navigation-bar-full{
+  position:fixed;
+  display:inline-flex;
+  width:calc(100% - 20px);
+  background-color:rgba(var(--back-color-2), 0.9);
+  color:rgb(var(--fore-color-1));
+  padding:100px 10px 5px 10px;
+
+  box-sizing:content-box;
+  max-height:31px;
+  align-items:center;
+
+  transform:translateY(-100px);
+  z-index:100;
+}
+
+.navigation-icon{
+  width:32px;
+  height:32px;
+  padding:6px;
+  visibility:visible;
+  border-radius:50rpx;
+  vertical-align:top;
+  pointer-events:all;
+  box-sizing:border-box;
+}
+
+.icon{
+  position:relative;
+  width:32px;
+  height:32px;
+  padding:6px;
+}
+
+
+.nav-menu-icon{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+
+/**"二"字型的菜单图标*/
+.css-icon-menu{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.css-icon-menu::before{
+  position:absolute;
+  top:25%;
+  width:100%;
+  height:0px;
+  box-shadow: 0 0 0 1px rgb(var(--fore-color-1));
+  content:' ';
+  display:block;
+  transition:all 0.3s;
+}
+.css-icon-menu::after{
+  position:absolute;
+  top:75%;
+  width:100%;
+  height:0px;
+  box-shadow: 0 0 0 1px rgb(var(--fore-color-1));
+  content:' ';
+  display:block;
+  transition:all 0.3s;
+}
+/**"二"字型菜单交叉为"×"*/
+.css-icon-menu-fold::before{
+  top:50% !important;
+  width:100% !important;
+  transform:rotate(-45deg) !important;
+  transform-origin:center !important;
+}
+.css-icon-menu-fold::after{
+  top:50% !important;
+  width:100% !important;
+  transform:rotate(45deg) !important;
+  transform-origin:center !important;
+}
+
+
+/**css-icon-fold 图标 开口向下的"<", 旋转后可当返回使用*/
+.css-icon-fold{
+  width:100%;
+  height:100%;
+}
+.css-icon-fold::before{
+  position:absolute;
+  top:25%;
+  left:0;
+  width:50%;
+  height:0px;
+  box-shadow:0 0 0 1px rgb(var(--fore-color-1));
+  content:' ';
+  display:block;
+  background-color:rgb(var(--fore-color-1));
+  transform:rotate(-45deg);
+  transform-origin:center right;
+  transition:all 0.3s ease-in-out;
+}
+.css-icon-fold::after{
+  position:absolute;
+  top:25%;
+  right:0;
+  width:50%;
+  height:0px;
+  box-shadow:0 0 0 1px rgb(var(--fore-color-1));
+  content:' ';
+  display:block;
+  background-color:rgb(var(--fore-color-1));
+  transform:rotate(45deg);
+  transform-origin:center left;
+  transition:all 0.3s ease-in-out;
+}
+/**开后向下的"<" 反向折为">" */
+.fold::before{
+  top:75%  !important;
+  transform:rotate(45deg) !important;
+}
+.fold::after{
+  top:75%  !important;
+  transform:rotate(-45deg)  !important;
+}
+/**css-icon-fold + back-icon 作为返回*/
+.back-icon{
+  transform:rotate(-90deg);
+  transform-origin:center;
+}
+/**css-iocn-fold + forward-icon 作为前进*/
+.forward-icon{
+  transform:rotate(90deg);
+  transform-origin:center;
+}
+
+.navigation-title{
+  display:inline-block;
+  vertical-align:top;
+  line-height:30px;
+  visibility:visible;
+  font-size:20px;
+  color:rgb(var(--fore-color-1));
+}
+
+.css-icon-checkmark{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.css-icon-checkmark::before{
+  height:0;
+  content:' ';
+  display:block;
+  width:47.14%;
+  box-shadow:0 0 0 1px #888;
+  position:absolute;
+  right:66.66%;
+  bottom:16.66%;
+  transform:rotate(45deg);
+  transform-origin:bottom right;
+}
+.css-icon-checkmark::after{
+  height:0;
+  content:' ';
+  display:block;
+  width:94.28%;
+  box-shadow:0 0 0 1px #888;
+  position:absolute;
+  left:33.34%;
+  bottom:16.66%;
+  transform:rotate(-45deg);
+  transform-origin:bottom left;
+}
+
+.hidden{
+  display:none;
+}
+
+.pt-page{
+  width:100%;
+  min-height:100vh;
+  background-color:rgb(var(--back-color-2));
+  color:rgb(var(--fore-color-1));
+  padding:10px;
+  box-sizing:border-box;
+  position:relative;
+}
+.label{
+  width:100%;
+  padding:10px;
+  box-sizing:border-box;
+  margin-bottom:20px;
+  border-radius:5px;
+  position:relative;
+}

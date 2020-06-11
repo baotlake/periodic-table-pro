@@ -5,19 +5,20 @@
     "pages/detail/detail",
     "pages/explain/explain",
     "pages/search/search",
+    "pages/settings/settings",
     "toolpages/tool/tool",
     "toolpages/solubility/solubility",
     "toolpages/indicator/indicator",
     "toolpages/GreekAlphabet/GreekAlphabet",
     "toolpages/si/si",
     "toolpages/UnitConversion/UnitConversion",
+    "toolpages/statistics/statistics",
     "menupages/custom/custom",
     "menupages/about/about",
     "menupages/propose/propose",
     "menupages/instruction/instruction",
     "menupages/reward/reward",
-    "menupages/share/share",
-    "pages/settings/settings"
+    "menupages/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,13 +1,63 @@
 <!--pages/settings/settings.wxml-->
-<import src="../../template/template.wxml"/>
-<view class="settings-page"/>
 
-<view class="content" wx:for="{{pageInfo['item']}}" wx:for-item="item" style="padding-top:calc({{systemInfo['statusBarHeight']}}px + 46px);">
-  <view class="switch-settings">
-    <view class="switch-settings-title">{{item['title']}}</view>
-    <switch class="switch-settings-switech" checked="{{item['data']['value']}}" bindchange="{{item['function']}}" aria-label="主题颜色"/>
+<wxs module="setting" src="./setting.wxs"/>
+
+
+<import src="../../template/template.wxml"/>
+<view class="settings-page {{theme}}" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
+  <view style="width:100%;">
+    <view class="setting-lable">
+      <view class="setting-lable-title">主题</view>
+      <view class=".setting-lable-content-warpper">
+        <block wx:for="{{themeList}}" wx:for-item="theme">
+          <view class="img-checkbox-wrapper" data-index="{{index}}" bindtap="handleTapTheme">
+            <view class="img-checkbox">
+              <view class="img-checkbox-img" style='background:url("{{setting.svg("",theme.svgName)}}");background-size:100%;' />
+              <view class="img-checkbox-check {{index!=currentTheme?'hidden':''}}">
+                <view class="css-icon-checkmark" />
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
   </view>
 </view>
 
+<view class="navigation-bar {{theme}}" 
+    style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+    </view>
+    <view class="navigation-title">设置</view>
+</view>
 
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<template name="img-checkbox">
+  <view class="img-checkbox-wrapper">
+    <view class="img-checkbox">
+      <view class="img-checkbox-img" style="">
+      </view>
+      <view class="img-checkbox-check">
+        <view class="css-icon-checkmark"></view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="item-switch">
+  <view class="item-bar">
+    <view class="item-bar-title">{{item.title}}</view>
+    <switch class="item-bar-switech" checked="{{item.data.value}}" bindchange="{{item['function']}}" aria-label="主题颜色"/>
+  </view>
+</template>
+
+<template  name="item-bar">
+  <view class="item-bar">
+    <view class="item-bar-title">{{item.title}}</view>
+    <view class="icon">
+       <view class="css-icon-fold forward-icon" />
+    </view>
+  </view>
+</template>
+
+

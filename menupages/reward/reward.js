@@ -9,30 +9,27 @@ Page({
   data: {
     rootPath: '../../',
     systemInfo:null,
-    navigationBarData: {
-      "full": false,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-        }, {
-          "tem": "navigationTitle",
-          "data": {
-            "title": "支持"
-          }
-        }
-      ],
-      //"bd": "background-color:#fff;",    //navigationBar的样式
-      "color": "black",    //white black,图标及字体的颜色
-      "maskStyle": ""
-    },
+    theme:'ui-w',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      systemInfo: app.globalData.systemInfo
+      systemInfo: app.globalData.systemInfo,
+      theme:theme
     })
   },
 

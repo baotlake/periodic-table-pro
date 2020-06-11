@@ -1,17 +1,36 @@
 # PeriodicTable-Pro
-微信小程序，元素周期表Pro (化学元素周期表)
-	
-化学元素周期表是化学、化工、材料等学科的学习工具。获取更多元素信息，快速计算相对分子质量，查询溶解性，图示酸碱指示剂变色范围。
+微信小程序-元素周期表Pro是一个工具类的微信小程序
+小程序主要有以下功能
+- 化学元素周期表表格
+- 各元素的详细信息
+- 元素的搜索
+- 化学式相对分子量计算
+- 溶解性表格
+- 酸碱指示剂变色范围
+- 希腊字母表
+- 单位换算
+- 深色和浅色主题
 
-# 扫码体验-元素周期表Pro
-![微信小程序-元素周期表Pro](./data/image/gh_56cdd91ee838_430.jpg)
+# 图
+![深色-表格](./README/pt.png)
+![白色-表格](./README/pt-w.png)
+![深色-元素详细页](./README/detail-Ti-dark.jpg)
+![浅色-元素详细页](./README/detail-Pb-white.jpg)
+![搜索](./README/search.jpg)
+![侧边栏](./README/side.jpg)
+![溶解性表](./README/solu.jpg)
+![PH指示剂](./README/ph.jpg)
+![单位转换](./README/unitC.jpg)
 
-# 样机图
-![](./README/ipone6-PeriodicTable-Pro.png)
-![](./README/iponeX-PeriodicTable-Pro.png)
+# 体验
+- 微信扫一扫
+ ![元素周期表Pro](./README/QR.jpg)
+
+- 微信内搜索「元素周期表Pro」不用加“化学”两个字哦~
+
+# 评分
+4.6/5
 
 # 项目说明
 此项目源文件仅可用作学习用途。
 
-如要在微信开发工具中运行，请把`./data/.data_part.js`重命名为`./data/data.js`，data_part.js中仅保留了部分元素的详细信息。
-原项目`./data/image/spectral`中的图片未上传至Github,此目录下为元素的原子光谱图片，图片命名方式为`H.png`, `Ac.png`。

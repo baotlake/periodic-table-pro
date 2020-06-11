@@ -6,7 +6,7 @@ Page({
     systemInfo:null,
     solubilitydata_th: [
       /*阴离子*/[{'symbol':'F-','name':'Fluoride'}, {'symbol':'Cl-','name':'Chloride'}, {'symbol':'Br-','name':'Bromide'}, {'symbol':'I-','name':'Iodide'}, {'symbol':'CO32-','name':'Carbonate'}, {'symbol':'ClO3-','name':'Chlorate'}, {'symbol':'OH-','name':'Hydroxide'}, {'symbol':'CN-','name':'Cyanide'}, {'symbol':'OCN-','name':'Cynate'}, {'symbol':'SCN-','name':'Thiocyanate'}, {'symbol':'NO3-','name':'Nitrate'}, {'symbol':'O^2-','name':'Oxide'}, {'symbol':'PO43-','name':'Phosphate'}, {'symbol':'SO42-','name':'Sulfate'}, {'symbol':'Cr2O72-','name':'Dichromate'}],
-  /*阳离子*/[{ 'symbol': 'Zn^2+', 'name': 'Zinc' }, { 'symbol': 'Sr^2+', 'name': 'Strontium' }, { 'symbol': 'Na+', 'name': 'Sodium' }, { 'symbol': 'Ag+', 'name': 'Silver' }, { 'symbol': 'K+', 'name': 'Potassium' }, { 'symbol': 'Mg^2+', 'name': 'Magnesium' }, { 'symbol': 'Li+', 'name': 'Lithium' }, { 'symbol': 'Pb^2+', 'name': 'Lead' }, { 'symbol': 'Fe^3+', 'name': 'Iron' }, { 'symbol': 'Fe^2+', 'name': 'Iron' }, { 'symbol': 'Cu^2+', 'name': 'Copper' }, { 'symbol': 'Ca^2+', 'name': 'Calcium' }, { 'symbol': 'Be^2+', 'name': 'Beryllium' }, { 'symbol': 'Ba^2+', 'name': 'Barium' }, { 'symbol': 'NH^4+', 'name': 'Ammonium' }, { 'symbol': 'Al^3+','name':'Aluminium'}],
+  /*阳离子*/[{ 'symbol': 'Zn^2+', 'name': 'Zinc' }, { 'symbol': 'Sr^2+', 'name': 'Strontium' }, { 'symbol': 'Na+', 'name': 'Sodium' }, { 'symbol': 'Ag+', 'name': 'Silver' }, { 'symbol': 'K+', 'name': 'Potassium' }, { 'symbol': 'Mg^2+', 'name': 'Magnesium' }, { 'symbol': 'Li+', 'name': 'Lithium' }, { 'symbol': 'Pb^2+', 'name': 'Lead' }, { 'symbol': 'Fe^3+', 'name': 'Iron' }, { 'symbol': 'Fe^2+', 'name': 'Iron' }, { 'symbol': 'Cu^2+', 'name': 'Copper' }, { 'symbol': 'Ca^2+', 'name': 'Calcium' }, { 'symbol': 'Be^2+', 'name': 'Beryllium' }, { 'symbol': 'Ba^2+', 'name': 'Barium' }, { 'symbol': 'NH4^+', 'name': 'Ammonium' }, { 'symbol': 'Al^3+','name':'Aluminium'}],
     ],
     solubilitydata_bd: [
   //      | F-  |  Cl-  |  Br-  |   I- | CO32- |ClO3-| OH- |  CN- | OCN- | NO3-|  O2- | PO42-  | Cr2O72-|
@@ -51,11 +51,25 @@ Page({
       "color": "white",    //white black,图标及字体的颜色
       "maskStyle": "background-color:#333;opacity:0.614;"
     },
-
+    theme:'ui',
   },
   onLoad: function () {
+    
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
+
     this.setData({
       systemInfo:app.globalData.systemInfo,
+      theme:theme
     })
   },
   

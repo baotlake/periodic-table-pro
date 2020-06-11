@@ -1,19 +1,22 @@
 /* pages/menupage/tool/pages/UnitConversion/UnitConversion.wxss */
 @import "../../template/template.wxss";
+@import "../../common.wxss";
+@import "../../theme.wxss";
+
 
 .UnitConversionPage{
   display:block;
   position:absulute;
-  width:750rpx;
+  width:100vw;
   height:100vh;
-  background-color:#eee;
+  background-color:rgb(var(--back-color-1));
+  color:rgb(var(--fore-color-1));
 }
 .page-title{
   position:relative;
   left:20px;
   top:18pt;
-  font-size:17pt;
-  color:#555;
+  color:rgb(var(--fore-color-1));
 }
 
 
@@ -21,16 +24,15 @@
   position:relative;
   display:block;
   width:100%;
-  height:80rpx;
-  background-color:#fff;
+  height:3rem;
+  background-color:rgb(var(--back-color-2));
 }
 .BarBox{
-  width:120rpx;
+  width:5rem;
   height:100%;
-  line-height:80rpx;
+  line-height:3rem;
   display:inline-block;
   text-align:center;
-  font-size:28rpx;
 }
 .scrollBarContent{
   width:auto;
@@ -41,51 +43,66 @@
   position:relative;
   display:block;
   width:100%;
-  height:600rpx;
-  background-color:#fff;
-  box-shadow: 0 2px 3px #aaa;
+  background-color:rgb(var(--back-color-2));
 }
 .inforItem{
   width:calc(100% - 40rpx);
-  height:100rpx;
+  height:3rem;
   display:flex;
-  padding: 10rpx 20rpx;
+  padding: 1rem;
+  justify-content:space-around;
+  align-items:center;
 }
 .info-item-icon{
-  width:40rpx;
-  height:40rpx;
-  margin:30rpx 10rpx;
+  width:2rem;
+  height:2rem;
   transition: transform 0.3s;
+  display:flex;
 }
 .inforItemInput{
   width:36%;
-  height:50rpx;
-  margin:auto 10rpx;
-  padding:10rpx;
   text-align:center;
   z-index:0;
-  border: 1px solid #aaa;
-  border-radius:3px;
-  font-size:28rpx;
+  border: 2px solid rgba(var(--fore-color-1),0.5);
+  box-sizing:border-box;
+  border-radius:0px;
+  height:3rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .pickerBox{
   width:100rpx;
-  height:60rpx;
+  height:3rem;
   background-color:#000;
   color:#f00;
 }
 
+.icon-fixed{
+  width:0.8em;
+  height:0.8em;
+  margin:auto;
+  background-color:rgba(var(--fore-color-1),0.2);
+  border:2px solid rgba(var(--fore-color-1),1);
+  border-radius:50%;
+}
 
+.icon-fixed-on{
+  --sign-color:0,0,255;
+  background-color:rgba(var(--sign-color),0.8);
+  border:2px solid rgba(var(--fore-color-1),1);
+}
 
 
 
 .myMultiPicker{
   position:fixed;
   z-index:999;
+  color:rgb(var(--fore-color-1));
 }
 .fullMasking{
   position:fixed;
-  width:750rpx;
+  width:100vw;
   height:100vh;
   left:0;
   top:0;
@@ -94,59 +111,63 @@
 }
 .pickerBlock{
   position:fixed;
-  width:700rpx;
+  width:100vw;
   height:40vh;
   bottom:0;
   left:0;
-  background-color:#fff;
+  background-color:rgb(var(--back-color-2));
   text-align:center;
-  padding:25rpx;
+  padding:1rem;
+  box-sizing:border-box;
 }
 .myMultiPickerCancel{
-  width:120rpx;
-  height:80rpx;
-  line-height:80rpx;
+  width:5rem;
+  line-height:3rem;
   position:absolute;
   display:inline-block;
   top:0;
   left:0;
-  color:#999;
-  font-size:30rpx;
+  color:rgb(var(--fore-color-1));
+  font-size:1rem;
 }
 .myMultiPickerOk{
-  width:120rpx;
-  height:80rpx;
-  line-height:80rpx;
+  width:5rem;
+  line-height:3rem;
   position:absolute;
   display:inline-block;
   top:0;
   right:0;
   color:#0f0;
-  font-size:30rpx;
+  font-size:1rem;
+}
+.picker-tip-wrapper{
+
+  display:flex;
+  flex-direction:row;
+  justify-content:space-evenly;
+  margin-top:1rem;
 }
 .MultiPickerRankTitle{
-  position:relative;
-  margin-top:80rpx;
-  left:0;
   display:inline-block;
   margin-left:auto;
   margin-right:auto;
 }
 .myMultiPickerView{
   position:relative;
+  margin-top:2rem;
   width:100%;
-  height:300rpx;
+  height:calc(40vh - 3rem);
 }
 .myMultiPickerViewColumn{
   height:100%;
 }
 .PickerColumnBox{
-  line-height:30px;
-  font-size:12px;
+  line-height:1.2rem;
+  font-size:1rem;
 }
 .PickerColumnBoxActive{
-  line-height:30px;
-  font-size:12px;
+  line-height:1.2rem;
+  font-size:1rem;
   color:#0f0;
 }
 .pickerBox-class{

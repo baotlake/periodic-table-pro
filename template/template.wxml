@@ -1,28 +1,27 @@
 <!--元素框 element box-->
 <template name="elembox">
-  <!--data: e_list;bottomdata;border_color;borderleft_color;bordertop_color;-->
-  <block wx:if="{{e_list[0]}}">
+  <!--data: elementData;bottomdata;border_color;borderleft_color;bordertop_color;-->
+  <block wx:if="{{elementData[0]}}">
     <!--元素数据不为空 显示元素信息-->
-    <view class="elembox" hover-class="tapbox" data-tapordinal="{{e_list[0]}}" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindtap="openDetailPage" bindlongpress="bindlongpress" style="{{style}}">
-      <view class="ordinal" style="background: -webkit-gradient(linear, 100% 0%, 0% 0%,from(transparent), to({{signColor[e_list[4]]}}));">{{e_list[0]}}</view>
-      <view class="symbol">{{e_list[1]}}</view>
-      <view class="name">{{e_list[2]}}</view>
-      <view wx:if="{{!bottomdata}}" class="atomic">{{e_list[3]}}</view>
+    <view class="elembox" hover-class="tapbox" data-tapordinal="{{elementData[0]}}" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindtap="openDetailPage" bindlongpress="bindlongpress" style="{{'--this-color:var(--sign-color-' + elementData[4] + ')'}}">
+      <view class="ordinal">{{elementData[0]}}</view>
+      <view class="symbol">{{elementData[1]}}</view>
+      <view class="name">{{elementData[2]}}</view>
+      <view wx:if="{{!bottomdata}}" class="atomic">{{elementData[3]}}</view>
       <view wx:else class="atomic">{{bottomdata}}</view>
-      <!--<view class="colorsign" style="border-color: transparent {{e_list[4]}} {{e_list[4]}} transparent"></view>-->
+      <!--<view class="colorsign" style="border-color: transparent {{elementData[4]}} {{elementData[4]}} transparent"></view>-->
     </view>
   </block>
-  <view wx:else class="box">
+  <view wx:else class="elembox empty-box">
     <!--元素信息为空，显示空白框-->
   </view>
 </template>
-
-
 
 <template name="userinfo">
   <!--LaftPage UserInfo & BackImage-->
   <view class="userinfo">
     <image class="backimage" src="../../data/image/background.jpg"></image>
+    <view class="back-image-mask" ></view>
       <view bindtap="bindViewTap" class="userinfo-avatar" background-size="cover">
         <open-data type="userAvatarUrl" class="userAvatarOD"></open-data>
       </view>
@@ -33,9 +32,11 @@
 </template>
 
 <template name="foot">
-  <view class="foot" style="{{style}}">
-    <image class="footImage" src="../../data/image/avatar.png" style="{{imageStyle}}"></image>
-    <view class="footText">元素周期表Pro</view>
+  <view class="foot-wrapper">
+    <view class="foot">
+      <image class="footImage" src="../../data/image/avatar.png" ></image>
+      <view class="footText">元素周期表Pro</view>
+    </view>
   </view>
 </template>
 
@@ -49,8 +50,8 @@
   <view class="QABlock" style="{{style}}">
     <view class="QAText">元素周期表Pro 怎么样？</view>
     <view class="buttonBlock">
-      <button open-type="contact">吐槽</button>
-      <navigator class="yesButton" url="../../menupages/reward/reward">
+      <button class="QA-button" open-type="contact">吐槽</button>
+      <navigator class="QA-button" url="../../menupages/reward/reward">
         <button type="primary">支持</button>
       </navigator>
     </view>
@@ -142,6 +143,7 @@
   </view>
 </template>
 
+
 <template name="navigationBack">
   <!--参数说明：data-->
   <image class="tem-navigation-icon" hover-class="tem-navigation-icon-hover" src="{{(data['key'])? data[data['key']]:''}}{{(!data['key'] & data[commonIcon])?'data[data[commonIcon]]':''}}{{(!data['key'] & !data[commonIcon])?'../../data/image/icon/back.png':''}}" bindtap="navigateToBack" style="{{data['style']}}"/>
@@ -160,13 +162,6 @@
   <view wx:if="{{data['dot']}}" class="unread-dot" bindtap="{{data['bindtap']}}"></view>
 </template>
 
-<!--Search page;-->
-<template name="searchBoxContent">
-  <view class="searchBoxContent">
-    <input class="searchInput" id="searchPageSearchInput" placeholder-class="searchInput-placeholder" type="text" adjust-position = "false" confirm-type="search" bindinput="input" bindfocus="inputFocus" placeholder="搜索" bindconfirm="searchGo" bindblur="searchGo" value="{{controlList[1]}}" style="opacity:{{inputOpacity}};" focus="true"></input>
-    <image class="searchClear" src="../../data/image/svg/close.svg" color="#888" hidden="{{controlList[0]}}" bindtap="clearInput"/>
-  </view>
-</template>
 
 <template name="rect-tool-button">
   <!--参数说明:data={
@@ -179,7 +174,14 @@
     }
   }-->
   <view class="tem-rect-tool-button" data-path="{{data['url']}}" data-data="{{data['data']}}" bindtap="{{data['bindtap']}}" >
-    <image class="tem-rect-tool-image" src="{{data['icon']}}"></image>
+    <block wx:if="{{data.svgName}}">
+      <view class="tem-rect-tool-image">
+        <view class="tem-rect-tool-svg" style='background:url("{{common.svg(data.svgName)}}") no-repeat;'></view>
+      </view>
+    </block>
+    <block wx:else>
+      <image class="tem-rect-tool-image" src="{{data['icon']}}"></image>
+    </block>
     <view class="tem-rect-tool-text">{{data['text']}}</view>
   </view>
 </template>

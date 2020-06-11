@@ -1,32 +1,44 @@
 /* pages/menupage/reward/reward.wxss */
 @import '../../template/template.wxss';
+@import '../../theme.wxss';
+@import '../../common.wxss';
 
 .rewardPage{
-  padding:160rpx 0 0 0;
-  height:100vh;
-  background-color:#fff;
-  text-align:center;
+  min-height:100vh;
+  background-color:rgb(var(--back-color-2));
+  padding:0 10px;
+  position:relative;
 }
 
 .rewardText{
   display:block;
-  padding:20rpx 40rpx;
-  color:#888;
-  font-size:26rpx;
+  color:rgba(var(--fore-color-1),0.6);
+  font-size:1rem;
+  padding:5px 5px;
+  max-width:25rem;
+  margin:auto;
 }
 .rewardNote{
   display:block;
-  margin:40rpx 0 0 0;
-  color:#474b4c;
-  font-size:36rpx;
+  color:rgba(var(--fore-color-1),0.8);
+  font-size:1rem;
+  padding:10px 0;
 }
-.WXreward{
+.reward-qr{
   display:block;
   position:relative;
-  width:700rpx;
-  height:700rpx;
+  width:20rem;
+  height:20rem;
   margin:auto;
 }
 .shareButton{
-  margin:40rpx;
+  width:100%;
+  max-width:25rem;
+}
+
+@media (max-width:20rem){
+  .reward-qr{
+    width:15rem;
+    height:15rem;
+  }
 }

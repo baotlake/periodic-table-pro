@@ -1,37 +1,30 @@
 @import '../../template/template.wxss';
-.toolpage{
-  background-color:#223;
-}
+@import '../../theme.wxss';
+@import '../../common.wxss';
 
-.navigationbar{
-  position:fixed;
-  display:block;
-  top: 50rpx;
-  left:0rpx;
-  width: 750rpx;
-  height:60rpx;
-  border: 1rpx solid #aaa;
-  color:#fff;
-}
-.navigation_back{
-  position:absolute;
-  left:10rpx;
-  width:60rpx;
-  height:60rpx;
+.tool-page{
+  background-color:rgb(var(--back-color-1));
+  min-height:100vh;
 }
 
 
 .tp-itemlist{
   position:relative;
-  top:200rpx;
-  padding: 100rpx 20rpx;
+  top:0;
+  padding-left:1.5rem;
+  padding-right:1.5rem;
   text-align:center;
 }
+
 .tp-item{
-  margin:20rpx 0;
-  padding:30rpx 40rpx;
-  background-color:#334;
-  color:#fff;
+  margin-top:1rem;
+  margin-bottom:1rem;
+  margin-left:auto;
+  margin-right:auto;
+  padding:1rem 2rem;
+  max-width:25rem;
+  background-color:rgb(var(--back-color-2));
+  color:rgb(var(--fore-color-1));
   border-radius:4rpx;
 }
 

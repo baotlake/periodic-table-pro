@@ -101,10 +101,23 @@ Page({
       "color": "black",    //white black,图标及字体的颜色
       "maskStyle": ""
     },
+    theme:'ui'
   },
   onLoad: function () {
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
       systemInfo:app.globalData.systemInfo,
+      theme:theme
     })
   },
   /**

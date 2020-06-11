@@ -1,20 +1,31 @@
   <import src="../../template/template.wxml" />
-  
-  <view class="body-up">
-    <image class="custom-explain-image" src="../../data/image/icon/feedback.png"></image>
-    <text class="explain">{{customExplain}}</text>
-  </view>
 
-  <view class="page-body">
-    <view class="page-body-wrapper">
-      <view class="page-body-line">
-        <button open-type="contact" type="primary">进入客服消息</button>
-      </view>
+  
+  <view class="pt-page {{theme}}" style="padding:0px;">
+    <view class="body-up">
+      <image class="custom-explain-image" src="../../data/image/icon/feedback.png"></image>
+      <text class="explain">{{customExplain}}</text>
     </view>
-    <template is="QAHow" data="{{rootPath,style:'margin-top:60rpx;'}}"/>
+  
+    <view class="page-body">
+      <view class="page-body-wrapper">
+        <view class="page-body-line">
+          <button open-type="feedback" type="primary">意见反馈</button>
+        </view>
+      </view>
+      <template is="QAHow" data="{{rootPath,style:'margin-top:60rpx;'}}"/>
+    </view>
+    <template is="foot" data="{{rootPath}}" />
+
   </view>
   
-  <template is="foot" data="{{rootPath,style:'position:absolute;'}}"/>
-  <template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+  <!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
+  <view class="navigation-bar {{theme}}" 
+      style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+      <view class="navigation-icon" bindtap="navigateToBack">
+        <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+      </view>
+      <view class="navigation-title">意见反馈</view>
+  </view>
 
 

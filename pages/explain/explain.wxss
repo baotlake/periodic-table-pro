@@ -1,5 +1,7 @@
 /* pages/detail/explain/explain.wxss */
 @import "../../template/template.wxss";
+@import "../../common.wxss";
+
 .explain-page{
   padding-top:80px;
 }

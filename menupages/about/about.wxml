@@ -1,22 +1,29 @@
 <!--pages/menupage/about/about.wxml-->
 <import src="../../template/template.wxml" />
 
-<view class="aboutPage">
-  <view class="appInfo">
+<view class="aboutPage {{theme}}" style="{{'padding-top:calc(' + systemInfo['MenuButtonBounding']['top'] + 'px + 42px)'}}">
+  <view class="appInfo" style="padding-top:{{systemInfo['statusBarHeight'] + 46}}px;">
     <image class="appAvatar" src="../../data/image/avatar.png"></image>
-    <text class="appName">元素周期表Pro</text>
+    <view class="appName">元素周期表Pro</view>
   </view>
   <view class="aboutExplain">
     <text class="explainText">元素周期表Pro是化学、化工等学科的学习工具，方便用户查询元素的物理、化学等性质属性，更多功能参见小程序工具栏</text>
     <text class="explainText">
-    小程序所用部分数据来自维基百科，还有小部分数据来自网络，如有侵权请联系客服，我会第一时间对侵权内容进行移除。</text>
-    <text class="explainText"></text>
+    小程序所用部分数据来自维基百科，还有小部分数据来自网络，如有侵权请通过意见反馈联系我，我会第一时间对侵权内容进行移除。</text>
+    <text class="explainText" selectable="true">AppID: wx20e649abe5acb0bc</text>
   </view>
 
-  <template is="QAHow" data="{{rootPath,style:'margin-top:160rpx;'}}"/>
+  <template is="QAHow" data="{{rootPath,style:'margin-top:4rem;'}}"/>
 
-  <template is="foot" data="{{rootPath,style:'position:absolute;'}}"/>
+  <template is="foot" data="{{rootPath}}"/>
 </view>
 
 
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
+<view class="navigation-bar {{theme}}" 
+    style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+    </view>
+    <view class="navigation-title">关于</view>
+</view>

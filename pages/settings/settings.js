@@ -9,41 +9,21 @@ Page({
    */
   data: {
     systemInfo:null,
-    navigationBarData: {
-      "full": true,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-          "data": {
-            'icon_w': '../../data/image/icon/back_w.png',
-            'icon_b':'../../data/image/icon/back.png',
-            'style': '',
-            'key': 'icon_b'
-          }
-        },{
-          "tem":"navigationTitle",
-          "data":{
-            "title":"设置"
-          }
-        }
-      ],
-      //"bd": "background-color:#fff;",    //navigationBar的样式
-      "commonIcon": "icon_b",   //white black,图标及字体的颜色
-      "maskStyle": "",
-    },
-    pageInfo:{
-      "item":[
-        {
-          "title":"白色主题",
-          "tem":"switch",
-          "function":"themeSet",
-          "data":{
-            "value":true,
-            "theme":"black"
-          }
-        }
-      ]
-    }
+    themeList:[
+      {
+        svgName:'theme-dark',
+        name:'default-dark',
+      },{
+        svgName:'theme-light',
+        name:'default-light',
+      },
+      // {
+      //   svgName:'',
+      //   name:'a',
+      // },
+    ],
+    currentTheme:'0',
+    theme:'ui-w',
   },
 
   /**
@@ -56,6 +36,14 @@ Page({
     })
     // console.log(app.globalData.systemInfo)
 
+    // 初始化currentTheme
+    let appTheme = app.globalData.theme;
+    let currentTheme = this.data.themeList.findIndex((i)=>i.name == appTheme);
+    if(currentTheme == -1) currentTheme = 0;
+    
+    this.setData({
+      currentTheme:currentTheme
+    })
     this.refreshPage()
   },
 
@@ -111,29 +99,47 @@ Page({
     wx.navigateBack()
   },
   
-  themeSet(e){
-    // 设置app主题
-    console.log(e)
-    if (app.globalData.appSet['theme'] == 'white'){
-      // 白色主题
-      app.globalData.appSet['theme'] = 'dark'
-    }else{
-      // 深色主题
-      app.globalData.appSet['theme'] = 'white'
-      console.log(app.globalData.appSet)
+  handleTapTheme(e){
+    var index = e.currentTarget.dataset.index;
+    if(typeof(index) != 'number') return;
+    var appTheme = this.data.themeList[index] && this.data.themeList[index].name;
+    if(!appTheme) return;
+    // console.log('theme, ', index,appTheme,e);
+    app.globalData.theme = appTheme;
+    wx.setStorageSync('theme',appTheme);
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
     }
-    wx.setStorage({
-      'key':'appSet',
-      'data':app.globalData.appSet
+    this.setData({
+      currentTheme:index,
+      theme:theme
     })
+
   },
+
   refreshPage:function(){
     // 刷新页面
-    var isWhiteTheme = 'pageInfo.item[0].data.value'
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      [isWhiteTheme]: app.globalData.appSet['theme'] == 'white'
+      theme:theme,
     })
-    // console.log(this.data.pageInfo.item[0].data)
-    // console.log(app.globalData.appSet['theme'] == 'white')
-  }
+  },
+  
 })

@@ -1,32 +1,26 @@
 //index.js
 //获取应用实例
-var getdata = require('../../data/data.js')
-const app = getApp()
-const db = wx.cloud.database()      // 获取数据库引用
-var that
-//var Parser = require('../../utils/xmlParse-lib/dom-parser.js')
+var data = require('../../data/data.js');
+const app = getApp();
+const db = wx.cloud.database();      // 获取数据库引用
+var that;
+//var Parser = require('../../utils/xmlParse-lib/dom-parser.js');
 
-
-
-
-var menubar = false
+var menubar = false;
 var tapelem = "35";
 //记录滑块上次事件移动原因
-var lastMB_source = ''
+var lastMB_source = '';
 //记录滑动提示框上次位置
-var QM_tip_y = 0
-var SUMx = 0
-var lastX =null
-
-
+var QM_tip_y = 0;
+var SUMx = 0;
+var lastX = null;
 
 Page({
   data: {
-    systemInfo:null,
+    systemInfo:{},
     //userInfo: {},
     //hasUserInfo: false,
     //canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    //t
     
     tbScale:1,
 
@@ -36,6 +30,7 @@ Page({
     tabledata :[],
     signColor: {},
 
+    /* // 未使用
     menulist:[
       { 'id':'tool','title': '工具栏', 'url': '../../toolpages/tool/tool','bd':'#cec6c0'},
       { 'id': '', 'title': '保护生态环境', 'url': '../../menupages/propose/propose', 'bd': '#49b3fd'},
@@ -45,6 +40,7 @@ Page({
       { 'id':'button', 'title':'分享', 'type':'share', 'bd':'#f00'},
       {'':'','title':'设置','url':'../../pages/settings/settings','bd':'#d3d3d3'}
       ],
+    */
 
     subPage:"none",
     leftPageX:0,
@@ -60,128 +56,88 @@ Page({
       { 'id': '','name': '原子半径' }, 
       { 'id': '', 'name': '共价半径' },
       {'id':'','name':'价电子构型'}
-      
-      ],
+    ],
     longpressElem:[],
     moveBox_y:500,
-      guide:false,
-    guideUrl:[
-      '../../data/image/guide/page1.png',
-      '../../data/image/guide/page2.png',
-      //'../../data/image/guide/page3.png'
-    ],
-    currentSwiper:0,
-    guideTip:'下一步',
+    // guide:false,
+    // guideUrl:[
+    //   '../../data/image/guide/page1.png',
+    //   '../../data/image/guide/page2.png',
+    //   //'../../data/image/guide/page3.png'
+    // ],
+    // currentSwiper:0,
+    // guideTip:'下一步',
     tbMoveareaStyle: '',
     tbMoveViewStyle:'',
     QM_mainViewShow:false,
     tb_x:0,
     tb_y:0,
-    navigationBarData:{
-      "full": false,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationCustom",
-          "data":{
-            "icon_w":"../../data/image/icon/menu_w.png",
-            "icon_b":"../../data/image/icon/menu_b.png",
-            "bindtap":"openleftpage",
-            "key":"", //如空，则按照navigationBarData['color']
-            "dot":false
-          }
-        }, {
-          //"tem": "navigationTitle",
-          "data":{
-            "title":"元素周期表Pro"
-          }
-        },{
-          "tem":"navigationCustom",
-          "data":{
-            "icon_w":"../../data/image/icon/search_d5.png",
-            "icon_b":"../../data/image/icon/search_d5_b.png",
-            "bindtap":"search",
-            "style":"position:absolute;left:calc(100vw - 90pt - 46px);",
-            "key":""
-          }
-        }
-      ],
-      //"bd": "background-color:#fff;",    //navigationBar的样式
-      "commonIcon": "icon_w",    //white black,图标及字体的颜色
-      "maskStyle": "",
-    },
-    QM_tool_list: [
+
+    quickToolsBar: [
       {
+        "svgName":"solution",
         "icon": "../../data/image/svg/solubility.svg",
         "text": "溶解性表",
-        "bindtap": "MyNavigateTo",
+        "bindtap": "myNavigateTo",
         "url":"../../toolpages/solubility/solubility",
         "data": {
           "": ""
         }
       }, {
+        "svgName":"pH",
         "icon": "../../data/image/svg/pH.svg",
         "text": "pH指示剂",
-        "bindtap": "MyNavigateTo",
+        "bindtap": "myNavigateTo",
         "url": "../../toolpages/indicator/indicator",
         "data": {
           "": ""
         }
       }, {
+        "svgName":"alphabet",
         "icon": "../../data/image/svg/Alphabet.svg",
         "text": "希腊字母",
-        "bindtap": "MyNavigateTo",
+        "bindtap": "myNavigateTo",
         "url": "../../toolpages/GreekAlphabet/GreekAlphabet",
         "data": {
           "": ""
         }
       }, {
+        "svgName":"unit",
         "icon": "../../data/image/svg/ruler.svg",
         "text": "单位转换",
-        "bindtap": "MyNavigateTo",
+        "bindtap": "myNavigateTo",
         "url": "../../toolpages/UnitConversion/UnitConversion",
         "data": {
           "": ""
         }
       }, {
+        "svgName":"tools",
         "icon": "../../data/image/svg/toolsbar.svg",
         "text": "工具栏",
-        "bindtap": "MyNavigateTo",
+        "bindtap": "myNavigateTo",
         "url": "../../toolpages/tool/tool",
         "data": {
           "": ""
         }
       },
-    ]
-  
+    ],
+    theme:'ui'
   },
   
 
   //事件处理函数
   onLoad: function () {
     that = this
-    this.setData({
-      systemInfo: app.globalData.systemInfo,
-      UIstyle:app.globalData.appUI['white']['index']
-    })
-    console.log('Index onLoad')
-    console.log(app.globalData.systemInfo)
+    this.refreshPage()
 
-    //判断是否初次打开，并读取使用信息
-    try {
-      var useLog = wx.getStorageSync('useLog')
-      if (useLog) {
-        // Do something with return value
-        console.log('useLog:'.concat(useLog))
-      } else {
-        this.setData({
-          guide: true,
-        })
-        useLog = 0
-      }
-    } catch (e) {
-      // Do something when catch error
-      //console.log('')
-    }
+    this.setData({
+      tabledata: data.getTableData(),
+      signColor: data.getSignColor(),
+    })
+
+    // this.myNavigateTo("../../toolpages/statistics/statistics");
+    // this.myNavigateTo("../../menupages/reward/reward");
+
 
     // wx.getSystemInfo({
     //   success:function(res) {
@@ -194,13 +150,24 @@ Page({
     // })
 
     //加载元素信息
-    this.setData({
-      //tabledata: table_data
-      tabledata: getdata.getTableData(),
-      signColor: getdata.getSignColor()
-    })
 
-    this.refreshPage()
+
+     //判断是否初次打开，并读取使用信息
+     try {
+      // var useLog = wx.getStorageSync('useLog')
+      // if (useLog) {
+      //   // Do something with return value
+      //   console.log('useLog:'.concat(useLog))
+      // } else {
+      //   this.setData({
+      //     guide: true,
+      //   })
+      //   useLog = 0
+      // }
+    } catch (e) {
+      // Do something when catch error
+      //console.log('')
+    }
 
     // var xmlParser = new Parser.DOMParser();
     // var doc = xmlParser.parseFromString('<to>dfsfdfsd</to>')
@@ -273,8 +240,8 @@ Page({
   
   onShareAppMessage: function (options) {
     var shareObj={
-      title:'发现我的闪光点，发现你的"镁"！',
-      desc: '发现我的闪光点，发现你的"镁"！',
+      title:'元素周期表Pro',
+      desc: '化学元素周期表是学习必备的小助手！呐~ 推荐给你😁',
       path:'/pages/index/index',
       imageUrl:'../../data/image/share.jpg',
       success:function(res){
@@ -350,7 +317,7 @@ Page({
   openDetailPage: function(event){
     if(this.endTime - this.startTime < 350){
       tapelem = event.currentTarget.dataset.tapordinal
-      getdata.setTapElem(tapelem)
+      data.setTapElem(tapelem)
       if (tapelem.length <=3){
         wx.navigateTo({
           url: '../detail/detail' + '?id=' + tapelem
@@ -362,7 +329,7 @@ Page({
   bindlongpress:function(e){
     tapelem = e.currentTarget.dataset.tapordinal
     this.setData({
-      longpressElem:getdata.getElemBoxData(tapelem),
+      longpressElem:data.getElemBoxData(tapelem),
       selectbottomdata:true,
     })
 
@@ -388,7 +355,7 @@ Page({
     }
     else{
       this.setData({
-        bottomdatalist: getdata.getbottomdata(this.data.bottomdata)
+        bottomdatalist: data.getbottomdata(this.data.bottomdata)
       })
     }
     wx.reportAnalytics('elem_longpress', {
@@ -399,36 +366,7 @@ Page({
       detail: 'none',
     })
   },
-  gettapelem:function(){
-    return tapelem
-  },
 
-  lpXbindChange:function(e){
-    // 滑动左边菜单页面触发
-    // console.log(e.detail)    
-    //console.log(SUMx)
-    if (lastX != null && e.detail.source == 'touch') {
-      SUMx += e.detail.x - lastX
-    }
-
-    if (e.detail.source == 'touch') {
-      lastX = e.detail.x
-      lpTimer = setTimeout(this.touchlp, 690)
-    } else if (SUMx >= 10 && e.detail.source != 'touch') {
-      //console.log('page向右') 打开菜单
-      SUMx = 0
-      this.setData({
-        leftPageX: 300
-      })
-    } else if (SUMx <10 && e.detail.source != 'touch' && SUMx != 0) {
-      //console.log('向左') 关闭菜单
-      SUMx = 0
-      this.setData({
-        leftPageX: 0
-      })
-    }
-
-  },
   touchlp:function(){
     console.log('------touch lp ---------------')
     if (SUMx >=6){
@@ -437,13 +375,14 @@ Page({
       this.closeleftpage
     }
   },
-  openleftpage: function () {
+  
+  openLeftPage: function () {
     // console.log('----------open left page---------')
     this.setData({
       leftPageX: 300
     })
   },
-  closeleftpage:function(){
+  closeLeftPage:function(){
     // console.log('----------close left page---------')
     this.setData({
       leftPageX:0,
@@ -482,18 +421,20 @@ Page({
     })
     //console.log(e.detail)
   },
+
   QM_change:function(e){
+    return;
     //console.log(e.detail)
-    var index = this.data.QMList.length, max = 238
-    var boxY = e.detail.y + 22
+    var index = this.data.QMList.length, max = 238;
+    var boxY = e.detail.y + 22;
     if(e.detail.source!=''){
       //console.log('拖动滑块')
       for (var i = 1; i <= index; i++) {
-        var y = max / index * (i - 1)
+        var y = max / index * (i - 1);
         if (max / index * i >= boxY && max / index * (i - 1) < boxY){
-          //console.log('进入'.concat(i))
+          //console.log('进入'.concat(i));
           if (QM_tip_y!=y){
-            QM_tip_y = y
+            QM_tip_y = y;
             this.setData({
               QM_tip_y:y,
               QM_tipText:this.data.QMList[i-1]['tip']
@@ -512,31 +453,31 @@ Page({
             //console.log('触发'.concat(i))
             var y = max / index * (i - 1)
             if (QM_tip_y != y) {
-              QM_tip_y = y
+              QM_tip_y = y;
               this.setData({
                 QM_tip_y: y
               })
             }
             //拖动停止，参数 i
-            //setTimeout(this.MyNavigateTo(this.data.QMList[i - 1]['url']),1)
+            //setTimeout(this.myNavigateTo(this.data.QMList[i - 1]['url']),1)
             wx.navigateTo({
               url:this.data.QMList[i-1]['url']
             })
             
-            break
+            break;
           }
         }
       }
     }
-    lastMB_source = e.detail.source
+    lastMB_source = e.detail.source;
   },
 
 
-  MyNavigateTo:function(p){
+  myNavigateTo:function(p){
     //参数p可能为字符串或事件,事件传参在data-path中
     if (typeof(p) == 'string'){
       wx.navigateTo({
-        url: path
+        url: p
       })
     }else if(typeof(p) == 'object'){
       wx.navigateTo({
@@ -613,41 +554,35 @@ Page({
   refreshPage:function(){
     // 刷新页面，判断是否需要setData
 
-    // UIstyle & app.globalData.appSet['theme']
-
-    var theme = app.globalData.appSet['theme']
-    if (this.data.UIstyle != app.globalData.appUI[theme]['index']){
-      this.setData({
-        UIstyle: app.globalData.appUI[theme]['index']
-      })
-    }
-    
-    //UIstyle 与 navigationBar 主题颜色同步 !先刷新页面主题，再同步主题
-
-    if (this.data.navigationBarData['commonIcon'] == 'icon_b' & this.data.UIstyle['icon'] =='white'){
-      // 主题白，将navigationBar图标主题改为白色
-      console.log('=>统一为白色主题，深色图标')
-      var commonIcon = 'navigationBarData.commonIcon'
-      this.setData({
-        [commonIcon]:'icon_w'
-      })
-    } else if (this.data.navigationBarData['commonIcon'] == 'icon_w' & this.data.UIstyle['icon'] =='black'){
-      // 主题黑，将navigationBar图标主题改为黑
-      console.log('=>统一为黑色主题,白色图标')
-      console.log(this.data.UIstyle.icon)
-      var commonIcon = 'navigationBarData.commonIcon'
-      this.setData({
-        [commonIcon]: 'icon_b'
-      })
-    }
-
     // SystemInfo & app.globalData.systemInfo
-    if (this.data.systemInfo != app.globalData.systemInfo){
-      this.setData({
-        systemInfo: app.globalData.systemInfo
-      })
+    // if (this.data.systemInfo != app.globalData.systemInfo){
+    //   this.setData({
+    //     systemInfo: app.globalData.systemInfo
+    //   })
+    // }
+
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w sign-color-2';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui sign-color-1';
+        break;
     }
 
+    let systemInfo = app.globalData.systemInfo;
+    systemInfo['MenuButtonBounding'] = wx.getMenuButtonBoundingClientRect();
+    
+    this.setData({
+      theme:theme,
+      systemInfo:systemInfo,
+    })
+    
+    // 刷新app中的全局systemInfo
+    app.refresh();
   }
 
 //page

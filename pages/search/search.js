@@ -38,7 +38,7 @@ Page({
       "maskStyle": "",
       "style":""
     },
-
+    theme:"ui-w",
 
   },
 
@@ -46,9 +46,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w sign-color-2';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui sign-color-1';
+        break;
+    }
+
     this.setData({
       signColor: getdata.getSignColor(),
       systemInfo: app.globalData.systemInfo,
+      theme:theme,
+      
     })
   },
 
@@ -136,14 +151,17 @@ Page({
       })
     }
   },
+
   inputFocus:function(){
 
   },
+
   clearInput:function(){
     this.setData({
       inputValue:''
     })
   },
+  
   searchGo:function(e){
     console.log(e.detail)
     var word=e.detail.value

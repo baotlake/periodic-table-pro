@@ -5,9 +5,10 @@
   <view class="proposeText">保护环境，我们能做的很多！</view>
   <!--txv-video vid="m0680lbedry" playerid="txv1" style="positon:relative;"></txv-video-->
   <!--text class="videoTitle">黄渤携手国家地理：拒绝塑料星球</text-->
+
+  <template is="foot" data="{{rootPath}}"/>
 </view>
 
 
 
-  <template is="foot" data="{{rootPath,style:'position:absolute;'}}"/>
   <template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />

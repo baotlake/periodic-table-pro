@@ -1,0 +1,145 @@
+.ui{
+  --fore-color-1:190,190,190; /***/
+  --fore-color-2:255,255,255; /***/
+  --fore-color-3:255,255,255; /***/
+
+  --back-color-1:18,20,22;    /***/
+  --back-color-2:25,27,30;    /***/
+  --back-color-3:55,55,57;    /***/
+  --back-color-4:136,136,136; /**#888*/
+
+  --sign-color-h:233,219,57;  /*h*/
+  --sign-color-he:78,24,146;  /***/
+  --sign-color-li:220,20,60;  /***/
+  --sign-color-be:37,120,181; /***/
+  --sign-color-b:204,53,54;   /***/
+  --sign-color-al:0,65,165;   /***/
+  --sign-color-f:0,91,90;     /***/
+
+  --sign-color-sc:255,156,0;
+  --sign-color-la:160,62,40;
+  --sign-color-ac:97,104,52;
+  --sign-color-ubu:255,255,255;
+
+  /*--this-color:小组件内部主色*/
+  --this-color:128,128,128;
+}
+
+.ui-w{
+  --fore-color-1:35,35,40;    /***/
+  --fore-color-2:85,85,85;    /***/
+  --fore-color-3:136,136,136; /***/
+
+  --back-color-1:239,239,239; /***/
+  --back-color-2:255,255,255; /***/
+  --back-color-3:255,255,255; /***/
+
+  --sign-color-h:233,219,57;  /*h*/
+  --sign-color-he:78,24,146;  /***/
+  --sign-color-li:220,20,60;  /***/
+  --sign-color-be:37,120,181; /***/
+  --sign-color-b:204,53,54;   /***/
+  --sign-color-al:0,65,165;   /***/
+  --sign-color-f:0,91,90;     /***/
+
+  --sign-color-sc:255,156,0;
+  --sign-color-la:160,62,40;
+  --sign-color-ac:97,104,52;
+  --sign-color-ubu:255,255,255;
+
+  /*--this-color:小组件内部主色*/
+  --this-color:128,128,128;
+}
+
+.sign-color-1{
+  /*适合暗色主题*/
+  --sign-color-h:12,71,161;
+  --sign-color-he:5,40,242; 
+  --sign-color-li:74,19,140;
+  --sign-color-be:48,27,146;
+  --sign-color-b:26,35,126;
+  --sign-color-al:81,21,181;
+  --sign-color-f:0,95,100;
+
+  --sign-color-sc:62,39,35;
+  --sign-color-la:0,57,45;
+  --sign-color-ac:15,74,22;
+  --sign-color-ubu:130,119,23;
+}
+
+.sign-color-2{
+  /*适合搭配sign-color-1 作为白色主体配色使用*/
+  --sign-color-h:119, 220, 242;
+  --sign-color-he:5, 199, 242;
+  --sign-color-li:180, 151, 228;
+  --sign-color-be:5, 199, 242;
+  --sign-color-b:5, 151, 242;
+  --sign-color-al:188, 162, 242;/*204, 41, 254;*/
+  --sign-color-f:86, 191, 181;
+
+  --sign-color-sc:242, 218, 196; /*113, 111, 166;*/
+  --sign-color-la:146, 217, 95;
+  --sign-color-ac:167, 255, 173;
+  --sign-color-ubu:242, 222, 162;
+
+}
+
+.sign-color-3{
+  --sign-color-h:143,181,16;  /*h*/
+  --sign-color-he:78,24,146;  /***/
+  --sign-color-li:121, 0, 0;  /***/
+  --sign-color-be:5, 40, 242; /***/
+  --sign-color-b:163,153,80;   /***/
+  --sign-color-al:0,65,165;   /***/
+  --sign-color-f:0,91,90;     /***/
+
+  --sign-color-sc:163, 145, 0;
+  --sign-color-la:160,62,40;
+  --sign-color-ac:97,104,52;
+  --sign-color-ubu:255,255,255;
+}
+
+
+
+
+/**detail page*/
+.detail-w{
+  --fore-color-1:35,35,40;    /***/
+  --fore-color-2:85,85,85;    /***/
+  --fore-color-3:136,136,136; /***/
+
+  --back-color-1:239,239,239; /***/
+  --back-color-2:255,255,255; /***/
+  --back-color-3:255,255,255; /***/
+
+  --light-color:255,255,255;
+}
+
+.detail-d{
+  --fore-color-1:190,190,190; /***/
+  --fore-color-2:255,255,255; /***/
+  --fore-color-3:255,255,255; /***/
+
+  --back-color-1:18,20,22;    /***/
+  --back-color-2:25,27,30;    /***/
+  --back-color-3:55,55,57;    /***/
+}
+
+/**search page*/
+.search-w{
+
+}
+
+.search-d{
+  --fore-color-1:190,190,190; /***/
+  --fore-color-2:255,255,255; /***/
+  --fore-color-3:255,255,255; /***/
+
+  --back-color-1:18,20,22;    /***/
+  --back-color-2:25,27,30;    /***/
+  --back-color-3:55,55,57;    /***/
+
+  --light-color:255,255,255;
+  --dark-color:18,20,22;
+}
+

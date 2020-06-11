@@ -1,47 +1,80 @@
 <!--Detail Page-->
 <wxs module="detail" src="detail.wxs" />
+<wxs module="common" src="../../common.wxs" />
 <import src="../../template/template.wxml"/>
-<view class="detail-page-bg" style="{{UIstyle['page']}}" />
 
 <!--view style="position:absolute;top:20px;left:20px;z-index:1000;background-color:#fff;height:60px;width:60px;" bindtap="{{detail.foldMenu}}" /-->
+<view class="page-bg  {{theme}} sign-color-1">
+  <view class="detail-page">
+    <block wx:for="{{detail_data}}" wx:for-item="data">
 
-<view class="detailpage">
-  <block wx:for="{{detail_data}}" wx:for-item="data">
-    <block wx:if="{{data['is']=='imageCard'}}">
-      <template is="imageCard" data="{{data:data, signColor, baseData:detail_data[0]['data'], eleShellControl, index:index-1, expandControl, UIstyle,detail}}" />
+      <block wx:if="{{data['is']=='imageCard'}}">
+        <!--template is="imageCard" data="{{data:data, signColor, baseData:detail_data[0]['data'], eleShellControl, index:index-1, expandControl, UIstyle,detail}}" /-->
+        <view class="detailimageblock">
+          <image wx:if="{{data['data'][0]}}" class="detailimage" src="cloud://test-c59f6a.7465-test-c59f6a/elemens_image/{{data['data'][0]}}.jpg" style="background:rgba(var(--sign-color-{{data['data'][6]}}),1);border-bottom:1px solid rgba(var(--sign-color-{{data['data'][6]}}),1);">
+          </image>
+          <view class="imagegradient" data-url="{{'cloud://test-c59f6a.7465-test-c59f6a/elemens_image/'+data['data'][0]+'.jpg'}}" bindtap="previewImage"></view>
+          <text wx:if="{{data['data'][3]}}" class="d_classtag" style="background-color:rgba(var(--sign-color-{{data['data'][6]}}),1);">{{data['data'][3]}}</text>
+          <view class="elemIntro">
+            <view wx:if="{{data['data'][0]}}" class="d_symbol">{{data['data'][0]}}</view>
+            <view class="subBox">
+              <text wx:if="{{data['data'][1]}}" class="d_name" >{{data['data'][1]}}</text>
+              <text wx:if="{{data['data'][4]}}" class="d_ordinal">{{data['data'][4]}}号</text>
+              <text wx:if="{{data['data'][2]}}" class="d_enname">{{data['data'][2]}}</text>
+            </view>
+            <text class="d_atomic">{{data['data'][5]}}</text>
+            <view class="d-view-icon" bindtap="previewImage" data-url="cloud://test-c59f6a.7465-test-c59f6a/elemens_image/{{data['data'][0]}}.jpg" style='background:url("{{common.svg("#ffffff", "view")}}") no-repeat' />
+          </view>
+          <!--维基百科入口-->
+          <!--image class="wikipedia-icon" src="../../data/image/icon/W.png" bindtap="enterExplain" /-->
+        </view>
+      </block>
+
+      <block wx:else>
+        <!--DetailPage a kind of Property, 概述、物理性质...-->
+        <view class="headline-item" data-index="{{index}}" bindtap="{{detail.foldMenu}}">
+          <view class="headline" style="{{UIstyle['item']}}">
+            <!--image class="fold-icon fold-i-{{index}}" id="fold-i-{{index}}" src="{{(UIstyle['iconstyle']=='black')?'../../data/image/icon/fold_l_b.png':'../../data/image/icon/fold_l.png'}}" hover-class="fold-icon:hover" data-index="{{index}}"></image-->
+            <view id="fold-i-{{index}}" class="fold-icon css-icon-fold fold-i-{{index}}" />
+            <text class="p_h_t">{{data['title']}}</text>
+            <!--image class="icon" src="../../data/image/icon/{{data['title']}}{{(UIstyle['iconstyle']=='black')?'_b':''}}.png" style=""></image-->
+            <view class="headline-icon" style='background:url("{{common.svg(theme, data.title)}}")' />
+          </view>
+        </view>
+        <!--上headline, 下infobar-->
+        <view class="infobar-content {{'fold-' + index}}" style="">
+          <!--height:{{detail.infoBarHeight(item['is'],item['name'])}};-->
+          <block wx:for="{{data['data']}}" wx:for-index="{{subIndex}}" wx:key="{{code}}">
+            <template wx:if="{{item['is']=='template'}}" is="{{item['name']}}" data="{{baseData:detail_data[0]['data'],data:item['data'],eleShellControl,UIstyle,expandControl,index}}" />
+            <view wx:elif="{{item['is'] == 'item'}}" class="infobar" style="{{UIstyle['item']}}">
+              <!--JSON格式，数据包大-->
+              <text class="p_i_t">{{item['key']}}</text>
+              <text class="p_i_i">{{item['value']}}</text>
+            </view>
+            <view wx:elif="{{item.length == 2}}" class="infobar" style="{{UIstyle['item']}}">
+              <!--兼容数组格式，用于减少数据大小-->
+              <text class="p_i_t">{{item[0]}}</text>
+              <text class="p_i_i">{{item[1]}}</text>
+            </view>
+          </block>
+        </view>
+      </block>
+      <!--template is="{{item['is']}}" data="{{data:item, signColor, baseData:detail_data[0]['data'], eleShellControl, index:index-1, expandControl, UIstyle,detail}}" /-->
     </block>
-    <block wx:else>
-      <!--DetailPage a kind of Property, 概述、物理性质...-->
-      <view class="headline-item" data-index="{{index}}" bindtap="{{detail.foldMenu}}">
-        <view class="headline" style="{{UIstyle['item']}}">
-          <image class="fold-icon fold-i-{{index}}" id="fold-i-{{index}}" src="{{(UIstyle['iconstyle']=='black')?'../../data/image/icon/fold_l_b.png':'../../data/image/icon/fold_l.png'}}" hover-class="fold-icon:hover" data-index="{{index}}"></image>
-          <text class="p_h_t">{{data['title']}}</text>
-          <image class="icon" src="../../data/image/icon/{{data['title']}}{{(UIstyle['iconstyle']=='black')?'_b':''}}.png" style=""></image>
-        </view>
-      </view>
-      <!--上headline, 下infobar-->
-      <view wx:for="{{data['data']}}" wx:for-index="{{subIndex}}" wx:key="{{code}}" class="infobar-content {{'fold-' + index}}" style="height:{{detail.infoBarHeight(item['is'],item['name'])}};">
-      <!--template is="{{item['is']}}" data="{{data:item,eleShellControl,baseData:new_data[0]['data'],index:index-1,UIstyle}}" /-->
-      <template wx:if="{{item['is']=='template'}}" is="{{item['name']}}" data="{{baseData:detail_data[0]['data'],data:item['data'],eleShellControl,UIstyle,expandControl,index}}" />
-      <view wx:elif="{{item['is'] == 'item'}}" class="infobar" style="{{UIstyle['item']}}">
-          <!--JSON格式，数据包大-->
-          <text class="p_i_t">{{item['key']}}</text>
-          <text class="p_i_i">{{item['value']}}</text>
-        </view>
-        <view wx:elif="{{item.length == 2}}" class="infobar" style="{{UIstyle['item']}}">
-          <!--兼容数组格式，用于减少数据大小-->
-          <text class="p_i_t">{{item[0]}}</text>
-          <text class="p_i_i">{{item[1]}}</text>
-        </view>
-      </view>
-    </block>
-    <!--template is="{{item['is']}}" data="{{data:item, signColor, baseData:detail_data[0]['data'], eleShellControl, index:index-1, expandControl, UIstyle,detail}}" /-->
-  </block>
-  <ad unit-id="adunit-200003ac9b6d9b83"></ad>
+    <ad unit-id="adunit-200003ac9b6d9b83"></ad>
+  </view>
 </view>
 
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
 
+<view class="navigation-bar {{theme}}" 
+      style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon nav-menu-wrapper" bindtap="navigateToBack">
+      <view class="back-icon css-icon-fold" hover-class="detail-back"/>
+    </view>
+</view>
+
+<!--未使用-->
 <template name="imageCard">
   <!--data = ""-->
   <view class="detailimageblock">
@@ -64,33 +97,6 @@
 </template>
 
 
-<template name="unit">
-  <!--DetailPage a kind of Property, 概述、物理性质...-->
-  <view class="headline-item" data-index="{{index}}" bindtap="{{detail.foldMenu}}" bindtap_del="bindExpandControl">
-    <view class="headline" style="{{UIstyle['item']}}">
-      <image class="expand-control-icon" src="{{(UIstyle['iconstyle']=='black')?'../../data/image/icon/fold_l_b.png':'../../data/image/icon/fold_l.png'}}" hover-class="expand-control-icon:hover" data-index="{{index}}" bindtap_del="bindExpandControl" style="{{(expandControl[index]!= false)?'':'transform: rotate(540deg);'}}" ></image>
-      <text class="p_h_t">{{data['title']}}</text>
-      <image class="icon" src="../../data/image/icon/{{data['title']}}{{(UIstyle['iconstyle']=='black')?'_b':''}}.png"></image>
-    </view>
-  </view>
-  <!--上headline, 下infobar-->
-  <view  wx:for="{{data['data']}}" wx:for-index="{{subIndex}}" wx:key="{{code}}" class="infobar-content {{'fold-' + index}}">
-  <!--template is="{{item['is']}}" data="{{data:item,eleShellControl,baseData:new_data[0]['data'],index:index-1,UIstyle}}" /-->
-  <template wx:if="{{item['is']=='template'}}" is="{{item['name']}}" data="{{baseData:baseData,data:item['data'],eleShellControl,UIstyle,expandControl,index}}" />
-  <view wx:elif="{{item['is'] == 'item'}}" class="infobar {{(expandControl[index]!= false)?'unfold':'fold'}}" id_del="{{(expandControl[index]!= false)?'unfold':'fold'}}" style="{{UIstyle['item']}}">
-      <!--JSON格式，数据包大-->
-      <text class="p_i_t">{{item['key']}}</text>
-      <text class="p_i_i">{{item['value']}}</text>
-    </view>
-    <view wx:elif="{{item.length == 2}}" class="infobar" style="{{UIstyle['item']}}">
-      <!--兼容数组格式，用于减少数据大小-->
-      <text class="p_i_t">{{item[0]}}</text>
-      <text class="p_i_i">{{item[1]}}</text>
-    </view>
-  </view>
-</template>
-
-
 <template name="spectralblock">
   <!--原子光谱图片&文字-->
   <view class="spectral" style="{{UIstyle['item']}}">
@@ -106,6 +112,6 @@
   <view class="atomStructure a-{{index}}" bindtap="tapEleShell" style="{{UIstyle['item']}}">
     <text class="eleShellTitle">电子层</text>
     <canvas canvas-id="atomStructure" class="canvas" style="height:{{eleShellControl['height']}};"></canvas>
-    <text class="eleShell">{{data[0]}}</text>
+    <text class="eleShell">{{detail.esFormat(data[0])}}</text>
   </view>
 </template>

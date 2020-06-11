@@ -1,7 +1,7 @@
 <import src="../../template/template.wxml"/>
 
-<view class="toolpage" style="height:100vh;">
-  <view class="tp-itemlist">
+<view class="tool-page {{theme}}" >
+  <view class="tp-itemlist" style="padding-top:{{systemInfo['statusBarHeight'] + 46}}px;">
     <block wx:for="{{testlist}}" wx:key="{{code}}">
       <navigator class="tp-item" url="{{item['url']}}">{{item['name']}}
       </navigator>
@@ -28,5 +28,11 @@
   </view>
 </view>
 
-
-<template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" />
+<!--template is="myNavigationBar" data="{{data:navigationBarData,systemInfo}}" /-->
+<view class="navigation-bar {{theme}}" 
+    style="{{'top:' + systemInfo['MenuButtonBounding']['top']+'px;'}}    {{'height:' + systemInfo['MenuButtonBounding']['height'] + 'px;'}}">
+    <view class="navigation-icon" bindtap="navigateToBack">
+      <view class="nav-menu-icon css-icon-fold back-icon " hover-class="fold" />
+    </view>
+    <view class="navigation-title">工具栏</view>
+</view>

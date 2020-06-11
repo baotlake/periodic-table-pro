@@ -54,22 +54,6 @@ Page({
     
     //0号元素为页面显示单位数值大小，1号元素记录页面各个框所选单位索引，
     showValue: [[1, 0, 0, 0, 0], [[0, 0], [1, 0], [1, 1], [1, 2], [2, 3]]],
-    navigationBarData:{
-      "full": true,  //wdith满宽，及box-shadow阴影
-      "info": [   //控制按钮列表，比如 返回、主页
-        {
-          "tem": "navigationBack",
-        }, {
-          "tem": "navigationTitle",
-          "data":{
-            "title":"单位换算",
-          }
-        },
-      ],
-      "bd": "background-color:#008;",    //navigationBar的样式
-      "color": "white",    //white black,图标及字体的颜色
-      "maskStyle": ""
-    },
     systemInfo:null,
 
     //单位列表，元素为单位对象
@@ -1136,8 +1120,9 @@ Page({
         ]
       },
       */
-    ]
-  
+    ],
+
+    theme:'ui',
   },
 
   /**
@@ -1146,8 +1131,20 @@ Page({
   onLoad: function (options) {
     console.log('单位转换页面加载中，调用switchUnitKind()函数，此函数中调用doConversion()转换函数')
     //this.doPickerArray()
+    let appTheme = app.globalData.theme;
+    let theme = '';
+    switch (appTheme){
+      case "default-light":
+        theme = 'ui-w';
+        break;
+      case "default-dark":
+      default:
+        theme = 'ui';
+        break;
+    }
     this.setData({
-      systemInfo: app.globalData.systemInfo
+      systemInfo: app.globalData.systemInfo,
+      theme:theme
     })
 
     this.switchUnitKind()
