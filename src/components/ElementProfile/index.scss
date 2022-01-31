@@ -1,0 +1,133 @@
+@import "../../scss/icon.scss";
+@import "../../scss/color-sign";
+@import "../../scss/media.scss";
+
+@include classification-light;
+
+.element-profile {
+    &.default {
+        position: relative;
+        width: 100%;
+        padding-bottom: 75%;
+        border-bottom: 2PX solid var(--color);
+
+        .image {
+            position: absolute;
+            inset: 0 0 0 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color);
+        }
+
+        &::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%),
+                radial-gradient(transparent, transparent, rgba(0, 0, 0, 0.25));
+        }
+
+        .data-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin-bottom: 15PX;
+            z-index: 2;
+            display: grid;
+            grid:
+                "tl tr"
+                "bl br";
+            grid-template-rows: 60PX 110PX;
+            grid-template-columns: 2fr 1fr;
+
+            .category {
+                grid-area: tl;
+                left: 0;
+                width: 100PX;
+                height: 32PX;
+                line-height: 32PX;
+                border-radius: 0 6PX 6PX 0;
+                background-color: var(--color);
+                color: white;
+                text-align: center;
+                font-size: 18PX;
+            }
+
+            .basic-group {
+                grid-area: bl;
+                padding-left: 32PX;
+                display: grid;
+                color: white;
+                grid:
+                    "s n1"
+                    "s n2"
+                    "w w";
+                grid-template-columns: 1fr 3fr;
+
+                .symbol {
+                    grid-area: s;
+                    font-size: 66PX;
+                    line-height: 1.2;
+                    font-weight: bold;
+                    margin-right: 10PX;
+                }
+
+                .zh-name {
+                    grid-area: n1;
+                    font-size: 20PX;
+                    line-height: 1;
+                    padding-top: 8.3%;
+                }
+
+                .en-name {
+                    grid-area: n2;
+                    font-size: 20PX;
+                }
+
+                .weight {
+                    grid-area: w;
+                    font-size: 20PX;
+                }
+            }
+
+            .view-icon {
+                width: 22PX;
+                height: 22PX;
+                padding: 4PX;
+                position: absolute;
+                right: 32PX;
+                bottom: 0;
+
+                &.white {
+                    @include filter-white;
+                }
+                &.black {
+                    @include filter-black;
+                }
+            }
+        }
+    }
+
+    &.landscape {
+        @include landscape {
+            width: 100%;
+            padding-bottom: 44.5%;
+            border-radius: 6PX;
+            overflow: hidden;
+            border-bottom: none;
+
+            // hidden display:none
+            .data-layer {
+                .category {
+                    display: none;
+                }
+                .basic-group {
+                    display: none;
+                }
+            }
+        }
+    }
+}

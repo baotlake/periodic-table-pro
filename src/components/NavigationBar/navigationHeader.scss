@@ -1,0 +1,45 @@
+@import "../../scss/icon";
+@import "../../scss/color";
+
+.nav-header {
+  &.background {
+    pointer-events: all;
+  }
+
+  .header-wrapper {
+    --color: black;
+    display: flex;
+    align-items: center;
+    font-size: 18PX;
+    color: var(--color);
+
+    .nav-back-btn {
+      color: var(--color);
+      width: var(--size);
+      height: var(--size);
+      background: none;
+      border: none;
+      box-shadow: none;
+      pointer-events: all;
+
+      display: block;
+      margin:0 var(--margin);
+
+      @include back-icon;
+    }
+  }
+}
+
+// theme
+.nav-header {
+  &.light {
+
+  }
+  &.dark {
+    .header-wrapper {
+      --color: #{$dark-foceground};
+    }
+  }
+}
+
+

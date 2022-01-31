@@ -1,0 +1,59 @@
+@use 'sass:color';
+@import "../../scss/color";
+@import "../../scss/icon";
+
+.index-page {
+
+  .navigation-button-wrapper {
+    pointer-events: all;
+    margin:0 var(--margin);
+
+    > .nav-btn {
+      width: var(--size);
+      height: var(--size);
+      background: none;
+      backdrop-filter: blur(10px);
+      --transition: all 0.3s;
+
+      &.menu {
+        @include  menu-icon(20PX, 2PX);
+      }
+      &.close {
+        @include close-icon(20PX, 2PX);
+      }
+    }
+  }
+  .pt-container {
+    display: flex;
+    overflow: auto;
+    padding: 60PX 0 60PX;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    box-sizing: border-box;
+    font-size: 16PX;
+  
+    > .periodic-table {
+      font-size: 1em;
+
+    }
+  }
+}
+
+// theme
+.index-page {
+  &.light {
+
+  }
+  &.dark {
+    background: $dark-background;
+    color: $dark-foceground;
+
+    .navigation-button-wrapper {
+      > .nav-btn {
+        color: $dark-foceground;
+        background: color.change($dark-background,  $lightness: 5%, $alpha: 0.2);
+      }
+    }
+  }
+}

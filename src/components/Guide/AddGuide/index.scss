@@ -1,0 +1,73 @@
+@import "../../../scss/icon.scss";
+
+.add-guide {
+    position: fixed;
+    top: 30PX;
+    right: 80PX;
+    z-index: 999;
+
+    .box {
+        position: absolute;
+        right: -40PX;
+        top: 4PX;
+        display: flex;
+        align-items: center;
+        font-size: 12PX;
+        line-height: 32PX;
+        background: black;
+        color: white;
+        padding: 0 10PX;
+        border-radius: 6PX;
+        white-space: nowrap;
+        animation: add-guide-fade-in-up 0.3s ease;
+        filter: drop-shadow(0 2PX 6PX white);
+    }
+
+    .arrow {
+        background: black;
+        position: absolute;
+        width: 16PX;
+        height: 16PX;
+        top: -4PX;
+        right: 32PX;
+        transform: rotate(45deg);
+        transform-origin: center;
+        z-index: -1;
+    }
+
+    .close {
+        width: 12PX;
+        height: 12PX;
+        margin: -10PX;
+        padding: 10PX;
+        @include close-icon(12PX, 1PX);
+    }
+}
+
+@keyframes add-guide-fade-in-up {
+    0% {
+        opacity: 0;
+        transform: scale(1.2) translate(0, 50PX);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+// theme
+.add-guide {
+    &.light {
+
+    }
+    &.dark {
+        .box {
+            color: black;
+            background: white;
+            filter: drop-shadow(0PX 2PX 6PX black);
+        }
+        .arrow {
+            background: white;
+        }
+    }
+}

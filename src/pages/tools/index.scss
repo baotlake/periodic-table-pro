@@ -1,0 +1,27 @@
+@import '../../scss/color';
+
+.tools-page {
+    background: darken($light-background, 5%);
+    color: $light-foceground;
+
+    .content {
+        padding: 10PX 20PX;
+    }
+
+    .section {
+        font-size: 16PX;
+        line-height: 1.6;
+        margin: 20PX auto;
+    }
+}
+
+// theme
+.tools-page {
+    &.light {
+
+    }
+    &.dark {
+        background: darken($dark-background, 3%);
+        color: $dark-foceground;
+    }
+}

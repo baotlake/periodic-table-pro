@@ -1,0 +1,157 @@
+@import "../../scss/color";
+@import "../../scss/icon";
+
+$profile-background: #E8E9DD;
+
+.menu-drawer-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  z-index: 99;
+
+  &.visible {
+    transform: translateX(0);
+
+    .backdrop {
+      opacity: 1;
+      width: 200%;
+      transition:  opacity 0.3s;
+    }
+  }
+
+  .backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .menu-drawer {
+    width: 260PX;
+    background: #EEEEEE;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .profile-container {
+    position: relative;
+    width: 100%;
+    height: 280PX;
+    max-height: 50vh;
+    background: $profile-background;
+
+    .background-image {
+      width: 100%;
+      height: 100%;
+    }
+
+    .profile {
+      position: absolute;
+      bottom: 0;
+      .user {
+        display: flex;
+        padding: 10PX 30PX;
+        align-items: center;
+
+        .avatar {
+          width: 40PX;
+          height: 40PX;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 16PX;
+          background: #EEEEEE;
+        }
+        .nickname {
+          font-size: 22PX;
+          font-weight: bold;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .menu-container {
+
+    .group {
+      margin-bottom: 8PX;
+    }
+
+    .menu-item {
+      display: flex;
+      padding: 16PX 30PX;
+      margin-top: 1PX;
+      background: white;
+      position: relative;
+
+      .icon {
+        width: 22PX;
+        height: 22PX;
+        margin-right: 12PX;
+
+        &.shop {
+          border-radius: 50%;
+          filter: none !important;
+        }
+      }
+      .label {
+        font-size: 18PX;
+        line-height: 22PX;
+      }
+
+      .wx-open-type-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+
+// theme
+.menu-drawer-wrapper {
+  &.light {
+
+  }
+  &.dark {
+    .menu-drawer {
+      background: darken($dark-background, 5%);
+    }
+    .profile-container {
+      background: darken($profile-background, 50%);
+
+      .background-image {
+        filter: brightness(0.6);
+      }
+    }
+    .menu-container {
+      .menu-item {
+        background: $dark-background;
+        // background: lighten($dark-background, 3%);
+        .icon {
+          @include filter-white;
+
+          &.shop {
+            background: lighten($dark-background, 20%);
+          }
+        }
+      }
+    }
+  }
+}

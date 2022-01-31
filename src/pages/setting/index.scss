@@ -1,0 +1,18 @@
+@import '../../scss/color';
+
+.setting-page {
+    min-height: 90vh;
+    background: darken($light-background, 5%);
+}
+
+
+// theme
+.setting-page {
+    &.light {
+
+    }
+    &.dark {
+        background: darken($dark-background, 3%);
+        color: $dark-foceground;
+    }
+}

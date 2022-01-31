@@ -1,0 +1,69 @@
+@import "../../scss/color";
+
+
+.element-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 6PX;
+    overflow: hidden;
+    height: 110PX;
+    z-index: 1;
+    // background: linear-gradient(307.26deg, rgba(63, 38, 34, 0.46) -2.16%, rgba(255, 255, 255, 0) 98.15%);
+
+    &.default {
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.3;
+            background: linear-gradient(307.26deg, var(--color) -2.16%, rgba(255, 255, 255) 98.15%);
+        }
+    }
+
+    .tag {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 6PX 0 6PX 0;
+        font-size: 12PX;
+        line-height: 20PX;
+        padding: 0 20PX;
+        background: var(--color);
+        color: white;
+    }
+
+    .name {
+        font-size: 50PX;
+        font-weight: bold;
+        width: 50%;
+        text-align: center;
+    }
+
+    .properties {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 16PX;
+        letter-spacing: 1PX;
+    }
+}
+
+// theme 
+.element-card {
+    &.light {
+
+    }
+
+    &.dark {
+        &::before {
+            background: linear-gradient(307.26deg, var(--color) -2.16%, $dark-background 98.15%);
+        }
+        color: $dark-foceground;
+    }
+}

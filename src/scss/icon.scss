@@ -1,0 +1,142 @@
+
+$sqrt2: 1.4142;
+
+@mixin filter-white($opacity: 100%) {
+  filter: grayscale(1) brightness(0) invert(1) opacity($opacity);
+}
+
+@mixin filter-black($opacity: 100%) {
+  filter: grayscale(1) brightness(0) opacity($opacity);
+}
+
+// "<"
+@mixin back-icon($size: 16PX, $stroke-width: 2PX) {
+  position: relative;
+
+  &::before {
+    content: "";
+    width: $stroke-width;
+    height: $size / $sqrt2;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translate(-($size / 4), $stroke-width / 2 / $sqrt2) rotate(45deg);
+    background-color: currentColor;
+    border: none;
+    transition: var(--transition);
+  }
+
+  &::after {
+    content: "";
+    width: $stroke-width;
+    height: $size / $sqrt2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: top center;
+    transform: translate(-($size / 4), -($stroke-width / 2 / $sqrt2)) rotate(-45deg);
+    background-color: currentColor;
+    border: none;
+    transition: var(--transition);
+  }
+}
+
+// ">"
+@mixin forward-icon($size: 16PX, $stroke-width: 2PX) {
+  @include back-icon($size, $stroke-width);
+  &::before {
+    transform: translate($size / 4, $stroke-width / 2 / $sqrt2) rotate(-45deg);
+  }
+  &::after{
+    transform: translate($size / 4, -($stroke-width / 2 / $sqrt2)) rotate(45deg);
+  }
+}
+
+// "^"
+@mixin expand-icon($size: 16PX, $stroke-width: 2PX) {
+  position: relative;
+
+  &::before {
+    content: "";
+    height: $stroke-width;
+    width: $size / $sqrt2;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform-origin: right center;
+    transform: translate( $stroke-width / 2 / $sqrt2, -($size / 4)) rotate(-45deg);
+    background-color: currentColor;
+    border: none;
+    transition: var(--transition);
+  }
+
+  &::after {
+    content: "";
+    height: $stroke-width;
+    width: $size / $sqrt2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: left center;
+    transform: translate(-($stroke-width / 2 / $sqrt2), -($size / 4)) rotate(45deg);
+    background-color: currentColor;
+    border: none;
+    transition: var(--transition);
+  }
+}
+// "⌄"
+@mixin collapse-icon($size: 16PX, $stroke-width: 2PX) {
+  @include expand-icon($size, $stroke-width);
+  &::before {
+    transform: translate( $stroke-width / 2 / $sqrt2, $size / 4) rotate(45deg);
+  }
+  &::after{
+    transform: translate(-($stroke-width / 2 / $sqrt2), $size / 4) rotate(-45deg);
+  }
+}
+
+
+// "="
+@mixin menu-icon($size: 16PX, $stroke-width: 2PX) {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: $size;
+    height: $stroke-width;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -($size / 6 + $stroke-width / 2));
+    transform-origin: center center;
+    background: currentColor;
+    transition: var(--transition);
+    border: none;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: $size;
+    height: $stroke-width;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, $size / 6 + $stroke-width / 2);
+    transform-origin: center center;
+    background: currentColor;
+    transition: var(--transition);
+    border: none;
+  }
+}
+// "x"
+@mixin close-icon($size: 16PX, $stroke-width: 2PX) {
+  @include menu-icon($size, $stroke-width);
+
+  &::before {
+    transform: translate(-50%, 0) rotateZ(45deg);
+  }
+  &::after {
+    transform: translate(-50%, 0) rotateZ(-45deg);
+  }
+}

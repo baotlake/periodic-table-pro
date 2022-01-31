@@ -1,0 +1,31 @@
+@import '../../scss/color';
+
+.guide-page {
+    background: darken($light-background, 5%);
+
+    .content {
+        padding: 20PX 40PX;
+    }
+
+    .paragraph {
+        font-size: 16PX;
+        line-height: 1.6;
+        color: lighten($light-foceground, 0%);
+        margin: 20PX auto;
+    }
+}
+
+// theme 
+.guide-page {
+    &.light {
+
+    }
+    &.dark {
+        background: darken($dark-background, 3%);
+        color: $dark-foceground;
+
+        .paragraph {
+            color: darken($dark-foceground, 0%);
+        }
+    }
+}

@@ -1,0 +1,201 @@
+@use 'sass:color';
+@import "../../scss/color";
+
+
+$box-height: 50PX;
+
+@mixin solubility {
+    .S {
+        background: #376ffd20;
+        color: #376FFD;
+    }
+    .sS {
+
+        background: #02EBDC20;
+        color: #02EBDC;
+    }
+    .I {
+        background: #a58b0520;
+        color: #a58b05;
+    }
+    .X {
+        background: #aaaaaa20;
+        color:#aaaaaa;
+    }
+    .R {
+        background: #D83BAE20;
+        color: #D83BAE;
+    }
+    .unavailable {
+    }
+}
+
+@mixin pseudo-table-border {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 
+        1PX 0 0 0 currentColor,
+        0 1PX 0 0 currentColor,
+        1PX 1PX 0 0 currentColor,
+        inset 1PX 0 0 0 currentColor,
+        inset 0 1PX 0 0 currentColor;
+}
+
+.page {
+    min-height: 100vh;
+    background: $light-background;
+}
+
+.navigation {
+    background: $light-background;
+    pointer-events: all;
+}
+.table-wrapper {
+    width: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.table {
+    display: grid;
+    grid:
+        ". h-t"
+        "h-l c"
+        ". h-b";
+
+    font-size: 12PX;
+    padding: 10PX;
+    width: fit-content;
+    height: fit-content;
+    color: $light-foceground;
+    margin: auto;
+
+    .head {
+        background: color.adjust($light-background, $alpha: -0.4);
+        backdrop-filter: blur(10PX);
+        z-index: 1;
+
+        &.top {
+            grid-area: h-t;
+            display: grid;
+            grid: 30PX / auto-flow 1fr;
+            position: sticky;
+            top: 0PX;
+    
+            .anion {
+                line-height: (30PX / 1.2);
+                text-align: center;
+            }
+        }
+        &.left {
+            grid-area: h-l;
+            display: grid;
+            grid: auto-flow 1fr / 50PX;
+            position: sticky;
+            left: 0;
+    
+            .cation {
+                line-height: ($box-height / 1.2);
+                height: $box-height;
+                text-align: center;
+            }
+        }
+        &.bottom {
+            grid-area: h-b;
+            display: grid;
+            grid: 30PX / auto-flow 1fr;
+            position: sticky;
+            bottom: 0PX;
+            margin-top: 1PX;
+    
+            .anion {
+                line-height: (30PX / 1.2);
+                text-align: center;
+            }
+        }
+    }
+
+    .content {
+        grid-area: c;
+        display: grid;
+        --columns: 16;
+        grid: auto-flow $box-height / repeat(var(--columns), 50PX);
+    }
+
+    .item {
+        line-height: $box-height;
+        text-align: center;
+        position: relative;
+
+        &::after {
+            @include pseudo-table-border;
+            opacity: 0.2;
+        }
+    }
+
+    @include solubility;
+}
+
+.key-table {
+    display: grid;
+    grid: auto-flow / 1fr 2fr 3fr;
+    font-size: 16PX;
+    margin: auto;
+    padding: 60PX 20PX;
+    color: $light-foceground;
+    max-width: min(90%, 600PX);
+
+
+    .cell {
+        line-height: 30PX;
+        text-align: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10PX;
+        
+        &::after {
+            @include pseudo-table-border;
+            color: darken($light-background, 20%);
+        }
+    }
+
+    @include solubility;
+}
+
+// Theme
+
+.page {
+    &.light {
+
+    }
+    &.dark {
+        background: $dark-background;
+
+        .navigation {
+            background: $dark-background;
+        }
+
+        .table {
+            color: $dark-foceground;
+            .head {
+                background: color.adjust($dark-background, $alpha: -0.4);
+            }
+        }
+
+        .key-table {
+            color: $dark-foceground;
+            .cell::after {
+                color: lighten($dark-background, 20%);
+            }
+        }
+    }
+}

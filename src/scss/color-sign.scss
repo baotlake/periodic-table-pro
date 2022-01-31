@@ -1,0 +1,153 @@
+$dark-AlkaliMetals: #D83BAE;
+$dark-AlkalineEarthMetals: #E06C7B;
+$dark-Lanthanides: #AC5298;
+$dark-Actinides: #4B7BC3;
+// $dark-TransitionMetals: #B7A754;
+$dark-TransitionMetals: #9F6D0B;
+$dark-OtherMetals: #6993B6;
+$dark-Metalloids: #0B94D6;
+$dark-OtherNometals: #376FFD;
+$dark-Halogens: #009886;
+$dark-NobleGases: #AA5AFF;
+
+@mixin classification-light {
+  .AlkaliMetals {
+    --color: #ab2e8a;
+  }
+  .AlkalineEarthMetals {
+    --color: #b85763;
+  }
+  .Lanthanides {
+    --color: #8c6283;
+  }
+  .Actinides {
+    --color: #5c7aa7;
+  }
+  .TransitionMetals {
+    --color: #a58b05;
+  }
+  .OtherMetals {
+    --color: #7a7a7a;
+    --color: #6C889F;
+  }
+  .Metalloids {
+    --color: #0181a3;
+    --color: #0B94D6;
+  }
+  .OtherNonmetals {
+    --color: #4c59f8;
+    --color: #1A58F5;
+  }
+  .Halogens {
+    --color: #018a7a;
+  }
+  .NobleGases {
+    --color: #7f00e3;
+    --color: #9E54ED;
+  }
+}
+
+@mixin classification-dark {
+  .AlkaliMetals {
+    --color: #{$dark-AlkaliMetals};
+  }
+  .AlkalineEarthMetals {
+    --color: #{$dark-AlkalineEarthMetals};
+  }
+  .Lanthanides {
+    --color: #{$dark-Lanthanides};
+  }
+  .Actinides {
+    --color: #{$dark-Actinides};
+  }
+  .TransitionMetals {
+    --color: #{$dark-TransitionMetals};
+  }
+  .OtherMetals {
+    --color: #{$dark-OtherMetals};
+  }
+  .Metalloids {
+    --color: #{$dark-Metalloids};
+  }
+  .OtherNonmetals {
+    --color: #{$dark-OtherNometals};
+  }
+  .Halogens {
+    --color: #{$dark-Halogens};
+  }
+  .NobleGases {
+    --color: #{$dark-NobleGases};
+  }
+}
+
+@mixin block-light {
+  .s-block {
+    --color: #C94444;
+  }
+  .p-block {
+    --color: #0672C0;
+  }
+  .d-block {
+    --color: #9F6D0B;
+  }
+  .f-block {
+    --color: #919406;
+  }
+  .g-block {
+    --color: #8c6283;
+  }
+}
+
+@mixin block-dark {
+  .s-block {
+    --color: #C94444;
+  }
+  .p-block {
+    --color: #0672C0;
+  }
+  .d-block {
+    --color: #9F6D0B;
+  }
+  .f-block {
+    --color: #919406;
+  }
+  .g-block {
+    --color: #8c6283;
+  }
+}
+
+@mixin state-light {
+  .gas {
+    --color: #D26FC8;
+  }
+  .solid {
+    --color: #927512;
+  }
+  .liquid {
+    --color: #1687D8;
+  }
+  .expectedSolid {
+    --color: #927512;
+  }
+  .expectedGas {
+    --color: #D26FC8;
+  }
+  .unknown {
+    --color: #888888;
+  }
+}
+
+@mixin state-dark {
+  .gas {
+  }
+  .solid {
+  }
+  .liquid {
+  }
+  .expectedSolid {
+  }
+  .expectedGas {
+  }
+  .unknown {
+  }
+}

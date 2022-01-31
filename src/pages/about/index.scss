@@ -1,0 +1,39 @@
+@import '../../scss/color';
+
+.about-page {
+  background: darken($light-background, 5%);
+  .profile {
+    padding: 60PX 0 20PX;
+    .logo {
+      width: 72PX;
+      height: 72PX;
+      border-radius: 50%;
+      margin: auto;
+      display: block;
+      margin-bottom: 24PX;
+    }
+    .name {
+      text-align: center;
+      font-size: 18PX;
+      font-weight: bold;
+    }
+  }
+  .section {
+    font-size: 16PX;
+    line-height: 1.6;
+    padding: 0 40PX;
+    margin-bottom: 22PX;
+  }
+}
+
+// theme
+.about-page {
+  &.light {
+
+  }
+  &.dark {
+    background: darken($dark-background, 3%);
+    color: $dark-foceground;
+  }
+}
+

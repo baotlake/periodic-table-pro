@@ -1,0 +1,77 @@
+@import '../../scss/icon';
+@import '../../scss/color';
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 54PX;
+    padding: 0 24PX;
+    background: white;
+    margin-top: 1PX;
+
+    .title-container {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            width: 22PX;
+            height: 22PX;
+            margin-right: 12PX;
+            @include filter-black;
+
+            > img {
+                display: block;
+            }
+        }
+
+        .title {
+            font-size: 18PX;
+        }
+
+    }
+
+    .value-container {
+        display: flex;
+        align-items: center;
+        font-size: 12PX;
+        line-height: 1.5;
+        
+        .switch {
+            transform-origin: right center;
+            transform: scale(0.8);
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            font-size: 1em;
+            margin-left: (5em / 12);
+            > img {
+                display: block;
+            }
+        }
+    }
+
+}
+
+// theme 
+.setting-item {
+    &.light {
+
+    }
+    &.dark {
+        background: $dark-background;
+        color: $dark-foceground;
+        .title-container {
+            .icon {
+                @include filter-white;
+            }
+        }
+        .value-container {
+            .icon {
+                @include filter-white;
+            }
+        }
+    }
+}

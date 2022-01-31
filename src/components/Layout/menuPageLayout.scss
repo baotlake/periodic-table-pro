@@ -1,0 +1,36 @@
+@import '../../scss/media';
+
+.layout {
+    display: flex;
+    height: 100vh;
+    --margin-top: 48PX;
+    --margin-left: 20PX;
+
+    .layout-drawer {
+        display: none;
+        padding-top: var(--margin-top);
+    }
+
+    .layout-main {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+
+        .layout-content {
+            padding: var(--margin-top) 0;
+        }
+    }
+
+    @include landscape{
+        .layout-drawer {
+            display: block;
+        }
+        .layout-main {
+            padding: 0 20PX;
+            .layout-content {
+                max-width: 500PX;
+                margin:auto;
+            }
+        }
+    }
+}
