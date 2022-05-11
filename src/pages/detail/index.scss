@@ -1,104 +1,114 @@
-@import "../../scss/media";
-@import "../../scss/color";
-@import "../../scss/icon";
-@import "../../scss/color-sign";
+@import '../../scss/media';
+@import '../../scss/color';
+@import '../../scss/icon';
+@import '../../scss/color-sign';
 
 .detail-page {
-    min-height: 100vh;
-    background: #f2f2f2;
-    
-    .content {
+  min-height: 100vh;
+  background: #f2f2f2;
+
+  .content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    .drawer {
+      --margin-top: 48PX;
+      --margin-left: 20PX;
+
+      margin-left: env(safe-area-inset-left);
+      width: 280PX;
+      padding: 20PX;
+      padding-top: var(--margin-top);
+      padding-left: calc(var(--margin-left) + 20px);
+      display: none;
+
+      // position: sticky;
+      overflow: auto;
+      border-right: 1PX solid #dadada;
+
+      @include classification-light;
+
+      .props-group-index {
+        margin-top: 12PX;
         display: flex;
-        height: 100%;
-        width: 100%;
-        position: absolute;
+        font-size: 16PX;
+        align-items: center;
+        padding: 0 18PX;
+        border-radius: 6PX;
+        line-height: 42PX;
 
-        .drawer {
-            --margin-top: 48PX;
-            --margin-left: 20PX;
-            margin-left: env(safe-area-inset-left);
-            width: 280PX;
-            padding: 20PX;
-            padding-top: var(--margin-top);
-            padding-left: calc(var(--margin-left) + 20px);
-            display: none;
-            // position: sticky;
-            overflow: auto;
-            border-right: 1PX solid #dadada;
+        // background-color: #EDEDED;
+        background: white;
 
-            @include classification-light;
+        .icon {
+          width: 18PX;
+          height: 18PX;
+          margin-right: 10PX;
 
-            .props-group-index {
-                margin-top: 12PX;
-                display: flex;
-                font-size: 16PX;
-                align-items: center;
-                padding: 0 18PX;
-                border-radius: 6PX;
-                line-height: 42PX;
-                // background-color: #EDEDED;
-                background: white;
-
-                .icon {
-                    width: 18PX;
-                    height: 18PX;
-                    margin-right: 10PX;
-
-                    > img {
-                        display: block;
-                    }
-                }
-            }
+          > img {
+            display: block;
+          }
         }
-        .scroll-view {
-            height: 100%;
-            overflow: auto;
-            .main {
-                box-sizing: border-box;
-            }
-        }
-        @include landscape {
-            // background: white;
-            .drawer {
-                display: block;
-                // background: rgba(244, 244, 244, 0.74);
-            }
-            .scroll-view {
-                --margin-top: 48PX;
-                .main {
-                    width: 80%;
-                    max-width: 500PX;
-                    padding: var(--margin-top) 20PX;
-                    margin: auto;
-                }
-            }
-        }
+      }
     }
-}
 
+    .scroll-view {
+      height: 100%;
+      overflow: auto;
+
+      .main {
+        box-sizing: border-box;
+      }
+    }
+
+    @include landscape {
+      // background: white;
+      .drawer {
+        display: block;
+
+        // background: rgba(244, 244, 244, 0.74);
+      }
+
+      .scroll-view {
+        --margin-top: 48PX;
+
+        .main {
+          width: 80%;
+          max-width: 500PX;
+          padding: var(--margin-top) 20PX;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
 
 // theme
 .detail-page {
-    &.light{
+  &.light{
 
-    }
-    &.dark{
-        background: darken($dark-background, 3%);
+  }
 
-        .content{
-            .drawer{
-                @include classification-dark;
-                border-right: 1PX solid lighten($dark-background, 10%);
+  &.dark {
+    background: darken($dark-background, 3%);
 
-                .props-group-index {
-                    background: $dark-background;
-                    color: $dark-foceground;
+    .content {
+      .drawer {
+        @include classification-dark;
 
-                    .icon {
-                        @include filter-white;
-                    }
-                }
-            }
+        border-right: 1PX solid lighten($dark-background, 10%);
+
+        .props-group-index {
+          background: $dark-background;
+          color: $dark-foceground;
+
+          .icon {
+            @include filter-white;
+          }
         }
+      }
     }
+  }
 }

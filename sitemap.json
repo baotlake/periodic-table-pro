@@ -1,0 +1,31 @@
+{
+    "rules": [
+        {
+            "action": "allow",
+            "page": "pages/index/index"
+        },
+        {
+            "action": "allow",
+            "page": "pages/detail/index",
+            "params": [
+                "Z"
+            ]
+        },
+        {
+            "action": "allow",
+            "page": "pages/about/index"
+        },
+        {
+            "action": "allow",
+            "page": "pages/solubility-table/index"
+        },
+        {
+            "action": "disallow",
+            "page": "pages/like/index"
+        },
+        {
+            "action": "disallow",
+            "page": "pages/feedback/index"
+        }
+    ]
+}

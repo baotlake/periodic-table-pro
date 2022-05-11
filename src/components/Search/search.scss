@@ -1,0 +1,112 @@
+@use 'sass:color';
+@import '../../scss/color';
+@import '../../scss/icon';
+@import '../../scss/color-sign';
+
+.search-paper {
+  font-size: 16PX;
+
+  @include classification-light;
+
+  .container {
+    width: (360em / 16);
+    max-width: 90%;
+    margin: auto;
+    padding: (50em / 16) 0;
+  }
+
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: inherit;
+    width: 100%;
+    border-radius: (6em / 16);
+    padding-left: (20em /16);
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: (50em / 16) auto;
+    height: (50em / 16);
+    background: darken($light-background, 10%);
+  }
+
+  .input {
+    font-size: (18em / 16);
+
+    // color: rgba(0,0,0,0.6);
+    height: 100%;
+    width: 100%;
+
+    > input {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .clean-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: (20em / 16);
+    height: (20em / 16);
+    margin: 0 (5em / 16);
+    border-radius: 50%;
+    background: color.adjust($light-foceground, $alpha: -0.6);
+    color: $light-background;
+    flex: none;
+
+    > .css-icon {
+      @include close-icon(12PX ,1PX);
+    }
+  }
+
+  .search-button {
+    width: (50em / 16);
+    height: 100%;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+
+    }
+  }
+
+  .icon {
+    font-size: inherit;
+    width: (24em / 16);
+    height: (24em / 16);
+
+    @include filter-black(0.6);
+
+    > img {
+      display: block;
+    }
+  }
+}
+
+// theme
+.search-paper {
+  &.light {
+
+  }
+
+  &.dark {
+    @include classification-dark;
+
+    color: color.adjust($dark-foceground, $alpha: -0.2);
+
+    .search-input-wrapper {
+      background: lighten($dark-background, 8%);
+    }
+
+    .clean-button {
+      background: color.adjust($dark-foceground, $alpha: -0.6);
+      color: $dark-background;
+    }
+
+    .icon {
+      @include filter-white(0.8);
+    }
+  }
+}

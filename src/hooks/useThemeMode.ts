@@ -17,7 +17,7 @@ export default function useThemeMode(): [Theme, (theme: Theme) => void, boolean,
             setTheme(storageTheme)
             setBackground(storageTheme)
         }
-        if (followSystemTheme) {
+        if (followSystemTheme && systemTheme) {
             setTheme(systemTheme as Theme)
             setBackground(systemTheme as Theme)
         }
@@ -34,11 +34,13 @@ export default function useThemeMode(): [Theme, (theme: Theme) => void, boolean,
             // console.log('system theme change: ', res)
         }
 
-        if (Taro.onThemeChange && followSystem)
+        const weapp = process.env.TARO_ENV === 'weapp'
+
+        if (weapp && followSystem && Taro.onThemeChange)
             Taro.onThemeChange(handleThemeChange)
 
         return () => {
-            if (Taro.offThemeChange && followSystem)
+            if (weapp && followSystem && Taro.offThemeChange)
                 Taro.offThemeChange(handleThemeChange)
         }
     }, [followSystem])

@@ -1,7 +1,8 @@
-/// <reference path="node_modules/@tarojs/plugin-platform-weapp/types/shims-weapp.d.ts" />
+//// <reference path="../node_modules/@tarojs/plugin-platform-weapp/types/shims-weapp.d.ts" />
 
 declare module '*.png';
 declare module '*.gif';
+declare module '*.mp4';
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.svg';
@@ -17,3 +18,9 @@ declare namespace NodeJS {
     NODE_ENV: 'development' | 'production'
   }
 }
+
+
+declare const STORAGE_HOST: string
+declare const BUCKET_HOST: string
+declare const SEARCH_REWARDED_AD: string
+

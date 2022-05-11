@@ -8,6 +8,7 @@ export default {
     "pages/about/index",
     "pages/tools/index",
     "pages/setting/index",
+    "pages/search/index",
     "pages/solubility-table/index",
     "pages/pH-indicator/index",
     "pages/greek-alphabet/index",

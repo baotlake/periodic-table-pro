@@ -1,11 +1,13 @@
 @import "../../scss/color";
 @import "../../scss/icon";
+@import "../../scss/style";
 
 .display-properties {
   overflow: auto;
   padding: 8PX 0;
   box-sizing: border-box;
   height: 100%;
+  @include light-scrollbar;
 
   .item {
     box-sizing: border-box;
@@ -45,6 +47,7 @@
 
   }
   &.dark {
+    @include dark-scrollbar;
     .item {
       &.selected {
         background: lighten($dark-background, 5%);

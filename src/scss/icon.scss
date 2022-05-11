@@ -1,6 +1,15 @@
 
 $sqrt2: 1.4142;
 
+@mixin icon($size: 1em) {
+  font-size: $size;
+  width: 1em;
+  height: 1em;
+  margin-left: 5PX;
+  margin-right: 5PX;
+  vertical-align: -0.125em;
+}
+
 @mixin filter-white($opacity: 100%) {
   filter: grayscale(1) brightness(0) invert(1) opacity($opacity);
 }

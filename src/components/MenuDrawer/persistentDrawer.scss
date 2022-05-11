@@ -1,5 +1,6 @@
 @import "../../scss/color";
 @import "../../scss/icon";
+@import "../../scss/style";
 
 $profile-background: #E8E9DD;
 
@@ -37,6 +38,7 @@ $profile-background: #E8E9DD;
     background: #EEEEEE;
     height: 100%;
     overflow-y: auto;
+    @include light-scrollbar;
   }
 
   .profile-container {
@@ -79,6 +81,8 @@ $profile-background: #E8E9DD;
   }
 
   .menu-container {
+    font-size: 16PX;
+    padding-bottom: calc(env(safe-area-inset-bottom) + (80em / 16));
 
     .group {
       margin-bottom: 8PX;
@@ -132,6 +136,7 @@ $profile-background: #E8E9DD;
   &.dark {
     .menu-drawer {
       background: darken($dark-background, 5%);
+      @include dark-scrollbar;
     }
     .profile-container {
       background: darken($profile-background, 50%);

@@ -1,18 +1,16 @@
-import { View, Text, Image } from "@tarojs/components";
-import { useState } from "react";
-import classNames from "classnames";
-import { DetailData, Properties, PropertiesGroup } from '../../data/details'
-import ElectronsShell from "./ElectronsShell";
+import { View, Text, Image } from "@tarojs/components"
+import { useState } from "react"
+import classNames from "classnames"
+import { DetailData, propertiesLabel, propertiesGroupLabel } from '../../data/details'
+import ElectronsShell from "./ElectronsShell"
 
-import outlineImg from "../../assets/icons/outline.svg";
-import physicsImg from "../../assets/icons/physics.svg";
-import atomImg from "../../assets/icons/atom.svg";
-import timeImg from "../../assets/icons/time.svg";
-import otherImg from "../../assets/icons/other.svg";
+import outlineImg from "../../assets/icons/outline.svg"
+import physicsImg from "../../assets/icons/physics.svg"
+import atomImg from "../../assets/icons/atom.svg"
+import timeImg from "../../assets/icons/time.svg"
+import otherImg from "../../assets/icons/other.svg"
 
-import testImg from '../../assets/test/H.png'
-
-import "./index.scss";
+import "./index.scss"
 
 type Props = {
   id?: string
@@ -34,6 +32,9 @@ const icon = {
 
 const shellNameList = ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R']
 
+const host = process.env.TARO_ENV == 'weapp' ? STORAGE_HOST : BUCKET_HOST
+const spectralLinesPath = host + '/elements/spectral-lines/'
+
 export default function PropsGroup({ propsType, data, id, themeClass }: Props) {
   const [isCollapse, setIsCollapse] = useState(false);
 
@@ -44,7 +45,7 @@ export default function PropsGroup({ propsType, data, id, themeClass }: Props) {
         onClick={() => setIsCollapse(!isCollapse)}
       >
         <Image className='props-icon' src={icon[propsType]} />
-        {PropertiesGroup[propsType]}
+        {propertiesGroupLabel[propsType]}
         <View
           className={classNames("expand-icon", {
             collapse: isCollapse
@@ -57,7 +58,7 @@ export default function PropsGroup({ propsType, data, id, themeClass }: Props) {
         })}
       >
         {Object.keys(data).map(key => {
-          let title = Properties[key]
+          let title = propertiesLabel[key]
           let value = data[key] as string
 
           switch (key) {
@@ -82,8 +83,7 @@ export default function PropsGroup({ propsType, data, id, themeClass }: Props) {
                   <View className='title'>{title}</View>
                   <Image
                     className='spectral-lines'
-                    src={`cloud://periodictable-761124.7065-periodictable-761124-1253556794/elements_spectral/${value}.png`}
-                  // src={testImg}
+                    src={spectralLinesPath + value + '.png'}
                   />
                 </View>
               )

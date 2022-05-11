@@ -7,7 +7,7 @@ import { mediumLongForm } from "../../data/table";
 import {
   symbol,
   zhCNNames,
-  formalShortAtomicWeigths,
+  formalShortAtomicWeights,
   electronConfigurations,
   block,
   standardState,
@@ -23,6 +23,7 @@ import Groups from "./Groups";
 import Periods from "./Periods";
 import Legend from "./Legend";
 import { PeriodicTableContext } from "./reducer";
+import { reportEvent } from "../../utils/analytics";
 
 import "./periodicTable.scss";
 
@@ -43,7 +44,10 @@ export default function PeriodicTable({ themeClass }: Props) {
     setCurrentZ(Z)
     Taro.navigateTo({
       url: "/pages/detail/index?Z=" + Z
-    });
+    })
+    reportEvent('element_detail', {
+      "name": symbol[Z - 1]
+    })
   };
 
   const calcState = useCallback((index: number) => {
@@ -64,7 +68,7 @@ export default function PeriodicTable({ themeClass }: Props) {
   const getDisplayProperty = useCallback((index: number) => {
     switch (displayProperty) {
       case "atomicWeight":
-        return formalShortAtomicWeigths[index]
+        return formalShortAtomicWeights[index]
       case 'pinyin':
         return pinyin[index]
       case 'zhCNName&pinyin':
@@ -80,7 +84,7 @@ export default function PeriodicTable({ themeClass }: Props) {
       case 'electronConfiguration':
         return electronConfigurations[index]
       default:
-        return formalShortAtomicWeigths[index]
+        return formalShortAtomicWeights[index]
     }
   }, [displayProperty])
 

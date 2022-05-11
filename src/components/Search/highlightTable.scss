@@ -1,0 +1,30 @@
+.highlight-table {
+  position: relative;
+  margin: auto;
+  width: 66%;
+  padding-bottom: 66% * 10 / 18;
+
+  .table {
+    display: grid;
+    grid: auto-flow 1fr / repeat(18, 1fr);
+    grid-gap: 0;
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .item {
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+
+    &.element {
+      background: var(--color);
+    }
+
+    &.highlight {
+      opacity: 0.6;
+    }
+  }
+}

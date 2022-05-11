@@ -19,7 +19,7 @@ export function relativeTrendValue(dataList: number[] | string[]) {
 export function getTrendData(type: string) {
   switch (type) {
     case 'atomicWeight':
-      return relativeTrendValue(elements.formalShortAtomicWeigths)
+      return relativeTrendValue(elements.formalShortAtomicWeights)
     case 'electronegativity':
       return relativeTrendValue(elements.electronegativity)
     case 'atomicRadius':
@@ -30,6 +30,6 @@ export function getTrendData(type: string) {
       return relativeTrendValue(elements.boilingPoints)
     case '':
     default:
-      return relativeTrendValue(elements.formalShortAtomicWeigths)
+      return relativeTrendValue(elements.formalShortAtomicWeights)
   }
 }

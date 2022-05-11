@@ -31,10 +31,13 @@ export default function ElementProfile({
   // const menuRect = useMenuButtonClientRect()
   const viewRef = useRef<HTMLElement>()
 
+  const host = process.env.TARO_ENV == 'weapp' ? STORAGE_HOST : BUCKET_HOST
+  const imageUrl = host + '/elements/1920p/' + symbol + '.jpg'
+
   const handleViewImage = () => {
     Taro.previewImage({
-      urls: [],
-      current: ''
+      urls: [imageUrl],
+      current: imageUrl,
     })
   };
 
@@ -54,7 +57,7 @@ export default function ElementProfile({
       <Image
         className='image'
         mode='aspectFill'
-        src={"cloud://test-c59f6a.7465-test-c59f6a/elemens_image/" + symbol + '.jpg'}
+        src={imageUrl}
       />
       <View className='data-layer'>
         <Text className='category'>{zhCNCategories[category]}</Text>

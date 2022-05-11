@@ -1,0 +1,110 @@
+@use "sass:color";
+@import "../../scss/color";
+@import "../../scss/icon";
+
+.bottom-navigation-wrapper {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    z-index: 99;
+    margin-bottom: env(safe-area-inset-bottom);
+
+    .box {
+        position: absolute;
+        font-size: 16PX;
+        bottom: (15em / 16);
+        right: 50%;
+        transform: translateX(50%);
+        width: (380em / 16);
+        max-width: 90%;
+        height: (60em / 16);
+        border-radius: (12em / 16);
+        color: color.change($light-foceground, $alpha: 0.6);
+        background: color.change($light-background, $alpha: 0.4);
+        backdrop-filter: blur((30em / 16));
+        box-shadow: 0 (3em / 16) 1em rgb(0 0 0 / 20%);
+        display: flex;
+        justify-content: space-between;
+        overflow: hidden;
+
+        $d: 0.3s;
+
+        transition: all $d;
+
+        &.collapse {
+            right: (30em / 16);
+            transform: translateX(0);
+            width: (60em / 16);
+            border-radius: (30em / 16);
+            box-shadow: (2em / 16) (3em / 16) 1em rgb(0 0 0 / 10%);
+        }
+    }
+
+    .collapse {
+        .item:first-child {
+            flex: none;
+            display: flex;
+
+            .icon {
+                margin: auto;
+            }
+
+            .label {
+                display: none;
+            }
+        }
+    }
+
+    .item {
+        position: relative;
+        font-size: (10em / 16);
+        text-align: center;
+        width: (60em / 10);
+        padding: (10em / 10);
+        box-sizing: border-box;
+    }
+
+    .icon {
+        font-size: inherit;
+        width: (24em / 10);
+        height: (24em / 10);
+        display: block;
+        margin: auto;
+
+        @include filter-black(60%);
+
+        > img {
+            display: block;
+        }
+    }
+
+    .wx-open-type-button {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+}
+
+// theme
+.bottom-navigation-wrapper {
+    &.light {
+    }
+
+    &.dark {
+        .box {
+            color: $dark-foceground;
+            color: color.change($dark-foceground, $alpha: 0.4);
+            background: color.change($dark-background, $alpha: 0.4);
+        }
+
+        .icon {
+            @include filter-white(60%);
+        }
+    }
+}

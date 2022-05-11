@@ -2,7 +2,7 @@ export {
   symbol,
   enName,
   zhCNNames,
-  formalShortAtomicWeigths,
+  formalShortAtomicWeights,
   pinyin,
   electronConfigurations,
   block,
@@ -28,10 +28,6 @@ export {
   namedBy,            // 命名
 } from './elements.json'
 
-
-// A formal short atomic weight
-// 当前值可能并非准确的formal short 值
-
 enum StateOfMatter {
   gas,
   solid,
@@ -40,9 +36,6 @@ enum StateOfMatter {
   expectedGas,
   unknown
 }
-
-// 首次分离
-// const firstIsolation = 
 
 export {
   StateOfMatter,

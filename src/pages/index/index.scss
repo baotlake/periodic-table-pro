@@ -1,6 +1,7 @@
 @use 'sass:color';
 @import "../../scss/color";
 @import "../../scss/icon";
+@import "../../scss/style";
 
 .index-page {
 
@@ -14,6 +15,7 @@
       background: none;
       backdrop-filter: blur(10px);
       --transition: all 0.3s;
+      border-radius: (6em / 16);
 
       &.menu {
         @include  menu-icon(20PX, 2PX);
@@ -26,16 +28,18 @@
   .pt-container {
     display: flex;
     overflow: auto;
-    padding: 60PX 0 60PX;
+    font-size: 16PX;
+    padding: (60em / 16) 0 (60em / 16);
+    padding-bottom: calc(env(safe-area-inset-bottom) + (80em / 16));
     height: 100vh;
     max-height: 100vh;
     max-width: 100vw;
     box-sizing: border-box;
-    font-size: 16PX;
+
+   @include light-scrollbar;
   
     > .periodic-table {
       font-size: 1em;
-
     }
   }
 }
@@ -54,6 +58,9 @@
         color: $dark-foceground;
         background: color.change($dark-background,  $lightness: 5%, $alpha: 0.2);
       }
+    }
+    .pt-container {
+      @include dark-scrollbar;
     }
   }
 }

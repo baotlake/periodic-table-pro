@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
 import { StorageKey } from '../../../types/storage'
+import { reportEvent } from '../../../utils/analytics'
 
 export default function useAddGuide(): [boolean, () => void] {
     const [visible, setVisible] = useState(false)
@@ -15,7 +16,10 @@ export default function useAddGuide(): [boolean, () => void] {
 
         if (now - closedAt > days21 && weapp) {
             setTimeout(() => {
-                mount && setVisible(true)
+                if (mount) {
+                    setVisible(true)
+                    reportEvent('add_guide', {})
+                }
             }, 1000 * 6)
             // 18 seconds
             setTimeout(() => {
@@ -31,6 +35,7 @@ export default function useAddGuide(): [boolean, () => void] {
     const handleClose = () => {
         setVisible(false)
         Taro.setStorageSync(StorageKey.closeAddGuideAt, Date.now())
+        reportEvent('close_add_guide', {})
     }
 
     return [visible, handleClose]

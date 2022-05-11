@@ -1,0 +1,16 @@
+@import '../../scss/color';
+
+.search-page {
+  min-height: 100vh;
+}
+
+// theme
+.search-page {
+  &.light {
+
+  }
+
+  &.dark {
+    background: darken($dark-background, 3%);
+  }
+}

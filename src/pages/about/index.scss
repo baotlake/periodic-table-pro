@@ -1,12 +1,13 @@
-@import '../../scss/color';
+@import "../../scss/color";
+@import "../../scss/icon";
 
 .about-page {
   background: darken($light-background, 5%);
   .profile {
     padding: 60PX 0 20PX;
     .logo {
-      width: 72PX;
       height: 72PX;
+      width: 72PX;
       border-radius: 50%;
       margin: auto;
       display: block;
@@ -23,17 +24,32 @@
     line-height: 1.6;
     padding: 0 40PX;
     margin-bottom: 22PX;
+
+    .icon {
+      line-height: 1.6;
+      @include icon(1.2em);
+      @include filter-black;
+    }
+
+    .text {
+      user-select: all;
+      letter-spacing: -0.5px;
+    }
   }
 }
 
 // theme
 .about-page {
   &.light {
-
   }
   &.dark {
     background: darken($dark-background, 3%);
     color: $dark-foceground;
+
+    .section {
+      .icon {
+        @include filter-white;
+      }
+    }
   }
 }
-

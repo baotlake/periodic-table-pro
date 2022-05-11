@@ -6,6 +6,7 @@ import { reportEvent } from '../../utils/analytics'
 
 import PeriodicTable, { initState, reducer, PeriodicTableContext } from '../../components/PeriodicTable'
 import NavigationBar from '../../components/NavigationBar/NavigationBar'
+import { BottomNavigation } from '../../components/BottomNavigation'
 import { PersistentDrawer } from "../../components/MenuDrawer"
 import { AddGuide } from "../../components/Guide"
 import useMenuButtonClientRect from "../../hooks/useMenuButtonClientRect"
@@ -111,6 +112,8 @@ export default function Index() {
         visible={menuVisible}
         onClose={() => setMenuVisible(false)}
       />
+
+      <BottomNavigation  themeClass={theme} />
     </View>
   )
 }

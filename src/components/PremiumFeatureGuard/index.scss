@@ -1,0 +1,128 @@
+@use "sass:color";
+@import '../../scss/icon';
+@import "../../scss/color";
+
+.premium-feature-guard {
+  font-size: 16PX;
+
+  &.unlock {
+    display: none;
+  }
+
+  .alert-bar {
+    $f: 12;
+    background: lighten($light-foceground, 10%);
+    border-radius: (6EM / $f);
+
+    box-sizing: border-box;
+    color: darken($light-background, 10%);
+
+    font-size: (12EM / 16);
+    line-height: (20EM / $f);
+    margin: (20EM / $f) 0;
+    margin: auto;
+    max-width: 80%;
+    padding: (10EM / $f) (20EM / $f);
+    width: (360EM / $f);
+
+    .icon {
+      @include filter-white(80%);
+      font-size: inherit;
+      height: (20EM / $f);
+      margin-right: (12EM / $f);
+      vertical-align: bottom;
+      width: (20EM / $f);
+    }
+  }
+
+  .dialog-backdrop {
+    background: color.adjust($light-foceground, $alpha: -0.8);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+
+    &.visible {
+      display: flex;
+    }
+  }
+
+  .dialog {
+    background: color.adjust($light-background, $alpha: -0.1);
+    backdrop-filter: blur((10em / 16));
+    border-radius: (6EM / 16);
+    box-shadow: 0 0 (15EM / 16) color.adjust($light-foceground, $alpha: -0.8);
+    margin: auto;
+    position: relative;
+    width: (280EM / 16);
+
+    .content {
+      padding: (20EM / 16);
+    }
+  }
+
+  .button-group {
+    display: flex;
+    height: (48EM / 16);
+    position: relative;
+    border-top: 1PX solid darken($light-background, 20%);
+
+    &::after {
+      background: darken($light-background, 20%);;
+      content: '';
+      height: 100%;
+      left: 50%;
+      position: absolute;
+      width: 1PX;
+    }
+
+    .button {
+      line-height: (48EM / 16);
+      text-align: center;
+      width: 50%;
+
+      &:active {
+      }
+      &.disable {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .share {
+    bottom: -(120EM / 16);
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    .button {
+      border-radius: (20EM / 16);
+      height: (40EM / 16);
+      top: 60%;
+      width: (140EM / 16);
+    }
+  }
+}
+
+
+// theme
+.premium-feature-guard {
+  &.light {
+
+  }
+
+  &.dark {
+
+    .alert-bar {
+      background: darken($dark-foceground, 0%);
+      color: darken($dark-background, 20%);
+
+      .icon {
+        @include filter-black(80%);
+      }
+    }
+  }
+}

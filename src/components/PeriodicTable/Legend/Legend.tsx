@@ -5,7 +5,7 @@ import { View, Slider, Image } from '@tarojs/components'
 import ElementBox from "../../ElementBox"
 import LineChart from "./LineChart"
 import { zhCNCategories, Categories, elementsCategories } from "../../../data/classification"
-import { formalShortAtomicWeigths } from "../../../data/elements"
+import { formalShortAtomicWeights } from "../../../data/elements"
 import { PeriodicTableContext } from "../reducer"
 import { DisplayPropertiesModal } from "../../Modal"
 import { propertiesLabels } from "../../../data/displayProperties"
@@ -109,7 +109,7 @@ export default function Legend({ children, themeClass }: Props) {
                 atomicNumber={1}
                 symbol='H'
                 zhName='氢'
-                bc={formalShortAtomicWeigths[1 - 1] + ""}
+                bc={formalShortAtomicWeights[1 - 1] + ""}
               />
             )
           }

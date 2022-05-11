@@ -12,16 +12,16 @@ const menus = [
         key: 'group-1',
         items: [
             {
-                name: 'feedback',
-                icon: messageIcon,
-                label: '意见反馈',
-                route: '/pages/feedback/index',
-            },
-            {
                 name: 'guide',
                 icon: ideaIcon,
                 label: '使用说明',
                 route: '/pages/guide/index',
+            },
+            {
+                name: 'feedback',
+                icon: messageIcon,
+                label: '意见反馈',
+                route: '/pages/feedback/index',
             },
             {
                 name: 'about',

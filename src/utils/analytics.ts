@@ -1,8 +1,9 @@
 import Taro from '@tarojs/taro'
 
 
-export function reportEvent(eventId: string, data: Taro.General.IAnyObject) {
+export function reportEvent(eventId: string, data: TaroGeneral.IAnyObject) {
     if (process.env.TARO_ENV === 'weapp') {
-        Taro.reportAnalytics(eventId, data)
+        Taro.reportEvent(eventId, data)
+        // Taro.reportAnalytics(eventId, data)
     }
 }

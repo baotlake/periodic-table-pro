@@ -1,0 +1,31 @@
+@use "sass:color";
+@import "./color";
+
+@mixin scrollbar($color: whitesmoke) {
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 8px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        background: $color;
+        background-clip: content-box;
+    }
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+    &::-webkit-scrollbar-corner {
+        display: none;
+    }
+}
+
+@mixin light-scrollbar {
+    @include scrollbar(darken($light-background, 15%));
+}
+
+@mixin dark-scrollbar {
+    @include scrollbar(color.change($dark-background, $lightness: 30%));
+}

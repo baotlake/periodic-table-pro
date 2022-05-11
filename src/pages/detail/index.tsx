@@ -5,7 +5,7 @@ import { View, Image, ScrollView } from "@tarojs/components";
 import ElementProfile from "../../components/ElementProfile";
 import {
   symbol,
-  formalShortAtomicWeigths,
+  formalShortAtomicWeights,
   zhCNNames,
   enName,
   pinyin
@@ -13,7 +13,7 @@ import {
 import { elementsCategories } from "../../data/classification";
 import { NavigationHeader } from "../../components/NavigationBar";
 import PropsGroup from "../../components/PropsGroup";
-import { getDetailData, PropertiesGroup } from "../../data/details";
+import { getDetailData, propertiesGroupLabel } from "../../data/details";
 import ElementCard from "../../components/ElementCard";
 import useMenuButtonClientRect from "../../hooks/useMenuButtonClientRect";
 import useThemeMode from "../../hooks/useThemeMode";
@@ -54,7 +54,7 @@ export default function DetailPage() {
 
   return (
     <View className={classNames('detail-page', theme)}>
-      <NavigationHeader themeClass={theme} background={false} />
+      <NavigationHeader themeClass={theme} />
       <View className='content'>
         <View
           className='drawer'
@@ -68,7 +68,7 @@ export default function DetailPage() {
             atomicNumber={atomicNumber}
             category={elementsCategories[atomicNumber - 1]}
             symbol={symbol[atomicNumber - 1]}
-            atomicWeight={formalShortAtomicWeigths[atomicNumber - 1]}
+            atomicWeight={formalShortAtomicWeights[atomicNumber - 1]}
             name={zhCNNames[atomicNumber - 1]}
             pinyin={pinyin[atomicNumber - 1]}
             enName={enName[atomicNumber - 1]}
@@ -81,7 +81,7 @@ export default function DetailPage() {
                 onClick={() => setScrollInto(key)}
               >
                 <Image className='icon' src={icon[key]} />
-                {PropertiesGroup[key]}
+                {propertiesGroupLabel[key]}
               </View>
             ))
           }
@@ -99,7 +99,7 @@ export default function DetailPage() {
               atomicNumber={atomicNumber}
               category={elementsCategories[atomicNumber - 1]}
               symbol={symbol[atomicNumber - 1]}
-              atomicWeight={formalShortAtomicWeigths[atomicNumber - 1]}
+              atomicWeight={formalShortAtomicWeights[atomicNumber - 1]}
               name={zhCNNames[atomicNumber - 1]}
               pinyin={pinyin[atomicNumber - 1]}
               enName={enName[atomicNumber - 1]}

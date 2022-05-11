@@ -1,0 +1,44 @@
+@import '../../scss/color-sign';
+
+.search-result-item {
+  display: flex;
+  font-size: inherit;
+  justify-content: space-between;
+  width: 100%;
+  margin: (20em / 16) auto;
+
+  .box-wrapper {
+    flex: none;
+    margin-right: (16em / 16);
+  }
+
+  .detail {
+    position: relative;
+    font-size: (14em / 16);
+    line-height: 1.7;
+
+    $f: 14;
+
+    width: 100%;
+    padding: (6em / $f) (12em / $f);
+    box-sizing: border-box;
+    z-index: 1;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: (6em / $f);
+      background: var(--color);
+      z-index: -1;
+      opacity: 0.2;
+    }
+  }
+
+  .name {
+    margin-right: (30em / 14);
+  }
+}

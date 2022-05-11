@@ -1,4 +1,4 @@
-import { DisplayProperty } from "./periodicTable";
+import { DisplayProperty } from "./element";
 
 export enum StorageKey {
     version = 'version',
@@ -6,6 +6,7 @@ export enum StorageKey {
     followSystemTheme = 'followSystemTheme',
     displayProperty = 'displayProperty',
     closeAddGuideAt = 'closeAddGuideAt',
+    searchFeature = 'searchFeature',
 }
 
 export interface StorageValue {
@@ -14,4 +15,5 @@ export interface StorageValue {
     followSystemTheme: boolean
     displayProperty: DisplayProperty
     closeAddGuideAt: number
+    searchFeature: boolean
 }

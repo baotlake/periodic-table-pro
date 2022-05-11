@@ -1,0 +1,12 @@
+.search-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-height: 100vh;
+  font-size: inherit;
+  width: 50vw;
+  max-width: (360em / 16);
+  background: white;
+  z-index: 99;
+  box-shadow: 0 0 15PX rgb(0 0 0 / 20%);
+}

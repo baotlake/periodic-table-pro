@@ -1,5 +1,5 @@
 import * as elements from './elements'
-// import { StateOfMatter } from "./elements";
+import { PropertiesGroup, Property } from '../types/element'
 
 export type DetailData = {
   symbol: string
@@ -43,41 +43,46 @@ export type DetailData = {
   }
 }
 
-export enum PropertiesGroup {
-  basic = '概述',
-  physical = '物理性质',
-  atomic = '原子性质',
-  other = '其他属性',
-  history = '发现',
+export const propertiesGroupLabel: Record<PropertiesGroup, string> = {
+  basic: '概述',
+  physical: '物理性质',
+  atomic: '原子性质',
+  other: '其他属性',
+  history: '发现'
 }
 
-export enum Properties {
-  enName = '英文名',
-  group = '族',
-  period = '周期',
-  block = '区',
-  electronConfiguration = '电子排布',
-  electronsPerShell = '每层电子数',
-  phaseAtSTP = '相态（标况）',
-  meltingPoint = '熔点',
-  boilingPoint = '沸点',
-  density = '密度',
-  heatOfFusion = '熔化热',
-  molarHeatCapacity = '比热容',
-  oxidationStates = '氧化态',
-  electronegativity = '电负性',
-  ionizationEnergies = '电离能',
-  atomicRadius = '原子半径',
-  covalentRadius = '共价半径',
-  vanDerWaals = '范德华半径',
-  spectralLines = '光谱线',
-  crystalStructure = '晶体结构',
-  magneticOrdering = '磁序',
-  speedOfSound = '声速',
-  thermalConductivity = '热导率',
-  CASNumber = 'CAS号',
-  discovery = '发现',
-  namedBy = '命名',
+export const propertiesLabel: Record<Property, string> = {
+  symbol: '元素符号',
+  atomicNumber: '原子序数',
+  enName: '英文名',
+  zhName: '名称',
+  atomicWeight: '原子量',
+  pinyin: '拼音',
+  group: '族',
+  period: '周期',
+  block: '区',
+  electronConfiguration: '电子排布',
+  electronsPerShell: '每层原子数',
+  phaseAtSTP: '相态（标况）',
+  meltingPoint: '熔点',
+  boilingPoint: '沸点',
+  density: '密度',
+  heatOfFusion: '熔化热',
+  molarHeatCapacity: '比热容',
+  oxidationStates: '氧化态',
+  electronegativity: '电负性',
+  ionizationEnergies: '电离能',
+  atomicRadius: '原子半径',
+  covalentRadius: '共价半径',
+  vanDerWaals: '范德华半径',
+  spectralLines: '光谱线',
+  crystalStructure: '晶体结构',
+  magneticOrdering: '磁序',
+  speedOfSound: '声速',
+  thermalConductivity: '热导率',
+  CASNumber: 'CAS号',
+  discovery: '发现',
+  namedBy: '命名',
 }
 
 const stateOfMatter = [

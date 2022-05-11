@@ -1,7 +1,7 @@
 import {createContext, Dispatch} from "react";
-import {formalShortAtomicWeigths} from '../../data/elements'
+import {formalShortAtomicWeights} from '../../data/elements'
 import {relativeTrendValue} from '../../utils/trend'
-import { DisplayProperty, ColorSign, Emphasize } from '../../types/periodicTable'
+import { DisplayProperty, ColorSign, Emphasize } from '../../types/element'
 
 type State = {
   emphasize: Emphasize
@@ -41,7 +41,7 @@ type Action = {
 const initState: State = {
   emphasize: 'symbol',
   colorSign: 'classification',
-  trendData: relativeTrendValue(formalShortAtomicWeigths),
+  trendData: relativeTrendValue(formalShortAtomicWeights),
   temperature: 0,
   displayProperty: 'atomicWeight'
 }
@@ -50,7 +50,7 @@ function init() {
   return {
     emphasize: 'symbol',
     colorSign: 'classification',
-    trendData: relativeTrendValue(formalShortAtomicWeigths),
+    trendData: relativeTrendValue(formalShortAtomicWeights),
   }
 }
 
