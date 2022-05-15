@@ -4,6 +4,7 @@ import classNames from "classnames"
 import menus from './menus'
 
 import backgroundImg from '../../assets/images/background.jpg'
+import logoImg from '../../assets/images/logo.png'
 import './persistentDrawer.scss'
 
 
@@ -44,8 +45,8 @@ export default function PersistentDrawer({ themeClass, visible, onClose }: Props
                   </>
                 ) : (
                   <>
-                    <Image className='avatar' src='' />
-                    <Text className='nickname'>欢洋</Text>
+                    <Image className='avatar' src={logoImg} />
+                    <Text className='nickname'>元素周期表Pro</Text>
                   </>
                 )
               }

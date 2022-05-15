@@ -1,9 +1,10 @@
 import React, { PropsWithChildren, CSSProperties } from "react";
 import classNames from "classnames";
 import { View } from "@tarojs/components";
+import MenuButton from "./MenuButton";
 import useMenuButtonClientRect from "../../hooks/useMenuButtonClientRect";
 
-import "./navigationBar.scss";
+import "./navigationBar.scss"
 
 type Props = PropsWithChildren<{
   className?: string
@@ -26,11 +27,9 @@ export default function NavigationBar({ children, className }: Props) {
       } as CSSProperties}
     >
       {children}
-      {process.env.NODE_ENV === 'development' &&
-        process.env.TARO_ENV === 'h5' &&
+      {process.env.TARO_ENV === 'h5' &&
         (
-          <View
-            className='fake-button'
+          <MenuButton
             style={{
               position: 'absolute',
               left: rect.left + 'px',

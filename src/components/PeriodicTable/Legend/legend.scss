@@ -146,6 +146,7 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .icon {
       font-size: 1em;
@@ -170,6 +171,7 @@
 
     .switch {
       margin-left: (12em / 16);
+      cursor: pointer;
 
       @include switch;
     }
@@ -212,6 +214,7 @@
       margin-bottom: (10em / 16);
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       .icon {
         margin-left: (5em / 16 / 0.75);
@@ -368,6 +371,7 @@
   }
 
   .switch {
+    cursor: pointer;
     @include switch(true);
 
     flex-direction: column;

@@ -149,3 +149,29 @@ $sqrt2: 1.4142;
     transform: translate(-50%, 0) rotateZ(-45deg);
   }
 }
+
+@mixin _wechat_menu_more_dot($size: 4PX) {
+  width: $size;
+  height: $size;
+  border-radius: $size / 2;
+  background: currentColor;
+  position: absolute;
+}
+@mixin wechat-menu-more($size: 16PX) {
+  @include _wechat_menu_more_dot($size / 4);
+
+  &::before {
+    content: '';
+    left: -100%;
+    top: 50%;
+    transform: translate(-$size / 5, -50%);
+    @include _wechat_menu_more_dot($size / 6);
+  }
+  &::after {
+    content: '';
+    right: -100%;
+    top: 50%;
+    transform: translate($size / 5, -50%);
+    @include _wechat_menu_more_dot($size / 6);
+  }
+}

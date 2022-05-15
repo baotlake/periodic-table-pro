@@ -1,0 +1,101 @@
+@import "../../scss/icon";
+
+.menu-button {
+  position: absolute;
+  display: flex;
+  pointer-events: all;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0 0 0 0;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    content: "";
+    display: block;
+    border-radius: var(--radius);
+  }
+
+  .more {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      width: 1px;
+      top: 20%;
+      height: 60%;
+      right: 0;
+      content: "";
+      display: block;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .css-icon {
+      color: white;
+      @include wechat-menu-more();
+    }
+  }
+
+  .other {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .css-icon {
+      color: white;
+      border: 2px solid currentColor;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 40%;
+        height: 40%;
+        border-radius: 50%;
+        background: currentColor;
+      }
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    backdrop-filter: blur(10px);
+    top: 150%;
+    // right: 0;
+    right: 20PX;
+    width: 300px;
+    // height: 300px;
+    background: white;
+    border-radius: 8PX;
+    font-size: 16PX;
+    // overflow: hidden;
+    padding: 20PX;
+    box-sizing: border-box;
+
+    &::before {
+      content: '';
+      background: white;
+      width: 18PX;
+      height: 18PX;
+      position: absolute;
+      display: block;
+      top: -6PX;
+      right: 20PX;
+      transform: rotate(45deg);
+      z-index: -1;
+    }
+  }
+}

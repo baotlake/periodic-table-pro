@@ -28,5 +28,8 @@ export default {
   darkmode: true,
   // sitemapLocation: "sitemap.json",
   // navigateToMiniProgramAppIdList: ["wx16b955041265aaf5"]
+
+  // h5 
+  "animation": false,
 };
 

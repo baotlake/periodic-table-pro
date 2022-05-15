@@ -75,6 +75,7 @@ $profile-background: #E8E9DD;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          color: rgba(0,0,0,0.8);
         }
       }
     }
@@ -94,6 +95,7 @@ $profile-background: #E8E9DD;
       margin-top: 1PX;
       background: white;
       position: relative;
+      cursor: pointer;
 
       .icon {
         width: 22PX;
