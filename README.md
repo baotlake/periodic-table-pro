@@ -53,7 +53,7 @@ https://user-images.githubusercontent.com/33485493/167868738-7feef00d-1136-427f-
 
 
 ## 小程序码
-![元素周期表Pro](src/assets/images/wxacode.jpg)
+![元素周期表Pro](src/assets/docs/gh_56cdd91ee838_430.jpg)
 
 
 ## 网页APP
