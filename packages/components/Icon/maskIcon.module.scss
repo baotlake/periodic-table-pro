@@ -1,0 +1,12 @@
+.mask-icon {
+  display: inline-block;
+}
+
+.mask-bg {
+  width: 1.06em;
+  height: 1.06em;
+  background: currentColor;
+  mask: var(--mask) 0% 0% / 100% 100%;
+  display: inline-block;
+  vertical-align: -0.125em;
+}

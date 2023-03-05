@@ -1,0 +1,7 @@
+
+@mixin landscape() {
+    @media screen and (min-width: 600PX) {
+        @content;
+    }
+}
+

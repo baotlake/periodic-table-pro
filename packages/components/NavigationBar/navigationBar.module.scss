@@ -1,0 +1,13 @@
+
+
+.navigation-bar {
+    position: fixed;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding-bottom: 8PX;
+    z-index: 500;
+    pointer-events: none;
+}

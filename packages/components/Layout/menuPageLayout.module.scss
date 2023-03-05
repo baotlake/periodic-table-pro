@@ -1,0 +1,55 @@
+@use "sass:color";
+@import '../scss/media';
+@import '../scss/theme';
+
+.layout {
+  display: flex;
+  height: 100vh;
+  background: darken($light-background, 5%);
+  color: $light-foceground;
+
+  --margin-top: 3em;
+  --margin-left: 1.25em;
+
+  @include landscape {
+    .layout-drawer {
+      display: block;
+      flex-shrink: 0.3;
+    }
+
+    .layout-main {
+      padding: 0 1.5em;
+    }
+
+    .layout-content {
+      max-width: 32.5em;
+      margin: auto;
+    }
+  }
+}
+
+.layout-drawer {
+  display: none;
+  padding-top: var(--margin-top);
+}
+
+.layout-main {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.layout-content {
+  padding: var(--margin-top) 0;
+}
+
+
+// theme
+.layout {
+  &.light {}
+
+  &.dark {
+    background: darken($dark-background, 3%);
+    color: color.change($dark-foceground, $alpha: 0.85);
+  }
+}

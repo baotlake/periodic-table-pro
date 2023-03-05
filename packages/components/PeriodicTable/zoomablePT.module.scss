@@ -1,0 +1,23 @@
+@import "../scss/style";
+
+.zoomable-pt {
+    display: flex;
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+    padding: 3.75em 0;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
+    box-sizing: border-box;
+
+    @include light-scrollbar;
+}
+
+
+// theme
+.zoomable-pt {
+    &.light {}
+
+    &.dark {
+        @include dark-scrollbar;
+    }
+}

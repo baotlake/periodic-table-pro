@@ -1,0 +1,66 @@
+@import '../../scss/color';
+@import '../../scss/media';
+
+.feedback-page {
+  background: darken($light-background, 5%);
+  .card {
+    background: $light-background;
+    height: 100%;
+    min-height: 100vh;
+
+    @include landscape {
+      background: none;
+      min-height: 0;
+    }
+  }
+  .top-container {
+    padding: 40PX;
+    background: darken($light-background, 5%);
+
+    .image {
+      width: 180PX;
+      height: 160PX;
+      display: block;
+      margin: auto auto 20PX;
+    }
+
+    .text {
+      font-size: 16PX;
+      line-height: 1.6;
+      // color: #545454;
+      color: lighten($light-foceground, 40%);
+    }
+  }
+
+  .bottom-container {
+    padding: 40PX 20PX;
+    .button {
+      margin-bottom: 30PX;
+    }
+  }
+}
+
+// theme
+.feedback-page {
+  &.light {
+
+  }
+  &.dark {
+    background: darken($dark-background, 3%);
+    color: $dark-foceground;
+    .card {
+      background: $dark-background;
+      color: $dark-foceground;
+      
+      @include landscape {
+        background: none;
+      }
+    }
+    .top-container {    
+      background: darken($dark-background, 3%);
+      .text {
+        color: darken($dark-foceground, 40%);
+      }
+    }
+  }
+}

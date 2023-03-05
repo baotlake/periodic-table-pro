@@ -1,0 +1,44 @@
+@use 'sass:color';
+@import '../scss/theme';
+
+.like {
+    padding: 1em 2.5em;
+}
+
+.text {
+    font-size: 18PX;
+    line-height: 2;
+    margin-bottom: 2em;
+}
+
+.qr-wrapper {
+    position: relative;
+    width: 100%;
+    // max-width: 260PX;
+    margin: auto auto 40PX;
+}
+
+.qr-block {
+    width: 100%;
+    height: 0;
+    padding-bottom: 80%;
+}
+
+.qr {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 0.5em;
+}
+
+// theme
+.like-page {
+    &.light {}
+
+    &.dark {
+        // background: darken($dark-background, 3%);
+        // color: color.change($dark-foceground, $alpha: 0.85);
+    }
+}

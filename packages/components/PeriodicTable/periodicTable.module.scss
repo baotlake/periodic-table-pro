@@ -1,0 +1,91 @@
+@import '../scss/color-sign';
+@import '../scss/theme';
+@import '../scss/media';
+
+.periodic-table {
+  margin: auto;
+}
+
+.periodic-table.medium-long-form {
+  display: grid;
+  grid:
+    '. groups'
+    'periods main';
+  padding: (20em / 16);
+  width: fit-content;
+
+  @include landscape {
+    padding: (20em / 16) (40em / 16);
+  }
+}
+
+.main-table {
+  position: relative;
+  grid-area: main;
+  display: grid;
+  grid: auto-flow 1fr / repeat(18, 1fr);
+
+  //grid: auto-flow / repeat(18, 1fr);
+  //grid-gap: 1PX;
+  grid-gap: 0;
+  font-size: 1em;
+
+  @include classification-light;
+  @include block-light;
+  @include state-light;
+}
+
+.trend {
+  --trend-bg: none;
+
+  color: $light-foceground;
+
+  &::before {
+    // background: red;
+    // opacity: 0;
+    // opacity: var(--trend-value);
+    opacity: 1;
+    background: var(--trend-bg);
+  }
+
+  &::after {
+    color: $light-background;
+  }
+}
+
+.element-box {
+  font-size: 1em;
+}
+
+.pt__legend {
+  font-size: 1em;
+}
+
+.pt__periods {
+  font-size: 1em;
+}
+
+.pt__groups {
+  font-size: 1em;
+}
+
+// theme
+.periodic-table.medium-long-form {
+  &.light {}
+
+  &.dark {
+    .main-table {
+      @include classification-dark;
+      @include block-dark;
+      @include state-dark;
+    }
+
+    .trend {
+      color: $dark-foceground;
+
+      &::after {
+        color: $dark-background;
+      }
+    }
+  }
+}

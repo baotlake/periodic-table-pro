@@ -1,0 +1,17 @@
+@use 'sass:color';
+@import "../../scss/color";
+@import "../../scss/icon";
+@import "../../scss/style";
+
+.index-page {
+
+}
+
+// theme
+.index-page {
+  &.light {
+
+  }
+  &.dark {
+  }
+}

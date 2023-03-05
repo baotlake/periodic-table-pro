@@ -1,0 +1,29 @@
+.electrons-shell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    >canvas {
+        display: block;
+    }
+
+    >.img {
+        display: block;
+        transform-origin: center center;
+        margin: auto;
+
+        animation: rotate 12s linear 0s infinite;
+    }
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "format": 2,
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./dist",
+  "compileOptions": {
+    "component2": true,
+    "typescript": false,
+    "less": false,
+    "enableNodeModuleBabelTransform": true,
+    "nodeModulesES6Whitelist": []
+  },
+  "uploadExclude": [],
+  "assetsInclude": [],
+  "developOptions": {
+    "hotReload": false,
+    "disableParallel": false,
+    "disableSourcemap": false
+  },
+  "pluginResolution": {
+    "enable": false,
+    "plugins": {},
+    "dynamicPlugins": {}
+  },
+  "scripts": {}
+}

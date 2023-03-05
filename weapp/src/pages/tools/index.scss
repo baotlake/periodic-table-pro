@@ -1,0 +1,66 @@
+@use "sass:color";
+@import '../../scss/color';
+@import '../../scss/media';
+
+.tools-page {
+    background: darken($light-background, 5%);
+    color: $light-foceground;
+    font-size: 16PX;
+
+    .content {
+        padding: 0 2em;
+        margin-top: 2em;
+
+        @include landscape {
+            margin-top: 0;
+        }
+    }
+
+    .item-box {
+        background-color: $light-background;
+        margin-bottom: 2em;
+        border-radius: 6PX;
+        overflow: hidden;
+
+        .title {
+            font-size: 20PX;
+            padding: 0 20PX 10PX;
+            font-weight: bold;
+        }
+    }
+    .illus {
+        width: 100%;
+        height: 120PX;
+        background: no-repeat center/450PX url("../../assets/images/grid.png");
+        background-color: darken($light-background, 2%);
+
+        > img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .section {
+        font-size: 16PX;
+        line-height: 1.6;
+        margin: 20PX auto;
+    }
+}
+
+// theme
+.tools-page {
+    &.light {
+
+    }
+    &.dark {
+        background: darken($dark-background, 3%);
+        color: color.change($dark-foceground, $alpha: 0.85);
+
+        .item-box {
+            background-color: $dark-background;
+        }
+        .illus {
+            background-color: darken($dark-background, 2%);
+        }
+    }
+}

@@ -1,0 +1,24 @@
+@import '../scss/theme';
+@import '../scss/style';
+
+.setting {}
+
+.theme-switch {
+    @include switch($isColumn: false);
+}
+
+
+// theme
+.setting {
+    &.light {}
+
+    &.dark {
+        .theme-switch {
+            background: lighten($dark-background, 3%);
+
+            &::before {
+                background: lighten($dark-background, 8%);
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<page-meta
+  root-background-color="{{ pageMeta.rootBackgroundColor || '#1B1C1D' }}"
+  background-color="{{ pageMeta.backgroundColor || '#1B1C1D' }}"
+  page-font-size="{{ pageMeta.pageFontSize }}"
+  root-font-size="{{ pageMeta.rootFontSize }}"
+  page-orientation="{{ pageMeta.pageOrientation }}"
+></page-meta>

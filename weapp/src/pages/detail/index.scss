@@ -1,0 +1,18 @@
+@use 'sass:color';
+@import '../../scss/media';
+@import '../../scss/color';
+@import '../../scss/icon';
+@import '../../scss/color-sign';
+@import '../../scss/style';
+
+.detail-page {
+  min-height: 100vh;
+  font-size: 16PX;
+}
+
+// theme
+.detail-page {
+  &.light {}
+
+  &.dark {}
+}

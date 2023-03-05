@@ -1,0 +1,99 @@
+@use 'sass:color';
+@import '../scss/theme';
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0.6;
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+@mixin pulse($delay: 0s) {
+  animation: pulse 3s ease-in-out 0s infinite;
+  animation-delay: $delay;
+}
+
+.wiki-skeleton {
+  color: color.adjust($color: $light-background, $lightness: -8%);
+
+  .heading {
+    font-size: 3em;
+    width: 2em;
+    height: 2em;
+    background-color: currentColor;
+    border-radius: 0.5em;
+    margin-bottom: 0.5em;
+
+    @include pulse();
+  }
+
+  .tagline {
+    width: 100%;
+    height: 2em;
+    background-color: currentColor;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+
+    @include pulse(0.1s);
+  }
+
+  .paragraph {
+    width: 100%;
+    height: 8em;
+    line-height: 2;
+    background-color: currentColor;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+
+    @include pulse(0);
+  }
+
+  .graph {
+    width: 100%;
+    height: 12em;
+    display: grid;
+    grid-gap: 1em;
+    grid:
+      "A B"
+      "A C";
+
+      @include pulse(0.1s);
+
+    > .item {
+      background-color: currentColor;
+      border-radius: 0.5em;
+      width: 100%;
+      height: 100%;
+    }
+
+    > .item:first-child {
+      grid-area: A;
+    }
+
+    > .item:nth-child(2) {
+      grid-area: B;
+    }
+
+    > .item:nth-child(3) {
+      grid-area: C;
+    }
+  }
+}
+
+// theme
+.wiki-skeleton {
+
+    &.dark {
+        color: color.adjust($color: $dark-background, $lightness: 5%);
+    }
+}

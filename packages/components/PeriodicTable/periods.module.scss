@@ -1,0 +1,15 @@
+.period {
+  grid-area: periods;
+  display: grid;
+  grid-template-columns: (20em / 16);
+  grid-template-rows: repeat(10, 1fr);
+
+  > .item {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: (10em / 16);
+  }
+}

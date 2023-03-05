@@ -1,0 +1,28 @@
+@use "sass:color";
+@import '../scss/theme';
+
+.guide {
+    padding: 20PX 40PX;
+}
+
+.paragraph {
+    font-size: 16PX;
+    line-height: 1.6;
+    margin: 20PX auto;
+}
+
+// theme 
+.guide-page {
+    &.light {
+
+    }
+
+    &.dark {
+        background: darken($dark-background, 3%);
+        color: color.change($dark-foceground, $alpha: 0.85);
+
+        .paragraph {
+            // color: darken($dark-foceground, 0%);
+        }
+    }
+}

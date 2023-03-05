@@ -1,0 +1,68 @@
+@import "../scss/theme";
+@import "../scss/icon";
+@import "../scss/style";
+
+.display-properties {
+  overflow: auto;
+  padding: 8PX 0;
+  box-sizing: border-box;
+  height: 100%;
+  @include light-scrollbar;
+}
+
+.item {
+  box-sizing: border-box;
+  line-height: 42PX;
+  width: 100%;
+  font-size: 16PX;
+  padding: 0 24PX;
+  display: flex;
+  align-items: center;
+
+  &.selected {
+    background: rgba(236, 236, 236, 0.8);
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &:hover {
+    background: rgba(236, 236, 236, 0.8);
+  }
+}
+
+
+.icon {
+  width: 16PX;
+  height: 16PX;
+  margin-right: 6PX;
+
+  >img {
+    display: block;
+  }
+}
+
+
+// theme 
+.display-properties {
+  &.light {}
+
+  &.dark {
+    @include dark-scrollbar;
+
+    .item {
+      &.selected {
+        background: lighten($dark-background, 5%);
+      }
+
+      &:hover {
+        background: lighten($dark-background, 5%);
+      }
+    }
+
+    .icon {
+      @include filter-white;
+    }
+  }
+}

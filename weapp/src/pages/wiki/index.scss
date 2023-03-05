@@ -1,0 +1,48 @@
+@use "sass:color";
+@import '../../scss/color';
+@import '../../scss/color-sign';
+
+.wiki-page {
+  color: #333;
+  min-height: 100vh;
+  background-color: $light-background;
+  @include classification-light;
+
+  --table-border-color: rgba(0, 0, 0, 0.2);
+  --secondary-background-color: whitesmoke;
+
+  // .content {
+  //   padding: 8em 2em 4em;
+  //   font-size: 16PX;
+  //   line-height: 2;
+  //   max-width: 600PX;
+  //   margin: auto;
+  //   box-sizing: border-box;
+  // }
+  
+  // .title {
+  //   font-size: 3em;
+  //   font-weight: bold;
+  // }
+}
+
+
+// Theme
+.wiki-page {
+
+  &.light {
+
+  }
+  &.dark {
+    color: color.change($dark-foceground, $alpha: 0.8);
+    background-color: $dark-background;
+
+    @include classification-dark;
+    --table-border-color: rgba(255, 255, 255, 0.2);
+    --secondary-background-color: #{lighten($dark-background, 5%)};
+
+    // .title {
+    //   color: $dark-foceground;
+    // }
+  }
+}

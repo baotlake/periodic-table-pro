@@ -1,0 +1,94 @@
+@use 'sass:color';
+@import '../scss/theme';
+@import '../scss/animate';
+@import '../scss/color-sign';
+
+
+.article {
+    color: #333;
+    padding: 8em 2em 4em;
+    background-color: $light-background;
+    line-height: 2;
+    max-width: 600PX;
+    margin: auto;
+    box-sizing: border-box;
+
+    @include classification-light;
+    --skeleton-color: #{color.adjust($color: $light-background, $lightness: -8%)};
+    --table-border-color: rgba(0, 0, 0, 0.2);
+    --secondary-background-color: whitesmoke;
+}
+
+.heading {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.loading {
+    .tagline {
+        border-radius: 0.5em;
+        background: var(--skeleton-color);
+        height: 2em;
+        margin-bottom: 1em;
+        @include fadeInOut;
+        // @include pulse();
+    }
+
+    .paragraph {
+        width: 100%;
+        height: 8em;
+        line-height: 2;
+        background: var(--skeleton-color);
+        border-radius: 0.5em;
+        margin-bottom: 1em;
+
+        @include pulse(0);
+    }
+
+    .graph {
+        width: 100%;
+        height: 12em;
+        display: grid;
+        grid-gap: 1em;
+        grid:
+            "A B"
+            "A C";
+
+        @include pulse(0.1s);
+
+        >.item {
+            background: var(--skeleton-color);
+            border-radius: 0.5em;
+            width: 100%;
+            height: 100%;
+        }
+
+        >.item:first-child {
+            grid-area: A;
+        }
+
+        >.item:nth-child(2) {
+            grid-area: B;
+        }
+
+        >.item:nth-child(3) {
+            grid-area: C;
+        }
+    }
+}
+
+
+// theme
+.article {
+    &.light {}
+
+    &.dark {
+        color: color.change($dark-foceground, $alpha: 0.8);
+        background-color: $dark-background;
+
+        @include classification-dark;
+        --skeleton-color: #{color.adjust($color: $dark-background, $lightness: 5%)};
+        --table-border-color: rgba(255, 255, 255, 0.2);
+        --secondary-background-color: #{lighten($dark-background, 5%)};
+    }
+}

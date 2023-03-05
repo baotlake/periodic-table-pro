@@ -1,0 +1,278 @@
+$sign-color: var(--color);
+$border-color: var(--table-border-color);
+$secondary-bg: var(--secondary-background-color);
+
+
+.hatnote {
+  font-size: 0.8em;
+  background-color: $secondary-bg;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin: 1em 0;
+}
+
+.gallery {
+  margin: inherit;
+  padding: inherit;
+
+  .gallerybox {
+    padding: 1em;
+    text-align: center;
+    border: 1px solid $border-color;
+    list-style: none;
+    margin: 1em auto;
+  }
+
+  .gallerytext {
+    font-size: 0.85em;
+
+    >p {
+      font-size: inherit;
+      color: inherit;
+      text-indent: 0;
+      margin: 0;
+    }
+  }
+}
+
+.thumb {
+  margin: 1em auto;
+
+  .thumbinner {
+    max-width: 90%;
+    padding: 1em;
+    background-color: $secondary-bg;
+    border-radius: 0.5em;
+    text-align: center;
+    margin: auto;
+    line-height: 1;
+
+    .thumbcaption {
+      margin-top: 0.5em;
+      line-height: 1.2;
+      font-size: 0.85em;
+      text-align: left;
+    }
+
+    .img {
+      max-width: 100%;
+    }
+  }
+}
+
+.scroll-view {
+  max-width: 100%;
+  overflow: auto;
+
+  >.block {
+    max-width: 20000px;
+  }
+}
+
+.table.nogrid.Yuansuzhouqibiao_nav {
+  .span[class*=Yuansuzhouqibiao] {
+    display: block;
+    color: transparent;
+    background-color: rgba(156, 156, 156, 0.2);
+    overflow: hidden;
+
+    &[style*="border"] {
+      background-color: $sign-color;
+      border-color: $border-color !important;
+    }
+  }
+}
+
+// 兼容QQ
+.qq .table.nogrid.Yuansuzhouqibiao_nav .span {
+  display: none;
+  display: block;
+  color: transparent;
+  background-color: rgba(156, 156, 156, 0.2);
+  overflow: hidden;
+}
+
+.table.infobox {
+  margin: 2.5em auto;
+
+  max-width: 36em;
+  width: 100% !important;
+  float: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-spacing: 0px !important;
+  border-collapse: collapse !important;
+  background-color: transparent !important;
+
+  border: 1px solid $border-color;
+
+  >.caption {}
+
+  >.tbody {
+    >.tr {
+      >.th {
+        min-width: 8em;
+        padding: 0.3em 0.5em;
+        border: 1px solid $border-color;
+      }
+
+      >.td {
+        padding: 0.3em 0.5em;
+        border: 1px solid $border-color;
+      }
+    }
+
+    >.tr>.th+.td .img {
+      // filter: blur(5px);
+      filter: grayscale(1);
+    }
+  }
+
+  .th[colspan="2"] {
+    background-color: $secondary-bg;
+    color: inherit !important;
+    // color: $sign-color !important;
+    font-weight: bold;
+  }
+
+  .th,
+  .td {
+    &[style*="background"] {
+      background-color: $secondary-bg !important;
+    }
+  }
+}
+
+.table.wikitable {
+  border-collapse: collapse;
+  line-height: 1.5;
+  max-width: 100%;
+  width: auto !important;
+  float: none !important;
+  margin: auto !important;
+  font-size: 1em;
+
+  // .th[style*="background"] {
+  //   background-color: $secondary-bg !important;
+  // }
+  .td {
+    text-align: center;
+  }
+
+  .th,
+  .td {
+    padding: 0.2em;
+    border-collapse: collapse;
+    border: 1PX solid $border-color;
+    text-align: center;
+  }
+}
+
+.ul {
+  padding-inline-start: 2em !important;
+}
+
+.ol {
+  padding-inline-start: 2em;
+}
+
+.sup.reference {
+  font-size: 0.6em;
+  margin-right: 0.6em;
+}
+
+.noprint {
+  display: none;
+}
+
+.noprint.Template-Fact {
+  // 来源请求
+  display: inline;
+  font-size: 0.65em;
+  background-color: mark;
+}
+
+.mark.template-facttext {
+  background-color: inherit;
+  opacity: 0.5;
+}
+
+.table.ambox {
+  font-size: 0.8em;
+  line-height: 1.5;
+  padding: 1em;
+  background-color: $secondary-bg;
+  border-radius: 0.5em;
+  color: #888;
+  display: none;
+}
+
+.table.box-Refimprove {
+  // 补充更多来源
+  display: none;
+}
+
+.table.box-Expand {
+  // 需要扩充
+  display: none;
+}
+
+.table.box-Expand_language {
+  display: none;
+}
+
+.table.box-Copy_edit {
+  .small {
+    display: none;
+  }
+}
+
+.table.box-Unreferenced {
+  display: none;
+  font-size: 0.65em;
+
+  .small {
+    display: none;
+  }
+}
+
+// 铍 - 外部链接中的“姊妹计划”
+.table.plainlinks.mbox-small {
+  margin: 1em auto !important;
+  background-color: inherit !important;
+  border-color: $border-color !important;
+  font-size: 0.8em;
+}
+
+
+.reflist {
+  column-count: auto !important;
+}
+
+// Z=32 锗 表格靠右问题
+div[style*="float: right;"] {
+  float: none !important;
+}
+
+// h5
+.content {
+  a {
+    color: inherit;
+    pointer-events: none;
+  }
+
+  .a,
+  .b,
+  .td,
+  .th,
+  .caption,
+  .ul,
+  .li,
+  .span {
+
+    // *[bgcolor]
+    &[bgcolor] {
+      background-color: inherit;
+    }
+  }
+}

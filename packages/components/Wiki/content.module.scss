@@ -1,0 +1,53 @@
+// --color
+// --table-border-color
+// --secondary-background-color
+// 
+
+$sign-color: var(--color);
+$border-color: var(--table-border-color);
+$secondary-bg: var(--secondary-background-color);
+
+
+// styling
+.section {
+  margin: 1em 0 2em;
+}
+.h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 2em;
+}
+.block {
+  margin: 1em 0;
+}
+.h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+.text-center {
+  text-align: center;
+}
+.scroll-view {
+  max-width: 100%;
+  overflow: auto;
+
+  > .block {
+    max-width: 20000px;
+  }
+}
+
+// theme
+.content {
+  &.light {
+
+  }
+  &.dark {
+    .img.mwe-math-fallback-image-inline {
+      filter: invert(0.85);
+    }
+
+    .p .img.notpageimage {
+      filter: invert(0.85);
+    }
+  }
+}

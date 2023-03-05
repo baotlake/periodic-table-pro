@@ -1,0 +1,81 @@
+@use 'sass:color';
+@import "../scss/color-sign";
+@import "../scss/theme";
+@import "../scss/media";
+@import "../scss/style";
+
+.elements-encyclopedia {
+    padding: 1.5em 1.5em 3em;
+    display: grid;
+    grid: auto-flow / 1fr;
+    grid-gap: 1.5em;
+    max-width: 800PX;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darken($light-background, 5%);
+
+    @include landscape {
+        padding: 1.5em 1.5em 3em;
+        grid: auto-flow / 1fr 1fr;
+    }
+
+    @include classification-light;
+}
+
+.card-item {
+    border-radius: 6PX;
+    overflow: hidden;
+    width: 100%;
+    max-width: 380PX;
+    background: $light-background;
+    justify-self: center;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 44.5%;
+    background-color: var(--color);
+
+    .image {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.text-wrapper {
+    padding: 0.5em 1em 1em;
+}
+
+.card-title {
+    font-size: 1.2em;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.card-summary {
+    font-size: 0.85em;
+    line-height: 1.8;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// theme
+.elements-encyclopedia {
+    &.light {}
+
+    &.dark {
+        background-color: darken($dark-background, 3%);
+        @include classification-dark;
+
+        .card-item {
+            background: $dark-background;
+            color: color.adjust($color: $dark-foceground, $alpha: -0.2);
+        }
+    }
+}

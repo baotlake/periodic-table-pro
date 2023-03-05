@@ -1,0 +1,98 @@
+@use 'sass:color';
+@import "../scss/icon";
+@import "../scss/theme";
+
+.nav-header {
+  &.background {
+    pointer-events: all;
+    background: color.adjust($color: $light-background, $alpha: -0.2);
+    backdrop-filter: blur(2em);
+
+    .back-btn {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.header-wrapper {
+  --color: black;
+  display: flex;
+  align-items: center;
+  font-size: 18PX;
+  color: var(--color);
+}
+
+.back-btn {
+  color: var(--color);
+  // width: calc(var(--size) * 1.5);
+  // min-width: calc(var(--size) * 1.5);
+  height: var(--size);
+  background: none !important;
+  border: none !important;
+  box-shadow: none;
+  padding: 0 0.25em;
+  pointer-events: all;
+  cursor: pointer;
+
+  // display: block;
+  display: flex;
+  align-items: center;
+  margin: 0 var(--margin);
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    backdrop-filter: blur(10PX);
+    z-index: -1;
+    border-radius: 9999PX;
+    border: none;
+    top: 0;
+    left: 0;
+    // border: 1PX solid #888;
+  }
+}
+
+.back-icon {
+  position: absolute;
+  display: block;
+  // width: 100%;
+  width: var(--size);
+  height: 100%;
+  color: transparent;
+
+  @include back-icon();
+
+  &::before,
+  &::after {
+    @include filter-invert();
+  }
+}
+
+.title {
+  pointer-events: all;
+  padding-right: 0.5em;
+}
+
+// theme
+.nav-header {
+  &.light {}
+
+  &.dark {
+    &.background {
+      background: color.adjust($color: $dark-background, $alpha: -0.2);
+      backdrop-filter: blur(2em);
+    }
+
+    .header-wrapper {
+      // --color: #{$dark-foceground};
+      --color: #{color.change($dark-foceground, $alpha: 0.85)};
+    }
+  }
+}

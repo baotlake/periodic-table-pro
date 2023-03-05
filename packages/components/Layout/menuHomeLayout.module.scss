@@ -1,0 +1,76 @@
+@use 'sass:color';
+@import "../scss/theme";
+@import "../scss/icon";
+@import "../scss/style";
+
+.menu-home-layout {
+    color: $light-foceground;
+    background: $light-background;
+}
+
+.nav-btn-wrapper {
+    pointer-events: all;
+    margin: 0 var(--margin);
+}
+
+.nav-btn {
+    border: none;
+    outline: none;
+    background: none;
+    position: relative;
+    width: var(--size);
+    width: calc(var(--size) * 1.5);
+    height: var(--size);
+    
+    --transition: all 0.3s;
+    
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 9999PX;
+        backdrop-filter: blur(10px);
+    }
+}
+
+.nav-icon {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    &.menu {
+        @include menu-icon(20PX, 2PX);
+        transform: rotate(180deg);
+    }
+
+    &.close {
+        @include close-icon(20PX, 2PX);
+    }
+
+    // &::before,
+    // &::after {
+    //     color: transparent;
+    //     @include filter-invert();
+    // }
+}
+
+
+// theme
+.menu-home-layout {
+    &.light {}
+
+    &.dark {
+        background: $dark-background;
+        color: $dark-foceground;
+
+        .nav-btn {
+            color: $dark-foceground;
+            // background: color.change($dark-background, $lightness: 5%, $alpha: 0.2);
+        }
+    }
+}
