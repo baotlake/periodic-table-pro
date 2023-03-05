@@ -53,15 +53,15 @@ Tarojs 构建的多端兼容小程序，项目目录 `periodic-table-pro/weapp`
 <table>
 <tr>
     <td width="33%">
-        <img src="docs/wxacode.jpg">
+        <img src="docs/wxacode.jpg" width="100%">
         <div align="center">微信小程序</div>
     </td>
     <td  width="33%">
-        <img src="docs/qq-code.png">
+        <img src="docs/qq-code.png" width="100%">
         <div align="center">QQ小程序</div>
     </td>
     <td  width="33%">
-        <img src="docs/alipay-code.png">
+        <img src="docs/alipay-code.png" width="100%">
         <div align="center">支付宝小程序</div>
     </td>
 </tr>
