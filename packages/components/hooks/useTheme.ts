@@ -1,7 +1,7 @@
 import { useEffect, Dispatch } from 'react'
 import { Taro, isTaro, getAppBaseInfo, onThemeChange, offThemeChange } from '../compat'
 import { State, Action, setTheme } from '../state'
-import { defaultValue, getStorage } from '../utils/storage'
+import { defaultValue, getStorage, setStorage } from '../utils/storage'
 
 type ThemeMode = State['theme']['mode']
 const PLATFORM = process.env.PLATFORM
@@ -42,8 +42,14 @@ export function useTheme(
 
     useEffect(() => {
         const getSetting = async () => {
-            const { themeMode: storageTheme } = await getStorage('themeMode')
+            const { theme: oldTheme } = await getStorage('theme' as any) as any
+            let { themeMode: storageTheme } = await getStorage('themeMode')
             const { followSystemTheme } = await getStorage('followSystemTheme')
+
+            if (!storageTheme && oldTheme) {
+                storageTheme = oldTheme
+                setStorage({ theme: undefined } as any)
+            }
 
             let systemTheme = 'dark'
 
@@ -54,7 +60,7 @@ export function useTheme(
                 ? systemTheme : storageTheme
                     ? storageTheme : defaultValue.themeMode
 
-            console.log('getThemeSetting', storageTheme, followSystemTheme)
+            // console.log('getThemeSetting', storageTheme, followSystemTheme)
             return [mode, followSystemTheme] as [ThemeMode, boolean]
         }
 

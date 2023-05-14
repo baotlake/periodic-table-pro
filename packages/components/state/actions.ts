@@ -71,6 +71,15 @@ export function setDisplayProperty(displayProperty: State['periodicTable']['disp
     }
 }
 
+export function setPtZoom(zoom: number) {
+    return {
+        type: 'setPtZoom' as 'setPtZoom',
+        payload: {
+            zoom,
+        }
+    }
+}
+
 type ActionFunc = | typeof setTheme
     | typeof setMenuButtonClientRect
     | typeof setEmphasize
@@ -78,5 +87,6 @@ type ActionFunc = | typeof setTheme
     | typeof setTrendData
     | typeof setTemperature
     | typeof setDisplayProperty
+    | typeof setPtZoom
 
 export type Action = ReturnType<ActionFunc>

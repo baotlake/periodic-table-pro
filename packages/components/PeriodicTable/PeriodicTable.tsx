@@ -1,6 +1,6 @@
-import { CSSProperties, useContext, useState } from "react"
+import { CSSProperties, useContext, useState, forwardRef, ForwardedRef } from "react"
 import classNames from "classnames/bind"
-import ElementBox from "../ElementBox"
+import ElementBox, { BottomProperty } from "../ElementBox"
 import {
   symbol,
   zhCNNames,
@@ -16,7 +16,7 @@ import Legend from "./Legend"
 import { Context } from '../state'
 import { trendBg } from '../utils/trend'
 import { chineseName } from "../utils/utils"
-import { getDisplayProperty, getState } from "../utils/property"
+import { getState } from "../utils/property"
 import { reportEvent } from "../utils/analytics"
 
 import styles from "./periodicTable.module.scss"
@@ -26,7 +26,7 @@ const cx = classNames.bind(styles)
 type Props = {
 }
 
-export function PeriodicTable({ }: Props) {
+function PeriodicTableFc({ }: Props, ref: ForwardedRef<HTMLDivElement>) {
   const { elements, groups, periods } = mediumLongForm
 
   const { state: {
@@ -44,9 +44,6 @@ export function PeriodicTable({ }: Props) {
 
   const handleClickElement = (Z: number) => {
     setCurrentZ(Z)
-    // navigateTo({
-    //   url: "/pages/detail/index?Z=" + Z
-    // })
     reportEvent('element_detail', {
       "name": symbol[Z - 1]
     })
@@ -54,6 +51,7 @@ export function PeriodicTable({ }: Props) {
 
   return (
     <div
+      ref={ref}
       className={cx('periodic-table', 'medium-long-form', themeMode)}
     >
       <Groups groups={groups} />
@@ -78,32 +76,16 @@ export function PeriodicTable({ }: Props) {
               atomicNumber={atomicNumber}
               symbol={symbol[atomicNumber - 1]}
               zhName={chineseName(zhCNNames[atomicNumber - 1], atomicNumber)}
-              bc={getDisplayProperty(displayProperty, atomicNumber)}
+              bc={<BottomProperty property={displayProperty} Z={atomicNumber} />}
             />
           );
         })}
         <Legend themeClass={themeMode} Z={currentZ} />
-          {/* <ElementBox
-            key={currentZ}
-            className={cx({
-              [Categories[elementsCategories[currentZ - 1]]]: colorSign === 'classification',
-              [block[currentZ - 1] + '-block']: colorSign === 'block',
-              [StateOfMatter[getState(temperature, currentZ)]]: colorSign === 'state',
-              trend: colorSign === 'trend',
-            })}
-            style={{
-              '--trend-bg': trendBg(trendData[currentZ - 1])
-            } as CSSProperties}
-            onClick={handleClickElement}
-            emphasize={emphasize}
-            atomicNumber={currentZ}
-            symbol={symbol[currentZ - 1]}
-            zhName={chineseName(zhCNNames[currentZ - 1], currentZ)}
-            bc={getDisplayProperty(displayProperty, currentZ)}
-          /> */}
       </div>
     </div>
   );
 }
+
+export const PeriodicTable = forwardRef(PeriodicTableFc)
 
 export default PeriodicTable

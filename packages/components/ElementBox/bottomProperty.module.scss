@@ -1,0 +1,9 @@
+@import "../scss/style.scss";
+
+.line-clamp-2 {
+    @include line-clamp(2);
+}
+
+.line-clamp-3 {
+    @include line-clamp(3);
+}

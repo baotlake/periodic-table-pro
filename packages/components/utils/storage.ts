@@ -34,7 +34,8 @@ export async function setStorage(data: Partial<StorageValue>) {
 export async function getStorage(key: StorageKey): Promise<StorageValue> {
     if (isTaro) {
         const data = Taro.getStorageSync(key)
-        const value = data.data ?? defaultValue[key]
+        console.log('getStorage >> ', key, data, typeof data)
+        const value = data || defaultValue[key]
         return { [key]: value } as StorageValue
     } else {
         try {
@@ -42,6 +43,7 @@ export async function getStorage(key: StorageKey): Promise<StorageValue> {
             const value = JSON.parse(txt || 'null') ?? defaultValue[key]
             return { [key]: value } as StorageValue
         } catch (error) {
+            console.error(error)
             return { [key]: defaultValue[key] } as StorageValue
         }
     }

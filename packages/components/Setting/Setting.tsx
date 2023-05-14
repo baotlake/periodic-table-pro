@@ -102,7 +102,7 @@ export function Setting({ }: Props) {
                     themeClass={theme}
                     icon={elementBoxSvg}
                     title='元素底部属性'
-                    value={propertiesLabels[displayProperty]}
+                    value={propertiesLabels[displayProperty] || ""}
                     onClick={() => setDisplayPropertyModalVisible(true)}
                 />
             </div>

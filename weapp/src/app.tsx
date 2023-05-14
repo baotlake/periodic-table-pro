@@ -5,6 +5,7 @@ import {
   Context as ComponentsContext,
   initialState as componentsInitialState,
   reducer as componentsReducer,
+  useInitialization,
   useMenuClientRect,
   useTheme,
 } from '@periodic-table-pro/components'
@@ -19,6 +20,7 @@ export default function App(props) {
   const [state, dispatch] = useReducer(componentsReducer, componentsInitialState)
   useTheme(dispatch, state.theme.mode, state.theme.followSystem, state.theme.initialized)
   useMenuClientRect(dispatch)
+  useInitialization(dispatch)
 
   useEffect(() => {
     if (PLATFORM == 'weapp' && ENV_ID) {

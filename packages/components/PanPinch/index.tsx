@@ -1,14 +1,22 @@
-import { useRef, useContext, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, PropsWithChildren } from 'react'
 import classNames from 'classnames/bind'
-import { Context } from '../state'
-import PeriodicTable from "./PeriodicTable"
 
-import styles from './zoomablePT.module.scss'
+import styles from './index.module.scss'
+
+const PLATFORM = process.env.PLATFORM
 
 const cx = classNames.bind(styles)
 
-export function ZoomablePT() {
-    const { state: { theme: { mode: themeMode } } } = useContext(Context)
+type Props = PropsWithChildren<{
+    themeClass?: string
+    className?: string
+    min: number
+    max: number
+    value: number
+    onChange?: (value: number) => void
+}>
+
+export function PanPinch({ children, themeClass, className, min, max, value, onChange }: Props) {
     const wrapperRef = useRef<HTMLDivElement>(null)
     const tableRef = useRef<HTMLDivElement>(null)
     const dataRef = useRef({
@@ -25,6 +33,8 @@ export function ZoomablePT() {
         fontSize: 1,
     })
 
+    dataRef.current.fontSize = value
+
     const handleTouchStart = useCallback(async (e: React.TouchEvent | TouchEvent) => {
         if (e.touches.length !== 2) return
         const data = dataRef.current
@@ -37,11 +47,12 @@ export function ZoomablePT() {
 
         const d1 = Math.hypot(x2 - x1, y2 - y1)
         const { x, y } = await getOriginOffset(target, (x1 + x2) / 2, (y1 + y2) / 2)
+        const [scrollLeft, scrollTop] = await getScrollOffset(wrapper)
 
         data.panning = true
         data.d1 = d1
-        data.scrollX = wrapper.scrollLeft
-        data.scrollY = wrapper.scrollTop
+        data.scrollX = scrollLeft
+        data.scrollY = scrollTop
         data.originOffsetX = x
         data.originOffsetY = y
     }, [])
@@ -49,7 +60,7 @@ export function ZoomablePT() {
     const handleTouchMove = useCallback((e: React.TouchEvent | TouchEvent) => {
         const data = dataRef.current
         if (!data.panning || e.touches.length < 2) return
-        const { d1, originOffsetX, originOffsetY } = data
+        const { d1, originOffsetX, originOffsetY, fontSize } = data
         const target = tableRef.current!
 
         const t1 = e.touches[0], t2 = e.touches[1]
@@ -57,7 +68,13 @@ export function ZoomablePT() {
         const x2 = t2.clientX, y2 = t2.clientY
 
         const d = Math.hypot(x2 - x1, y2 - y1)
-        const scale = d / d1
+        let scale = d / d1
+        if (scale * fontSize < min) {
+            scale = min / fontSize
+        }
+        if (scale * fontSize > max) {
+            scale = max / fontSize
+        }
         const dx = originOffsetX * (scale - 1)
         const dy = originOffsetY * (scale - 1)
 
@@ -76,6 +93,8 @@ export function ZoomablePT() {
 
     const handlePinchStop = useCallback(() => {
         const data = dataRef.current
+        data.panning = false
+
         const target = tableRef.current!
         const wrapper = wrapperRef.current!
         let { scale, translateX, translateY, scrollX, scrollY, fontSize } = data
@@ -91,8 +110,9 @@ export function ZoomablePT() {
             scrollY + translateY,
         )
 
+        onChange && onChange(fontSize)
+
         console.log('translate 2 scroll', translateX, translateY)
-        data.panning = false
     }, [])
 
     const handleWheel = useCallback(async (e: React.WheelEvent | WheelEvent) => {
@@ -103,7 +123,7 @@ export function ZoomablePT() {
         const { deltaY, clientX, clientY } = e
         const data = dataRef.current
         let {
-            scale,
+            scale, fontSize,
             scrollX, scrollY,
             panning, panningTimeoutId,
             originOffsetX, originOffsetY,
@@ -143,15 +163,18 @@ export function ZoomablePT() {
         const zoom = - deltaY / 200
 
         scale += zoom
+        if (scale * fontSize < min) {
+            scale = min / fontSize
+        }
+        if (scale * fontSize > max) {
+            scale = max / fontSize
+        }
         const dx = originOffsetX * (scale - 1)
         const dy = originOffsetY * (scale - 1)
         target.style.transform = `translate(${-dx}px,${-dy}px) scale(${scale})`
         data.scale = scale
         data.translateX = dx
         data.translateY = dy
-
-        // console.log('originOffset: ', originOffsetX, originOffsetY)
-        // console.log('panning: ', scale)
     }, [])
 
     useEffect(() => {
@@ -167,28 +190,55 @@ export function ZoomablePT() {
     return (
         <div
             ref={wrapperRef}
-            className={cx('zoomable-wrapper', themeMode)}
+            className={cx('pan-pinch-wrapper', themeClass, className)}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchEnd}
         >
-            <PeriodicTable ref={tableRef} />
+            <div
+                ref={tableRef}
+                className={cx('pan-pinch')}
+                style={{ fontSize: value + 'em' }}
+            >
+                {children}
+            </div>
         </div>
     )
 }
 
+export default PanPinch
+
+async function getBoundingClientRect(element: any): Promise<DOMRect> {
+    if (PLATFORM == 'h5' || PLATFORM == 'next') {
+        return element.getBoundingClientRect()
+    }
+
+    return new Promise<DOMRect>((resolve, reject) => {
+        element.getBoundingClientRect(resolve)
+    })
+
+}
+
 async function getOriginOffset(element: HTMLDivElement, x: number, y: number) {
-    const rect = element.getBoundingClientRect()
-    // const cx = (rect.left + rect.right) / 2
-    // const cy = (rect.top + rect.bottom) / 2
+    const rect = await getBoundingClientRect(element)
     const cx = rect.left
     const cy = rect.top
-
-    console.log('getOriginOffset', cx, cy, x, y)
 
     return {
         x: x - cx,
         y: y - cy,
     }
+}
+
+async function getScrollOffset(element: any): Promise<[number, number]> {
+    if (PLATFORM == 'h5' || PLATFORM == 'next') {
+        return [element.scrollLeft, element.scrollTop]
+    }
+
+    return new Promise<[number, number]>((resolve) => {
+        element.scrollOffset((res) => {
+            resolve([res.scrollLeft, res.scrollTop])
+        })
+    })
 }

@@ -178,7 +178,7 @@ export const propertiesLabel: Record<Property, string> = {
 
   universe: '宇宙中的大概含量',
   sun: '太阳中的大概含量',
-  oceans: '人体中的大概含量',
+  oceans: '海洋中的大概含量',
   humanBody: '人体中的大概含量',
   earthCrust: '地壳中的大概含量',
   meteorites: '陨石中的大概含量',

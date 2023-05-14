@@ -22,8 +22,13 @@ type ResultData = {
 
 export function search(text: string) {
     const tokens = keywordsSplit(text)
+    let list = tokens.map(v => keywordsSearch(v)).flat()
 
-    const list = tokens.map(v => keywordsSearch(v)).flat()
+    // Exactly match atomic number
+    if (/[\d\-]+/.test(text)) {
+        list = tokens.map(v => searchAtomicNumber(v)).flat()
+    }
+
     const map: Record<number, ResultData> = {}
     list.forEach((v) => {
         if (v.Z in map) {
@@ -68,7 +73,6 @@ function keywordsSearch(text: string) {
 
     return list
 }
-
 
 function searchSymbol(text: string) {
 

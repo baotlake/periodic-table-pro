@@ -52,23 +52,23 @@ export function getWikiPath(Z: number, weapp = isTaro) {
 
 export function weappPath2Web(path: string) {
     const url = new URL(path, 'http://periodic-table-pro.netlify.app')
-    let name: keyof typeof routes = 'home'
+    let key = 'home'
     let Z = parseInt(url.searchParams.get('Z') || '1')
     if (!isFinite(Z)) Z = 1
 
     for (let [k, v] of Object.entries(weappRoutes)) {
         if (url.pathname.startsWith(v)) {
-            name = k as keyof typeof routes
+            key = k
             break
         }
     }
 
-    switch (name) {
+    switch (key) {
         case 'detail':
             return getDetailPath(Z, false)
         case 'wiki':
             return getWikiPath(Z, false)
         default:
-            return webRoutes[name]
+            return webRoutes[key] || webRoutes.home
     }
 }

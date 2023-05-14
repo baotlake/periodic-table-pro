@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import classNames from "classnames/bind"
 import { Image, Slider } from '../../compat'
-import ElementBox from "../../ElementBox"
+import ElementBox, { BottomProperty } from "../../ElementBox"
 import LineChart from "./LineChart"
 import {
   Context,
@@ -28,7 +28,7 @@ import {
 import { chineseName } from "../../utils/utils"
 import { getTrendData } from '../../utils/trend'
 import { reportEvent } from '../../utils/analytics'
-import { getDisplayProperty, getState } from "../../utils/property"
+import { getState } from "../../utils/property"
 import { setStorage, getStorage } from '../../utils/storage'
 
 import arrowImg from '../../assets/icons/dropdown-arrow.svg'
@@ -130,7 +130,7 @@ export default function Legend({ themeClass, Z }: Props) {
             atomicNumber={Z}
             symbol={symbol[Z - 1]}
             zhName={chineseName(zhCNNames[Z - 1])}
-            bc={getDisplayProperty(displayProperty, Z)}
+            bc={<BottomProperty property={displayProperty} Z={Z} />}
           />
 
           {

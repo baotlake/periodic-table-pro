@@ -6,10 +6,14 @@ export default function Document() {
     <Html lang="en">
       <Head >
         <link rel="icon" href="/favicon.png" />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-P8WKBB4L3Q"
-          strategy="afterInteractive"
-        />
+        {
+          process.env.NODE_ENV == 'production' ? (
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=G-P8WKBB4L3Q"
+              strategy="afterInteractive"
+            />
+          ) : null
+        }
         <Script id="google-analytics" strategy='afterInteractive' >
           {`
             window.dataLayer = window.dataLayer || [];

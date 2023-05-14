@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import styles from './previewImage.module.scss'
-import Image from './Image'
+import { Image } from './components'
 
 const cx = classNames.bind(styles)
 
@@ -16,7 +16,7 @@ export function PreviewImage({ current, onClose }: Props) {
             className={cx('preview-image')}
             onClick={onClose}
         >
-            <Image className={cx('current-img')} src={current} />
+            <Image className={cx('current-img')} src={current || ''} />
         </div>
     )
 }

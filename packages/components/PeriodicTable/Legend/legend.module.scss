@@ -26,14 +26,14 @@
 
 .legend-container {
   display: grid;
-  width: 26%;
+  width: 30%;
   grid:
     'l-1 .'
     'box l-2'
     'box l-3'
     'box l-4'
     's s';
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
 }
 
 .element-box {

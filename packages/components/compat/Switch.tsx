@@ -1,17 +1,14 @@
-import { createElement, Fragment } from 'react'
-import { isTaro } from './Taro'
-import type { Switch as TaroSwitchType } from "@tarojs/components"
+import classNames from "classnames/bind"
+import styles from './switch.module.scss'
+import type { SwitchProps } from "@tarojs/components"
 
-type SwitchType = typeof TaroSwitchType | React.FC
-let Switch: SwitchType = () => <></>
+const cx = classNames.bind(styles)
 
-if (isTaro) {
-    const { Switch: TaroSwitch } = require('@tarojs/components')
-    Switch = TaroSwitch
+export function Switch({}: SwitchProps) {
+
+    return (
+        <div>
+
+        </div>
+    )
 }
-
-export {
-    Switch
-}
-
-export default Switch

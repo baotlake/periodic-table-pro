@@ -7,6 +7,7 @@
         height: 8PX;
         background: none;
     }
+
     &::-webkit-scrollbar-thumb {
         width: 8PX;
         border: 2PX solid transparent;
@@ -14,9 +15,11 @@
         background: $color;
         background-clip: content-box;
     }
+
     &::-webkit-scrollbar-button {
         display: none;
     }
+
     &::-webkit-scrollbar-corner {
         display: none;
     }
@@ -31,7 +34,7 @@
 }
 
 @mixin shadow-border($color: currentColor, $width: 1PX) {
-    box-shadow: 
+    box-shadow:
         $width 0 0 0 $color,
         0 $width 0 0 $color,
         $width $width 0 0 $color,
@@ -128,4 +131,11 @@
         height: $height;
         text-align: center;
     }
+}
+
+@mixin line-clamp($value: 2) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $value;
+    -webkit-box-orient: vertical;
 }

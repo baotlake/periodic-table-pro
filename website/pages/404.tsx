@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import classNames from "classnames"
+import { useRouter } from 'next/router'
 import {
   MenuHomeLayout,
-  PeriodicTable,
+  ZoomablePT,
   BottomNavigation,
   Context,
-  PanPinch,
+  weappPath2Web,
 } from '@periodic-table-pro/components'
 
 export default function Home() {
@@ -17,6 +18,13 @@ export default function Home() {
       theme: { mode: theme },
     }
   } = useContext(Context)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const path = weappPath2Web(location.href)
+    router.replace(path)
+  }, [router])
 
   return (
     <>
@@ -28,14 +36,7 @@ export default function Home() {
       </Head>
       <div className={classNames('index-page', theme)}>
         <MenuHomeLayout themeClass={theme}>
-          <PanPinch
-            value={1}
-            min={0.75}
-            max={20}
-            themeClass={theme}
-          >
-            <PeriodicTable />
-          </PanPinch>
+          <ZoomablePT />
           <BottomNavigation themeClass={theme} />
         </MenuHomeLayout>
       </div>

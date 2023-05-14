@@ -1,45 +1,50 @@
 
 import classNames from 'classnames/bind'
-import { useEffect, useState } from 'react'
-import { Image, Input, Taro } from '../compat'
+import { useEffect, useState, useContext } from 'react'
+import { Image, Input, redirectTo } from '../compat'
 import { HighlightTable } from '../PeriodicTable'
 import { ResultItem } from './ResultItem'
 import { NoResult } from './NoResult'
 import { search } from '../utils/search'
+import { Context } from '../state'
 // import { navigateTo } from '../utils/compat'
 
 import searchSvg from '../assets/icons/search.svg'
-
 import styles from './search.module.scss'
 
 const cx = classNames.bind(styles)
+const PLATFORM = process.env.PLATFORM
 
 type ResultData = NonNullable<ReturnType<typeof search>>[0]
 
 type Props = {
     themeClass?: string
+    onSearchChange?: (value: string) => void
 }
 
-export function Search({ themeClass }: Props) {
+const love = '11-19-37-55-87-40-72-104-105-106-74-42-44-109-78-47-88-50-52-51-34-16-15-14-13-31-49-81-113-114-115-116-3-1-22-23-24-26-29-76'
+
+export function Search({ themeClass, onSearchChange }: Props) {
     const [input, setInput] = useState('')
     const [list, setList] = useState<ResultData[] | null>([])
+    const [light, setLight] = useState<number[] | null>(null)
+
+    const { state: { menuButtonClientRect: rect } } = useContext(Context)
 
     useEffect(() => {
         const autoSearch = () => {
             console.log('autoSearch', input)
             setList(search(input))
+            onSearchChange && onSearchChange(input)
         }
 
-        if (input.startsWith('/to:')) {
-            Taro.navigateTo({
-                url: input.slice(4,)
-            })
+        if (input == '/love') {
+            setInput(love)
         }
 
-        if (input.startsWith('__wiki')) {
-            Taro.navigateTo({
-                url: '/pages/wiki/index'
-            })
+        if (input == '/light') {
+            setInput('')
+            setLight([])
         }
 
         const id = window.setTimeout(autoSearch, 300)
@@ -48,12 +53,34 @@ export function Search({ themeClass }: Props) {
         }
     }, [input])
 
+    useEffect(() => {
+        if (PLATFORM == 'next') {
+            const a = new URLSearchParams(location.search)
+            if (a.has('q')) {
+                setInput(a.get('q') || '')
+            }
+        }
+    }, [])
+
+    useEffect(() => {
+        if (light && onSearchChange) onSearchChange(light.join('-'))
+    }, [light])
+
     return (
         <div
             className={cx('search-paper', themeClass)}
+            style={{
+                paddingTop: rect.bottom + 8 + 'px',
+            }}
         >
             <div className={cx('container')}>
-                <HighlightTable highlights={list || []} />
+                <HighlightTable
+                    themeClass={themeClass}
+                    highlights={list || light?.map(v => ({ Z: v, matching: 0 })) || []}
+                    onClick={(Z) => {
+                        light && setLight(light.includes(Z) ? light.filter(v => v != Z) : [...light, Z])
+                    }}
+                />
 
                 <div className={cx('search-input-wrapper')}>
                     <Input

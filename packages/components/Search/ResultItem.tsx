@@ -39,7 +39,7 @@ export function ResultItem({ data, themeClass, }: Props) {
                     atomicNumber={data.Z}
                     symbol={elements.symbol[data.Z - 1]}
                     zhName={elements.zhCNNames[data.Z - 1]}
-                    bc={elements.formalShortAtomicWeights[data.Z - 1]}
+                    bc={elements.shortAbridgedAtomicWeights[data.Z - 1]}
                 />
             </div>
 

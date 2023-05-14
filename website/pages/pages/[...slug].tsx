@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react'
-import { Inter } from '@next/font/google'
 import classNames from "classnames"
 // import styles from '../styles/Home.module.css'
 import {
@@ -13,9 +12,7 @@ import {
     weappPath2Web,
 } from '@periodic-table-pro/components'
 
-
-const inter = Inter({ subsets: ['latin'] })
-
+// Only works with SSR
 export default function Redirect() {
 
     const {

@@ -6,6 +6,8 @@ import { reportEvent } from '../../utils/analytics'
 import {
   BottomNavigation,
   ZoomablePT,
+  PanPinch,
+  PeriodicTable,
   setDisplayProperty,
   setTrendData,
   Context,
@@ -31,19 +33,19 @@ export default function Index() {
 
   useShareMessage()
 
-  useDidShow(() => {
-    const displayProperty = Taro.getStorageSync(StorageKey.displayProperty)
-    // console.log('displayProperty: ', displayProperty)
-    dispatch && dispatch(setDisplayProperty(displayProperty))
-    const trendData = getTrendData(displayProperty)
-    dispatch && dispatch(setTrendData(trendData))
-  })
-
   return (
     <View className={classNames('index-page', theme)}>
       <MenuHomeLayout themeClass={theme}>
         <AddGuide themeClass={theme} />
-        <ZoomablePT />
+        {/* <ZoomablePT /> */}
+        <PanPinch
+          value={1}
+          min={0.75}
+          max={20}
+          themeClass={theme}
+        >
+          <PeriodicTable />
+        </PanPinch>
         <BottomNavigation themeClass={theme} />
       </MenuHomeLayout>
     </View>

@@ -159,6 +159,7 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
                 <div className={cx('props-item', 'highlight-table')} key={key}>
                   {/* <div className={cx('item-title', 'center')}>{title}</div> */}
                   <HighlightTable
+                    themeClass={themeClass}
                     highlights={[{ Z: Z, matching: 100 }]}
                     onClick={handleClickHighlightTable}
                   />

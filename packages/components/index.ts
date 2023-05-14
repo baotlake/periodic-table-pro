@@ -19,12 +19,13 @@ export { Like } from './Like'
 export { Setting } from './Setting'
 export { MaskIcon } from './Icon'
 export { RichText } from './compat'
+export { PanPinch } from './PanPinch'
 export { weappPath2Web } from './utils/routes'
 
 export {
     useMenuClientRect,
     useTheme,
-    useTouchZoom,
+    usePinchZoom,
     useInitialization,
 } from './hooks'
 

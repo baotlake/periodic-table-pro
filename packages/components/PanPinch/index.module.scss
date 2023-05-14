@@ -1,6 +1,6 @@
 @import "../scss/style";
 
-.zoomable-wrapper {
+.pan-pinch-wrapper {
     display: flex;
     overflow: auto;
     height: 100vh;
@@ -11,9 +11,15 @@
     @include light-scrollbar;
 }
 
+.pan-pinch {
+    transform-origin: 0px 0px;
+    touch-action: pan-x pan-y;
+    margin: auto;
+    will-change: font-size;
+}
 
 // theme
-.zoomable-wrapper {
+.pan-pinch-wrapper {
     &.light {}
 
     &.dark {

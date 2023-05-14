@@ -13,6 +13,8 @@
     'periods main';
   padding: (20em / 16);
   width: fit-content;
+  transform-origin: 0px 0px;
+  touch-action: pan-x pan-y;
 
   @include landscape {
     padding: (20em / 16) (40em / 16);

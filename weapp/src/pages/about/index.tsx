@@ -31,11 +31,12 @@ export default function AboutPage() {
         </View>
 
         <View className='section'>
-          元素周期表Pro —— 高颜值的化学元素周期表工具小程序。
+          元素周期表Pro —— 高颜值的化学元素周期表工具，提供全面的元素属性、图片和百科知识等。
         </View>
 
         <View className='section'>
-          元素周期表Pro是由「欢洋」独立开发的原创化学元素周期表工具小程序。
+          元素周期表Pro是由欢洋精心打造的原创化学元素周期表工具，采用全新的设计风格，
+          支持Web（H5）、微信小程序、QQ小程序和支付宝小程序等多种平台，适配不同尺寸的屏幕设备。
         </View>
 
         <View className='section'>
