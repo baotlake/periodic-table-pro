@@ -6,7 +6,8 @@ import { routes } from '../utils/routes'
 
 import searchSvg from '../assets/icons/search.svg'
 import toolsSvg from '../assets/icons/tools.svg'
-import settingSvg from '../assets/icons/setting.svg'
+import buildSvg from '../assets/icons/build.svg'
+import tuneSvg from '../assets/icons/tune.svg'
 import likeSvg from '../assets/icons/like_outlined.svg'
 import shareSvg from '../assets/icons/share.svg'
 import circleSvg from '../assets/icons/circle.svg'
@@ -74,7 +75,7 @@ export function BottomNavigation({ themeClass }: Props) {
                     href={routes.tools}
                     url={routes.tools}
                 >
-                    <Image className={cx("icon")} src={toolsSvg} />
+                    <Image className={cx("icon")} src={buildSvg} />
                     <div className={cx("label")}>工具</div>
                 </Navigator>
                 <Navigator
@@ -82,7 +83,7 @@ export function BottomNavigation({ themeClass }: Props) {
                     href={routes.setting}
                     url={routes.setting}
                 >
-                    <Image className={cx("icon")} src={settingSvg} />
+                    <Image className={cx("icon")} src={tuneSvg} />
                     <div className={cx("label")}>设置</div>
                 </Navigator>
                 <Navigator
@@ -91,7 +92,7 @@ export function BottomNavigation({ themeClass }: Props) {
                     url={routes.like}
                 >
                     <Image className={cx("icon")} src={likeSvg} />
-                    <div className={cx("label")}>支持</div>
+                    <div className={cx("label")}>喜欢</div>
                 </Navigator>
                 <div
                     className={cx("item")}

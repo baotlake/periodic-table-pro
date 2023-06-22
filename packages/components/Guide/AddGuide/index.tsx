@@ -1,10 +1,9 @@
 // import { View } from "@tarojs/components"
-import classNames from "classnames/bind"
-import useAddGuide from "./useAddGuide"
-import { useContext } from "react"
-import { Context } from "../../state"
-
+import classNames from 'classnames/bind'
+import useAddGuide from './useAddGuide'
 import styles from './index.module.scss'
+import { useRecoilState } from 'recoil'
+import { menuButtonClientRect } from '../../recoil/atom'
 
 const cx = classNames.bind(styles)
 
@@ -13,14 +12,12 @@ type Props = {
 }
 
 export function AddGuide({ themeClass }: Props) {
-
-    const { state: { menuButtonClientRect: rect } } = useContext(Context)
+    const [rect] = useRecoilState(menuButtonClientRect)
     const [visible, handleClose] = useAddGuide()
 
     return (
         <>
-            {
-                visible &&
+            {visible && (
                 <div
                     className={cx('add-guide', themeClass)}
                     style={{
@@ -30,16 +27,11 @@ export function AddGuide({ themeClass }: Props) {
                 >
                     <div className={cx('box')}>
                         <div className={cx('arrow')} />
-                        <div>
-                            “添加”后使用更方便！
-                        </div>
-                        <div
-                            className={cx('close')}
-                            onClick={handleClose}
-                        />
+                        <div>“添加”后使用更方便！</div>
+                        <div className={cx('close')} onClick={handleClose} />
                     </div>
                 </div>
-            }
+            )}
         </>
     )
 }

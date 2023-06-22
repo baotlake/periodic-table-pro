@@ -17,24 +17,22 @@ export function Slider({ value, min, max, step, onChange, onChanging }: Props) {
     min = min && isFinite(min) ? min : 0
     max = max && isFinite(max) ? max : 100
 
-    const percent = value / (max - min) * 100
+    const percent = (value - min) / (max - min) * 100
 
-    const { handleRef, targetRef, } = useCapturePointer({
-        onMove({ mx, target, down: { width } }) {
-            let percent = parseFloat(target.dataset.percent || '0')
-            percent += mx / width * 100
+    const { targetRef } = useCapturePointer({
+        onMove({ x, target, down: { width, left } }) {
+            let percent = (x - left) / width * 100
             percent = Math.min(100, Math.max(0, percent))
             target.style.setProperty('--value', percent + '%')
             const v = min! + (max! - min!) * percent / 100
             onChanging && onChanging({ detail: { value: v } })
         },
-        onUp({ mx, width, target }) {
-            let percent = parseFloat(target.dataset.percent || '0')
-            percent += mx / width * 100
+        onUp({ x, width, left, target }) {
+            let percent = (x - left) / width * 100
             percent = Math.min(100, Math.max(0, percent))
-            target.dataset.percent = percent + ''
             const v = min! + (max! - min!) * percent / 100
             onChange && onChange({ detail: { value: v } })
+            console.log('up', v, percent, arguments)
             target.style.removeProperty('--value')
         }
     })
@@ -43,7 +41,7 @@ export function Slider({ value, min, max, step, onChange, onChanging }: Props) {
         <div className={cx('slider')} style={{ '--value': percent + '%' } as CSSProperties}>
             <div className={cx('bar')} ref={targetRef}>
                 <div
-                    ref={handleRef}
+                    // ref={handleRef}
                     className={cx('handle')}
                 />
             </div>

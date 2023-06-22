@@ -1,0 +1,30 @@
+@import "../scss/theme";
+@import "../scss/icon";
+@import "../scss/style";
+
+.modal.zoom-modal {
+    display: flex;
+    width: 38em;
+    height: 8em;
+}
+
+.zoom-content {
+    margin: auto;
+    padding: 1em;
+    width: 100%;
+}
+
+.label {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+// theme
+.modal.zoom-modal {
+    &.light {
+
+    }
+    &.dark {
+        background: lighten($dark-background, 5%);
+    }
+}

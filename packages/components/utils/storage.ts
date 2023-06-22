@@ -7,6 +7,7 @@ export const defaultValue = {
     themeMode: 'dark',
     followSystemTheme: false,
     displayProperty: 'atomicWeight' as DisplayProperty,
+    periodicTableZoom: 1,
 
     // --------------------
     closeAddGuideAt: 0,

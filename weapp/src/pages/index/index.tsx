@@ -1,6 +1,6 @@
-import { View } from '@tarojs/components'
+import { View, MovableArea, MovableView } from '@tarojs/components'
 import Taro, { useDidShow } from '@tarojs/taro'
-import classNames from "classnames"
+import classNames from 'classnames'
 import { reportEvent } from '../../utils/analytics'
 
 import {
@@ -8,45 +8,43 @@ import {
   ZoomablePT,
   PanPinch,
   PeriodicTable,
-  setDisplayProperty,
-  setTrendData,
-  Context,
   AddGuide,
   MenuHomeLayout,
+  CustomWrapper,
+  AutoDisplayPropertiesModal,
+  AutoZoomModal,
+  usePageMeta,
 } from '@periodic-table-pro/components'
-import { usePageMeta } from '../../hooks'
-import useShareMessage from '../../hooks/useShareMessage'
-import { useContext } from 'react'
-import { StorageKey } from '../../types/storage'
-import { getTrendData } from '../../utils/trend'
-
+import { useShareMessage } from '../../hooks'
+import { useRecoilState } from 'recoil'
+import {
+  periodicTableZoom,
+  themeModeState,
+} from '@periodic-table-pro/components/recoil/atom'
 import './index.scss'
 
 export default function Index() {
-  // usePageMeta()
-  const {
-    state: {
-      theme: { mode: theme },
-    },
-    dispatch,
-  } = useContext(Context)
+  const [theme] = useRecoilState(themeModeState)
+  const [zoom] = useRecoilState(periodicTableZoom)
 
+  usePageMeta()
   useShareMessage()
 
   return (
-    <View className={classNames('index-page', theme)}>
+    <View className={classNames('index page', theme)}>
       <MenuHomeLayout themeClass={theme}>
         <AddGuide themeClass={theme} />
         {/* <ZoomablePT /> */}
-        <PanPinch
-          value={1}
-          min={0.75}
-          max={20}
-          themeClass={theme}
-        >
-          <PeriodicTable />
+        <PanPinch value={zoom} min={0.5} max={6} themeClass={theme}>
+          <CustomWrapper>
+            <PeriodicTable />
+          </CustomWrapper>
         </PanPinch>
+
         <BottomNavigation themeClass={theme} />
+
+        <AutoDisplayPropertiesModal />
+        <AutoZoomModal />
       </MenuHomeLayout>
     </View>
   )

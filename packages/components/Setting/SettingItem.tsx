@@ -6,7 +6,7 @@ import styles from './settingItem.module.scss'
 
 const cx = classNames.bind(styles)
 
-type Props<T = string | boolean | null> = {
+type Props<T = string | boolean | number | null> = {
     themeClass?: string
     icon: string
     title: string
@@ -37,7 +37,7 @@ export function SettingItem({ themeClass, icon, title, value, children, onChange
                             {value}
                             <Image className={cx('icon', 'arrow')} src={arrowImg} />
                         </>
-                    ) : false
+                    ) : null
                 }
                 {children}
             </div>

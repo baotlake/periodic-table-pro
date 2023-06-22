@@ -1,10 +1,9 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import classNames from 'classnames/bind'
 import ElementCard from './ElementCard'
 import ElementProfile from './ElementProfile'
 import PropsGroup from './PropsGroup'
-import { Context } from '../state'
-import { Image, ScrollView } from '../compat'
+import { CustomWrapper, Image, ScrollView, isTaro } from '../compat'
 import {
     elementsCategories,
     symbol,
@@ -28,6 +27,8 @@ import otherImg from "../assets/icons/other.svg"
 import earthImg from "../assets/icons/earth.svg"
 import magnetImg from "../assets/icons/magnet.svg"
 import cyclopediaImg from '../assets/icons/wikipedia_w.svg'
+import { useRecoilState } from 'recoil'
+import { menuButtonClientRect, themeModeState } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
 
@@ -48,14 +49,20 @@ type Props = {
 
 export function DetailContent({ detailData }: Props) {
     const Z = detailData.atomicNumber
-    const {
-        state: {
-            theme: { mode: themeMode },
-            menuButtonClientRect: rect,
-        } } = useContext(Context)
+
+    const [themeMode] = useRecoilState(themeModeState)
+    const [rect] = useRecoilState(menuButtonClientRect)
     const [scrollInto, setScrollInto] = useState('')
 
     const category = elementsCategories[Z - 1]
+
+    const handleScrollInto = (key: string) => {
+        setScrollInto(key)
+        if (!isTaro) {
+            const view = document.querySelector('#' + key)
+            view?.scrollIntoView?.({ behavior: 'smooth' })
+        }
+    }
 
     return (
         <div
@@ -68,28 +75,30 @@ export function DetailContent({ detailData }: Props) {
                     '--margin-top': rect.bottom + 8 + 'px',
                 } as React.CSSProperties}
             >
-                <ElementCard
-                    themeClass={themeMode}
-                    atomicNumber={Z}
-                    category={category}
-                    symbol={symbol[Z - 1]}
-                    atomicWeight={formalShortAtomicWeights[Z - 1]}
-                    name={zhCNNames[Z - 1]}
-                    pinyin={pinyin[Z - 1]}
-                    enName={enName[Z - 1]}
-                />
-                {
-                    Object.keys(detailData.properties).map((key) => (
-                        <div
-                            key={key}
-                            className={cx('drawer-item')}
-                            onClick={() => setScrollInto(key)}
-                        >
-                            <Image className={cx('drawer-item-icon')} src={icon[key]} />
-                            {propertiesGroupLabel[key]}
-                        </div>
-                    ))
-                }
+                <CustomWrapper>
+                    <ElementCard
+                        themeClass={themeMode}
+                        atomicNumber={Z}
+                        category={category}
+                        symbol={symbol[Z - 1]}
+                        atomicWeight={formalShortAtomicWeights[Z - 1]}
+                        name={zhCNNames[Z - 1]}
+                        pinyin={pinyin[Z - 1]}
+                        enName={enName[Z - 1]}
+                    />
+                    {
+                        Object.keys(detailData.properties).map((key) => (
+                            <div
+                                key={key}
+                                className={cx('drawer-item')}
+                                onClick={() => handleScrollInto(key)}
+                            >
+                                <Image className={cx('drawer-item-icon')} src={icon[key]} />
+                                {propertiesGroupLabel[key]}
+                            </div>
+                        ))
+                    }
+                </CustomWrapper>
             </div>
 
             <ScrollView
@@ -100,6 +109,7 @@ export function DetailContent({ detailData }: Props) {
                     '--margin-top': rect.bottom + 8 + 'px'
                 } as React.CSSProperties}
             >
+
                 <div className={cx('main')}>
                     <ElementProfile
                         atomicNumber={Z}

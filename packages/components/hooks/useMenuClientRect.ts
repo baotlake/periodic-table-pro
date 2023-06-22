@@ -1,59 +1,59 @@
-import { useEffect, Dispatch } from 'react'
-import {
-    Action,
-    initialState,
-    setMenuButtonClientRect
-} from '../state'
+import { useEffect } from 'react'
 import { Taro, isTaro, onWindowResize, offWindowResize } from '../compat'
+import { useRecoilState } from 'recoil'
+import { menuButtonClientRect } from '../recoil/atom'
 
 const PLATFORM = process.env.PLATFORM
 
-export function useMenuClientRect(dispatch: Dispatch<Action>) {
-    useEffect(() => {
-        const getClientRect = async () => {
-
-            if (isTaro && PLATFORM != 'h5') {
-                const { windowWidth: ww, windowHeight: wh } = Taro.getSystemInfoSync()
-                await new Promise<void>((resolve) => { Taro.nextTick(() => { resolve() }) })
-                const rect = Taro.getMenuButtonBoundingClientRect()
-                return {
-                    ...rect,
-                    windowWidth: ww,
-                    windowHeight: wh,
-                }
-            }
-
-            const [ww, wh] = [innerWidth, innerHeight]
-            const rect = initialState['menuButtonClientRect']
-            const rm = rect.windowWidth - rect.right
-            return {
-                ...rect,
-                right: ww - rm,
-                left: ww - rect.width - rm,
-                windowWidth: ww,
-                windowHeight: wh,
-            }
+export function useMenuClientRect() {
+  const [menuRect, setMenuButtonClientRect] =
+    useRecoilState(menuButtonClientRect)
+  useEffect(() => {
+    const getClientRect = async () => {
+      if (isTaro && PLATFORM != 'h5') {
+        const { windowWidth: ww, windowHeight: wh } = Taro.getSystemInfoSync()
+        await new Promise<void>((resolve) => {
+          Taro.nextTick(() => {
+            resolve()
+          })
+        })
+        const rect = Taro.getMenuButtonBoundingClientRect()
+        return {
+          ...rect,
+          windowWidth: ww,
+          windowHeight: wh,
         }
+      }
 
-        getClientRect()
-            .then((rect) => {
-                dispatch && dispatch(setMenuButtonClientRect(rect))
-            })
+      const [ww, wh] = [innerWidth, innerHeight]
+      const rect = menuRect
+      let mr = rect.windowWidth - rect.right
+      mr = 12
+      return {
+        ...rect,
+        right: ww - mr,
+        left: ww - rect.width - mr,
+        windowWidth: ww,
+        windowHeight: wh,
+      }
+    }
 
+    getClientRect().then((rect) => {
+      setMenuButtonClientRect(rect)
+    })
 
-        const handleResize = () => {
-            getClientRect()
-                .then((rect) => {
-                    dispatch && dispatch(setMenuButtonClientRect(rect))
-                })
-        }
+    const handleResize = () => {
+      getClientRect().then((rect) => {
+        setMenuButtonClientRect(rect)
+      })
+    }
 
-        onWindowResize(handleResize)
+    onWindowResize(handleResize)
 
-        return () => {
-            offWindowResize(handleResize)
-        }
-    }, [])
+    return () => {
+      offWindowResize(handleResize)
+    }
+  }, [])
 }
 
 export default useMenuClientRect

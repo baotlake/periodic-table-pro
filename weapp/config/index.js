@@ -48,7 +48,11 @@ const config = {
       },
     },
     // prerender: {
-    //   match: "pages/**",
+    //   include: [
+    //     'pages/index/index',
+    //     'pages/detail/index',
+    //   ],
+    //   exclude: []
     // },
   },
   h5: {

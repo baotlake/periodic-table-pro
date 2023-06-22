@@ -1,43 +1,42 @@
 import Taro from '@tarojs/taro'
 import { View, Button, Image } from '@tarojs/components'
 import classNames from 'classnames'
-import {
-  Context,
-  MenuPageLayout,
-} from '@periodic-table-pro/components'
-import { useContext } from 'react'
-
+import { MenuPageLayout } from '@periodic-table-pro/components'
 import solubilitySvg from '../../assets/illus/solubility.svg'
 import wikiSvg from '../../assets/illus/wiki.svg'
-
+import { useRecoilState } from 'recoil'
+import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 import './index.scss'
 
-
 export default function ToolsPage() {
-
-  const { state: { theme: { mode: theme } } } = useContext(Context)
+  const [theme] = useRecoilState(themeModeState)
 
   return (
     <View className={classNames('tools-page', theme)}>
-      <MenuPageLayout
-        themeClass={theme}
-        title='工具栏'
-      >
-        <View className='content'>
+      <MenuPageLayout themeClass={theme} title="工具栏">
+        <View className="content">
           <View
-            className='item-box'
-            onClick={() => Taro.navigateTo({ url: '/pages/solubility-table/index' })}
+            className="item-box"
+            onClick={() =>
+              Taro.navigateTo({ url: '/pages/solubility-table/index' })
+            }
           >
-            <Image className='illus' mode="aspectFit" src={solubilitySvg}></Image>
-            <View className='title'>溶解性表</View>
+            <Image
+              className="illus"
+              mode="aspectFit"
+              src={solubilitySvg}
+            ></Image>
+            <View className="title">溶解性表</View>
           </View>
 
           <View
-            className='item-box'
-            onClick={() => Taro.navigateTo({ url: '/pages/elements-cyclopedia/index' })}
+            className="item-box"
+            onClick={() =>
+              Taro.navigateTo({ url: '/pages/elements-cyclopedia/index' })
+            }
           >
-            <Image className='illus' mode="aspectFit" src={wikiSvg}></Image>
-            <View className='title'>元素百科</View>
+            <Image className="illus" mode="aspectFit" src={wikiSvg}></Image>
+            <View className="title">元素百科</View>
           </View>
 
           {/* <View className='section'>

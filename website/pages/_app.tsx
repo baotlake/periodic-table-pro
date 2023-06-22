@@ -1,24 +1,13 @@
-import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import {
-  Context,
-  reducer,
-  initialState,
-  useMenuClientRect,
-  useTheme,
-  useInitialization,
-} from '@periodic-table-pro/components'
-import { useReducer } from 'react'
+import { Initialization } from '@periodic-table-pro/components'
+import { RecoilRoot } from 'recoil'
+import '../styles/globals.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  useTheme(dispatch, state.theme.mode, state.theme.followSystem, state.theme.initialized)
-  useMenuClientRect(dispatch)
-  useInitialization(dispatch)
-
   return (
-    <Context.Provider value={{ state, dispatch }}>
+    <RecoilRoot>
+      <Initialization />
       <Component {...pageProps} />
-    </Context.Provider>
+    </RecoilRoot>
   )
 }

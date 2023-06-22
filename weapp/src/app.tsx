@@ -1,14 +1,8 @@
 import Taro from '@tarojs/taro'
-import { useEffect, useReducer } from 'react'
+import { useEffect } from 'react'
 // import { initStorage } from './utils/storage'
-import {
-  Context as ComponentsContext,
-  initialState as componentsInitialState,
-  reducer as componentsReducer,
-  useInitialization,
-  useMenuClientRect,
-  useTheme,
-} from '@periodic-table-pro/components'
+import { Initialization } from '@periodic-table-pro/components'
+import { RecoilRoot } from 'recoil'
 
 import './app.scss'
 
@@ -16,23 +10,18 @@ const PLATFORM = process.env.PLATFORM
 const ENV_ID = process.env.ENV_ID
 
 export default function App(props) {
-
-  const [state, dispatch] = useReducer(componentsReducer, componentsInitialState)
-  useTheme(dispatch, state.theme.mode, state.theme.followSystem, state.theme.initialized)
-  useMenuClientRect(dispatch)
-  useInitialization(dispatch)
-
   useEffect(() => {
     if (PLATFORM == 'weapp' && ENV_ID) {
-      Taro.cloud.init({
+      Taro.cloud?.init({
         env: ENV_ID,
       })
     }
   }, [])
 
   return (
-    <ComponentsContext.Provider value={{ state: state, dispatch: dispatch }}>
-        {props.children}
-    </ComponentsContext.Provider>
+    <RecoilRoot>
+      <Initialization />
+      {props.children}
+    </RecoilRoot>
   )
 }

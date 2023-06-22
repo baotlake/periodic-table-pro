@@ -5,7 +5,7 @@
   "appid": "wx20e649abe5acb0bc",
   "setting": {
     "urlCheck": true,
-    "es6": true,
+    "es6": false,
     "postcss": false,
     "minified": true,
     "lazyloadPlaceholderEnable": true,

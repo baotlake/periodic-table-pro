@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind'
 import { Content } from "./Content"
 import { Categories, elementsCategories, WikiData } from "@periodic-table-pro/data"
+import { CustomWrapper } from '../compat'
 
 import styles from './article.module.scss'
 
@@ -41,10 +42,12 @@ export function Article({
                 {tagline}
             </div>
 
-            <Content
-                data={data}
-                themeClass={themeClass}
-            />
+            <CustomWrapper>
+                <Content
+                    data={data}
+                    themeClass={themeClass}
+                />
+            </CustomWrapper>
 
             {
                 loading && (

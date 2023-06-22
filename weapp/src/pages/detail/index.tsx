@@ -1,36 +1,30 @@
-import Taro, { useRouter } from "@tarojs/taro";
-import { CSSProperties, useEffect, useState, useContext } from "react";
-import classNames from "classnames";
-import { View, Image, ScrollView, AdCustom, PageMeta } from "@tarojs/components";
+import Taro, { useRouter } from '@tarojs/taro'
+import { CSSProperties, useEffect, useState } from 'react'
+import classNames from 'classnames'
+import { View, Image, ScrollView, AdCustom, PageMeta } from '@tarojs/components'
 import {
-  Context,
   NavigationHeader,
   AdjacentNavigation,
   DetailContent,
+  usePageMeta,
 } from '@periodic-table-pro/components'
-import {
-  DetailData,
-  getDetailData,
-} from '@periodic-table-pro/data'
-import useShareMessage from "../../hooks/useShareMessage";
-import { usePageMeta } from "../../hooks"
+import { DetailData, getDetailData } from '@periodic-table-pro/data'
+import { useShareMessage } from '../../hooks'
 
 import './index.scss'
+import { useRecoilState } from 'recoil'
+import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 const PLATFORM = process.env.PLATFORM
 const DETAIL_CUSTOM_AD = process.env.DETAIL_CUSTOM_AD
 
-
 export default function DetailPage() {
   const router = useRouter()
-  const {
-    state: {
-      theme: { mode: theme },
-    }
-  } = useContext(Context)
+  const [theme] = useRecoilState(themeModeState)
   const [atomicNumber, setAtomicNumber] = useState(1)
   // const [scrollInto, setScrollInto] = useState('')
 
+  usePageMeta()
   useShareMessage({
     path: '/pages/detail/index?Z=' + router.params.Z,
     posterImage: false,
@@ -48,26 +42,28 @@ export default function DetailPage() {
   console.log(detailData)
 
   const handleTapPrevious = () => {
-    const Z = detailData.previous ? detailData.previous.atomicNumber : detailData.atomicNumber
+    const Z = detailData.previous
+      ? detailData.previous.atomicNumber
+      : detailData.atomicNumber
     Taro.redirectTo({
-      url: '/pages/detail/index?Z=' + Z
+      url: '/pages/detail/index?Z=' + Z,
     })
   }
 
   const handleTapNext = () => {
-    const Z = detailData.next ? detailData.next.atomicNumber : detailData.atomicNumber
+    const Z = detailData.next
+      ? detailData.next.atomicNumber
+      : detailData.atomicNumber
     Taro.redirectTo({
-      url: '/pages/detail/index?Z=' + Z
+      url: '/pages/detail/index?Z=' + Z,
     })
   }
 
   return (
-    <View className={classNames('detail-page', theme)}>
+    <View className={classNames('detail page', theme)}>
       <NavigationHeader themeClass={theme} />
 
-      <DetailContent
-        detailData={detailData}
-      />
+      <DetailContent detailData={detailData} />
 
       <AdjacentNavigation
         themeClass={theme}
@@ -78,5 +74,5 @@ export default function DetailPage() {
         onTapNext={handleTapNext}
       />
     </View>
-  );
+  )
 }

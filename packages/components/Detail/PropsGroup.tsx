@@ -71,7 +71,8 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
         'props-group', 'landscape',
         themeClass,
         Categories[elementsCategories[Z - 1]]
-      )} id={id}
+      )} 
+      id={id}
     >
       <div
         className={cx('props-headline')}

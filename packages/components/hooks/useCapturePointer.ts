@@ -21,7 +21,8 @@ type MoveData = {
     down: Properties
     mx: number
     my: number
-    v0: number
+    x: number
+    y: number
 }
 
 type Options = {
@@ -31,16 +32,15 @@ type Options = {
 }
 
 export function useCapturePointer(options: Options) {
-    const handleRef = useRef<HTMLElement | null>(null)
     const targetRef = useRef<HTMLElement | null>(null)
+    const handleRef = useRef<HTMLElement | null>(null)
 
     useEffect(() => {
-        const handle = handleRef.current
-        const target = targetRef.current || handle
+        const target = targetRef.current
+        const handle = handleRef.current || target
         let x1 = 0, y1 = 0
         let x = 0, y = 0
         let downProperties: Properties
-        let v0 = 0
 
         const handlePointerMove = (e: PointerEvent) => {
             x = e.clientX
@@ -54,7 +54,8 @@ export function useCapturePointer(options: Options) {
                 down: downProperties,
                 mx: x - x1,
                 my: y - y1,
-                v0: v0,
+                x,
+                y,
             })
         }
 
@@ -68,13 +69,13 @@ export function useCapturePointer(options: Options) {
             handle!.addEventListener('pointermove', handlePointerMove)
             downProperties = parseProperties(target!)
             if (options.onDown) {
-                v0 = options.onDown({
+                options.onDown({
                     e: e,
                     target: target!,
                     x: x1,
                     y: y1,
                     ...downProperties
-                }) || v0
+                })
             }
         }
 
@@ -82,6 +83,8 @@ export function useCapturePointer(options: Options) {
             handle!.releasePointerCapture(e.pointerId)
             handle!.removeEventListener('pointermove', handlePointerMove)
             const properties = parseProperties(target!)
+            x = e.clientX
+            y = e.clientY
             options.onUp && options.onUp({
                 e: e,
                 target: target!,

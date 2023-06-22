@@ -18,16 +18,18 @@
   padding: 0 24PX;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &.selected {
     background: rgba(236, 236, 236, 0.8);
+    font-weight: bold;
   }
 
   &.hidden {
     display: none;
   }
 
-  &:hover {
+  &:active {
     background: rgba(236, 236, 236, 0.8);
   }
 }
@@ -56,7 +58,7 @@
         background: lighten($dark-background, 5%);
       }
 
-      &:hover {
+      &:active {
         background: lighten($dark-background, 5%);
       }
     }

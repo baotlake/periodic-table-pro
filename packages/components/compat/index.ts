@@ -8,6 +8,8 @@ export {
     offWindowResize,
     redirectTo,
     navigateTo,
+    useReady,
+    useDidShow,
 } from './apis'
 export {
     Button,
@@ -20,4 +22,9 @@ export {
     RichText,
     Slider,
     Switch,
+    CustomWrapper,
 } from './components'
+
+export {
+    getBoundingClientRect,
+} from './dom'

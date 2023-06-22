@@ -1,4 +1,4 @@
-import { CSSProperties, useContext, useState, forwardRef, ForwardedRef } from "react"
+import { CSSProperties, useState, forwardRef, ForwardedRef } from "react"
 import classNames from "classnames/bind"
 import ElementBox, { BottomProperty } from "../ElementBox"
 import {
@@ -13,13 +13,14 @@ import {
 import Groups from "./Groups"
 import Periods from "./Periods"
 import Legend from "./Legend"
-import { Context } from '../state'
 import { trendBg } from '../utils/trend'
 import { chineseName } from "../utils/utils"
 import { getState } from "../utils/property"
 import { reportEvent } from "../utils/analytics"
 
 import styles from "./periodicTable.module.scss"
+import { useRecoilState } from "recoil"
+import { periodicTableColorSign, periodicTableDisplayProperty, periodicTableEmphasize, periodicTableTemperature, periodicTableTrendData, themeModeState } from "../recoil/atom"
 
 const cx = classNames.bind(styles)
 
@@ -29,16 +30,12 @@ type Props = {
 function PeriodicTableFc({ }: Props, ref: ForwardedRef<HTMLDivElement>) {
   const { elements, groups, periods } = mediumLongForm
 
-  const { state: {
-    theme: { mode: themeMode },
-    periodicTable: {
-      emphasize,
-      colorSign,
-      trendData,
-      temperature,
-      displayProperty,
-    },
-  }, dispatch } = useContext(Context)
+  const [themeMode] = useRecoilState(themeModeState)
+  const [emphasize] = useRecoilState(periodicTableEmphasize)
+  const [colorSign] = useRecoilState(periodicTableColorSign)
+  const [trendData] = useRecoilState(periodicTableTrendData)
+  const [temperature] = useRecoilState(periodicTableTemperature)
+  const [displayProperty] = useRecoilState(periodicTableDisplayProperty)
 
   const [currentZ, setCurrentZ] = useState(1)
 

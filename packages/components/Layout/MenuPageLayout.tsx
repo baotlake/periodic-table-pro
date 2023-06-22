@@ -1,11 +1,11 @@
 
-import { CSSProperties, PropsWithChildren, useContext } from 'react'
+import { CSSProperties, PropsWithChildren } from 'react'
 import classNames from 'classnames/bind'
 import NavigationHeader from "../NavigationBar/NavigationHeader"
 import { PermanentDrawer } from '../MenuDrawer'
-import { Context } from '../state'
-
 import styles from './menuPageLayout.module.scss'
+import { useRecoilState } from 'recoil'
+import { menuButtonClientRect } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
 
@@ -17,7 +17,7 @@ type Props = PropsWithChildren<{
 
 export function MenuPageLayout({ themeClass, children, title }: Props) {
 
-  const { state: { menuButtonClientRect: menuRect } } = useContext(Context)
+  const [menuRect] = useRecoilState(menuButtonClientRect)
 
   return (
     <div>

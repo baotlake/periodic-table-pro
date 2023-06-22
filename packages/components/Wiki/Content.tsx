@@ -1,5 +1,5 @@
 // import { View } from '@tarojs/components'
-import { RichText } from '../compat'
+import { CustomWrapper, RichText } from '../compat'
 import classNames from 'classnames/bind'
 import type { WikiData } from '@periodic-table-pro/data'
 
@@ -23,7 +23,7 @@ export function Content({ data, themeClass }: Props) {
     <div className={cx('content', themeClass, PLATFORM) + ' content'}>
       {data &&
         data.content.map((section) => (
-          <>
+          <CustomWrapper>
             {section.heading && (
               <div className={cx('h2')}>
                 <RichText nodes={r(section.heading)} />
@@ -48,7 +48,7 @@ export function Content({ data, themeClass }: Props) {
                 }
               })}
             </div>
-          </>
+          </CustomWrapper>
         ))}
     </div>
   )

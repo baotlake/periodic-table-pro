@@ -1,0 +1,55 @@
+@use "sass:color";
+@import "../scss/theme";
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+
+  &.visible {
+    display: block;
+    opacity: 1;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.modal__mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0 0 0 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal__content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 200PX;
+  height: 300PX;
+  max-width: 80vw;
+  max-height: 80vw;
+  border-radius: 6PX;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  overflow: hidden;
+}
+
+// theme
+.modal-wrapper {
+  &.light {}
+
+  &.dark {
+    .modal__content {
+      background: $dark-background;
+      color: color.change($dark-foceground, $alpha: 0.85);
+    }
+  }
+}

@@ -1,14 +1,14 @@
-import { useRef, useContext, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback } from 'react'
 import classNames from 'classnames/bind'
-import { Context } from '../state'
-import PeriodicTable from "./PeriodicTable"
-
+import PeriodicTable from './PeriodicTable'
 import styles from './zoomablePT.module.scss'
+import { useRecoilState } from 'recoil'
+import { themeModeState } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
 
 export function ZoomablePT() {
-    const { state: { theme: { mode: themeMode } } } = useContext(Context)
+    const [themeMode] = useRecoilState(themeModeState)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const tableRef = useRef<HTMLDivElement>(null)
     const dataRef = useRef({
@@ -25,26 +25,36 @@ export function ZoomablePT() {
         fontSize: 1,
     })
 
-    const handleTouchStart = useCallback(async (e: React.TouchEvent | TouchEvent) => {
-        if (e.touches.length !== 2) return
-        const data = dataRef.current
-        const target = tableRef.current!
-        const wrapper = wrapperRef.current!
+    const handleTouchStart = useCallback(
+        async (e: React.TouchEvent | TouchEvent) => {
+            if (e.touches.length !== 2) return
+            const data = dataRef.current
+            const target = tableRef.current!
+            const wrapper = wrapperRef.current!
 
-        const t1 = e.touches[0], t2 = e.touches[1]
-        const x1 = t1.clientX, y1 = t1.clientY
-        const x2 = t2.clientX, y2 = t2.clientY
+            const t1 = e.touches[0],
+                t2 = e.touches[1]
+            const x1 = t1.clientX,
+                y1 = t1.clientY
+            const x2 = t2.clientX,
+                y2 = t2.clientY
 
-        const d1 = Math.hypot(x2 - x1, y2 - y1)
-        const { x, y } = await getOriginOffset(target, (x1 + x2) / 2, (y1 + y2) / 2)
+            const d1 = Math.hypot(x2 - x1, y2 - y1)
+            const { x, y } = await getOriginOffset(
+                target,
+                (x1 + x2) / 2,
+                (y1 + y2) / 2
+            )
 
-        data.panning = true
-        data.d1 = d1
-        data.scrollX = wrapper.scrollLeft
-        data.scrollY = wrapper.scrollTop
-        data.originOffsetX = x
-        data.originOffsetY = y
-    }, [])
+            data.panning = true
+            data.d1 = d1
+            data.scrollX = wrapper.scrollLeft
+            data.scrollY = wrapper.scrollTop
+            data.originOffsetX = x
+            data.originOffsetY = y
+        },
+        []
+    )
 
     const handleTouchMove = useCallback((e: React.TouchEvent | TouchEvent) => {
         const data = dataRef.current
@@ -52,9 +62,12 @@ export function ZoomablePT() {
         const { d1, originOffsetX, originOffsetY } = data
         const target = tableRef.current!
 
-        const t1 = e.touches[0], t2 = e.touches[1]
-        const x1 = t1.clientX, y1 = t1.clientY
-        const x2 = t2.clientX, y2 = t2.clientY
+        const t1 = e.touches[0],
+            t2 = e.touches[1]
+        const x1 = t1.clientX,
+            y1 = t1.clientY
+        const x2 = t2.clientX,
+            y2 = t2.clientY
 
         const d = Math.hypot(x2 - x1, y2 - y1)
         const scale = d / d1
@@ -86,10 +99,7 @@ export function ZoomablePT() {
         target.style.transform = ''
         target.style.fontSize = `${fontSize}em`
 
-        wrapper.scrollTo(
-            scrollX + translateX,
-            scrollY + translateY,
-        )
+        wrapper.scrollTo(scrollX + translateX, scrollY + translateY)
 
         console.log('translate 2 scroll', translateX, translateY)
         data.panning = false
@@ -104,9 +114,12 @@ export function ZoomablePT() {
         const data = dataRef.current
         let {
             scale,
-            scrollX, scrollY,
-            panning, panningTimeoutId,
-            originOffsetX, originOffsetY,
+            scrollX,
+            scrollY,
+            panning,
+            panningTimeoutId,
+            originOffsetX,
+            originOffsetY,
         } = data
 
         const target = tableRef.current!
@@ -132,7 +145,6 @@ export function ZoomablePT() {
             data.panningTimeoutId = window.setTimeout(() => {
                 handlePinchStop()
             }, 300)
-
         } else {
             clearTimeout(panningTimeoutId)
             data.panningTimeoutId = window.setTimeout(() => {
@@ -140,7 +152,7 @@ export function ZoomablePT() {
             }, 300)
         }
 
-        const zoom = - deltaY / 200
+        const zoom = -deltaY / 200
 
         scale += zoom
         const dx = originOffsetX * (scale - 1)

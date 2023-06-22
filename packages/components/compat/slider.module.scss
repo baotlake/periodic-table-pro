@@ -1,21 +1,21 @@
 .slider {
-    padding: 0.6em;
     --value: 0%;
 }
 
 .bar {
     width: 100%;
-    height: 0.25em;
     border-radius: 9999px;
     position: relative;
     box-sizing: content-box;
+    padding: 0.6em 0;
+    --height: 0.25em;
+    height: var(--height);
 
     &::before {
         content: '';
         position: absolute;
-        top: 0;
         left: 0;
-        height: 100%;
+        height: var(--height);
         width: 100%;
         border-radius: 9999px;
         background: currentColor;
@@ -25,9 +25,8 @@
     &::after {
         content: '';
         position: absolute;
-        top: 0;
         left: 0;
-        height: 100%;
+        height: var(--height);
         width: var(--value);
         border-radius: 9999px;
         background: currentColor;

@@ -1,7 +1,7 @@
-import SelectModal from "./SelectModal"
+import Modal from "./Modal"
 import DisplayPropertiesModal from "./DisplayPropertiesModal"
 
 export {
-  SelectModal,
+  Modal as SelectModal,
   DisplayPropertiesModal
 }

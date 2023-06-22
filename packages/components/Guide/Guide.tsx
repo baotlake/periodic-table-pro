@@ -1,10 +1,6 @@
 import classNames from 'classnames/bind'
 import { Button } from '../compat'
-import {
-    Context,
-} from '../state'
 import { VideoDemo } from './VideoDemo'
-import { useContext } from 'react'
 import styles from './guide.module.scss'
 
 const cx = classNames.bind(styles)
@@ -15,8 +11,6 @@ const host = BUCKET_HOST
 const videosPath = host + '/videos/'
 
 export function Guide() {
-
-    const { state: { theme: { mode: theme } } } = useContext(Context)
 
     return (
         <div className={cx('guide')}>

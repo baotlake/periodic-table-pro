@@ -5,17 +5,22 @@
     overflow: auto;
     height: 100vh;
     width: 100vw;
-    padding: 3.75em 0;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
     box-sizing: border-box;
+    touch-action: pan-x pan-y;
+    padding-top: 3.75em;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
     @include light-scrollbar;
 }
 
 .pan-pinch {
-    transform-origin: 0px 0px;
-    touch-action: pan-x pan-y;
-    margin: auto;
-    will-change: font-size;
+    padding-top: 3.75em;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
+    height: fit-content;
+    width: fit-content;
+    transform-origin: 0% 0%;
+    // margin: auto;
+    // will-change: transform, margin, font-size;
+    will-change: transform, font-size;
 }
 
 // theme

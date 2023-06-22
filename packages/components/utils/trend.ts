@@ -1,10 +1,5 @@
 import { elements, DisplayProperty } from '@periodic-table-pro/data'
-
-type TrendData =
-  | number
-  | { min: number, max: number }
-  | number[]
-  | { min: number, max: number }[]
+import { TrendData } from '../type'
 
 export function parseTrendValue(dataList: number[] | string[]): TrendData[] {
   const numberList = dataList.map(value => {

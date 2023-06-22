@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import classNames from "classnames/bind"
+import { useEffect, useRef, useState } from 'react'
+import classNames from 'classnames/bind'
 import { Canvas, Image, Taro } from '../compat'
 
 import styles from './electronsShell.module.scss'
@@ -17,7 +17,6 @@ const w = 600
 const h = 600
 
 export default function ElectronsShell({ className, value }: Props) {
-
   const [imgUrl, setImgUrl] = useState('')
 
   const dataRef = useRef({
@@ -36,6 +35,7 @@ export default function ElectronsShell({ className, value }: Props) {
     let ctx: CanvasRenderingContext2D | Taro.CanvasContext
     let requestID: number = 0
     let canvas: any
+    let mount = true
 
     function draw(shells: number[]) {
       if (!ctx) return
@@ -62,7 +62,7 @@ export default function ElectronsShell({ className, value }: Props) {
         for (let j = 0; j < n; j++) {
           ctx.beginPath()
           const shellRadius = 10 + 30 * (i + 1)
-          let angle = j * (2 * Math.PI) / n
+          let angle = (j * (2 * Math.PI)) / n
           const x = shellRadius * Math.cos(angle)
           const y = shellRadius * Math.sin(angle)
           ctx.arc(x, y, 8, 0, 2 * Math.PI)
@@ -73,7 +73,6 @@ export default function ElectronsShell({ className, value }: Props) {
     }
 
     function render(width: number, height: number) {
-
       console.log('render', width, height, ctx)
 
       let requestAnimationFrame = globalThis.requestAnimationFrame || (() => 0)
@@ -89,7 +88,11 @@ export default function ElectronsShell({ className, value }: Props) {
 
         draw(shells)
         if (PLATFORM === 'qq') {
-          (ctx as any).draw()
+          ;(ctx as any).draw()
+        }
+
+        if (!mount) {
+          return
         }
 
         requestAnimationFrame(drawLoop)
@@ -99,7 +102,9 @@ export default function ElectronsShell({ className, value }: Props) {
     }
 
     if (PLATFORM == 'h5' || PLATFORM == 'next') {
-      const canvas = document.querySelector('#electrons-shell') as HTMLCanvasElement
+      const canvas = document.querySelector(
+        '#electrons-shell'
+      ) as HTMLCanvasElement
       if (canvas) {
         const context = canvas.getContext('2d') as CanvasRenderingContext2D
         ctx = context
@@ -110,9 +115,14 @@ export default function ElectronsShell({ className, value }: Props) {
     if (PLATFORM == 'weapp' && Taro) {
       Taro.nextTick(() => {
         const query = Taro.createSelectorQuery()
-        query.select('#electrons-shell').fields({ node: true, size: true })
-        query.exec((res) => {
-          canvas = res[0].node
+        query
+          .select?.('.page >>> .unique-electrons-shell')
+          .fields({ node: true, size: true })
+        query
+          .select?.('.unique-electrons-shell')
+          .fields({ node: true, size: true })
+        query.exec?.((res) => {
+          canvas = res.find((n) => n)?.node
           const context = canvas.getContext('2d') as CanvasRenderingContext2D
           ctx = context
           const dpr = Taro.getSystemInfoSync().pixelRatio
@@ -144,7 +154,7 @@ export default function ElectronsShell({ className, value }: Props) {
               canvasId: 'electrons-shell',
               success: (res) => {
                 setImgUrl(res.tempFilePath)
-              }
+              },
             })
           })
         })
@@ -152,13 +162,12 @@ export default function ElectronsShell({ className, value }: Props) {
     }
 
     return () => {
+      mount = false
       let cancelAnimationFrame = globalThis.cancelAnimationFrame
-
       if (['weapp', 'qq'].includes(PLATFORM) && canvas) {
-        cancelAnimationFrame = canvas.cancelAnimationFrame
+        // cancelAnimationFrame = canvas?.cancelAnimationFrame
       }
-
-      cancelAnimationFrame && cancelAnimationFrame(requestID)
+      cancelAnimationFrame?.(requestID)
     }
   }, [])
 
@@ -180,63 +189,55 @@ export default function ElectronsShell({ className, value }: Props) {
   }
 
   return (
-    <div
-      className={cx('electrons-shell', className)}
-      onClick={handleClick}
-    >
-      {
-        (PLATFORM == 'h5' || PLATFORM == 'next') && (
-          <canvas
-            id='electrons-shell'
-            width={w}
-            height={h}
+    <div className={cx('electrons-shell', className)} onClick={handleClick}>
+      {(PLATFORM == 'h5' || PLATFORM == 'next') && (
+        <canvas
+          id="electrons-shell"
+          width={w}
+          height={h}
+          style={{
+            width: 300,
+            height: 300,
+          }}
+        />
+      )}
+      {PLATFORM == 'weapp' && (
+        <Canvas
+          type="2d"
+          id="electrons-shell"
+          className="unique-electrons-shell"
+          canvasId="electrons-shell"
+          style={{
+            width: 300,
+            height: 300,
+          }}
+        />
+      )}
+      {PLATFORM == 'qq' && (
+        <>
+          <Image
+            className={cx('img')}
+            src={imgUrl}
             style={{
               width: 300,
               height: 300,
             }}
           />
-        )
-      }
-      {
-        PLATFORM == 'weapp' && (
           <Canvas
-            type='2d'
-            id='electrons-shell'
+            type="2d"
+            id="electrons-shell"
             canvasId="electrons-shell"
             style={{
-              width: 300,
-              height: 300,
+              width: w,
+              height: h,
+              position: 'absolute',
+              opacity: 0,
+              pointerEvents: 'none',
+              transform: 'translate(-1000000px, -10000000px)',
             }}
           />
-        )
-      }
-      {
-        PLATFORM == 'qq' && (
-          <>
-            <Image
-              className={cx('img')}
-              src={imgUrl}
-              style={{
-                width: 300,
-                height: 300,
-              }}
-            />
-            <Canvas
-              type="2d"
-              id="electrons-shell"
-              canvasId="electrons-shell"
-              style={{
-                width: w,
-                height: h,
-                position: 'absolute',
-                opacity: 0,
-                pointerEvents: 'none',
-                transform: 'translate(-1000000px, -10000000px)',
-              }}
-            />
-          </>
-        )
-      }
+        </>
+      )}
     </div>
   )
 }

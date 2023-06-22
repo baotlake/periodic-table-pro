@@ -11,6 +11,9 @@ import periodicTableIcon from '../assets/icons/periodic-table.svg'
 import toolsIcon from '../assets/icons/tools.svg'
 import settingIcon from '../assets/icons/setting.svg'
 import shopIcon from '../assets/icons/shop.svg'
+import buildSvg from '../assets/icons/build.svg'
+import tuneSvg from '../assets/icons/tune.svg'
+
 
 const menus = [
     {
@@ -18,13 +21,13 @@ const menus = [
         items: [
             {
                 name: 'tools',
-                icon: toolsIcon,
+                icon: buildSvg,
                 label: '工具栏',
                 route: routes.tools,
             },
             {
                 name: 'setting',
-                icon: settingIcon,
+                icon: tuneSvg,
                 label: '设置',
                 route: routes.setting,
             },
@@ -42,7 +45,7 @@ const menus = [
             {
                 name: 'like',
                 icon: likeIcon,
-                label: '支持',
+                label: '喜欢',
                 route: routes.like,
             },
             {

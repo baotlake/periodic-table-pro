@@ -1,9 +1,12 @@
 const dotenv = require("dotenv");
+const path = require("path")
 
 const ENV_SUFFIX = process.env.ENV_SUFFIX || "";
 
+const envPath = path.join(__dirname, '..', ".env" + ENV_SUFFIX)
+
 dotenv.config({
-  path: ".env" + ENV_SUFFIX,
+  path: envPath,
 });
 
 const PLATFORM =

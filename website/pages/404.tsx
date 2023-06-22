@@ -1,23 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useContext, useEffect } from 'react'
-import classNames from "classnames"
+import { useEffect } from 'react'
+import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import {
   MenuHomeLayout,
   ZoomablePT,
   BottomNavigation,
-  Context,
   weappPath2Web,
 } from '@periodic-table-pro/components'
+import { useRecoilState } from 'recoil'
+import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 export default function Home() {
-
-  const {
-    state: {
-      theme: { mode: theme },
-    }
-  } = useContext(Context)
+  const [theme] = useRecoilState(themeModeState)
 
   const router = useRouter()
 

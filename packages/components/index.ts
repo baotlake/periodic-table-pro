@@ -18,8 +18,10 @@ export { Feedback } from './Feedback'
 export { Like } from './Like'
 export { Setting } from './Setting'
 export { MaskIcon } from './Icon'
-export { RichText } from './compat'
+export { RichText, CustomWrapper } from './compat'
 export { PanPinch } from './PanPinch'
+export { AutoDisplayPropertiesModal, AutoZoomModal } from './AutoModal'
+export { Initialization } from './Initialization'
 export { weappPath2Web } from './utils/routes'
 
 export {
@@ -27,18 +29,5 @@ export {
     useTheme,
     usePinchZoom,
     useInitialization,
+    usePageMeta,
 } from './hooks'
-
-export {
-    Context,
-    initialState,
-    reducer,
-    setTheme,
-    setMenuButtonClientRect,
-    setEmphasize,
-    setColorSign,
-    setTrendData,
-    setTemperature,
-    setDisplayProperty,
-} from './state'
-export type { State, Action } from './state'

@@ -1,5 +1,6 @@
 @import '../scss/theme';
 @import '../scss/style';
+@import '../scss/icon';
 
 .setting {}
 
@@ -7,6 +8,13 @@
     @include switch($isColumn: false);
 }
 
+.minus.icon, .add.icon {
+    width: 2.6em;
+    height: 2.6em;
+    margin:0 0.5em;
+    cursor: pointer;
+    @include filter-black;
+}
 
 // theme
 .setting {
@@ -19,6 +27,10 @@
             &::before {
                 background: lighten($dark-background, 8%);
             }
+        }
+        
+        .minus.icon, .add.icon {
+            @include filter-white;
         }
     }
 }
