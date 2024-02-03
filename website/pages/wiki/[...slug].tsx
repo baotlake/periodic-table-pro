@@ -64,15 +64,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const slug = [''].concat(context.params.slug)[1]
   const i = symbol.findIndex((s) => s == slug)
   const Z = i + 1
-  const url = STATIC_BASE + '/json/wiki/' + Z + '.json'
-
-  console.log('getStaticProps url: ', url)
-
-  const data = await fetch(url).then((res) => res.json())
+  const data = await import('../../public/json/wiki/' + Z + '.json')
 
   return {
     props: {
-      data: data,
+      data: data.default,
     },
   }
 }
