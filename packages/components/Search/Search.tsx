@@ -9,7 +9,7 @@ import { search } from '../utils/search'
 
 import searchSvg from '../assets/icons/search.svg'
 import styles from './search.module.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { menuButtonClientRect } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
@@ -30,7 +30,7 @@ export function Search({ themeClass, onSearchChange }: Props) {
   const [list, setList] = useState<ResultData[] | null>([])
   const [light, setLight] = useState<number[] | null>(null)
 
-  const [rect] = useRecoilState(menuButtonClientRect)
+  const [rect] = useAtom(menuButtonClientRect)
 
   useEffect(() => {
     const autoSearch = () => {

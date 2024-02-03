@@ -7,13 +7,13 @@ import logoImg from '../../assets/images/logo.png'
 import githubSvg from '../../assets/icons/github.svg'
 
 import './index.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 const PLATFORM = process.env.PLATFORM
 
 export default function AboutPage() {
-    const [theme] = useRecoilState(themeModeState)
+    const [theme] = useAtom(themeModeState)
 
     useShareMessage()
 

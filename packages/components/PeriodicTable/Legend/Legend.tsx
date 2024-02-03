@@ -21,7 +21,7 @@ import { getTrendData } from '../../utils/trend'
 import { reportEvent } from '../../utils/analytics'
 import { getState } from "../../utils/property"
 import { setStorage, getStorage } from '../../utils/storage'
-import { useRecoilState, useSetRecoilState } from "recoil"
+import { useAtom, useSetAtom } from 'jotai'
 import { displayPropertiesModalVisible, periodicTableColorSign, periodicTableDisplayProperty, periodicTableEmphasize, periodicTableTemperature, periodicTableTrendData, zoomModalVisible } from "../../recoil/atom"
 
 import arrowImg from '../../assets/icons/dropdown-arrow.svg'
@@ -52,14 +52,14 @@ type Props = {
 }
 
 export default function Legend({ themeClass, Z }: Props) {
-  const [emphasize, setEmphasize] = useRecoilState(periodicTableEmphasize)
-  const [colorSign, setColorSign] = useRecoilState(periodicTableColorSign)
-  const [temperature, setTemperature] = useRecoilState(periodicTableTemperature)
-  const [displayProperty, setDisplayProperty] = useRecoilState(periodicTableDisplayProperty)
-  const [trendData, setTrendData] = useRecoilState(periodicTableTrendData)
+  const [emphasize, setEmphasize] = useAtom(periodicTableEmphasize)
+  const [colorSign, setColorSign] = useAtom(periodicTableColorSign)
+  const [temperature, setTemperature] = useAtom(periodicTableTemperature)
+  const [displayProperty, setDisplayProperty] = useAtom(periodicTableDisplayProperty)
+  const [trendData, setTrendData] = useAtom(periodicTableTrendData)
 
-  const setDisplayPropertiesModalVisible = useSetRecoilState(displayPropertiesModalVisible)
-  const setZoomModalVisible = useSetRecoilState(zoomModalVisible)
+  const setDisplayPropertiesModalVisible = useSetAtom(displayPropertiesModalVisible)
+  const setZoomModalVisible = useSetAtom(zoomModalVisible)
 
   const emphasizeIndex = emphasizes.findIndex(v => v == emphasize)
 

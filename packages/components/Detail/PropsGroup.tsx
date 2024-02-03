@@ -1,7 +1,7 @@
 import { Image, Navigator, redirectTo } from '../compat'
-import { useState } from "react"
-import classNames from "classnames/bind"
-import ElectronsShell from "./ElectronsShell"
+import { useState } from 'react'
+import classNames from 'classnames/bind'
+import ElectronsShell from './ElectronsShell'
 import { RichText } from '../compat'
 import {
   DetailData,
@@ -13,23 +13,23 @@ import {
 import { getDetailPath, getWikiPath } from '../utils/routes'
 import { getDeepReadingWikipediaUrl } from '../utils/property'
 import { HighlightTable } from '../PeriodicTable'
+import { STATIC_BASE } from '../config'
 
-import outlineImg from "../assets/icons/outline.svg"
-import physicsImg from "../assets/icons/physics.svg"
-import atomImg from "../assets/icons/atom.svg"
-import timeImg from "../assets/icons/time.svg"
-import otherImg from "../assets/icons/other.svg"
-import earthImg from "../assets/icons/earth.svg"
-import magnetImg from "../assets/icons/magnet.svg"
+import outlineImg from '../assets/icons/outline.svg'
+import physicsImg from '../assets/icons/physics.svg'
+import atomImg from '../assets/icons/atom.svg'
+import timeImg from '../assets/icons/time.svg'
+import otherImg from '../assets/icons/other.svg'
+import earthImg from '../assets/icons/earth.svg'
+import magnetImg from '../assets/icons/magnet.svg'
 import cyclopediaImg from '../assets/icons/wikipedia_w.svg'
 import deepReadingImg from '../assets/icons/deep-reading.svg'
 
-import styles from "./propsGroup.module.scss"
+import styles from './propsGroup.module.scss'
 
 const cx = classNames.bind(styles)
 
 const PLATFORM = process.env.PLATFORM
-const BUCKET_HOST = process.env.BUCKET_HOST
 
 type Data = DetailData['properties'][keyof DetailData['properties']]
 
@@ -39,8 +39,8 @@ type Props = {
   propsType: keyof DetailData['properties']
   symbol: string
   Z: number
-  data: Data,
-};
+  data: Data
+}
 
 const icon: Record<keyof DetailData['properties'], any> = {
   cyclopedia: cyclopediaImg,
@@ -55,11 +55,18 @@ const icon: Record<keyof DetailData['properties'], any> = {
 
 const shellNameList = ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R']
 
-const host = BUCKET_HOST
-const spectralLinesPath = host + '/elements/spectral-lines/'
+const spectralLinesPath = STATIC_BASE + '/img/spectral-lines/'
+const crystalStructurePath = STATIC_BASE + '/img/crystal-structure/'
 
-export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props) {
-  const [isCollapse, setIsCollapse] = useState(false);
+export function PropsGroup({
+  propsType,
+  data,
+  id,
+  themeClass,
+  symbol,
+  Z,
+}: Props) {
+  const [isCollapse, setIsCollapse] = useState(false)
 
   const handleClickHighlightTable = (Z: number) => {
     redirectTo(getDetailPath(Z))
@@ -68,10 +75,11 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
   return (
     <div
       className={cx(
-        'props-group', 'landscape',
+        'props-group',
+        'landscape',
         themeClass,
         Categories[elementsCategories[Z - 1]]
-      )} 
+      )}
       id={id}
     >
       <div
@@ -81,14 +89,14 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
         <Image className={cx('props-icon')} src={icon[propsType]} />
         {propertiesGroupLabel[propsType]}
         <div
-          className={cx("expand-icon", {
-            collapse: isCollapse
+          className={cx('expand-icon', {
+            collapse: isCollapse,
           })}
         />
       </div>
       <div
-        className={cx("item-container", {
-          collapse: isCollapse
+        className={cx('item-container', {
+          collapse: isCollapse,
         })}
       >
         {Object.keys(data).map((key) => {
@@ -101,11 +109,16 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
               return (
                 <div className={cx('props-item')} key={key}>
                   <div className={cx('item-title', 'center')}>{title}</div>
-                  <ElectronsShell className={cx('theme-filter')} value={value} />
+                  <ElectronsShell
+                    className={cx('theme-filter')}
+                    value={value}
+                  />
                   <div className={cx('electrons-per-shell')}>
                     {value.split(',').map((n, i) => (
                       <>
-                        <span className={cx('eps-name')}>{shellNameList[i]}</span>
+                        <span className={cx('eps-name')}>
+                          {shellNameList[i]}
+                        </span>
                         <span className={cx('eps-number')}>{n + ' '}</span>
                       </>
                     ))}
@@ -123,12 +136,16 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
                 </div>
               )
             case 'ionCharge':
-              const charges = value.split(',').filter(t => t !== '')
+              const charges = value.split(',').filter((t) => t !== '')
               return (
                 <div className={cx('props-item')} key={key}>
                   <div className={cx('item-title')}>{title}</div>
                   <div className={cx('item-value')}>
-                    <RichText nodes={charges.map(c => symbol + '<sup>' + c + '</sup>').join(', ')} />
+                    <RichText
+                      nodes={charges
+                        .map((c) => symbol + '<sup>' + c + '</sup>')
+                        .join(', ')}
+                    />
                     {charges.length == 0 && '--'}
                   </div>
                 </div>
@@ -137,20 +154,24 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
               return (
                 <Navigator
                   key={key}
-                  className={cx("props-item", "wikipedia")}
+                  className={cx('props-item', 'wikipedia')}
                   url={getWikiPath(Z)}
                   href={getWikiPath(Z)}
                 >
-                  <RichText className={cx("item-value")} nodes={value} />
-                  <div className={cx("wiki-more")}>阅读更多</div>
+                  <RichText className={cx('item-value')} nodes={value} />
+                  <div className={cx('wiki-more')}>阅读更多</div>
                 </Navigator>
               )
             case 'deepReading':
               if (PLATFORM != 'next') return
               return (
-                <a href={getDeepReadingWikipediaUrl(value.path)} target="_blank">
+                <a
+                  href={getDeepReadingWikipediaUrl(value.path)}
+                  target="_blank"
+                >
                   <div className={cx('props-item')}>
-                    <Image className={cx('inline-icon')} src={deepReadingImg} />{'  '}
+                    <Image className={cx('inline-icon')} src={deepReadingImg} />
+                    {'  '}
                     {value.title} - 英文维基百科
                   </div>
                 </a>
@@ -166,18 +187,35 @@ export function PropsGroup({ propsType, data, id, themeClass, symbol, Z }: Props
                   />
                 </div>
               )
+            case 'crystalStructure':
+              return (
+                <div className={cx('props-item')} key={key}>
+                  <div className={cx('item-title')}>{title}</div>
+
+                  <div className={cx('crystal-structure')}>
+                    <Image
+                      className={cx('crystal-structure-img')}
+                      src={value.img ? crystalStructurePath + value.img : ''}
+                    />
+                    <span>{value.zh || '--'}</span>
+                  </div>
+                </div>
+              )
             default:
               return (
                 <div className={cx('props-item')} key={key}>
                   <div className={cx('item-title')}>{title}</div>
-                  <RichText className={cx("item-value")} nodes={value || '--'} />
+                  <RichText
+                    className={cx('item-value')}
+                    nodes={value || '--'}
+                  />
                 </div>
               )
           }
         })}
       </div>
     </div>
-  );
+  )
 }
 
 export default PropsGroup

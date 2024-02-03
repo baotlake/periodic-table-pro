@@ -58,7 +58,7 @@ export default function ElectronsShell({ className, value }: Props) {
 
       shells.forEach((n, i) => {
         // ctx.rotate(rotate * 0.001 * rate)
-        ctx.rotate(rotate)
+        ctx.rotate(rotate / 10)
         for (let j = 0; j < n; j++) {
           ctx.beginPath()
           const shellRadius = 10 + 30 * (i + 1)

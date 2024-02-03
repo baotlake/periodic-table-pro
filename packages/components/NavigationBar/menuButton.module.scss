@@ -1,4 +1,4 @@
-@import "../scss/icon";
+@import '../scss/icon';
 
 .menu-button {
   position: absolute;
@@ -11,8 +11,8 @@
     inset: 0 0 0 0;
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.15);
-    border: 1PX solid rgba(255, 255, 255, 0.15);
-    content: "";
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    content: '';
     display: block;
     border-radius: var(--radius);
   }
@@ -29,11 +29,11 @@
 
   &::after {
     position: absolute;
-    width: 1PX;
+    width: 1px;
     top: 20%;
     height: 60%;
     right: 0;
-    content: "";
+    content: '';
     display: block;
     background: rgba(255, 255, 255, 0.15);
   }
@@ -54,16 +54,16 @@
 
 .other-icon {
   color: white;
-  border: 2PX solid currentColor;
-  width: 16PX;
-  height: 16PX;
+  border: 2px solid currentColor;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 40%;
     height: 40%;
@@ -91,12 +91,12 @@
   &::before {
     content: '';
     background: white;
-    width: 18PX;
-    height: 18PX;
+    width: 18px;
+    height: 18px;
     position: absolute;
     display: block;
-    top: -6PX;
-    right: 20PX;
+    top: -6px;
+    right: 20px;
     transform: rotate(45deg);
     z-index: -1;
   }
@@ -111,10 +111,8 @@
 
 // theme
 .menu-button {
-  &.light{
-
+  &.light {
   }
   &.dark {
-
   }
 }

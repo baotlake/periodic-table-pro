@@ -2,13 +2,11 @@ import classNames from 'classnames/bind'
 import { Button } from '../compat'
 import { VideoDemo } from './VideoDemo'
 import styles from './guide.module.scss'
+import { STATIC_BASE } from '../config'
 
 const cx = classNames.bind(styles)
 
-const BUCKET_HOST = process.env.BUCKET_HOST
-
-const host = BUCKET_HOST
-const videosPath = host + '/videos/'
+const videosPath = STATIC_BASE + '/videos/'
 
 export function Guide() {
 

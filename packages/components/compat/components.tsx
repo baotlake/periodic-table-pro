@@ -1,5 +1,4 @@
 import {
-  createElement,
   PropsWithChildren,
   HTMLAttributes,
   AllHTMLAttributes,
@@ -21,6 +20,8 @@ import type {
   Switch as TaroSwitch,
   CustomWrapper as TaroCustomWrapper,
   PageMeta as TaroPageMeta,
+  AdCustom as TaroAdCustom,
+  Ad as TaroAd,
 } from '@tarojs/components'
 import type { LinkProps } from 'next/link'
 import { isTaro } from './Taro'
@@ -33,17 +34,21 @@ type HTMLProps = PropsWithChildren<AllHTMLAttributes<{}>>
 type HTMLButtonProps = PropsWithChildren<HTMLAttributes<HTMLButtonElement>>
 type ButtonType = typeof TaroButtonType | React.FC<HTMLButtonProps>
 const buttonOmitProps = ['size', 'type', 'openType']
-let Button: ButtonType = (props: HTMLButtonProps) =>
-  createElement('button', omit(props, buttonOmitProps), props.children)
+let Button: ButtonType = (props: HTMLButtonProps) => (
+  <button {...omit(props, buttonOmitProps)}>{props.children}</button>
+)
 if (isTaro) {
   const { Button: TaroButton } = require('@tarojs/components')
   Button = TaroButton
 }
 
-type HTMLCanvasProps = PropsWithChildren<HTMLAttributes<HTMLCanvasProps>>
+type HTMLCanvasProps = HTMLAttributes<HTMLCanvasElement>
 type CanvasType = typeof TaroCanvasType | React.FC<HTMLCanvasProps>
-let Canvas: CanvasType = (props: HTMLCanvasProps) =>
-  createElement('canvas', props, props.children)
+let Canvas: CanvasType = (props: HTMLCanvasProps) => (
+  <canvas {...omit(props, ['dangerouslySetInnerHTML'])}>
+    {props.children}
+  </canvas>
+)
 if (isTaro) {
   const { Canvas: TaroCanvas } = require('@tarojs/components')
   Canvas = TaroCanvas
@@ -58,7 +63,7 @@ let Image: ImageType = (props: HTMLImageProps) => {
     ...omit(props, imageOmitProps),
     ...(typeof props.src === 'object' ? { src: props.src['src'] } : {}),
   }
-  return createElement('img', p, props.children)
+  return <img {...omit(p, ['dangerouslySetInnerHTML'])}>{props.children}</img>
 }
 if (isTaro) {
   const { Image: TaroImage } = require('@tarojs/components')
@@ -66,8 +71,9 @@ if (isTaro) {
 }
 
 type InputType = typeof TaroInput | React.FC<HTMLProps>
-let Input: InputType = (props: HTMLProps) =>
-  createElement('input', props, props.children)
+let Input: InputType = (props: HTMLProps) => (
+  <input {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</input>
+)
 if (isTaro && PLATFORM !== 'h5') {
   const { Input: TaroInput } = require('@tarojs/components')
   Input = TaroInput
@@ -77,8 +83,9 @@ type TypeNavigator =
   | typeof TaroNavigator
   | React.FC<HTMLProps>
   | React.FC<LinkProps>
-let Navigator: TypeNavigator = (props: HTMLProps) =>
-  createElement('a', props, props.children)
+let Navigator: TypeNavigator = (props: HTMLProps) => (
+  <a {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</a>
+)
 if (isTaro) {
   const { Navigator: N } = require('@tarojs/components')
   Navigator = N
@@ -89,8 +96,11 @@ if (PLATFORM == 'next') {
 }
 
 type TypeScrollView = typeof TaroScrollView | React.FC<HTMLProps>
-let ScrollView: TypeScrollView = (props: HTMLProps) =>
-  createElement('div', props, props.children)
+let ScrollView: TypeScrollView = (props: HTMLProps) => (
+  <div {...omit(props, ['dangerouslySetInnerHTML', 'scrollIntoView'])}>
+    {props.children}
+  </div>
+)
 if (isTaro) {
   const { ScrollView: TaroScrollView } = require('@tarojs/components')
   ScrollView = TaroScrollView
@@ -106,20 +116,29 @@ const videoProps = [
   'height',
   'controls',
 ]
-let Video: TypeVideo = (props: HTMLProps) =>
-  createElement('video', pick(props, videoProps), props.children)
+let Video: TypeVideo = (props: HTMLProps) => (
+  <video {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</video>
+)
 if (isTaro) {
   const { Video: TaroVideo } = require('@tarojs/components')
   Video = TaroVideo
 }
 
 let RichText: typeof TaroRichText = (props: RichTextProps) => {
-  return createElement('div', {
-    ...props,
-    dangerouslySetInnerHTML: {
-      __html: props.nodes,
-    },
-  })
+  return (
+    <div
+      {...omit(props, ['nodes'])}
+      dangerouslySetInnerHTML={{ __html: props.nodes }}
+    >
+      {props.children}
+    </div>
+  )
+  // return createElement('div', {
+  //   ...props,
+  //   dangerouslySetInnerHTML: {
+  //     __html: props.nodes,
+  //   },
+  // })
 }
 if (isTaro && PLATFORM !== 'h5') {
   const { RichText: TaroRichText } = require('@tarojs/components')
@@ -162,6 +181,20 @@ if (isTaro) {
   PageMeta = TaroPageMeta
 }
 
+type AdCustomType = typeof TaroAdCustom
+let AdCustom: AdCustomType = () => null
+if (isTaro) {
+  const { AdCustom: TaroAdCustom } = require('@tarojs/components')
+  AdCustom = TaroAdCustom
+}
+
+type AdType = typeof TaroAd
+let Ad: AdType = () => null
+if (isTaro) {
+  const { Ad: TaroAd } = require('@tarojs/components')
+  Ad = TaroAd
+}
+
 export {
   Button,
   Canvas,
@@ -175,4 +208,6 @@ export {
   Switch,
   CustomWrapper,
   PageMeta,
+  AdCustom,
+  Ad,
 }

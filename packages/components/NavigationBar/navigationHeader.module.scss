@@ -1,6 +1,7 @@
 @use 'sass:color';
 @import "../scss/icon";
 @import "../scss/theme";
+@import '../scss/animate';
 
 .nav-header {
   &.background {
@@ -26,8 +27,6 @@
 
 .back-btn {
   color: var(--color);
-  // width: calc(var(--size) * 1.5);
-  // min-width: calc(var(--size) * 1.5);
   height: var(--size);
   background: none !important;
   border: none !important;
@@ -36,11 +35,11 @@
   pointer-events: all;
   cursor: pointer;
 
-  // display: block;
   display: flex;
   align-items: center;
   margin: 0 var(--margin);
   position: relative;
+  @include buttonActionTransform;
 
   &::after {
     position: absolute;

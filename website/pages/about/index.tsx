@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { MenuPageLayout, About } from '@periodic-table-pro/components'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 export default function AboutPage() {
-  const [themeMode] = useRecoilState(themeModeState)
+  const [themeMode] = useAtom(themeModeState)
 
   return (
     <>

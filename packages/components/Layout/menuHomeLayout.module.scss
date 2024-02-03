@@ -2,6 +2,7 @@
 @import "../scss/theme";
 @import "../scss/icon";
 @import "../scss/style";
+@import '../scss/animate';
 
 .menu-home-layout {
     color: $light-foceground;
@@ -21,6 +22,7 @@
     width: var(--size);
     width: calc(var(--size) * 1.5);
     height: var(--size);
+    @include buttonActionTransform;
     
     --transition: all 0.3s;
     

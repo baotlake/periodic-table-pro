@@ -2,13 +2,13 @@ import { useRef, useEffect, useCallback } from 'react'
 import classNames from 'classnames/bind'
 import PeriodicTable from './PeriodicTable'
 import styles from './zoomablePT.module.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
 
 export function ZoomablePT() {
-    const [themeMode] = useRecoilState(themeModeState)
+    const [themeMode] = useAtom(themeModeState)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const tableRef = useRef<HTMLDivElement>(null)
     const dataRef = useRef({

@@ -1,4 +1,4 @@
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '../recoil/atom'
 import { useEffect } from 'react'
 import { Taro } from '../compat'
@@ -6,7 +6,7 @@ import { Taro } from '../compat'
 const PLATFORM = process.env.PLATFORM
 
 export function usePageMeta() {
-  const [mode] = useRecoilState(themeModeState)
+  const [mode] = useAtom(themeModeState)
 
   useEffect(() => {
     if (PLATFORM == 'weapp') {

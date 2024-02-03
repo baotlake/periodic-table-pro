@@ -1,33 +1,40 @@
-@import "../scss/style";
+@import '../scss/style';
 
 .pan-pinch-wrapper {
-    display: flex;
-    overflow: auto;
-    height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    touch-action: pan-x pan-y;
-    padding-top: 3.75em;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
-    @include light-scrollbar;
+  display: flex;
+  overflow: auto;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  touch-action: pan-x pan-y;
+  padding-top: 3.75em;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
+  @include light-scrollbar;
 }
 
 .pan-pinch {
-    padding-top: 3.75em;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
-    height: fit-content;
-    width: fit-content;
-    transform-origin: 0% 0%;
-    // margin: auto;
-    // will-change: transform, margin, font-size;
-    will-change: transform, font-size;
+  padding-top: 3.75em;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
+  height: fit-content;
+  width: fit-content;
+  transform-origin: 0% 0%;
+  // margin: auto;
+  // will-change: transform, margin, font-size;
+  will-change: transform, font-size;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  a {
+    -webkit-user-drag: none;
+  }
 }
 
 // theme
 .pan-pinch-wrapper {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        @include dark-scrollbar;
-    }
+  &.dark {
+    @include dark-scrollbar;
+  }
 }

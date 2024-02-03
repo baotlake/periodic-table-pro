@@ -5,7 +5,7 @@ import { NavigationHeader, RichText } from '@periodic-table-pro/components'
 import { chartData, notes } from '@periodic-table-pro/data'
 import useShareMessage from '../../hooks/useShareMessage'
 import useShareTimeline from '../../hooks/useShareTimeline'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   menuButtonClientRect,
   themeModeState,
@@ -23,8 +23,8 @@ const classMap = {
 
 export default function SolubilityTable() {
   const [zh, setZh] = useState(true)
-  const [theme] = useRecoilState(themeModeState)
-  const [rect] = useRecoilState(menuButtonClientRect)
+  const [theme] = useAtom(themeModeState)
+  const [rect] = useAtom(menuButtonClientRect)
 
   useShareMessage({
     path: 'pages/solubility-table/index',

@@ -9,7 +9,7 @@ import {
 import classNames from 'classnames/bind'
 import ZoomControl from '../utils/zoom'
 import { isTaro, getBoundingClientRect, useDidShow } from '../compat'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useAtom, useSetAtom } from 'jotai'
 import { periodicTableZoom, periodicTableZoomControl } from '../recoil/atom'
 import styles from './index.module.scss'
 
@@ -39,8 +39,8 @@ export function PanPinch({
   const targetRef = useRef<HTMLDivElement>(null)
   const innerRef = useRef<HTMLDivElement>(null)
 
-  const setZoomControl = useSetRecoilState(periodicTableZoomControl)
-  const setZoom = useSetRecoilState(periodicTableZoom)
+  const setZoomControl = useSetAtom(periodicTableZoomControl)
+  const setZoom = useSetAtom(periodicTableZoom)
 
   const dataRef = useRef({
     zoom: null as null | ZoomControl,
@@ -140,6 +140,15 @@ export function PanPinch({
 
       self.zoom?.scaleTo(value, x, y)
     },
+    handleMouseMove(e: React.MouseEvent | MouseEvent) {
+      const wrapper = wrapperRef.current
+      if (e.buttons == 1 && wrapper) {
+        wrapper.scrollTo({
+          left: wrapper.scrollLeft - e.movementX,
+          top: wrapper.scrollTop - e.movementY,
+        })
+      }
+    },
   })
 
   dataRef.current.value = value
@@ -186,6 +195,7 @@ export function PanPinch({
       onTouchMove={dataRef.current.handleTouchMove}
       onTouchEnd={dataRef.current.handleTouchEnd}
       onTouchCancel={dataRef.current.handleTouchEnd}
+      onMouseMove={dataRef.current.handleMouseMove}
     >
       <div ref={targetRef} className={cx('pan-pinch')}>
         <div ref={innerRef}>{children}</div>

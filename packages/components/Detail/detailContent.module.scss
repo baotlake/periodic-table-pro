@@ -4,118 +4,128 @@
 @import '../scss/icon';
 @import '../scss/color-sign';
 @import '../scss/style';
+@import '../scss/animate';
 
 @include classification-light;
 
 .detail-content {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background: darken($light-background, 5%);
-    color: $light-foceground;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: darken($light-background, 5%);
+  color: $light-foceground;
 }
 
 .drawer {
-    --margin-top: 48PX;
-    --margin-left: 20PX;
+  --margin-top: 48px;
+  --margin-left: 20px;
 
-    margin-left: env(safe-area-inset-left);
-    width: 280PX;
-    padding: 20PX;
-    padding-top: var(--margin-top);
-    padding-left: calc(var(--margin-left) + 20PX);
-    display: none;
+  margin-left: env(safe-area-inset-left);
+  width: 280px;
+  padding: 20px;
+  padding-top: var(--margin-top);
+  padding-left: calc(var(--margin-left) + 20px);
+  display: none;
 
-    // position: sticky;
-    overflow: auto;
-    border-right: 1PX solid #dadada;
+  // position: sticky;
+  overflow: auto;
+  border-right: 1px solid #dadada;
 
-    @include light-scrollbar();
+  @include light-scrollbar();
 }
 
 .drawer-item {
-    margin-top: 12PX;
-    display: flex;
-    align-items: center;
-    padding: 0 18PX;
-    border-radius: 6PX;
-    line-height: 42PX;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border-radius: 6px;
+  line-height: 42px;
+  background: white;
 
-    // background-color: #EDEDED;
-    background: white;
-    cursor: pointer;
+  @include buttonActionTransform;
 }
 
 .drawer-item-icon {
-    width: 18PX;
-    height: 18PX;
-    margin-right: 10PX;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
 
-    >img {
-        display: block;
-    }
+  > img {
+    display: block;
+  }
 }
 
 .scroll-view {
-    height: 100%;
-    overflow: auto;
-    flex-grow: 2;
-    @include light-scrollbar();
+  height: 100%;
+  overflow: auto;
+  flex-grow: 2;
+  @include light-scrollbar();
 }
 
 .main {
-    box-sizing: border-box;
-    padding-bottom: 5em;
-    border-bottom: env(safe-area-inset-bottom) solid transparent;
+  box-sizing: border-box;
+  padding-bottom: 5em;
+  border-bottom: env(safe-area-inset-bottom) solid transparent;
+}
+
+.ad-container {
+  margin: 0.6em 0;
+  display: flex;
+  justify-content: center;
+  background: $light-background;
 }
 
 @include landscape {
+  // background: white;
+  .drawer {
+    display: block;
+    // background: rgba(244, 244, 244, 0.74);
+  }
 
-    // background: white;
-    .drawer {
-        display: block;
-        // background: rgba(244, 244, 244, 0.74);
-    }
+  .scroll-view {
+    --margin-top: 48px;
+  }
 
-    .scroll-view {
-        --margin-top: 48PX;
-    }
-
-    .main {
-        width: 80%;
-        max-width: 500PX;
-        padding: var(--margin-top) 20PX;
-        margin: auto;
-    }
+  .main {
+    width: 80%;
+    max-width: 500px;
+    padding: var(--margin-top) 20px;
+    margin: auto;
+  }
 }
-
 
 // theme
 .detail-content {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        background: darken($dark-background, 3%);
-        color: $dark-foceground;
-        @include classification-dark;
+  &.dark {
+    background: darken($dark-background, 3%);
+    color: $dark-foceground;
+    @include classification-dark;
 
-        .drawer {
-            @include dark-scrollbar();
-            border-right: 1PX solid lighten($dark-background, 10%);
-        }
-
-        .drawer-item {
-            background: $dark-background;
-            color: color.change($dark-foceground, $alpha: 0.85);
-        }
-
-        .drawer-item-icon {
-            @include filter-white(0.8);
-        }
-
-        .scroll-view {
-            @include dark-scrollbar();
-        }
+    .drawer {
+      @include dark-scrollbar();
+      border-right: 1px solid lighten($dark-background, 10%);
     }
+
+    .drawer-item {
+      background: $dark-background;
+      color: color.change($dark-foceground, $alpha: 0.85);
+    }
+
+    .drawer-item-icon {
+      @include filter-white(0.8);
+    }
+
+    .scroll-view {
+      @include dark-scrollbar();
+    }
+
+    .ad-container {
+      background: $dark-background;
+    }
+  }
 }

@@ -2,17 +2,15 @@ import { View, Text, Button } from '@tarojs/components'
 import classNames from 'classnames'
 import { MenuPageLayout, VideoDemo } from '@periodic-table-pro/components'
 import useShareMessage from '../../hooks/useShareMessage'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { STATIC_BASE } from '@periodic-table-pro/components/config'
 import './index.scss'
 
-const BUCKET_HOST = process.env.BUCKET_HOST
-
-const host = BUCKET_HOST
-const videosPath = host + '/videos/'
+const videosPath = STATIC_BASE + '/videos/'
 
 export default function GuidePage() {
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
   useShareMessage()
 
   return (

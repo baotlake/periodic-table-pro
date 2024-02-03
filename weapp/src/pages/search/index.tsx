@@ -6,7 +6,7 @@ import {
   PremiumFeatureGuard,
 } from '@periodic-table-pro/components'
 import useShareMessage from '../../hooks/useShareMessage'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   menuButtonClientRect,
   themeModeState,
@@ -16,8 +16,8 @@ import './index.scss'
 export default function SearchPage() {
   useShareMessage()
 
-  const [themeMode] = useRecoilState(themeModeState)
-  const [menuRect] = useRecoilState(menuButtonClientRect)
+  const [themeMode] = useAtom(themeModeState)
+  const [menuRect] = useAtom(menuButtonClientRect)
 
   return (
     <View className={classNames('search-page', themeMode)}>

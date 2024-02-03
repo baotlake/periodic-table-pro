@@ -1,0 +1,3 @@
+
+# Domain-level redirects
+https://periodic-table-pro.netlify.app/* https://pt.ziziyi.com/:splat 301!

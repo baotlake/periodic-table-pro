@@ -4,7 +4,7 @@ import classNames from 'classnames/bind'
 import NavigationHeader from "../NavigationBar/NavigationHeader"
 import { PermanentDrawer } from '../MenuDrawer'
 import styles from './menuPageLayout.module.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { menuButtonClientRect } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
@@ -17,7 +17,7 @@ type Props = PropsWithChildren<{
 
 export function MenuPageLayout({ themeClass, children, title }: Props) {
 
-  const [menuRect] = useRecoilState(menuButtonClientRect)
+  const [menuRect] = useAtom(menuButtonClientRect)
 
   return (
     <div>

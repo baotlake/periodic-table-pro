@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { Taro, isTaro, onWindowResize, offWindowResize } from '../compat'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { menuButtonClientRect } from '../recoil/atom'
 
 const PLATFORM = process.env.PLATFORM
 
 export function useMenuClientRect() {
   const [menuRect, setMenuButtonClientRect] =
-    useRecoilState(menuButtonClientRect)
+    useAtom(menuButtonClientRect)
   useEffect(() => {
     const getClientRect = async () => {
       if (isTaro && PLATFORM != 'h5') {

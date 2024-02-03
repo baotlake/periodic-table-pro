@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { getStorage } from '../utils/storage'
 import { getTrendData } from '../utils/trend'
 import { maxPtZoom, minPtZoom } from '../config'
-import { useSetRecoilState } from 'recoil'
+import { useSetAtom } from 'jotai'
 import {
   periodicTableDisplayProperty,
   periodicTableTrendData,
@@ -10,9 +10,9 @@ import {
 } from '../recoil/atom'
 
 export function useInitialization() {
-  const setDisplayProperty = useSetRecoilState(periodicTableDisplayProperty)
-  const setTrendData = useSetRecoilState(periodicTableTrendData)
-  const setZoom = useSetRecoilState(periodicTableZoom)
+  const setDisplayProperty = useSetAtom(periodicTableDisplayProperty)
+  const setTrendData = useSetAtom(periodicTableTrendData)
+  const setZoom = useSetAtom(periodicTableZoom)
 
   useEffect(() => {
     Promise.all([

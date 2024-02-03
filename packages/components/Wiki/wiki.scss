@@ -3,7 +3,6 @@ $border-color: var(--table-border-color);
 $secondary-bg: var(--secondary-background-color);
 $inline-math-image-filter: var(--inline-math-image-filter);
 
-
 .hatnote {
   font-size: 0.8em;
   background-color: $secondary-bg;
@@ -27,7 +26,7 @@ $inline-math-image-filter: var(--inline-math-image-filter);
   .gallerytext {
     font-size: 0.85em;
 
-    >p {
+    > p {
       font-size: inherit;
       color: inherit;
       text-indent: 0;
@@ -41,6 +40,7 @@ $inline-math-image-filter: var(--inline-math-image-filter);
 
   .thumbinner {
     max-width: 90%;
+    min-width: 30%;
     padding: 1em;
     background-color: $secondary-bg;
     border-radius: 0.5em;
@@ -65,19 +65,19 @@ $inline-math-image-filter: var(--inline-math-image-filter);
   max-width: 100%;
   overflow: auto;
 
-  >.block {
+  > .block {
     max-width: 20000px;
   }
 }
 
 .table.nogrid.Yuansuzhouqibiao_nav {
-  .span[class*=Yuansuzhouqibiao] {
+  .span[class*='Yuansuzhouqibiao'] {
     display: block;
     color: transparent;
     background-color: rgba(156, 156, 156, 0.2);
     overflow: hidden;
 
-    &[style*="border"] {
+    &[style*='border'] {
       background-color: $sign-color;
       border-color: $border-color !important;
     }
@@ -107,29 +107,30 @@ $inline-math-image-filter: var(--inline-math-image-filter);
 
   border: 1px solid $border-color;
 
-  >.caption {}
+  > .caption {
+  }
 
-  >.tbody {
-    >.tr {
-      >.th {
+  > .tbody {
+    > .tr {
+      > .th {
         min-width: 8em;
         padding: 0.3em 0.5em;
         border: 1px solid $border-color;
       }
 
-      >.td {
+      > .td {
         padding: 0.3em 0.5em;
         border: 1px solid $border-color;
       }
     }
 
-    >.tr>.th+.td .img {
+    > .tr > .th + .td .img {
       // filter: blur(5px);
       filter: grayscale(1);
     }
   }
 
-  .th[colspan="2"] {
+  .th[colspan='2'] {
     background-color: $secondary-bg;
     color: inherit !important;
     // color: $sign-color !important;
@@ -138,7 +139,7 @@ $inline-math-image-filter: var(--inline-math-image-filter);
 
   .th,
   .td {
-    &[style*="background"] {
+    &[style*='background'] {
       background-color: $secondary-bg !important;
     }
   }
@@ -164,7 +165,7 @@ $inline-math-image-filter: var(--inline-math-image-filter);
   .td {
     padding: 0.2em;
     border-collapse: collapse;
-    border: 1PX solid $border-color;
+    border: 1px solid $border-color;
     text-align: center;
   }
 }
@@ -175,6 +176,10 @@ $inline-math-image-filter: var(--inline-math-image-filter);
 
 .ol {
   padding-inline-start: 2em;
+}
+
+.mark {
+  color: inherit;
 }
 
 .sup.reference {
@@ -190,12 +195,13 @@ $inline-math-image-filter: var(--inline-math-image-filter);
   // 来源请求
   display: inline;
   font-size: 0.65em;
-  background-color: mark;
+  background: rgba(255, 255, 0, 0.4);
 }
 
 .mark.template-facttext {
-  background-color: inherit;
-  opacity: 0.5;
+  background: rgba(255, 255, 0, 0.1);
+  // background-color: inherit;
+  opacity: 0.8;
 }
 
 .table.ambox {
@@ -245,13 +251,12 @@ $inline-math-image-filter: var(--inline-math-image-filter);
   font-size: 0.8em;
 }
 
-
 .reflist {
   column-count: auto !important;
 }
 
 // Z=32 锗 表格靠右问题
-div[style*="float: right;"] {
+div[style*='float: right;'] {
   float: none !important;
 }
 
@@ -270,7 +275,6 @@ div[style*="float: right;"] {
   .ul,
   .li,
   .span {
-
     // *[bgcolor]
     &[bgcolor] {
       background-color: inherit;

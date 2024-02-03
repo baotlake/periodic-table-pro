@@ -13,6 +13,8 @@
 /out/
 /public/sw.js*
 /public/workbox-*
+/public/fallback-*
+analyze
 
 # production
 /build

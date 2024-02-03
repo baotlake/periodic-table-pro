@@ -10,6 +10,8 @@ export {
     navigateTo,
     useReady,
     useDidShow,
+    getStorage,
+    setStorage,
 } from './apis'
 export {
     Button,

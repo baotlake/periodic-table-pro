@@ -1,37 +1,49 @@
 @keyframes pulse {
-    from {
-        transform: scale3d(1, 1, 1);
-    }
+  from {
+    transform: scale3d(1, 1, 1);
+  }
 
-    50% {
-        transform: scale3d(1.02, 1.02, 1.02);
-    }
+  50% {
+    transform: scale3d(1.02, 1.02, 1.02);
+  }
 
-    to {
-        transform: scale3d(1, 1, 1);
-    }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes fadeInOut {
-    from {
-        opacity: 1;
-    }
+  from {
+    opacity: 1;
+  }
 
-    50% {
-        opacity: 0.5;
-    }
+  50% {
+    opacity: 0.5;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @mixin pulse($delay: 0s) {
-    animation: pulse 3s ease-in-out 0s infinite;
-    animation-delay: $delay;
+  animation: pulse 3s ease-in-out 0s infinite;
+  animation-delay: $delay;
 }
 
 @mixin fadeInOut($delay: 0s) {
-    animation: fadeInOut 3s ease-in-out 0s infinite;
-    animation-delay: $delay;
+  animation: fadeInOut 3s ease-in-out 0s infinite;
+  animation-delay: $delay;
+}
+
+@mixin buttonActionTransform() {
+  cursor: pointer;
+  transition: transform 100ms;
+  user-select: none;
+  &:hover {
+    transform: scale(1.02);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 }

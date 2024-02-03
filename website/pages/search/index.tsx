@@ -2,14 +2,14 @@ import Head from 'next/head'
 import { NavigationHeader, Search } from '@periodic-table-pro/components'
 import { useRouter } from 'next/router'
 import classNames from 'classnames/bind'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 import styles from './index.module.scss'
 
 const cx = classNames.bind(styles)
 
 export default function SearchPage() {
-  const [themeMode] = useRecoilState(themeModeState)
+  const [themeMode] = useAtom(themeModeState)
   const router = useRouter()
 
   return (

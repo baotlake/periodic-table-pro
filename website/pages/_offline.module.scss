@@ -1,0 +1,32 @@
+@use 'sass:color';
+@import '@periodic-table-pro/components/scss/color-sign';
+@import '@periodic-table-pro/components/scss/theme';
+@import '@periodic-table-pro/components/scss/icon';
+
+.network-disconnected{
+    color: $light-foceground;
+}
+
+.offline-elements{
+    font-size: 2em;
+    @include classification-light;
+}
+
+.retry-button {
+    color: lighten($light-foceground, 30%);
+    border-color: currentColor;
+}
+
+
+// theme
+.dark {
+    .network-disconnected{
+        color: $dark-foceground;
+    }
+    .retry-button {
+        color: darken($dark-foceground, 30%);
+    }
+    .icon{
+        @include filter-white;
+    }
+}

@@ -20,19 +20,14 @@ declare namespace NodeJS {
     PLATFORM: ProcessEnv['TARO_ENV'] | 'next'
 
     ENV_ID: string
-    BUCKET_HOST: string
+    STATIC_BASE: string
 
     SEARCH_REWARDED_AD: string
     DETAIL_CUSTOM_AD: string
     WIKI_INTERSTITIAL_AD: string
+
+    AD_DETAIL_LIGHT_ID: string
+    AD_DETAIL_DARK_ID: string
+    AD_WIKI_VIDEO_ID: string
   }
 }
-
-// declare const PLATFORM: typeof process.env.TARO_ENV
-
-// declare const ENV_ID: string
-// declare const BUCKET_HOST: string
-
-// declare const SEARCH_REWARDED_AD: string
-// declare const DETAIL_CUSTOM_AD: string
-// declare const WIKI_INTERSTITIAL_AD: string

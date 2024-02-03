@@ -1,9 +1,7 @@
+import { STATIC_BASE } from '@periodic-table-pro/components/config'
 import { useShareAppMessage } from '@tarojs/taro'
 
-const BUCKET_HOST = process.env.BUCKET_HOST
-
-const host = BUCKET_HOST
-const posterImg = host + '/images/poster.png'
+const posterImg = STATIC_BASE + '/img/ui/poster.png'
 
 type Argrments = {
   path?: string

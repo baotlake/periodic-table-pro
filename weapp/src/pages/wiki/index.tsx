@@ -6,21 +6,21 @@ import useShareMessage from '../../hooks/useShareMessage'
 import { NavigationHeader, Article } from '@periodic-table-pro/components'
 import { WikiData, getSkeletonWikiData } from '@periodic-table-pro/data'
 import { useInterstitialAd } from '../../hooks'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { STATIC_BASE } from '@periodic-table-pro/components/config'
 import '@periodic-table-pro/components/wiki.scss'
 import './index.scss'
 
 const PLATFORM = process.env.PLATFORM
 const WIKI_INTERSTITIAL_AD = process.env.WIKI_INTERSTITIAL_AD
-const BUCKET_HOST = process.env.BUCKET_HOST
 
 export default function Wiki() {
   const router = useRouter()
   const [atomicNumber, setAtomicNumber] = useState(0)
   const [data, setData] = useState<WikiData | null>(null)
   // const [theme,] = useThemeMode()
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
   const [loading, setLoading] = useState(false)
   useShareMessage({
     path: '/pages/wiki/index?Z=' + router.params.Z,
@@ -52,7 +52,7 @@ export default function Wiki() {
     }
 
     if (Z > 0 && true) {
-      const url = BUCKET_HOST + '/json/wiki/' + Z + '.json'
+      const url = STATIC_BASE + '/json/wiki/' + Z + '.json'
       setData(getSkeletonWikiData(Z))
       setLoading(true)
       Taro.request({

@@ -16,7 +16,7 @@ import {
   usePageMeta,
 } from '@periodic-table-pro/components'
 import { useShareMessage } from '../../hooks'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   periodicTableZoom,
   themeModeState,
@@ -24,8 +24,8 @@ import {
 import './index.scss'
 
 export default function Index() {
-  const [theme] = useRecoilState(themeModeState)
-  const [zoom] = useRecoilState(periodicTableZoom)
+  const [theme] = useAtom(themeModeState)
+  const [zoom] = useAtom(periodicTableZoom)
 
   usePageMeta()
   useShareMessage()

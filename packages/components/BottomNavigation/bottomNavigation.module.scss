@@ -1,6 +1,7 @@
 @use "sass:color";
 @import "../scss/theme";
 @import "../scss/icon";
+@import '../scss/animate';
 
 .bottom-navigation-wrapper {
     position: fixed;
@@ -67,6 +68,7 @@
     padding: (10em / 10);
     box-sizing: border-box;
     color: inherit;
+    @include buttonActionTransform;
 }
 
 .icon {

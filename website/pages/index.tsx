@@ -9,16 +9,18 @@ import {
   AutoDisplayPropertiesModal,
   AutoZoomModal,
 } from '@periodic-table-pro/components'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   periodicTableZoom,
   themeModeState,
 } from '@periodic-table-pro/components/recoil/atom'
 import { maxPtZoom, minPtZoom } from '@periodic-table-pro/components/config'
+import { useEffect } from 'react'
+import RedirectModal from '../components/RedirectModal'
 
 export default function Home() {
-  const [theme] = useRecoilState(themeModeState)
-  const [zoom] = useRecoilState(periodicTableZoom)
+  const [theme] = useAtom(themeModeState)
+  const [zoom] = useAtom(periodicTableZoom)
 
   return (
     <>
@@ -41,6 +43,7 @@ export default function Home() {
           <AutoDisplayPropertiesModal />
           <AutoZoomModal />
         </MenuHomeLayout>
+        {/* <RedirectModal /> */}
       </div>
     </>
   )

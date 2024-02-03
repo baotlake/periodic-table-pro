@@ -9,7 +9,7 @@ import Head from 'next/head'
 import { DetailData, getDetailData, symbol } from '@periodic-table-pro/data'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { getDetailPath } from '@periodic-table-pro/components/utils/routes'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 type Props = {
@@ -19,7 +19,7 @@ type Props = {
 
 export default function Element({ title, detailData }: Props) {
   const router = useRouter()
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
 
   const handleTapPrevious = () => {
     if (detailData?.previous?.atomicNumber) {

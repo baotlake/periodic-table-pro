@@ -47,7 +47,7 @@ import {
 
 import { summary } from './summary'
 
-import { elementWikipediaEn } from '../json'
+import elementWikipediaEn from '../json/wikipediaEnElement.json'
 
 import { PropertiesGroup, Property } from '../types/element'
 
@@ -65,8 +65,8 @@ export type DetailData = {
   properties: {
     cyclopedia: {
       wikipedia: string
-      deepReading?: { path: string, title: string }
-    },
+      deepReading?: { path: string; title: string }
+    }
     basic: {
       highlightTable?: number
       // group: string
@@ -105,7 +105,7 @@ export type DetailData = {
       superconductingPoint: string
     }
     other: {
-      crystalStructure: string
+      crystalStructure: { zh: string; img: string; en: string }
       magneticOrdering: string
       speedOfSound: string
       thermalConductivity: string
@@ -116,7 +116,7 @@ export type DetailData = {
     history: {
       discovery: string
       namedBy: string
-    },
+    }
     abundance: {
       universe: string
       sun: string
@@ -190,7 +190,6 @@ export const propertiesLabel: Record<Property, string> = {
   molarMagneticSusceptibility: '摩尔磁化率',
   resistivity: '电阻率',
   superconductingPoint: '超导点',
-
 }
 
 const stateOfMatter = [
@@ -199,24 +198,31 @@ const stateOfMatter = [
   '液态',
   '固态（预测值）',
   '气态（预测值）',
-  '未知'
+  '未知',
 ]
 
-const phasseAtSTP = (Z: number) => isFinite(standardState[Z - 1]) ? stateOfMatter[standardState[Z - 1]] : '-'
+const phasseAtSTP = (Z: number) =>
+  isFinite(standardState[Z - 1]) ? stateOfMatter[standardState[Z - 1]] : '-'
 
 export function getDetailData(atomicNumber: number): DetailData {
   const i = atomicNumber - 1
   return {
     symbol: symbol[i],
     atomicNumber: atomicNumber,
-    previous: atomicNumber > 1 ? {
-      symbol: symbol[i - 1],
-      atomicNumber: atomicNumber - 1,
-    } : null,
-    next: atomicNumber < 120 ? {
-      symbol: symbol[i + 1],
-      atomicNumber: atomicNumber + 1,
-    } : null,
+    previous:
+      atomicNumber > 1
+        ? {
+            symbol: symbol[i - 1],
+            atomicNumber: atomicNumber - 1,
+          }
+        : null,
+    next:
+      atomicNumber < 120
+        ? {
+            symbol: symbol[i + 1],
+            atomicNumber: atomicNumber + 1,
+          }
+        : null,
     properties: {
       cyclopedia: {
         wikipedia: summary[atomicNumber],
@@ -250,17 +256,17 @@ export function getDetailData(atomicNumber: number): DetailData {
         spectralLines: symbol[i],
       },
       electromagnetic: {
-        electricalConductivity:
-          electricalConductivity[i]
-            ? electricalConductivity[i] + ' ' + unit.electricalConductivity
-            : electricalConductivity[i],
+        electricalConductivity: electricalConductivity[i]
+          ? electricalConductivity[i] + ' ' + unit.electricalConductivity
+          : electricalConductivity[i],
         // electricalType: electricalType[index],
         volumeMagneticSusceptibility: volumeMagneticSusceptibility[i],
         massMagneticSusceptibility: massMagneticSusceptibility[i],
-        molarMagneticSusceptibility:
-          molarMagneticSusceptibility[i]
-            ? molarMagneticSusceptibility[i] + ' ' + unit.molarMagneticSusceptibility
-            : molarMagneticSusceptibility[i],
+        molarMagneticSusceptibility: molarMagneticSusceptibility[i]
+          ? molarMagneticSusceptibility[i] +
+            ' ' +
+            unit.molarMagneticSusceptibility
+          : molarMagneticSusceptibility[i],
         resistivity: resistivity[i]
           ? resistivity[i] + ' ' + unit.resistivity
           : resistivity[i],
@@ -269,7 +275,7 @@ export function getDetailData(atomicNumber: number): DetailData {
           : superconductingPoint[i],
       },
       other: {
-        crystalStructure: crystalStructure[i],
+        crystalStructure: crystalStructure[atomicNumber],
         magneticOrdering: magneticOrdering[i],
         speedOfSound: speedOfSound[i],
         thermalConductivity: thermalConductivity[i],
@@ -288,9 +294,7 @@ export function getDetailData(atomicNumber: number): DetailData {
         humanBody: abundanceInHumanBody[i],
         earthCrust: abundanceInEarthCrust[i],
         meteorites: abundanceInMeteorites[i],
-      }
-    }
+      },
+    },
   }
 }
-
-

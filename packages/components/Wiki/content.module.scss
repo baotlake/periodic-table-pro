@@ -36,6 +36,12 @@ $secondary-bg: var(--secondary-background-color);
   }
 }
 
+.ad-container {
+  margin: 1em -2em;
+  display: flex;
+  justify-content: center;
+}
+
 // theme
 .content {
   &.light {

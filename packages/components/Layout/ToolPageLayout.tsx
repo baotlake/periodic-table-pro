@@ -3,7 +3,7 @@ import classnames from 'classnames/bind'
 import { NavigationHeader } from "../NavigationBar"
 
 import styles from './toolPageLayout.module.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { menuButtonClientRect, themeModeState } from '../recoil/atom'
 
 const cx = classnames.bind(styles)
@@ -14,8 +14,8 @@ type Props = PropsWithChildren<{
 
 export function ToolPageLayout({ title, children }: Props) {
 
-    const [rect] = useRecoilState(menuButtonClientRect)
-    const [themeMode] = useRecoilState(themeModeState)
+    const [rect] = useAtom(menuButtonClientRect)
+    const [themeMode] = useAtom(themeModeState)
 
     return (
         <div

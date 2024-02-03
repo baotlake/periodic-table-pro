@@ -1,43 +1,50 @@
-import { DisplayPropertiesModal } from "../Modal"
+import { DisplayPropertiesModal } from '../Modal'
 import { DisplayProperty } from '@periodic-table-pro/data'
 import { getTrendData } from '../utils/trend'
 import { setStorage } from '../utils/storage'
 import { reportEvent } from '../utils/analytics'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { displayPropertiesModalVisible, periodicTableColorSign, periodicTableDisplayProperty, periodicTableTrendData, themeModeState } from '../recoil/atom'
-
+import { useAtom, useSetAtom } from 'jotai'
+import {
+  displayPropertiesModalVisible,
+  periodicTableColorSign,
+  periodicTableDisplayProperty,
+  periodicTableTrendData,
+  themeModeState,
+} from '../recoil/atom'
 
 export function AutoDisplayPropertiesModal() {
-    const [mode] = useRecoilState(themeModeState)
-    const [visible, setVisible] = useRecoilState(displayPropertiesModalVisible)
-    const [displayProperty, setDisplayProperty] = useRecoilState(periodicTableDisplayProperty)
-    const [colorSign] = useRecoilState(periodicTableColorSign)
-    const setTrendData = useSetRecoilState(periodicTableTrendData)
+  const [mode] = useAtom(themeModeState)
+  const [visible, setVisible] = useAtom(displayPropertiesModalVisible)
+  const [displayProperty, setDisplayProperty] = useAtom(
+    periodicTableDisplayProperty
+  )
+  const [colorSign] = useAtom(periodicTableColorSign)
+  const setTrendData = useSetAtom(periodicTableTrendData)
 
-    const handleSelectDisplayProperty = (type: DisplayProperty) => {
-        setDisplayProperty(type)
-        const trendData = getTrendData(type)
-        setTrendData(trendData)
+  const handleSelectDisplayProperty = (type: DisplayProperty) => {
+    setDisplayProperty(type)
+    const trendData = getTrendData(type)
+    setTrendData(trendData)
 
-        setStorage({ displayProperty: type })
-        reportEvent("properties", {
-            "name": type,
-            "page": 'index'
-        })
-    }
+    setStorage({ displayProperty: type })
+    reportEvent('properties', {
+      name: type,
+      page: 'index',
+    })
+  }
 
-    const handleSetVisible = (visible: boolean) => {
-        setVisible(visible)
-    }
+  const handleSetVisible = (visible: boolean) => {
+    setVisible(visible)
+  }
 
-    return (
-        <DisplayPropertiesModal
-            themeClass={mode}
-            visible={visible}
-            setVisible={handleSetVisible}
-            displayProperty={displayProperty}
-            colorSign={colorSign}
-            onSelect={handleSelectDisplayProperty}
-        />
-    )
+  return (
+    <DisplayPropertiesModal
+      themeClass={mode}
+      visible={visible}
+      setVisible={handleSetVisible}
+      displayProperty={displayProperty}
+      colorSign={colorSign}
+      onSelect={handleSelectDisplayProperty}
+    />
+  )
 }

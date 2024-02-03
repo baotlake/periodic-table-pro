@@ -4,12 +4,12 @@ import classNames from 'classnames'
 import { MenuPageLayout } from '@periodic-table-pro/components'
 import solubilitySvg from '../../assets/illus/solubility.svg'
 import wikiSvg from '../../assets/illus/wiki.svg'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 import './index.scss'
 
 export default function ToolsPage() {
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
 
   return (
     <View className={classNames('tools-page', theme)}>

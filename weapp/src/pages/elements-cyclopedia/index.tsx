@@ -3,25 +3,23 @@ import { View, Image } from '@tarojs/components'
 import classNames from 'classnames'
 import { NavigationHeader, RichText } from '@periodic-table-pro/components'
 import { Categories, getElementsCyclopedia } from '@periodic-table-pro/data'
+import { STATIC_BASE } from '@periodic-table-pro/components/config'
 import useShareMessage from '../../hooks/useShareMessage'
 import useShareTimeline from '../../hooks/useShareTimeline'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   menuButtonClientRect,
   themeModeState,
 } from '@periodic-table-pro/components/recoil/atom'
 import './index.scss'
 
-const BUCKET_HOST = process.env.BUCKET_HOST
-
 export default function ElementsEncyclopedia() {
   const itemList = getElementsCyclopedia()
 
-  const host = BUCKET_HOST
-  const imageDir = host + '/elements/1920p/'
+  const imageDir = STATIC_BASE + '/img/1920p/'
 
-  const [theme] = useRecoilState(themeModeState)
-  const [rect] = useRecoilState(menuButtonClientRect)
+  const [theme] = useAtom(themeModeState)
+  const [rect] = useAtom(menuButtonClientRect)
 
   useShareMessage({
     path: 'pages/elements-cyclopedia/index',

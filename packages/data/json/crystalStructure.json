@@ -1,0 +1,602 @@
+{
+  "1": {
+    "zh": "六方晶系",
+    "en": "hexagonal",
+    "img": "Hexagonal.svg"
+  },
+  "2": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "3": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "4": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "5": {
+    "zh": "三方晶系（菱方）",
+    "en": "rhombohedral",
+    "img": "Rhombohedral.svg"
+  },
+  "6": {
+    "zh": "graphite: 简单六方晶系(black)",
+    "en": "graphite: simple hexagonal(black)",
+    "img": "Hexagonal.svg"
+  },
+  "7": {
+    "zh": "六方晶系",
+    "en": "hexagonal",
+    "img": "Hexagonal.svg"
+  },
+  "8": {
+    "zh": "立方晶系（等轴）",
+    "en": "cubic",
+    "img": "Cubic.svg"
+  },
+  "9": {
+    "zh": "立方晶系（等轴）",
+    "en": "cubic",
+    "img": "Cubic.svg"
+  },
+  "10": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "11": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "12": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "13": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "14": {
+    "zh": "金刚石（钻石）结构 (dc)",
+    "en": "face-centered diamond-cubic",
+    "img": "Diamond_cubic_crystal_structure.svg"
+  },
+  "15": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centred cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "16": {
+    "zh": "正交晶系（斜方）",
+    "en": "orthorhombic",
+    "img": "Orthorhombic.svg"
+  },
+  "17": {
+    "zh": "正交晶系（斜方）",
+    "en": "orthorhombic",
+    "img": "Orthorhombic.svg"
+  },
+  "18": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "19": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "20": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centred cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "21": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "22": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "23": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "24": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "25": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "26": {
+    "zh": "体心立方晶系 (bcc)a=286.65 pm",
+    "en": "body-centered cubic (bcc)a=286.65 pm",
+    "img": "Cubic-body-centered.svg"
+  },
+  "27": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "28": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "29": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "30": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "31": {
+    "zh": "正交晶系（斜方）",
+    "en": "orthorhombic",
+    "img": "Orthorhombic.svg"
+  },
+  "32": {
+    "zh": "金刚石（钻石）结构 (dc)",
+    "en": "face-centered diamond-cubic",
+    "img": "Diamond_cubic_crystal_structure.svg"
+  },
+  "33": {
+    "zh": "三方晶系（菱方）",
+    "en": "rhombohedral",
+    "img": "Rhombohedral.svg"
+  },
+  "34": {
+    "zh": "三方晶系",
+    "en": "trigonal",
+    "img": "Rhombohedral.svg"
+  },
+  "35": {
+    "zh": "正交晶系（斜方）",
+    "en": "orthorhombic",
+    "img": "Orthorhombic.svg"
+  },
+  "36": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "37": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "38": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "39": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "40": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "41": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "42": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "43": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "44": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "45": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "46": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "47": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centred cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "48": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "49": {
+    "zh": "体心四方 ",
+    "en": "body-centered tetragonal",
+    "img": "Body-centered_tetragonal.svg"
+  },
+  "50": {
+    "zh": "体心四方 white (β)",
+    "en": "body-centered tetragonalwhite (β)",
+    "img": "Body-centered_tetragonal.svg"
+  },
+  "51": {
+    "zh": "三方晶系（菱方）",
+    "en": "rhombohedral",
+    "img": "Rhombohedral.svg"
+  },
+  "52": {
+    "zh": "三方晶系",
+    "en": "trigonal",
+    "img": "Rhombohedral.svg"
+  },
+  "53": {
+    "zh": "面心正交晶系",
+    "en": "face-centered orthorhombic",
+    "img": "Face-centered_orthorhombic.svg"
+  },
+  "54": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "55": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centred cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "56": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "57": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "58": {
+    "zh": "双六方密堆积 (dhcp)β-Ce",
+    "en": "double hexagonal close-packed (dhcp)β-Ce",
+    "img": "Hexagonal.svg"
+  },
+  "59": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "60": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "61": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "62": {
+    "zh": "三方晶系（菱方）",
+    "en": "rhombohedral",
+    "img": "Rhombohedral.svg"
+  },
+  "63": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "64": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "65": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "66": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "67": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "68": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "69": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "70": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "71": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "72": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "73": {
+    "zh": "体心立方晶系 (bcc)α-Ta",
+    "en": "body-centered cubic (bcc)α-Ta",
+    "img": "Cubic-body-centered.svg"
+  },
+  "74": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "75": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "76": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "77": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "78": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "79": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "80": {
+    "zh": "三方晶系（菱方）",
+    "en": "rhombohedral",
+    "img": "Rhombohedral.svg"
+  },
+  "81": {
+    "zh": "六方密堆积 (hcp)",
+    "en": "hexagonal close-packed (hcp)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "82": {
+    "zh": "面心立方晶系 (fcc)a=495.08 pm",
+    "en": "face-centered cubic (fcc)a=495.08 pm",
+    "img": "Cubic-face-centered.svg"
+  },
+  "83": {
+    "zh": "三方晶系（菱方）",
+    "en": "rhombohedral",
+    "img": "Rhombohedral.svg"
+  },
+  "84": {
+    "zh": "立方晶系（等轴）α-Po",
+    "en": "cubicα-Po",
+    "img": "Cubic.svg"
+  },
+  "85": {
+    "zh": "面心立方晶系 (fcc)(predicted)",
+    "en": "face-centered cubic (fcc)(predicted)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "86": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "87": {
+    "zh": "体心立方晶系 (bcc)(extrapolated)",
+    "en": "body-centered cubic (bcc)(extrapolated)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "88": {
+    "zh": "体心立方晶系 (bcc)",
+    "en": "body-centered cubic (bcc)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "89": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "90": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centred cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "91": {
+    "zh": "体心四方 ",
+    "en": "body-centered tetragonal",
+    "img": "Body-centered_tetragonal.svg"
+  },
+  "92": {
+    "zh": "正交晶系（斜方）",
+    "en": "orthorhombic",
+    "img": "Orthorhombic.svg"
+  },
+  "93": {
+    "zh": "正交晶系（斜方）",
+    "en": "orthorhombic",
+    "img": "Orthorhombic.svg"
+  },
+  "94": {
+    "zh": "单斜晶系",
+    "en": "monoclinic",
+    "img": "Monoclinic.svg"
+  },
+  "95": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "96": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "97": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "98": {
+    "zh": "双六方密堆积 (dhcp)",
+    "en": "double hexagonal close-packed (dhcp)",
+    "img": "Hexagonal.svg"
+  },
+  "99": {
+    "zh": "面心立方晶系 (fcc)",
+    "en": "face-centered cubic (fcc)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "100": {
+    "zh": "面心立方晶系 (fcc)(predicted)",
+    "en": "face-centered cubic (fcc)(predicted)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "101": {
+    "zh": "面心立方晶系 (fcc)(predicted)",
+    "en": "face-centered cubic (fcc)(predicted)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "102": {
+    "zh": "面心立方晶系 (fcc)(predicted)",
+    "en": "face-centered cubic (fcc)(predicted)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "103": {
+    "zh": "六方密堆积 (hcp)(predicted)",
+    "en": "hexagonal close-packed (hcp)(predicted)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "104": {
+    "zh": "六方密堆积 (hcp)(predicted)",
+    "en": "hexagonal close-packed (hcp)(predicted)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "105": {
+    "zh": "体心立方晶系 (bcc) (predicted)",
+    "en": "body-centered cubic (bcc) (predicted)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "106": {
+    "zh": "体心立方晶系 (bcc)(predicted)",
+    "en": "body-centered cubic (bcc)(predicted)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "107": {
+    "zh": "六方密堆积 (hcp)(predicted)",
+    "en": "hexagonal close-packed (hcp)(predicted)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "108": {
+    "zh": "六方密堆积 (hcp)(predicted)",
+    "en": "hexagonal close-packed (hcp)(predicted)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "109": {
+    "zh": "面心立方晶系 (fcc)(predicted)",
+    "en": "face-centered cubic (fcc)(predicted)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "110": {
+    "zh": "体心立方晶系 (bcc)(predicted)",
+    "en": "body-centered cubic (bcc)(predicted)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "111": {
+    "zh": "体心立方晶系 (bcc)(predicted)",
+    "en": "body-centered cubic (bcc)(predicted)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "112": {
+    "zh": "六方密堆积 (hcp)(predicted)",
+    "en": "hexagonal close-packed (hcp)(predicted)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "113": {
+    "zh": "六方密堆积 (hcp)(predicted)",
+    "en": "hexagonal close-packed (hcp)(predicted)",
+    "img": "Hexagonal_close_packed.svg"
+  },
+  "114": {
+    "zh": "面心立方晶系 (fcc)(predicted)",
+    "en": "face-centred cubic (fcc)(predicted)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "115": {
+    "zh": "",
+    "en": "",
+    "img": ""
+  },
+  "116": {
+    "zh": "",
+    "en": "",
+    "img": ""
+  },
+  "117": {
+    "zh": "",
+    "en": "",
+    "img": ""
+  },
+  "118": {
+    "zh": "面心立方晶系 (fcc)(extrapolated)",
+    "en": "face-centered cubic (fcc)(extrapolated)",
+    "img": "Cubic-face-centered.svg"
+  },
+  "119": {
+    "zh": "体心立方晶系 (bcc)(extrapolated)",
+    "en": "body-centered cubic (bcc)(extrapolated)",
+    "img": "Cubic-body-centered.svg"
+  },
+  "120": {
+    "zh": "体心立方晶系 (bcc)(extrapolated)",
+    "en": "body-centered cubic (bcc)(extrapolated)",
+    "img": "Cubic-body-centered.svg"
+  }
+}

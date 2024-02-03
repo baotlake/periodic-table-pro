@@ -1,0 +1,16 @@
+{
+  "miniprogramRoot": "./dist_2",
+  "projectname": "%E5%85%83%E7%B4%A0%E5%91%A8%E6%9C%9F%E8%A1%A8Pro",
+  "description": "",
+  "appid": "wxaa30f7fcdfc57e10",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": true,
+    "lazyloadPlaceholderEnable": true,
+    "minifyWXML": true
+  },
+  "libVersion": "2.16.1",
+  "compileType": "miniprogram"
+}

@@ -1,11 +1,14 @@
+import Head from 'next/head'
+import Script from 'next/script'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import classNames from 'classnames/bind'
 import { NavigationHeader, Article } from '@periodic-table-pro/components'
 import { symbol, WikiData } from '@periodic-table-pro/data'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
-import '@periodic-table-pro/components/wiki.scss'
+import { STATIC_BASE } from '@periodic-table-pro/components/config'
 import styles from './wiki.module.scss'
+import '@periodic-table-pro/components/wiki.scss'
 
 const cx = classNames.bind(styles)
 
@@ -15,22 +18,24 @@ type Props = {
 }
 
 export default function Wiki({ atomicNumber, data }: Props) {
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
 
   return (
-    <div className={cx('wiki-page', theme)}>
-      <NavigationHeader themeClass={theme} />
+    <>
+      {/* <Head></Head> */}
+      <div className={cx('wiki-page', theme)}>
+        <NavigationHeader themeClass={theme} />
 
-      <Article
-        themeClass={theme}
-        atomicNumber={atomicNumber}
-        loading={false}
-        heading={data.heading}
-        tagline={data.tagline}
-        data={data}
-      />
+        <Article
+          themeClass={theme}
+          atomicNumber={atomicNumber}
+          loading={false}
+          heading={data.heading}
+          tagline={data.tagline}
+          data={data}
+        />
 
-      {/* <AdjacentNavigation
+        {/* <AdjacentNavigation
                 themeClass={theme}
                 previous={detailData.previous ? detailData.previous.symbol : '--'}
                 current={detailData.symbol}
@@ -38,7 +43,8 @@ export default function Wiki({ atomicNumber, data }: Props) {
             // onTapPrevious={handleTapPrevious}
             // onTapNext={handleTapNext}
             /> */}
-    </div>
+      </div>
+    </>
   )
 }
 
@@ -54,13 +60,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const BUCKET_HOST = process.env.BUCKET_HOST
-
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = [''].concat(context.params.slug)[1]
   const i = symbol.findIndex((s) => s == slug)
   const Z = i + 1
-  const url = BUCKET_HOST + '/json/wiki/' + Z + '.json'
+  const url = STATIC_BASE + '/json/wiki/' + Z + '.json'
 
   console.log('getStaticProps url: ', url)
 

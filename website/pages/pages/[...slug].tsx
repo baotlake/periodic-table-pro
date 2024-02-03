@@ -12,12 +12,12 @@ import {
   AutoDisplayPropertiesModal,
   AutoZoomModal,
 } from '@periodic-table-pro/components'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 // Only works with SSR
 export default function Redirect() {
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
 
   const router = useRouter()
 

@@ -1,0 +1,12 @@
+#! bash
+copy project.config2.json project.config.json
+
+export ENV_SUFFIX=".chem"
+
+npm run build:weapp
+
+mv dist dist_2
+
+copy project.config1.json project.config.json
+
+export ENV_SUFFIX=""

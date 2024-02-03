@@ -1,9 +1,9 @@
 import { ToolPageLayout, SolubilityTable } from '@periodic-table-pro/components'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 export default function ToolsPage() {
-  const [themeMode] = useRecoilState(themeModeState)
+  const [themeMode] = useAtom(themeModeState)
 
   return (
     <div>

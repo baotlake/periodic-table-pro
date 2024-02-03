@@ -7,7 +7,7 @@ import {
   offThemeChange,
 } from '../compat'
 import { defaultValue, getStorage, setStorage } from '../utils/storage'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   themeFollowSystem,
   themeInitialized,
@@ -18,10 +18,10 @@ import { ThemeMode } from '../type'
 const PLATFORM = process.env.PLATFORM
 
 export function useTheme() {
-  const [mode, setThemeMode] = useRecoilState(themeModeState)
+  const [mode, setThemeMode] = useAtom(themeModeState)
   const [followSystemTheme, setFollowSystemTheme] =
-    useRecoilState(themeFollowSystem)
-  const [initialized, setInitialized] = useRecoilState(themeInitialized)
+    useAtom(themeFollowSystem)
+  const [initialized, setInitialized] = useAtom(themeInitialized)
 
   const setBackground = (value: ThemeMode) => {
     if (PLATFORM !== 'weapp') return

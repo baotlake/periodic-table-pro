@@ -1,0 +1,3 @@
+#! bash
+pnpm run build:qq
+pnpm prettier --parser css --write ./dist/pages/wiki/index.qss

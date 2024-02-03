@@ -1,21 +1,14 @@
-import ZoomModal from "../Modal/ZoomModal"
-import { useRecoilState } from "recoil"
-import { themeModeState, zoomModalVisible } from "../recoil/atom"
-
+import ZoomModal from '../Modal/ZoomModal'
+import { useAtom } from 'jotai'
+import { themeModeState, zoomModalVisible } from '../recoil/atom'
 
 export function AutoZoomModal() {
-    const [mode] = useRecoilState(themeModeState)
-    const [visible, setVisible] = useRecoilState(zoomModalVisible)
+  const [mode] = useAtom(themeModeState)
+  const [visible, setVisible] = useAtom(zoomModalVisible)
 
-    const handleClose = () => {
-        setVisible(false)
-    }
+  const handleClose = () => {
+    setVisible(false)
+  }
 
-    return (
-        <ZoomModal
-            themeClass={mode}
-            visible={visible}
-            onClose={handleClose}
-        />
-    )
+  return <ZoomModal themeClass={mode} visible={visible} onClose={handleClose} />
 }

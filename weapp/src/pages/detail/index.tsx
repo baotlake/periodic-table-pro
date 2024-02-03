@@ -12,7 +12,7 @@ import { DetailData, getDetailData } from '@periodic-table-pro/data'
 import { useShareMessage } from '../../hooks'
 
 import './index.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 const PLATFORM = process.env.PLATFORM
@@ -20,7 +20,7 @@ const DETAIL_CUSTOM_AD = process.env.DETAIL_CUSTOM_AD
 
 export default function DetailPage() {
   const router = useRouter()
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
   const [atomicNumber, setAtomicNumber] = useState(1)
   // const [scrollInto, setScrollInto] = useState('')
 

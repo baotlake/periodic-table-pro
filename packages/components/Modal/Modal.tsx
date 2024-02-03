@@ -10,47 +10,54 @@ const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
 
 type Props = PropsWithChildren<{
-    themeClass?: string
-    wrapperClassName?: string
-    className?: string
-    visible: boolean
-    onClose?: () => void
+  themeClass?: string
+  wrapperClassName?: string
+  className?: string
+  visible: boolean
+  onClose?: () => void
+  destroyOnClose?: boolean
 }>
 
-export default function Modal(props: Props) {
-    const handleKeydown = (e: React.KeyboardEvent) => {
-        if (e.key == 'Escape') {
-            props?.onClose?.()
-        }
+export default function Modal({
+  themeClass,
+  wrapperClassName,
+  className,
+  visible,
+  onClose,
+  destroyOnClose,
+  children,
+}: Props) {
+  const handleKeydown = (e: React.KeyboardEvent) => {
+    if (e.key == 'Escape') {
+      onClose?.()
     }
+  }
 
-    // if (!props.visible) {
-    //   return null
-    // }
+  if (destroyOnClose && !visible) {
+    return null
+  }
 
-    return (
-        // <CustomWrapper>
-        <div
-            role="dialog"
-            className={cx(
-                'modal-wrapper',
-                props.wrapperClassName,
-                {
-                    visible: props.visible,
-                    hidden: !props.visible,
-                },
-                props.themeClass
-            )}
-            hidden={!props.visible}
-            tabIndex={0}
-            onKeyDown={(e) => handleKeydown(e)}
-            ref={(e) => e?.focus?.()}
-        >
-            <div className={cx('modal__mask')} onClick={props.onClose} />
-            <div className={cx('modal__content', props.className)}>
-                {props.children}
-            </div>
-        </div>
-        // </CustomWrapper>
-    )
+  return (
+    // <CustomWrapper>
+    <div
+      role="dialog"
+      className={cx(
+        'modal-wrapper',
+        wrapperClassName,
+        {
+          visible: visible,
+          hidden: !visible,
+        },
+        themeClass
+      )}
+      hidden={!visible}
+      tabIndex={0}
+      onKeyDown={(e) => handleKeydown(e)}
+      ref={(e) => e?.focus?.()}
+    >
+      <div className={cx('modal__mask')} onClick={onClose} />
+      <div className={cx('modal__content', className)}>{children}</div>
+    </div>
+    // </CustomWrapper>
+  )
 }

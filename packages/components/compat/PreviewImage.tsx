@@ -5,18 +5,14 @@ import { Image } from './components'
 const cx = classNames.bind(styles)
 
 type Props = {
-    current?: string
-    onClose?: () => void
+  current?: string
+  onClose?: () => void
 }
 
 export function PreviewImage({ current, onClose }: Props) {
-
-    return (
-        <div
-            className={cx('preview-image')}
-            onClick={onClose}
-        >
-            <Image className={cx('current-img')} src={current || ''} />
-        </div>
-    )
+  return (
+    <div id="preview-gallery" className={cx('preview-image')} onClick={onClose}>
+      <Image className={cx('current-img')} src={current || ''} />
+    </div>
+  )
 }

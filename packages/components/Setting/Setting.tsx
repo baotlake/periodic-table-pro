@@ -6,7 +6,7 @@ import { propertiesLabels, DisplayProperty } from '@periodic-table-pro/data'
 import { reportEvent } from '../utils/analytics'
 import { getStorage, setStorage } from '../utils/storage'
 import { maxPtZoom, minPtZoom } from '../config'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import {
   displayPropertiesModalVisible,
   periodicTableDisplayProperty,
@@ -36,13 +36,13 @@ const themeSwitchData = {
 type Props = {}
 
 export function Setting({}: Props) {
-  const [theme, setTheme] = useRecoilState(themeModeState)
-  const [followSystem, setFollowSystem] = useRecoilState(themeFollowSystem)
-  const [displayProperty] = useRecoilState(periodicTableDisplayProperty)
-  const [zoom, setZoom] = useRecoilState(periodicTableZoom)
+  const [theme, setTheme] = useAtom(themeModeState)
+  const [followSystem, setFollowSystem] = useAtom(themeFollowSystem)
+  const [displayProperty] = useAtom(periodicTableDisplayProperty)
+  const [zoom, setZoom] = useAtom(periodicTableZoom)
   const [displayPropertiesVisible, setDisplayPropertiesModalVisible] =
-    useRecoilState(displayPropertiesModalVisible)
-  const [zoomVisible, setZoomModalVisible] = useRecoilState(zoomModalVisible)
+    useAtom(displayPropertiesModalVisible)
+  const [zoomVisible, setZoomModalVisible] = useAtom(zoomModalVisible)
 
   const oneTermTheme = followSystem ? 'auto' : theme
 

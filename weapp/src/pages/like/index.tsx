@@ -3,26 +3,25 @@ import classNames from 'classnames'
 import { View, Image, Button } from '@tarojs/components'
 import { MenuPageLayout } from '@periodic-table-pro/components'
 import useShareMessage from '../../hooks/useShareMessage'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { STATIC_BASE } from '@periodic-table-pro/components/config'
 import './index.scss'
 
 const PLATFORM = process.env.PLATFORM
-const BUCKET_HOST = process.env.BUCKET_HOST
 
-const host = BUCKET_HOST
 const base =
   PLATFORM === 'alipay'
-    ? host + '/alipay'
+    ? STATIC_BASE + '/alipay'
     : PLATFORM === 'qq'
-    ? host + '/qq'
-    : host
+    ? STATIC_BASE + '/qq'
+    : STATIC_BASE
 
-const posterImg = base + '/images/poster.png'
+const posterImg = base + '/img/ui/poster.png'
 
 export default function LikePage() {
   useShareMessage()
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
 
   const previewQR = () => {
     Taro.previewImage({

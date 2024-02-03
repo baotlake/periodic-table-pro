@@ -19,7 +19,7 @@ import { getState } from "../utils/property"
 import { reportEvent } from "../utils/analytics"
 
 import styles from "./periodicTable.module.scss"
-import { useRecoilState } from "recoil"
+import { useAtom } from 'jotai'
 import { periodicTableColorSign, periodicTableDisplayProperty, periodicTableEmphasize, periodicTableTemperature, periodicTableTrendData, themeModeState } from "../recoil/atom"
 
 const cx = classNames.bind(styles)
@@ -30,12 +30,12 @@ type Props = {
 function PeriodicTableFc({ }: Props, ref: ForwardedRef<HTMLDivElement>) {
   const { elements, groups, periods } = mediumLongForm
 
-  const [themeMode] = useRecoilState(themeModeState)
-  const [emphasize] = useRecoilState(periodicTableEmphasize)
-  const [colorSign] = useRecoilState(periodicTableColorSign)
-  const [trendData] = useRecoilState(periodicTableTrendData)
-  const [temperature] = useRecoilState(periodicTableTemperature)
-  const [displayProperty] = useRecoilState(periodicTableDisplayProperty)
+  const [themeMode] = useAtom(themeModeState)
+  const [emphasize] = useAtom(periodicTableEmphasize)
+  const [colorSign] = useAtom(periodicTableColorSign)
+  const [trendData] = useAtom(periodicTableTrendData)
+  const [temperature] = useAtom(periodicTableTemperature)
+  const [displayProperty] = useAtom(periodicTableDisplayProperty)
 
   const [currentZ, setCurrentZ] = useState(1)
 

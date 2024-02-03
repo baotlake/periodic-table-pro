@@ -2,7 +2,7 @@
 import classNames from 'classnames/bind'
 import useAddGuide from './useAddGuide'
 import styles from './index.module.scss'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { menuButtonClientRect } from '../../recoil/atom'
 
 const cx = classNames.bind(styles)
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export function AddGuide({ themeClass }: Props) {
-    const [rect] = useRecoilState(menuButtonClientRect)
+    const [rect] = useAtom(menuButtonClientRect)
     const [visible, handleClose] = useAddGuide()
 
     return (

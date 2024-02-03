@@ -1,0 +1,5 @@
+# A redirect rule with many of the supported properties
+[[redirects]]
+  from = "https://periodic-table-pro.netlify.app/"
+  to = "https://pt.ziziyi.com/"
+  status = 301

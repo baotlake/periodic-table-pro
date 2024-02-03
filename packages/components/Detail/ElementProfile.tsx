@@ -8,11 +8,11 @@ import {
   Categories,
 } from '@periodic-table-pro/data'
 import { chineseName } from '../utils/utils'
+import { STATIC_BASE } from '../config'
 
 import styles from "./elementProfile.module.scss"
 
 const cx = classNames.bind(styles)
-const BUCKET_HOST = process.env.BUCKET_HOST
 
 type ChineseNameFunc = (name: string, Z?: number) => string | { url: string }
 type ZhCNCategories = string[]
@@ -40,8 +40,7 @@ export function ElementProfile({
   // const menuRect = useMenuButtonClientRect()
   const viewRef = useRef<HTMLDivElement>(null)
 
-  const host = BUCKET_HOST
-  const imageUrl = host + '/elements/1920p/' + symbol + '.jpg'
+  const imageUrl = STATIC_BASE + '/img/1920p/' + symbol + '.jpg'
 
   const handleViewImage = () => {
     previewImage({

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Taro, isTaro, useDidShow, useReady } from '../compat'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '../recoil/atom'
 
 export function usePageMeta() {
@@ -9,7 +9,7 @@ export function usePageMeta() {
   }
 
   // Taro
-  const [mode] = useRecoilState(themeModeState)
+  const [mode] = useAtom(themeModeState)
 
   useReady(() => {
     const { page } = Taro.getCurrentInstance()

@@ -3,13 +3,12 @@ import classNames from 'classnames/bind'
 import menus from './menus'
 import logoImg from '../assets/images/logo.png'
 import styles from './persistentDrawer.module.scss'
+import { STATIC_BASE } from '../config'
 
 const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
-const BUCKET_HOST = process.env.BUCKET_HOST
 
-const host = BUCKET_HOST
-const backgroundImg = host + '/images/background.jpg'
+const backgroundImg = STATIC_BASE + '/img/ui/background.jpg'
 
 type Props = {
   themeClass?: string
@@ -22,6 +21,18 @@ export default function PersistentDrawer({
   visible,
   onClose,
 }: Props) {
+  const handleShare = () => {
+    if (PLATFORM === 'next') {
+      try {
+        navigator?.share({
+          url: location.href,
+          title: document.title,
+        })
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }
   return (
     <div
       className={cx('menu-drawer-wrapper', { visible: visible }, themeClass)}
@@ -67,7 +78,7 @@ export default function PersistentDrawer({
                     <div
                       key={item.name}
                       className={cx('menu-item')}
-                    // onClick={() => handleClickItem(item)}
+                      onClick={handleShare}
                     >
                       <Image className={cx('icon')} src={item.icon}></Image>
                       <span className={cx('label')}>{item.label}</span>

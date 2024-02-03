@@ -1,11 +1,6 @@
-import NavigationBar from "./NavigationBar";
-import NavigationHeader from "./NavigationHeader";
+import NavigationBar from './NavigationBar'
+import NavigationHeader from './NavigationHeader'
 
-
-export {
-  NavigationHeader,
-  NavigationBar,
-}
-
+export { NavigationHeader, NavigationBar }
 
 export default NavigationBar

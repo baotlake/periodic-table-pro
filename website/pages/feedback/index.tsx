@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { MenuPageLayout, Feedback } from '@periodic-table-pro/components'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 export default function FeedbackPage() {
-  const [themeMode] = useRecoilState(themeModeState)
+  const [themeMode] = useAtom(themeModeState)
 
   return (
     <>
@@ -13,7 +13,10 @@ export default function FeedbackPage() {
       </Head>
       <div>
         <MenuPageLayout themeClass={themeMode} title="意见反馈">
-          <Feedback themeClass={themeMode} />
+          <Feedback
+            themeClass={themeMode}
+            chatPage="https://tawk.to/periodictablepro"
+          />
         </MenuPageLayout>
       </div>
     </>

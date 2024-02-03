@@ -2,7 +2,6 @@ import Taro from '@tarojs/taro'
 import { useEffect } from 'react'
 // import { initStorage } from './utils/storage'
 import { Initialization } from '@periodic-table-pro/components'
-import { RecoilRoot } from 'recoil'
 
 import './app.scss'
 
@@ -19,9 +18,9 @@ export default function App(props) {
   }, [])
 
   return (
-    <RecoilRoot>
+    <>
       <Initialization />
       {props.children}
-    </RecoilRoot>
+    </>
   )
 }

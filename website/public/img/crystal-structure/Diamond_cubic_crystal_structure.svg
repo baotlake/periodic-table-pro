@@ -1,0 +1,42 @@
+<svg width="150" height="175" xmlns="http://www.w3.org/2000/svg">
+<marker id="dotB" overflow="visible"><circle r="2.25"/></marker>
+<g fill="none" stroke-width="2">
+<path d="M110,9 88,42 60,59 41,90 10,109" stroke="#E5E5E5"/>
+<path d="M110 9V109H10m100 0 21 45" stroke="#CCC"/>
+<g fill="#CCC">
+<circle cx="60" cy="59" r="4.5"/>
+<circle cx="110" cy="109" r="4.5"/>
+</g>
+<path d="M70.5,31.5 88,42 120.75,80.25M20.5,81.5 41,90 70.5,131.5" stroke="#BFBFBF"/>
+<path d="M70.5,31.5 46,67 20.5,81.5M120.5,81.5 97,120 70.5,131.5" stroke="#7F7F7F"/>
+<path d="M31,54 81,104 97,120 131,154" stroke="#3F3F3F"/>
+<path d="M10 9 31 54H131L110 9H10V109l21 45H131V54M31 54V154" stroke="#000" marker-start="url(#dotB)" marker-mid="url(#dotB)"/>
+</g>
+
+<circle cx="81" cy="104" r="4.5"/>
+<circle cx="20.5" cy="81.5" r="4.5"/>
+<circle cx="70.5" cy="31.5" r="4.5"/>
+<g fill="#7F7F7F">
+<circle cx="120.5" cy="81.5" r="4.5"/>
+<circle cx="70.5" cy="131.5" r="4.5"/>
+</g>
+<g stroke="#3F3F3F" fill="#FFF">
+<circle cx="46" cy="67" r="4"/>
+<circle cx="97" cy="120" r="4"/>
+<g stroke="#BFBFBF">
+<circle cx="88" cy="42" r="4"/>
+<circle cx="41" cy="90" r="4"/>
+</g>
+</g>
+
+<g font-family="Time New Roman" font-size="24" text-anchor="middle">
+<g transform="skewX(-13)">
+<text x="42" y="142">ɑ</text>
+<text x="124" y="170">ɑ</text>
+<text x="167" y="115">ɑ</text>
+<text x="131" y="136" font-size="14">ɑ</text>
+</g>
+<text x="101" y="149" font-size="14">4</text>
+</g>
+<path d="M96 138h10" fill="none" stroke="#000"/>
+</svg>

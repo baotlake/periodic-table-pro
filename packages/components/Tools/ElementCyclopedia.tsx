@@ -11,10 +11,9 @@ import {
 } from '@periodic-table-pro/data'
 import styles from './elementCyclopedia.module.scss'
 import { getWikiPath } from '../utils/routes'
+import { STATIC_BASE } from '../config'
 
 const cx = classNames.bind(styles)
-
-const BUCKET_HOST = process.env.BUCKET_HOST
 
 type Props = {
     themeClass?: string
@@ -22,8 +21,7 @@ type Props = {
 
 export function ElementCyclopedia({ themeClass }: Props) {
     const itemList = getElementsCyclopedia()
-    const host = BUCKET_HOST
-    const imageDir = host + '/elements/1920p/'
+    const imageDir = STATIC_BASE + '/img/1920p/'
 
     return (
         <div className={cx("elements-encyclopedia", themeClass)}>

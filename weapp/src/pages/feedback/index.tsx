@@ -1,7 +1,7 @@
 import { View, Image, Button } from '@tarojs/components'
 import classNames from 'classnames'
 import { MenuPageLayout } from '@periodic-table-pro/components'
-import { useRecoilState } from 'recoil'
+import { useAtom } from 'jotai'
 import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 import feedbackImg from '../../assets/images/feedback.png'
 import './index.scss'
@@ -9,7 +9,7 @@ import './index.scss'
 const PLATFORM = process.env.PLATFORM
 
 export default function FeedbackPage() {
-  const [theme] = useRecoilState(themeModeState)
+  const [theme] = useAtom(themeModeState)
 
   return (
     <View className={classNames('feedback-page', theme)}>
