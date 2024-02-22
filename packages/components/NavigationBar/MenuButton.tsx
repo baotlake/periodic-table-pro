@@ -25,10 +25,16 @@ export default function MenuButton({ style, themeClass }: Props) {
         } as React.CSSProperties
       }
     >
-      <div className={cx('more')} onClick={() => setVisible(!visible)}>
+      <div
+        className={cx('more')}
+        onClick={() => setVisible(visible ? false : true)}
+      >
         <div className={cx('more-icon')} />
       </div>
-      <div className={cx('other')} onClick={() => setVisible(!visible)}>
+      <div
+        className={cx('other')}
+        onClick={() => setVisible(visible ? false : true)}
+      >
         <div className={cx('other-icon')} />
       </div>
 
@@ -37,6 +43,7 @@ export default function MenuButton({ style, themeClass }: Props) {
           visible,
         })}
       >
+        <div className=""></div>
         <img className={cx('qr-img')} src={wxacodeImg} />
       </div>
     </div>

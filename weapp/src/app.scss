@@ -1,4 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 .taro_page {
-    overflow-y: auto;
+  overflow-y: auto;
 }

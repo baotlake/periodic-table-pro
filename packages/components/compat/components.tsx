@@ -23,13 +23,11 @@ import type {
   AdCustom as TaroAdCustom,
   Ad as TaroAd,
 } from '@tarojs/components'
-import type { LinkProps } from 'next/link'
 import { isTaro } from './Taro'
 import { Slider as MySlider } from './Slider'
 
-const PLATFORM = process.env.PLATFORM
-
 type HTMLProps = PropsWithChildren<AllHTMLAttributes<{}>>
+type LinkProps = any
 
 type HTMLButtonProps = PropsWithChildren<HTMLAttributes<HTMLButtonElement>>
 type ButtonType = typeof TaroButtonType | React.FC<HTMLButtonProps>
@@ -74,7 +72,7 @@ type InputType = typeof TaroInput | React.FC<HTMLProps>
 let Input: InputType = (props: HTMLProps) => (
   <input {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</input>
 )
-if (isTaro && PLATFORM !== 'h5') {
+if (isTaro && process.env.PLATFORM !== 'h5') {
   const { Input: TaroInput } = require('@tarojs/components')
   Input = TaroInput
 }
@@ -90,7 +88,7 @@ if (isTaro) {
   const { Navigator: N } = require('@tarojs/components')
   Navigator = N
 }
-if (PLATFORM == 'next') {
+if (process.env.PLATFORM == 'next') {
   const Link = require('next/link')
   Navigator = Link
 }
@@ -117,7 +115,7 @@ const videoProps = [
   'controls',
 ]
 let Video: TypeVideo = (props: HTMLProps) => (
-  <video {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</video>
+  <video {...pick(props, videoProps)}>{props.children}</video>
 )
 if (isTaro) {
   const { Video: TaroVideo } = require('@tarojs/components')
@@ -140,11 +138,11 @@ let RichText: typeof TaroRichText = (props: RichTextProps) => {
   //   },
   // })
 }
-if (isTaro && PLATFORM !== 'h5') {
+if (isTaro && process.env.PLATFORM !== 'h5') {
   const { RichText: TaroRichText } = require('@tarojs/components')
   RichText = TaroRichText
 }
-if (PLATFORM === 'alipay') {
+if (process.env.PLATFORM === 'alipay') {
   const { AliRichText } = require('./RichText.ali')
   RichText = AliRichText
 }

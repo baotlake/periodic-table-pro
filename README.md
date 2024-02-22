@@ -1,6 +1,5 @@
 <h1 align="center">
     <img
-        style="border-radius: 50%"
         src="docs/logo.png"
         alt="元素周期表Pro"
         title="元素周期表Pro"
@@ -73,7 +72,7 @@ Tarojs 构建的多端兼容小程序，项目目录 `periodic-table-pro/weapp`
 ## 环境变量
 
 - `PLATFORM` —— 代替 `process.env.TARO_ENV`， 在 Nextjs 项目中值为 `next`
-- `STATIC_BASE` —— 云服务静态资源存储桶地址，例如 `https://xxx.cos.ap-shanghai.myqcloud.com`
+- `STATIC_BASE` —— 静态资源地址
 
 <br>
 
@@ -83,6 +82,6 @@ Tarojs 构建的多端兼容小程序，项目目录 `periodic-table-pro/weapp`
 
 在 Taro 项目中使用 `@tarojs/plugin-html` 插件将 html 标签转译为对应小程序的模版。
 
-在 `periodic-table-pro/packages/components/compact` 目录中实现了一些根据环境变量同时兼容 Nextjs 与 Tarojs 环境的组件和 API。例如`Image`、`Navigator`、`previewImage`、`navigatorTo` 等。
+在 [`periodic-table-pro/packages/components/compact`](./packages/components/compat/) 目录中实现了一些根据环境变量同时兼容 Nextjs 与 Tarojs 环境的组件和 API。例如`Image`、`Navigator`、`previewImage`、`navigatorTo` 等。
 
 最后在需要复用的组件中使用这些兼容版的组件和 API。

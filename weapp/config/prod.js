@@ -12,11 +12,11 @@ dotenv.config({
 const PLATFORM =
   process.env.TARO_ENV === 'miniprogram' ? 'weapp' : process.env.TARO_ENV
 
-const BUCKET_HOST = process.env.BUCKET_HOST || ''
+const STATIC_BASE = process.env.STATIC_BASE || ''
 
-if (!BUCKET_HOST || /^["']/.test(BUCKET_HOST)) {
+if (!STATIC_BASE || /^["']/.test(STATIC_BASE)) {
   throw Error(
-    'process.env.BUCKET_HOST is NOT a valid url: `' + BUCKET_HOST + '`'
+    'process.env.BUCKET_HOST is NOT a valid url: `' + STATIC_BASE + '`'
   )
 }
 
@@ -27,8 +27,9 @@ module.exports = {
     PLATFORM: JSON.stringify(PLATFORM),
 
     ENV_ID: JSON.stringify(process.env.ENV_ID),
-    BUCKET_HOST: JSON.stringify(BUCKET_HOST),
+    STATIC_BASE: JSON.stringify(STATIC_BASE),
     APP_ORIGIN: JSON.stringify(process.env.APP_ORIGIN),
+    DEEP_READING_ORIGIN: JSON.stringify(process.env.DEEP_READING_ORIGIN),
 
     SEARCH_REWARDED_AD: JSON.stringify(process.env.SEARCH_REWARDED_AD),
     DETAIL_CUSTOM_AD: JSON.stringify(process.env.DETAIL_CUSTOM_AD),

@@ -33,7 +33,7 @@ export default function Modal({
     }
   }
 
-  if (destroyOnClose && !visible) {
+  if (destroyOnClose && visible != true) {
     return null
   }
 
@@ -44,13 +44,10 @@ export default function Modal({
       className={cx(
         'modal-wrapper',
         wrapperClassName,
-        {
-          visible: visible,
-          hidden: !visible,
-        },
+        visible ? ' visible' : 'hidden',
         themeClass
       )}
-      hidden={!visible}
+      hidden={visible ? false : true}
       tabIndex={0}
       onKeyDown={(e) => handleKeydown(e)}
       ref={(e) => e?.focus?.()}

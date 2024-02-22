@@ -42,7 +42,7 @@ export default function AboutPage() {
                     </Text>
                 </View>
 
-                <View className="section">
+                <View className="section text-8xl">
                     如果我们的某些内容无意侵犯您了的合法权益，请您通过客服联系我们进行移除。
                 </View>
                 {['weapp', 'h5'].includes(PLATFORM) && (
