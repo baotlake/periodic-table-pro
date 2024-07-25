@@ -1,17 +1,37 @@
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+// @import 'tailwindcss/base';
+// @import 'tailwindcss/components';
+// @import 'tailwindcss/utilities';
 // @import './base.css';
-@import 'tailwindcss/utilities';
+@import '../../packages/components/index.scss';
 
-:root {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; */
-  /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+@layer base {
+  :root,
+  .light {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+
+    // packages/components
+    @include light;
+  }
+  .dark {
+    @include dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root,
+    .dark {
+      @include dark;
+    }
+    .light {
+      @include light;
+    }
+  }
 }
 
 * {

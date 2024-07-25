@@ -1,20 +1,21 @@
 import type { DisplayProperty } from '../types/element'
 
 export const propertiesLabels: Record<DisplayProperty, string> = {
-  'blank': '空白',
-  'atomicWeight': '相对原子质量',
-  'pinyin': '拼音',
+  blank: '空白',
+  atomicWeight: '相对原子质量',
+  pinyin: '拼音',
   'zhCNName&pinyin': '名称+拼音',
-  'electronegativity': '电负性',
-  'atomicRadius': '原子半径',
-  'meltingPoint': '熔点',
-  'boilingPoint': '沸点',
-  'electronConfiguration': '电子排布',
-  'density': '密度',
-  'oxidationStates': '氧化态',
+  electronegativity: '电负性',
+  atomicRadius: '原子半径',
+  meltingPoint: '熔点',
+  boilingPoint: '沸点',
+  electronConfiguration: '电子排布',
+  density: '密度',
+  oxidationStates: '氧化态',
+  enName: '英文名',
 }
 
-type Property = { type: DisplayProperty, trend: boolean }[]
+type Property = { type: DisplayProperty; trend: boolean }[]
 
 export const properties: Property = [
   {
@@ -60,9 +61,9 @@ export const properties: Property = [
   {
     type: 'oxidationStates',
     trend: false,
-  }
-  // {
-  //   type: '',
-  //   trend: false,
-  // }
+  },
+  {
+    type: 'enName',
+    trend: false,
+  },
 ]

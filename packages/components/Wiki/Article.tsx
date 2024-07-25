@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import { Content } from './Content'
 import {
@@ -6,15 +8,17 @@ import {
   WikiData,
 } from '@periodic-table-pro/data'
 import { CustomWrapper } from '../compat'
+import { useAtom } from 'jotai'
 
 import styles from './article.module.scss'
+import { themeModeState } from '../recoil/atom'
 
 const cx = classNames.bind(styles)
 
 const videoAdId = process.env.AD_WIKI_VIDEO_ID
 
 type Props = {
-  themeClass?: string
+  theme?: string
   atomicNumber: number
   loading?: boolean
   heading?: string
@@ -23,18 +27,19 @@ type Props = {
 }
 
 export function Article({
-  themeClass,
+  theme,
   atomicNumber,
   loading,
   heading,
   tagline,
   data,
 }: Props) {
+  const [themeMode] = useAtom(themeModeState)
   return (
     <div
       className={cx(
         'article',
-        themeClass,
+        themeMode,
         Categories[elementsCategories[atomicNumber - 1]],
         { loading }
       )}
@@ -44,7 +49,7 @@ export function Article({
       <div className={cx('tagline')}>{tagline}</div>
 
       <CustomWrapper>
-        <Content data={data} themeClass={themeClass} adId={videoAdId} />
+        <Content data={data} themeClass={themeMode} adId={videoAdId} />
       </CustomWrapper>
 
       {loading && (

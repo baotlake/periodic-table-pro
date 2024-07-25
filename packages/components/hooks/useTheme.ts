@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect } from 'react'
 import {
   Taro,
@@ -19,8 +21,7 @@ const PLATFORM = process.env.PLATFORM
 
 export function useTheme() {
   const [mode, setThemeMode] = useAtom(themeModeState)
-  const [followSystemTheme, setFollowSystemTheme] =
-    useAtom(themeFollowSystem)
+  const [followSystemTheme, setFollowSystemTheme] = useAtom(themeFollowSystem)
   const [initialized, setInitialized] = useAtom(themeInitialized)
 
   const setBackground = (value: ThemeMode) => {
@@ -97,6 +98,11 @@ export function useTheme() {
   }, [])
 
   useEffect(() => {
+    const toggleTheme = (value: ThemeMode) => {
+      if (PLATFORM == 'h5' || PLATFORM == 'next') {
+        document.documentElement.classList.toggle('dark', value == 'dark')
+      }
+    }
     const handleThemeChange: Taro.onThemeChange.Callback = (res) => {
       setThemeMode(res.theme)
     }
@@ -108,6 +114,7 @@ export function useTheme() {
     }
 
     setBackground(mode)
+    toggleTheme(mode)
 
     return () => {
       offThemeChange(handleThemeChange)

@@ -21,7 +21,7 @@ export default function SearchPage() {
 
   return (
     <View className={classNames('search-page', themeMode)}>
-      <NavigationHeader themeClass={themeMode} title="搜索" />
+      <NavigationHeader title="搜索" />
       <View
         style={{
           paddingTop: menuRect.bottom + 8 + 'px',

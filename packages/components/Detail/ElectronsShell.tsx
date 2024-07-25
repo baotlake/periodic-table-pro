@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames/bind'
 import { Canvas, Image, Taro } from '../compat'

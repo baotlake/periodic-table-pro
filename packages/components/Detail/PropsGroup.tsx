@@ -1,3 +1,5 @@
+'use client'
+
 import { Image, Navigator, redirectTo } from '../compat'
 import { useState } from 'react'
 import classNames from 'classnames/bind'

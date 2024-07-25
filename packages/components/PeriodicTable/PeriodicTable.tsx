@@ -1,3 +1,5 @@
+'use client'
+
 import { CSSProperties, useState, forwardRef, ForwardedRef } from "react"
 import classNames from "classnames/bind"
 import ElementBox, { BottomProperty } from "../ElementBox"

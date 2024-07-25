@@ -1,3 +1,4 @@
+'use client'
 import classNames from 'classnames/bind'
 import { Image, Button, previewImage } from '../compat'
 import { staticUrl } from '../utils/utils'

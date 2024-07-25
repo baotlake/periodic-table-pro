@@ -3,7 +3,18 @@
 $light-background: #ffffff;
 $light-foceground: #000000;
 
-
 // $dark-background: #242627;
-$dark-background: #1B1C1D;
+$dark-background: #1b1c1d;
 $dark-foceground: #efefef;
+
+@mixin dark {
+  --bg-default: 210 3.6% 11%;
+  --bg-soft: 210 3.6% 12%;
+  --bg-mute: 210 3.6% 15%;
+}
+
+@mixin light {
+  --bg-default: 0 0% 100%;
+  --bg-soft: 0 0% 98%;
+  --bg-mute: 0 0% 95%;
+}

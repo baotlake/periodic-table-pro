@@ -1,8 +1,15 @@
-import { useInitialization, useMenuClientRect, usePageMeta, useTheme } from '../hooks'
+'use client'
+
+import {
+  useInitialization,
+  useMenuClientRect,
+  usePageMeta,
+  useTheme,
+} from '../hooks'
 // import { PageMeta } from '../compat/components'
 
 export function Initialization() {
-  const theme = useTheme()
+  useTheme()
   useInitialization()
   useMenuClientRect()
   usePageMeta()

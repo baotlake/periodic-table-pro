@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'selector',
   corePlugins: {
     preflight: false,
   },
@@ -100,9 +101,9 @@ module.exports = {
           900: 'hsl(var(--primary-hue) var(--primary-s) 15% / <alpha-value>)',
         },
         background: {
-          DEFAULT: 'hsl(var(--bg-hsl) / <alpha-value>)',
-          soft: 'hsl(var(--bg-hue) var(--bg-s) var(--bg-soft-l) / <alpha-value>)',
-          mute: 'hsl(var(--bg-hue) var(--bg-s) var(--bg-mute-l) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--bg-default) / <alpha-value>)',
+          soft: 'hsl(var(--bg-soft) / <alpha-value>)',
+          mute: 'hsl(var(--bg-mute) / <alpha-value>)',
         },
         foreground: {
           DEFAULT: 'hsl(var(--fg-hsl) / <alpha-value>)',

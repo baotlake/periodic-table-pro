@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import { useState } from 'react'
 import { Navigator, Button, Image } from '../compat'

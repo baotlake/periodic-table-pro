@@ -1,3 +1,5 @@
+'use client'
+
 import { Slider } from '../compat'
 import Modal from './Modal'
 import classNames from 'classnames/bind'

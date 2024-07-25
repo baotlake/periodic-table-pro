@@ -1,3 +1,5 @@
+'use client'
+
 import type * as TaroNS from '@tarojs/taro'
 import { isTaro, Taro } from './Taro'
 import { render, unmountComponentAtNode } from 'react-dom'

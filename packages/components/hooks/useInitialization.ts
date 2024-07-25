@@ -1,3 +1,4 @@
+'use client'
 import { useEffect } from 'react'
 import { getStorage } from '../utils/storage'
 import { getTrendData } from '../utils/trend'

@@ -1,7 +1,34 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '../../packages/components/index.scss';
 
 .taro_page {
   overflow-y: auto;
+}
+
+@layer base {
+  :root,
+  .light {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+
+    // packages/components
+    @include light();
+  }
+  .dark {
+    @include dark();
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root,
+    .dark {
+      @include dark;
+    }
+    .light {
+      @include light;
+    }
+  }
 }

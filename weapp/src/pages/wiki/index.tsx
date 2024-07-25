@@ -103,10 +103,9 @@ export default function Wiki() {
 
   return (
     <View className={classNames('wiki-page', theme)}>
-      <NavigationHeader themeClass={theme} />
+      <NavigationHeader />
 
       <Article
-        themeClass={theme}
         atomicNumber={atomicNumber}
         loading={loading}
         heading={data?.heading}

@@ -1,3 +1,4 @@
+'use client'
 import { useEffect } from 'react'
 import { Taro, isTaro, onWindowResize, offWindowResize } from '../compat'
 import { useAtom } from 'jotai'

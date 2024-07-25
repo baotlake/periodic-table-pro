@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from "classnames/bind"
 import { Image, Button } from '../compat'
 import { Taro } from "../compat"

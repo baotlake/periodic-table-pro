@@ -1,4 +1,6 @@
-import { useState } from 'react'
+'use client'
+
+import { useState, Fragment } from 'react'
 import classNames from 'classnames/bind'
 import ElementCard from './ElementCard'
 import ElementProfile from './ElementProfile'
@@ -126,7 +128,7 @@ export function DetailContent({ detailData }: Props) {
             enName={enName[Z - 1]}
           />
           {Object.keys(detailData.properties).map((key) => (
-            <>
+            <Fragment key={key}>
               <PropsGroup
                 id={key}
                 key={key}
@@ -141,7 +143,7 @@ export function DetailContent({ detailData }: Props) {
                   <AdCustom unitId={adId} />
                 </div>
               )}
-            </>
+            </Fragment>
           ))}
           {adId && (
             <div key="ad-2" className={cx('ad-container')}>

@@ -1,3 +1,5 @@
+'use client'
+
 // import { View } from "@tarojs/components"
 import classNames from 'classnames/bind'
 import useAddGuide from './useAddGuide'

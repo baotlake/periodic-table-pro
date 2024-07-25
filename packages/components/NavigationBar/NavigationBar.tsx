@@ -1,3 +1,5 @@
+'use client'
+
 import { PropsWithChildren, CSSProperties, useEffect } from 'react'
 import classNames from 'classnames/bind'
 import MenuButton from './MenuButton'

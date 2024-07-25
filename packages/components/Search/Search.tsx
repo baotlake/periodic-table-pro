@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 import { Image, Input, redirectTo } from '../compat'
