@@ -1,8 +1,5 @@
-'use client'
-
 import { Metadata } from 'next'
 import { useEffect } from 'react'
-import classNames from 'classnames'
 import { useRouter } from 'next/navigation'
 import {
   MenuHomeLayout,
@@ -10,8 +7,6 @@ import {
   BottomNavigation,
   weappPath2Web,
 } from '@periodic-table-pro/components'
-import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -23,20 +18,18 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 export default function Home() {
-  const [theme] = useAtom(themeModeState)
+  // const router = useRouter()
 
-  const router = useRouter()
-
-  useEffect(() => {
-    const path = weappPath2Web(location.href)
-    router.replace(path)
-  }, [router])
+  // useEffect(() => {
+  //   const path = weappPath2Web(location.href)
+  //   router.replace(path)
+  // }, [router])
 
   return (
-    <div className={classNames('index-page', theme)}>
-      <MenuHomeLayout themeClass={theme}>
+    <div className="">
+      <MenuHomeLayout>
         <ZoomablePT />
-        <BottomNavigation themeClass={theme} />
+        <BottomNavigation />
       </MenuHomeLayout>
     </div>
   )

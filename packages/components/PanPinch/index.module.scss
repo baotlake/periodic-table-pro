@@ -1,4 +1,5 @@
 @import '../scss/style';
+@import '../scss/theme';
 
 .pan-pinch-wrapper {
   display: flex;
@@ -29,12 +30,8 @@
   }
 }
 
-// theme
-.pan-pinch-wrapper {
-  &.light {
-  }
-
-  &.dark {
+@include dark-mode {
+  .pan-pinch-wrapper {
     @include dark-scrollbar;
   }
 }

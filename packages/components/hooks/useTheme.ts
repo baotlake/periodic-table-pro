@@ -101,6 +101,7 @@ export function useTheme() {
     const toggleTheme = (value: ThemeMode) => {
       if (PLATFORM == 'h5' || PLATFORM == 'next') {
         document.documentElement.classList.toggle('dark', value == 'dark')
+        document.documentElement.classList.toggle('light', value == 'light')
       }
     }
     const handleThemeChange: Taro.onThemeChange.Callback = (res) => {

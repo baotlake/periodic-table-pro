@@ -14,11 +14,11 @@ const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
 
 type Props = {
-  themeClass?: string
+  className?: string
   chatPage?: string
 }
 
-export function Feedback({ themeClass, chatPage }: Props) {
+export function Feedback({ className, chatPage }: Props) {
   const handlePreview = (current: string) => {
     previewImage({
       urls: [staticUrl(weappImg), staticUrl(officialAccountImg)],
@@ -27,7 +27,7 @@ export function Feedback({ themeClass, chatPage }: Props) {
   }
 
   return (
-    <div className={cx('feedback', themeClass)}>
+    <div className={cx('feedback', className)}>
       <div className={cx('card')}>
         <div className={cx('top-container')}>
           <Image className={cx('image')} src={feedbackImg} />

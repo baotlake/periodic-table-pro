@@ -11,18 +11,7 @@
 @include state-light;
 
 .legend {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   grid-area: 1/3/4/13;
-  color: rgb(0 0 0 / 65%);
-}
-
-.content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .legend-container {
@@ -76,7 +65,7 @@
   height: 1em;
   margin-left: (5em / 16 / 0.625);
 
-  >img {
+  > img {
     display: block;
   }
 }
@@ -156,7 +145,7 @@
   width: (140em / 16 / 0.75);
   height: (14em / 16 / 0.75);
   margin: 0 (10em / 16 / 0.75);
-  outline: 1PX solid rgb(0 0 0 / 15%);
+  outline: 1px solid rgb(0 0 0 / 15%);
   background: linear-gradient(to right, rgb(255 0 0 / 0%), rgb(255 0 0 / 100%));
 }
 
@@ -293,13 +282,14 @@
 
 // theme
 .legend {
-  &.light {}
+  &.light {
+  }
 
   &.dark {
-    color: color.change($dark-foceground, $alpha: 0.85);
     @include classification-dark;
 
-    .arrow-icon, .icon {
+    .arrow-icon,
+    .icon {
       @include filter-white(0.8);
     }
 

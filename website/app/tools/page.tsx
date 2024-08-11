@@ -1,8 +1,5 @@
-'use client'
 import { Metadata } from 'next'
 import { MenuPageLayout, Tools } from '@periodic-table-pro/components'
-import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,12 +8,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function ToolsPage() {
-  const [themeMode] = useAtom(themeModeState)
-
   return (
     <div>
-      <MenuPageLayout themeClass={themeMode} title="工具栏">
-        <Tools themeClass={themeMode} />
+      <MenuPageLayout title="工具栏">
+        <Tools />
       </MenuPageLayout>
     </div>
   )

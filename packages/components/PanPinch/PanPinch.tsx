@@ -20,7 +20,6 @@ const PLATFORM = process.env.PLATFORM
 const cx = classNames.bind(styles)
 
 type Props = PropsWithChildren<{
-  themeClass?: string
   className?: string
   min: number
   max: number
@@ -30,7 +29,6 @@ type Props = PropsWithChildren<{
 
 export function PanPinch({
   children,
-  themeClass,
   className,
   min,
   max,
@@ -192,7 +190,7 @@ export function PanPinch({
   return (
     <div
       ref={wrapperRef}
-      className={cx('pan-pinch-wrapper', themeClass, className)}
+      className={cx('pan-pinch-wrapper', className)}
       onTouchStart={dataRef.current.handleTouchStart}
       onTouchMove={dataRef.current.handleTouchMove}
       onTouchEnd={dataRef.current.handleTouchEnd}

@@ -15,7 +15,7 @@ export default function GuidePage() {
 
   return (
     <View className={classNames('guide-page', theme)}>
-      <MenuPageLayout themeClass={theme} title="使用说明">
+      <MenuPageLayout className={theme} title="使用说明">
         <View className="content">
           <View className="paragraph">新版「元素周期表PRO」来啦！</View>
           <View className="paragraph">

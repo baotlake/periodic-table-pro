@@ -1,61 +1,61 @@
 .slider {
-    --value: 0%;
+  --value: 0%;
 }
 
 .bar {
+  width: 100%;
+  border-radius: 9999px;
+  position: relative;
+  box-sizing: content-box;
+  padding: 0.6em 0;
+  --height: 0.25em;
+  height: var(--height);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: var(--height);
     width: 100%;
     border-radius: 9999px;
-    position: relative;
-    box-sizing: content-box;
-    padding: 0.6em 0;
-    --height: 0.25em;
+    background: currentColor;
+    opacity: 0.3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
     height: var(--height);
-
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        height: var(--height);
-        width: 100%;
-        border-radius: 9999px;
-        background: currentColor;
-        opacity: 0.3;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        height: var(--height);
-        width: var(--value);
-        border-radius: 9999px;
-        background: currentColor;
-    }
+    width: var(--value);
+    border-radius: 9999px;
+    background: currentColor;
+  }
 }
 
 .handle {
-    position: absolute;
-    width: 1em;
-    height: 1em;
-    left: var(--value);
-    border-radius: 9999px;
-    border: 0.125em solid currentColor;
-    cursor: pointer;
-    top: 50%;
-    transform: translate(-0.5em, -50%);
-    backdrop-filter: blur(10px);
-    z-index: 10;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  left: var(--value);
+  border-radius: 9999px;
+  border: 0.125em solid currentColor;
+  cursor: pointer;
+  top: 50%;
+  transform: translate(-0.5em, -50%);
+  backdrop-filter: blur(10px);
+  z-index: 10;
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 2em;
-        height: 2em;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 99999px;
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 99999px;
+  }
 }

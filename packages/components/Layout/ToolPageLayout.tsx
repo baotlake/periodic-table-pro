@@ -1,3 +1,5 @@
+'use client'
+
 import { PropsWithChildren } from 'react'
 import classnames from 'classnames/bind'
 import { NavigationHeader } from '../NavigationBar'

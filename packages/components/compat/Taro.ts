@@ -1,20 +1,18 @@
-import type * as TaroNS from '@tarojs/taro'
-
 const PLATFORM = process.env.PLATFORM
 
-export const isTaro = PLATFORM == 'weapp'
-    || PLATFORM == 'qq'
-    || PLATFORM == 'alipay'
-    || PLATFORM == 'h5'
+export const isTaro =
+  PLATFORM == 'weapp' ||
+  PLATFORM == 'qq' ||
+  PLATFORM == 'alipay' ||
+  PLATFORM == 'h5'
 
-let Taro: typeof TaroNS = null as any
+let Taro: typeof import('@tarojs/taro') = null!
+let components: typeof import('@tarojs/components') = null!
 
-if (isTaro) {
-    Taro = require('@tarojs/taro')
+if (process.env.PLATFORM != 'next') {
+  Taro = require('@tarojs/taro')
+  components = require('@tarojs/components')
 }
 
-export {
-    Taro,
-}
-
+export { Taro, components }
 export default Taro

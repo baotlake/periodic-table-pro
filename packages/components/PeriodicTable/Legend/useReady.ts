@@ -1,17 +1,15 @@
 import { useEffect } from 'react'
-import { isTaro } from '../../compat'
+import { isTaro, Taro } from '../../compat'
 
 let useReady = function (callback: () => void) {
-    useEffect(callback, [])
+  useEffect(callback, [])
 }
 
 if (isTaro) {
-    const { useReady: useTaroReady } = require('@tarojs/taro')
-    useReady = useTaroReady
+  const { useReady: useTaroReady } = Taro
+  useReady = useTaroReady
 }
 
-export {
-    useReady,
-}
+export { useReady }
 
 export default useReady

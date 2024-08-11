@@ -6,7 +6,6 @@ import {
   AllHTMLAttributes,
   Fragment,
 } from 'react'
-import { pick, omit } from 'lodash-es'
 import type {
   Button as TaroButtonType,
   Canvas as TaroCanvasType,
@@ -25,8 +24,14 @@ import type {
   AdCustom as TaroAdCustom,
   Ad as TaroAd,
 } from '@tarojs/components'
-import { isTaro } from './Taro'
+import { isTaro, components } from './Taro'
 import { Slider as MySlider } from './Slider'
+
+const omit = (props: Record<string, any>, keys: string[]) => {
+  return Object.fromEntries(
+    Object.entries(props).filter(([k, v]) => !keys.includes(k))
+  )
+}
 
 type HTMLProps = PropsWithChildren<AllHTMLAttributes<{}>>
 type LinkProps = any
@@ -38,7 +43,7 @@ let Button: ButtonType = (props: HTMLButtonProps) => (
   <button {...omit(props, buttonOmitProps)}>{props.children}</button>
 )
 if (isTaro) {
-  const { Button: TaroButton } = require('@tarojs/components')
+  const { Button: TaroButton } = components
   Button = TaroButton
 }
 
@@ -50,7 +55,7 @@ let Canvas: CanvasType = (props: HTMLCanvasProps) => (
   </canvas>
 )
 if (isTaro) {
-  const { Canvas: TaroCanvas } = require('@tarojs/components')
+  const { Canvas: TaroCanvas } = components
   Canvas = TaroCanvas
 }
 
@@ -66,8 +71,8 @@ let Image: ImageType = (props: HTMLImageProps) => {
   return <img {...omit(p, ['dangerouslySetInnerHTML'])}>{props.children}</img>
 }
 if (isTaro) {
-  const { Image: TaroImage } = require('@tarojs/components')
-  Image = TaroImage
+  const { Image: TaroImage } = components
+  Image = TaroImage as any
 }
 
 type InputType = typeof TaroInput | React.FC<HTMLProps>
@@ -75,7 +80,7 @@ let Input: InputType = (props: HTMLProps) => (
   <input {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</input>
 )
 if (isTaro && process.env.PLATFORM !== 'h5') {
-  const { Input: TaroInput } = require('@tarojs/components')
+  const { Input: TaroInput } = components
   Input = TaroInput
 }
 
@@ -87,7 +92,7 @@ let Navigator: TypeNavigator = (props: HTMLProps) => (
   <a {...omit(props, ['dangerouslySetInnerHTML'])}>{props.children}</a>
 )
 if (isTaro) {
-  const { Navigator: N } = require('@tarojs/components')
+  const { Navigator: N } = components
   Navigator = N
 }
 if (process.env.PLATFORM == 'next') {
@@ -97,30 +102,23 @@ if (process.env.PLATFORM == 'next') {
 
 type TypeScrollView = typeof TaroScrollView | React.FC<HTMLProps>
 let ScrollView: TypeScrollView = (props: HTMLProps) => (
-  <div {...omit(props, ['dangerouslySetInnerHTML', 'scrollIntoView'])}>
+  <div
+    {...omit(props, ['dangerouslySetInnerHTML', 'scrollIntoView', 'scrollY'])}
+  >
     {props.children}
   </div>
 )
 if (isTaro) {
-  const { ScrollView: TaroScrollView } = require('@tarojs/components')
+  const { ScrollView: TaroScrollView } = components
   ScrollView = TaroScrollView
 }
 
 type TypeVideo = typeof TaroVideo | React.FC<HTMLProps>
-const videoProps = [
-  'muted',
-  'loop',
-  'autoPlay',
-  'src',
-  'width',
-  'height',
-  'controls',
-]
 let Video: TypeVideo = (props: HTMLProps) => (
-  <video {...pick(props, videoProps)}>{props.children}</video>
+  <video {...omit(props, [])}>{props.children}</video>
 )
 if (isTaro) {
-  const { Video: TaroVideo } = require('@tarojs/components')
+  const { Video: TaroVideo } = components
   Video = TaroVideo
 }
 
@@ -128,20 +126,14 @@ let RichText: typeof TaroRichText = (props: RichTextProps) => {
   return (
     <div
       {...omit(props, ['nodes'])}
-      dangerouslySetInnerHTML={{ __html: props.nodes }}
+      dangerouslySetInnerHTML={{ __html: props.nodes as string }}
     >
       {props.children}
     </div>
   )
-  // return createElement('div', {
-  //   ...props,
-  //   dangerouslySetInnerHTML: {
-  //     __html: props.nodes,
-  //   },
-  // })
 }
 if (isTaro && process.env.PLATFORM !== 'h5') {
-  const { RichText: TaroRichText } = require('@tarojs/components')
+  const { RichText: TaroRichText } = components
   RichText = TaroRichText
 }
 if (process.env.PLATFORM === 'alipay') {
@@ -152,7 +144,7 @@ if (process.env.PLATFORM === 'alipay') {
 type SliderType = typeof TaroSlider | React.FC
 let Slider: SliderType = () => <></>
 if (isTaro) {
-  const { Slider: TaroSlider } = require('@tarojs/components')
+  const { Slider: TaroSlider } = components
   Slider = TaroSlider
 } else {
   Slider = MySlider
@@ -161,7 +153,7 @@ if (isTaro) {
 type SwitchType = typeof TaroSwitch | React.FC
 let Switch: SwitchType = () => <></>
 if (isTaro) {
-  const { Switch: TaroSwitch } = require('@tarojs/components')
+  const { Switch: TaroSwitch } = components
   Switch = TaroSwitch
 } else {
   const { Switch: S } = require('./Switch')
@@ -170,28 +162,28 @@ if (isTaro) {
 
 let CustomWrapper = Fragment as typeof TaroCustomWrapper
 if (isTaro) {
-  const { CustomWrapper: TaroCustomWrapper } = require('@tarojs/components')
+  const { CustomWrapper: TaroCustomWrapper } = components
   CustomWrapper = TaroCustomWrapper
 }
 
 type PageMetaType = typeof TaroPageMeta
 let PageMeta: PageMetaType = () => <></>
 if (isTaro) {
-  const { PageMeta: TaroPageMeta } = require('@tarojs/components')
+  const { PageMeta: TaroPageMeta } = components
   PageMeta = TaroPageMeta
 }
 
 type AdCustomType = typeof TaroAdCustom
 let AdCustom: AdCustomType = () => null
 if (isTaro) {
-  const { AdCustom: TaroAdCustom } = require('@tarojs/components')
+  const { AdCustom: TaroAdCustom } = components
   AdCustom = TaroAdCustom
 }
 
 type AdType = typeof TaroAd
 let Ad: AdType = () => null
 if (isTaro) {
-  const { Ad: TaroAd } = require('@tarojs/components')
+  const { Ad: TaroAd } = components
   Ad = TaroAd
 }
 

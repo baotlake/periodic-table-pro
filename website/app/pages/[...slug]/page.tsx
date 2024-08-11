@@ -1,10 +1,6 @@
-'use client'
-
 import { Metadata } from 'next'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { Suspense } from 'react'
 import classNames from 'classnames'
-// import styles from '../styles/Home.module.css'
 import {
   MenuHomeLayout,
   ZoomablePT,
@@ -13,8 +9,7 @@ import {
   AutoDisplayPropertiesModal,
   AutoZoomModal,
 } from '@periodic-table-pro/components'
-import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import Redirect from './Redirect'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -26,26 +21,25 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
+export async function generateStaticParams() {
+  return [{ slug: ['index'] }]
+}
+
 // Only works with SSR
-export default function Redirect() {
-  const [theme] = useAtom(themeModeState)
-
-  const router = useRouter()
-
-  useEffect(() => {
-    const path = weappPath2Web(location.href)
-    router.replace(path)
-  }, [router])
-
+export default function Page() {
   return (
-    <div className={classNames('index-page', theme)}>
-      <MenuHomeLayout themeClass={theme}>
+    <div className={classNames('index-page')}>
+      <MenuHomeLayout>
         <ZoomablePT />
-        <BottomNavigation themeClass={theme} />
+        <BottomNavigation />
 
         <AutoDisplayPropertiesModal />
         <AutoZoomModal />
       </MenuHomeLayout>
+
+      <Suspense>
+        <Redirect />
+      </Suspense>
     </div>
   )
 }

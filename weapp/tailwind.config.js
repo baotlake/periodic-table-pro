@@ -100,13 +100,17 @@ module.exports = {
           800: 'hsl(var(--primary-hue) var(--primary-s) 20% / <alpha-value>)',
           900: 'hsl(var(--primary-hue) var(--primary-s) 15% / <alpha-value>)',
         },
-        background: {
+        bg: {
           DEFAULT: 'hsl(var(--bg-default) / <alpha-value>)',
           soft: 'hsl(var(--bg-soft) / <alpha-value>)',
           mute: 'hsl(var(--bg-mute) / <alpha-value>)',
+          deep: 'hsl(var(--bg-deep) / <alpha-value>)',
         },
-        foreground: {
-          DEFAULT: 'hsl(var(--fg-hsl) / <alpha-value>)',
+        text: {
+          DEFAULT: 'hsl(var(--text-default) / <alpha-value>)',
+        },
+        border: {
+          DEFAULT: 'hsl(var(--border-default) / <alpha-value>)',
         },
       },
     },

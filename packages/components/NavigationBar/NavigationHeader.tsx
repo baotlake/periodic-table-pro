@@ -6,7 +6,7 @@ import NavigationBar from './NavigationBar'
 import { Taro, isTaro } from '../compat'
 import { routes } from '../utils/routes'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { themeModeState } from '../recoil/atom'
 
 import styles from './navigationHeader.module.scss'
 

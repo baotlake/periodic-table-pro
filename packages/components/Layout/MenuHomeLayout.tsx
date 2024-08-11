@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '../compat'
 import { PersistentDrawer } from '../MenuDrawer'
 import NavigationBar from '../NavigationBar'
 import classNames from 'classnames/bind'
@@ -11,16 +10,16 @@ import styles from './menuHomeLayout.module.scss'
 const cx = classNames.bind(styles)
 
 type Props = React.PropsWithChildren<{
-  themeClass?: string
+  className?: string
 }>
 
-export function MenuHomeLayout({ children, themeClass }: Props) {
+export function MenuHomeLayout({ children, className }: Props) {
   const [visible, setVisible] = useState(false)
 
   return (
-    <div className={cx('menu-home-layout', themeClass)}>
+    <div className={cx('menu-home-layout', 'bg-bg text-text', className)}>
       <NavigationBar>
-        <div className={cx('nav-btn-wrapper')}>
+        <div className="pointer-events-auto my-0 mx-[var(--margin)]">
           <div
             role="button"
             className={cx('nav-btn')}
@@ -34,7 +33,7 @@ export function MenuHomeLayout({ children, themeClass }: Props) {
       {children}
 
       <PersistentDrawer
-        themeClass={themeClass}
+        className={className}
         visible={visible}
         onClose={() => setVisible(false)}
       />

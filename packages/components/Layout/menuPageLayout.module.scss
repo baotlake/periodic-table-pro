@@ -1,12 +1,10 @@
-@use "sass:color";
+@use 'sass:color';
 @import '../scss/media';
 @import '../scss/theme';
 
 .layout {
   display: flex;
   height: 100vh;
-  background: darken($light-background, 5%);
-  color: $light-foceground;
 
   --margin-top: 3em;
   --margin-left: 1.25em;
@@ -33,20 +31,14 @@
   padding-top: var(--margin-top);
 }
 
-.layout-main {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-}
-
 .layout-content {
   padding: var(--margin-top) 0;
 }
 
-
 // theme
 .layout {
-  &.light {}
+  &.light {
+  }
 
   &.dark {
     background: darken($dark-background, 3%);

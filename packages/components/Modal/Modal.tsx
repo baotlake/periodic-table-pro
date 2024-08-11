@@ -1,5 +1,4 @@
 import { PropsWithChildren, useEffect } from 'react'
-// import { View } from "@tarojs/components";
 import classNames from 'classnames/bind'
 
 import styles from './modal.module.scss'

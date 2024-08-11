@@ -11,13 +11,13 @@ const PLATFORM = process.env.PLATFORM
 const backgroundImg = STATIC_BASE + '/img/ui/background.jpg'
 
 type Props = {
-  themeClass?: string
+  className?: string
   visible: boolean
   onClose?: () => void
 }
 
 export default function PersistentDrawer({
-  themeClass,
+  className,
   visible,
   onClose,
 }: Props) {
@@ -35,27 +35,49 @@ export default function PersistentDrawer({
   }
   return (
     <div
-      className={cx('menu-drawer-wrapper', { visible: visible }, themeClass)}
+      className={cx(
+        'menu-drawer-wrapper',
+        'fixed w-screen h-screen top-0 left-0 transition z-[99] transform-gpu',
+        visible ? 'translate-x-0' : '-translate-x-full',
+        className
+      )}
     >
-      <div className={cx('backdrop')} onClick={onClose} />
-      <div className={cx('menu-drawer')}>
-        <div className={cx('profile-container')}>
+      <div
+        className={cx(
+          'backdrop',
+          ' absolute h-full bg-black/30 z-[-1] transition-opacity',
+          visible ? 'opacity-100 w-[200%] ' : 'opacity-0 w-full delay-300'
+        )}
+        onClick={onClose}
+      />
+      <div
+        className={cx(
+          'menu-drawer',
+          'bg-bg-soft w-[260px] h-full overflow-x-hidden overflow-y-auto'
+        )}
+      >
+        <div className="relative w-full h-[280px] max-h-[50vh]">
           <Image
-            className={cx('background-image')}
+            className={cx('background-image', 'w-full h-full')}
             mode="aspectFill"
             src={backgroundImg}
           />
-          <div className={cx('profile')}>
-            <div className={cx('user')}>
-              <Image className={cx('avatar')} src={logoImg} />
-              <span className={cx('nickname')}>元素周期表PRO</span>
+          <div className="absolute bottom-0">
+            <div className="flex items-center py-2.5 px-8">
+              <Image
+                className="size-10 rounded-full overflow-hidden me-2.5"
+                src={logoImg}
+              />
+              <span className="text-xl font-bold truncate text-nowrap text-black/80">
+                元素周期表PRO
+              </span>
             </div>
             <div className=""></div>
           </div>
         </div>
-        <div className={cx('menu-container')}>
+        <div className={cx('menu-container', 'text-base')}>
           {menus.map((group) => (
-            <div key={group.key} className={cx('group')}>
+            <div key={group.key} className="*:mt-px *:py-4 *:px-8 *:relative">
               {group.items.map((item) => {
                 if (item.name === 'shop') {
                   if (PLATFORM !== 'weapp') return
@@ -67,8 +89,8 @@ export default function PersistentDrawer({
                         Taro.navigateToMiniProgram({ appId: item.route })
                       }
                     >
-                      <Image className={cx('icon', 'shop')} src={item.icon} />
-                      <span className={cx('label')}>{item.label}</span>
+                      <Image className="size-[22px] me-3" src={item.icon} />
+                      <span className="text-lg leading-5">{item.label}</span>
                     </div>
                   )
                 }
@@ -80,10 +102,13 @@ export default function PersistentDrawer({
                       className={cx('menu-item')}
                       onClick={handleShare}
                     >
-                      <Image className={cx('icon')} src={item.icon}></Image>
-                      <span className={cx('label')}>{item.label}</span>
+                      <Image
+                        className={cx('icon', 'size-[22px] me-3')}
+                        src={item.icon}
+                      ></Image>
+                      <span className="text-lg leading-5">{item.label}</span>
                       <Button
-                        className={cx('wx-open-type-button')}
+                        className="absolute inset-0 w-full h-full border-none outline-none opacity-0 box-border"
                         openType="share"
                       />
                     </div>
@@ -97,8 +122,11 @@ export default function PersistentDrawer({
                     url={item.route}
                     href={item.route}
                   >
-                    <Image className={cx('icon')} src={item.icon}></Image>
-                    <span className={cx('label')}>{item.label}</span>
+                    <Image
+                      className={cx('icon', 'size-[22px] me-3')}
+                      src={item.icon}
+                    ></Image>
+                    <span className="text-lg leading-5">{item.label}</span>
                   </Navigator>
                 )
               })}

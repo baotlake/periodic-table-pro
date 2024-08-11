@@ -1,9 +1,11 @@
-'use client'
-
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 import Script from 'next/script'
 import { Initialization } from '@periodic-table-pro/components'
+import { Provider } from '@periodic-table-pro/components/compat'
+import ProgressBar from '@/components/ProgressBar'
 import '../styles/globals.scss'
+import 'nprogress/nprogress.css'
 
 const APP_ORIGIN = process.env.APP_ORIGIN
 
@@ -109,8 +111,13 @@ export default function RootLayout({
         <meta property="og:url" content={APP_ORIGIN} />
       </head>
       <body>
-        <Initialization />
-        {children}
+        <Suspense>
+          <ProgressBar />
+        </Suspense>
+        <Provider>
+          <Initialization />
+          {children}
+        </Provider>
       </body>
     </html>
   )

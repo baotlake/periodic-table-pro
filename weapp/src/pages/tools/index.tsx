@@ -13,7 +13,7 @@ export default function ToolsPage() {
 
   return (
     <View className={classNames('tools-page', theme)}>
-      <MenuPageLayout themeClass={theme} title="工具栏">
+      <MenuPageLayout className={theme} title="工具栏">
         <View className="content">
           <View
             className="item-box"

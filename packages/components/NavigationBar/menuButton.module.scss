@@ -1,10 +1,6 @@
 @import '../scss/icon';
 
 .menu-button {
-  position: absolute;
-  display: flex;
-  pointer-events: all;
-
   &::before {
     position: absolute;
     z-index: -1;
@@ -19,14 +15,6 @@
 }
 
 .more {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-
   &::after {
     position: absolute;
     width: 1px;
@@ -44,23 +32,8 @@
   @include wechat-menu-more();
 }
 
-.other {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .other-icon {
-  color: white;
   border: 2px solid currentColor;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &::before {
     content: '';
@@ -104,9 +77,6 @@
   &.visible {
     display: block;
   }
-}
-.qr-img {
-  width: 100%;
 }
 
 // theme

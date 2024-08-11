@@ -19,7 +19,7 @@ const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
 
 type Props = {
-  themeClass?: string
+  className?: string
   searchPath?: string
   toolsPath?: string
   settingPath?: string
@@ -29,7 +29,7 @@ type Props = {
 
 let timeoutId: number | NodeJS.Timeout
 
-export function BottomNavigation({ themeClass }: Props) {
+export function BottomNavigation({ className }: Props) {
   const [collapse, setCollapse] = useState(false)
 
   const handleTouchStart = () => {
@@ -54,25 +54,36 @@ export function BottomNavigation({ themeClass }: Props) {
   }
 
   return (
-    <div className={cx('bottom-navigation-wrapper', themeClass)}>
+    <div
+      className={cx(
+        'bottom-navigation-wrapper',
+        'fixed w-screen left-0 right-0 bottom-0 h-0 z-[99]',
+        className
+      )}
+    >
       <div
-        className={cx('box', {
-          collapse: collapse,
-        })}
-        // onTouchStart={handleTouchStart}
-        // onTouchEnd={() => clearTimeout(timeoutId)}
-        // onTouchCancel={() => clearTimeout(timeoutId)}
+        className={cx(
+          'box',
+          'absolute text-base bottom-4 max-w-[90%] overflow-hidden transform-gpu transition',
+          'h-[60px] text-text/80 bg-bg-mute/40 backdrop-blur-lg shadow flex justify-between ',
+          collapse
+            ? 'right-8 translate-x-0 w-[60px] rounded-full'
+            : 'right-1/2 translate-x-1/2 w-[380px] rounded-xl'
+        )}
         onPointerDown={handleTouchStart}
         onPointerUp={() => clearTimeout(timeoutId)}
         onPointerCancel={() => clearTimeout(timeoutId)}
       >
         <Navigator
-          className={cx('item')}
+          className={cx('item', { 'flex-none flex': collapse })}
           href={routes.search}
           url={routes.search}
         >
-          <Image className={cx('icon')} src={searchSvg} />
-          <div className={cx('label')}>搜索</div>
+          <Image
+            className={cx('icon', { 'm-auto': collapse })}
+            src={searchSvg}
+          />
+          <div className={cx('label', { hidden: collapse })}>搜索</div>
         </Navigator>
         <Navigator
           className={cx('item')}
@@ -94,15 +105,13 @@ export function BottomNavigation({ themeClass }: Props) {
           <Image className={cx('icon')} src={likeSvg} />
           <div className={cx('label')}>喜欢</div>
         </Navigator>
-        <div
-          className={cx('item')}
-          // href={sharePath || ''}
-          // url={sharePath || ''}
-          onClick={handleShare}
-        >
+        <div className={cx('item')} onClick={handleShare}>
           <Image className={cx('icon')} src={shareSvg} />
           <div className={cx('label')}>分享</div>
-          <Button className={cx('wx-open-type-button')} openType="share" />
+          <Button
+            className="absolute w-full h-full top-0 left-0 opacity-0"
+            openType="share"
+          />
         </div>
         <div className={cx('item')} onClick={() => setCollapse(true)}>
           <Image className={cx('icon')} src={circleSvg} />

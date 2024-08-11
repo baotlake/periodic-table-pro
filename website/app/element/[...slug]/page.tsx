@@ -1,11 +1,8 @@
-'use client'
-
 import {
   NavigationHeader,
   DetailContent,
   AdjacentNavigation,
 } from '@periodic-table-pro/components'
-import Head from 'next/head'
 import { getDetailData, symbol } from '@periodic-table-pro/data'
 import { Metadata } from 'next'
 

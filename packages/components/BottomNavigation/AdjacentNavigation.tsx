@@ -3,7 +3,7 @@
 import { Button } from '../compat'
 import classNames from 'classnames/bind'
 import { DetailData } from '@periodic-table-pro/data'
-import { getDetailPath } from '@periodic-table-pro/components/utils/routes'
+import { getDetailPath } from '../utils/routes'
 import { redirectTo } from '../compat'
 import { useAtom } from 'jotai'
 import { themeModeState } from '../recoil/atom'

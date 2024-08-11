@@ -17,6 +17,11 @@ const nextConfig = {
   experimental: {
     externalDir: true,
     esmExternals: true,
+    optimizePackageImports: [
+      'lodash-es',
+      '@periodic-table-pro/data',
+      '@periodic-table-pro/components',
+    ],
   },
   env: {
     PLATFORM: 'next',

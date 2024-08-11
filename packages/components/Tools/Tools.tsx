@@ -12,12 +12,12 @@ const PLATFORM = process.env.PLATFORM
 const DEEP_READING_ORIGIN = process.env.DEEP_READING_ORIGIN
 
 type Props = {
-  themeClass?: string
+  className?: string
 }
 
-export function Tools({ themeClass }: Props) {
+export function Tools({ className }: Props) {
   return (
-    <div className={cx('tools', themeClass)}>
+    <div className={cx('tools', className)}>
       <Navigator
         className={cx('item-box')}
         href={routes.solubilityTable}

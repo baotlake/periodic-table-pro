@@ -8,13 +8,25 @@ $dark-background: #1b1c1d;
 $dark-foceground: #efefef;
 
 @mixin dark {
-  --bg-default: 210 3.6% 11%;
-  --bg-soft: 210 3.6% 12%;
-  --bg-mute: 210 3.6% 15%;
+  --bg-default: 210 4% 11%;
+  --bg-soft: 210 4% 12%;
+  --bg-mute: 210 4% 15%;
+  --bg-deep: 210 4% 8%;
+  --text-default: 0 0 100%;
+  --border-default: 210 4% 20%;
 }
 
 @mixin light {
   --bg-default: 0 0% 100%;
   --bg-soft: 0 0% 98%;
   --bg-mute: 0 0% 95%;
+  --bg-deep: 0 0% 90%;
+  --text-default: 0 0 0%;
+  --border-default: 0 0% 95%;
+}
+
+@mixin dark-mode {
+  :global(:root.dark) {
+    @content;
+  }
 }

@@ -23,9 +23,7 @@ import { chineseName } from '../utils/utils'
 import { MaskIcon } from '../Icon'
 import { RichText } from '../compat'
 
-import styles from './bottomProperty.module.scss'
-
-const cx = classNames.bind(styles)
+// const cx = classNames.bind({})
 
 type Props = {
   Z: number
@@ -61,14 +59,14 @@ export function BottomProperty({ property, Z }: Props) {
     case 'electronConfiguration':
       return (
         <RichText
-          className={cx('line-clamp-3')}
+          className="line-clamp-3"
           nodes={electronConfigurations[index]}
         />
       )
     case 'density':
-      return <RichText className={cx('line-clamp-3')} nodes={density[index]} />
+      return <RichText className="line-clamp-3" nodes={density[index]} />
     case 'oxidationStates':
-      return <div className={cx('line-clamp-3')}>{oxidationStates[index]}</div>
+      return <div className="line-clamp-3">{oxidationStates[index]}</div>
     case 'enName':
       return <div className="truncate">{enName[index]}</div>
     default:

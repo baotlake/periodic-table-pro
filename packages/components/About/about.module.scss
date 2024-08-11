@@ -1,64 +1,47 @@
 @use 'sass:color';
-@import "../scss/theme";
-@import "../scss/icon";
+@import '../scss/theme';
+@import '../scss/icon';
 
 .about {
-    background: darken($light-background, 5%);
-}
-
-.profile {
-    padding: 60PX 0 20PX;
-}
-
-.logo {
-    height: 72PX;
-    width: 72PX;
-    border-radius: 50%;
-    margin: auto;
-    display: block;
-    margin-bottom: 24PX;
-}
-
-.name {
-    text-align: center;
-    font-size: 18PX;
-    font-weight: bold;
 }
 
 .section {
-    font-size: 16PX;
-    line-height: 1.6;
-    padding: 0 40PX;
-    margin-bottom: 22PX;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 0 40px;
+  margin-bottom: 22px;
 }
 
 .icon {
-    line-height: 1.6;
-    @include icon(1.2em);
-    @include filter-black;
+  line-height: 1.6;
+  @include icon(1.2em);
+  @include filter-black;
 }
 
 .text {
-    user-select: all;
-    letter-spacing: -0.5PX;
+  user-select: all;
+  letter-spacing: -0.5px;
+}
+
+@include dark-mode {
+  .icon {
+    @include filter-white;
+  }
 }
 
 // theme
 .about {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        background: darken($dark-background, 3%);
-        color: color.change($dark-foceground, $alpha: 0.85);
+  &.dark {
+    background: darken($dark-background, 3%);
+    color: color.change($dark-foceground, $alpha: 0.85);
 
-        .logo {
-            border: 2PX solid lighten($dark-background, 5%);
-        }
-
-        .section {
-            .icon {
-                @include filter-white;
-            }
-        }
+    .section {
+      .icon {
+        @include filter-white;
+      }
     }
+  }
 }
