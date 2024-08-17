@@ -163,7 +163,6 @@ export async function setStorage<T extends Record<string, any>>(data: T) {
     }
   } catch (e) {
     console.error(e)
-
     for (let [key, value] of Object.entries(data)) {
       fallbackStore[key] = structuredClone(value)
     }
@@ -187,7 +186,7 @@ export async function getStorage<T extends Record<string, any>>(
       }
       return data as T
     } catch (error) {
-      console.error(error)
+      console.warn('[api.getStorage]', String(error))
       for (let [key, defaultValue] of Object.entries(keys)) {
         data[key] = fallbackStore[key] ?? defaultValue
       }

@@ -20,7 +20,9 @@
   padding: 0 18px;
   margin-top: 1px;
   cursor: pointer;
-  @apply bg-bg text-text;
+  background-color: hsl(var(--bg-default));
+  color: hsl(var(--text-default));
+  // @apply bg-bg text-text;
 
   &::before {
     content: '';

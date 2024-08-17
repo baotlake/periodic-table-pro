@@ -17,12 +17,12 @@ export function MenuPageDrawer({ className }: Props) {
     <div
       className={cx(
         'menu-page-drawer',
-        'w-[280px] p-5 overflow-auto border-e border-solid border-border',
+        'w-72 p-5 overflow-auto border-e border-solid border-border',
         className
       )}
     >
       {menus.map((group) => (
-        <div key={group.key} className="overflow-hidden mb-[18px] rounded-md">
+        <div key={group.key} className="overflow-hidden mb-5 rounded-md">
           {group.items.map((item) => {
             if (item.name == 'shop') {
               if (PLATFORM !== 'weapp') return
@@ -35,7 +35,7 @@ export function MenuPageDrawer({ className }: Props) {
                   }
                 >
                   <Image
-                    className={cx('size-[22px] me-3', 'shop')}
+                    className={cx('size-5 me-3', 'shop')}
                     src={item.icon}
                   />
                   <span className="text-lg">{item.label}</span>
@@ -55,7 +55,7 @@ export function MenuPageDrawer({ className }: Props) {
                   }
                 >
                   <Image
-                    className={cx('icon', 'size-[22px] me-3')}
+                    className={cx('icon', 'size-5 me-3')}
                     src={item.icon}
                   />
                   <span className="text-lg">{item.label}</span>
@@ -75,10 +75,7 @@ export function MenuPageDrawer({ className }: Props) {
                 openType="redirect"
                 replace
               >
-                <Image
-                  className={cx('icon', 'size-[22px] me-3')}
-                  src={item.icon}
-                />
+                <Image className={cx('icon', 'size-5 me-3')} src={item.icon} />
                 <span className="text-lg">{item.label}</span>
               </Navigator>
             )

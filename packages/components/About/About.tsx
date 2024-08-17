@@ -15,7 +15,7 @@ type Props = {
 
 export function About({ themeClass }: Props) {
   return (
-    <div className={cx('about', 'bg-bg py-[60px] rounded-md', themeClass)}>
+    <div className={cx('about', 'bg-bg py-16 rounded-md', themeClass)}>
       <div className="pb-5">
         <Image
           className="size-20 rounded-full m-auto block mb-6 border border-solid border-border"

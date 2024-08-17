@@ -41,7 +41,7 @@ export function AutoDisplayPropertiesModal() {
 
   return (
     <DisplayPropertiesModal
-      themeClass={mode}
+      className={mode}
       visible={visible}
       setVisible={handleSetVisible}
       displayProperty={displayProperty}

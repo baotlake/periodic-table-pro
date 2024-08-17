@@ -28,4 +28,4 @@ export {
 } from './components'
 
 export { getBoundingClientRect } from './dom'
-export { default as Provider } from './Provider'
+export { default as CompatProvider, CompatContext } from './Provider'

@@ -2433,6 +2433,7 @@ __metadata:
     "@types/webpack-env": ^1.17.0
     "@typescript-eslint/eslint-plugin": ^4.33.0
     "@typescript-eslint/parser": ^4.33.0
+    autoprefixer: ^10.4.20
     babel-preset-taro: 3.6.23
     classnames: ^2.3.2
     dotenv: ^16.0.3
@@ -2443,6 +2444,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     lodash-es: ^4.17.21
     mini-html-parser2: ^0.3.0
+    postcss: ^8.4.41
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -2451,8 +2453,10 @@ __metadata:
     stylelint-config-prettier: ^9.0.3
     stylelint-config-recommended: ^6.0.0
     stylelint-prettier: ^2.0.0
+    tailwindcss: ^3.4.9
+    tsconfig-paths-webpack-plugin: ^4.1.0
     typescript: ^4.7.4
-    weapp-tailwindcss: ^3.0.10
+    weapp-tailwindcss: ^3.4.0
     webpack: 5.90.3
   languageName: unknown
   linkType: soft
@@ -5620,7 +5624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.14, autoprefixer@npm:^10.4.19":
+"autoprefixer@npm:^10.4.14, autoprefixer@npm:^10.4.19, autoprefixer@npm:^10.4.20":
   version: 10.4.20
   resolution: "autoprefixer@npm:10.4.20"
   dependencies:
@@ -8868,7 +8872,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.12.0, enhanced-resolve@npm:^5.15.0, enhanced-resolve@npm:^5.9.3":
+"enhanced-resolve@npm:^5.12.0, enhanced-resolve@npm:^5.15.0, enhanced-resolve@npm:^5.7.0, enhanced-resolve@npm:^5.9.3":
   version: 5.17.1
   resolution: "enhanced-resolve@npm:5.17.1"
   dependencies:
@@ -17161,7 +17165,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.14, postcss@npm:^8.2.15, postcss@npm:^8.3.5, postcss@npm:^8.4.18, postcss@npm:^8.4.19, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.33, postcss@npm:^8.4.39, postcss@npm:^8.4.40, postcss@npm:~8.4.39":
+"postcss@npm:^8.2.14, postcss@npm:^8.2.15, postcss@npm:^8.3.5, postcss@npm:^8.4.18, postcss@npm:^8.4.19, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.33, postcss@npm:^8.4.39, postcss@npm:^8.4.40, postcss@npm:^8.4.41, postcss@npm:~8.4.39":
   version: 8.4.41
   resolution: "postcss@npm:8.4.41"
   dependencies:
@@ -20632,6 +20636,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsconfig-paths-webpack-plugin@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "tsconfig-paths-webpack-plugin@npm:4.1.0"
+  dependencies:
+    chalk: ^4.1.0
+    enhanced-resolve: ^5.7.0
+    tsconfig-paths: ^4.1.2
+  checksum: f6e9a8a407e1a405b0f2531184296d9f033cb4fe5837282b757ab4a2f4cd82a3117e62c4b86d56c7d47749c7f1345aa438ec6417dbf64a0ec74a292fe9eae44d
+  languageName: node
+  linkType: hard
+
 "tsconfig-paths@npm:^3.15.0":
   version: 3.15.0
   resolution: "tsconfig-paths@npm:3.15.0"
@@ -20641,6 +20656,17 @@ __metadata:
     minimist: ^1.2.6
     strip-bom: ^3.0.0
   checksum: 59f35407a390d9482b320451f52a411a256a130ff0e7543d18c6f20afab29ac19fbe55c360a93d6476213cc335a4d76ce90f67df54c4e9037f7d240920832201
+  languageName: node
+  linkType: hard
+
+"tsconfig-paths@npm:^4.1.2":
+  version: 4.2.0
+  resolution: "tsconfig-paths@npm:4.2.0"
+  dependencies:
+    json5: ^2.2.2
+    minimist: ^1.2.6
+    strip-bom: ^3.0.0
+  checksum: 28c5f7bbbcabc9dabd4117e8fdc61483f6872a1c6b02a4b1c4d68c5b79d06896c3cc9547610c4c3ba64658531caa2de13ead1ea1bf321c7b53e969c4752b98c7
   languageName: node
   linkType: hard
 
@@ -21529,7 +21555,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"weapp-tailwindcss@npm:^3.0.10":
+"weapp-tailwindcss@npm:^3.4.0":
   version: 3.4.0
   resolution: "weapp-tailwindcss@npm:3.4.0"
   dependencies:

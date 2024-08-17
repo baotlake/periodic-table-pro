@@ -34,7 +34,9 @@ import {
 
 import arrowImg from '../../assets/icons/dropdown-arrow.svg'
 import autorenewImg from '../../assets/icons/autorenew.svg'
+import arrowDownUp from '../../assets/icons/arrow-down-up.svg'
 import panZoomImg from '../../assets/icons/pan_zoom.svg'
+import maximizeImg from '../../assets/icons/maximize.svg'
 import styles from './legend.module.scss'
 
 const cx = classNames.bind(styles)
@@ -109,13 +111,7 @@ export default function Legend({ themeClass, Z }: Props) {
   }
 
   return (
-    <div
-      className={cx(
-        'legend',
-        'absolute w-full h-full text-text/80',
-        themeClass
-      )}
-    >
+    <div className={cx('legend', 'absolute w-full h-full', themeClass)}>
       <CustomWrapper>
         <div className="flex h-full items-center justify-evenly">
           <div className={cx('legend-container')}>
@@ -167,7 +163,7 @@ export default function Legend({ themeClass, Z }: Props) {
                 <div>{emphasizeLabel[emphasize]}</div>
                 <Image
                   className={cx('icon', 'switch-icon')}
-                  src={autorenewImg}
+                  src={arrowDownUp}
                 />
               </div>
               <div
@@ -175,7 +171,10 @@ export default function Legend({ themeClass, Z }: Props) {
                 onClick={() => setZoomModalVisible(true)}
               >
                 <div>缩放</div>
-                <Image className={cx('icon', 'switch-icon')} src={panZoomImg} />
+                <Image
+                  className={cx('icon', 'switch-icon')}
+                  src={maximizeImg}
+                />
               </div>
             </div>
           </div>
@@ -231,7 +230,7 @@ export default function Legend({ themeClass, Z }: Props) {
                   <div className={cx('state-item', 'solid')}>固态</div>
                   <div className={cx('state-item', 'unknown')}>未知</div>
                 </div>
-                <div className={cx('title')}>
+                <div className={cx('mt-3 mb-1')}>
                   温度: {temperature.toFixed(2)}°C{' '}
                   {(temperature + 273.15).toFixed(2)}K
                 </div>

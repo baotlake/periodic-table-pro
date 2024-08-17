@@ -22,6 +22,7 @@ export const menuButtonClientRect = atom({
   width: 87,
   windowWidth: 414,
   windowHeight: 736,
+  inited: false,
 })
 
 export const periodicTableEmphasize = atom('symbol' as Emphasize)

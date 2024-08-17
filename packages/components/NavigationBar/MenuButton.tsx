@@ -22,12 +22,7 @@ export default function MenuButton({ style, className }: Props) {
         'absolute flex pointer-events-auto',
         className
       )}
-      style={
-        {
-          ...style,
-          '--radius': style?.borderRadius,
-        } as React.CSSProperties
-      }
+      style={style}
     >
       <div
         className={cx(
@@ -39,13 +34,13 @@ export default function MenuButton({ style, className }: Props) {
         <div className={cx('more-icon')} />
       </div>
       <div
-        className="w-1/2 h-full flex items-center justify-center"
+        className={cx('dot', 'h-full flex items-center justify-center')}
         onClick={() => setVisible(visible ? false : true)}
       >
         <div
           className={cx(
             'other-icon',
-            'text-white size-4 rounded-full flex items-center justify-center'
+            'relative text-white size-4 rounded-full'
           )}
         />
       </div>

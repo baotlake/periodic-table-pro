@@ -31,7 +31,7 @@ export default function Index() {
   useShareMessage()
 
   return (
-    <View className={classNames('index page', theme)}>
+    <View className={classNames('text-text', theme)}>
       <MenuHomeLayout className={theme}>
         <AddGuide themeClass={theme} />
         {/* <ZoomablePT /> */}

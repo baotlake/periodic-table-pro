@@ -22,7 +22,11 @@ export function MenuPageLayout({ className, children, title }: Props) {
     <div>
       <NavigationHeader title={title} />
       <div
-        className={cx('layout', 'bg-bg-deep text-text', className)}
+        className={cx(
+          'layout',
+          'bg-bg-deep text-text transition-colors',
+          className
+        )}
         style={
           {
             '--margin-left': menuRect.windowWidth - menuRect.right + 'px',

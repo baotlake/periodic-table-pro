@@ -8,10 +8,12 @@ import { routes } from '../utils/routes'
 import searchSvg from '../assets/icons/search.svg'
 import toolsSvg from '../assets/icons/tools.svg'
 import buildSvg from '../assets/icons/build.svg'
+import rulerSvg from '../assets/icons/ruler.svg'
 import tuneSvg from '../assets/icons/tune.svg'
 import likeSvg from '../assets/icons/like_outlined.svg'
 import shareSvg from '../assets/icons/share.svg'
 import circleSvg from '../assets/icons/circle.svg'
+import chevronsSvg from '../assets/icons/chevrons.svg'
 
 import styles from './bottomNavigation.module.scss'
 
@@ -57,18 +59,16 @@ export function BottomNavigation({ className }: Props) {
     <div
       className={cx(
         'bottom-navigation-wrapper',
-        'fixed w-screen left-0 right-0 bottom-0 h-0 z-[99]',
+        'fixed w-screen left-0 right-0 bottom-0 h-0 z-50',
         className
       )}
     >
       <div
         className={cx(
           'box',
-          'absolute text-base bottom-4 max-w-[90%] overflow-hidden transform-gpu transition',
-          'h-[60px] text-text/80 bg-bg-mute/40 backdrop-blur-lg shadow flex justify-between ',
-          collapse
-            ? 'right-8 translate-x-0 w-[60px] rounded-full'
-            : 'right-1/2 translate-x-1/2 w-[380px] rounded-xl'
+          'absolute text-base bottom-4 overflow-hidden transform-gpu transition',
+          'h-14 shadow flex justify-between ',
+          { collapse }
         )}
         onPointerDown={handleTouchStart}
         onPointerUp={() => clearTimeout(timeoutId)}
@@ -90,7 +90,7 @@ export function BottomNavigation({ className }: Props) {
           href={routes.tools}
           url={routes.tools}
         >
-          <Image className={cx('icon')} src={buildSvg} />
+          <Image className={cx('icon')} src={rulerSvg} />
           <div className={cx('label')}>工具</div>
         </Navigator>
         <Navigator
@@ -114,7 +114,7 @@ export function BottomNavigation({ className }: Props) {
           />
         </div>
         <div className={cx('item')} onClick={() => setCollapse(true)}>
-          <Image className={cx('icon')} src={circleSvg} />
+          <Image className={cx('icon')} src={chevronsSvg} />
           <div className={cx('label')}>收起</div>
         </div>
       </div>

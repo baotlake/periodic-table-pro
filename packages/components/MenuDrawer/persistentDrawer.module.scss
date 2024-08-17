@@ -3,8 +3,17 @@
 @import '../scss/icon';
 @import '../scss/style';
 
+.backdrop {
+  background-color: hsl(0 0 0 / 0.3);
+}
+
 .menu-drawer {
   @include light-scrollbar;
+  transform: translate3d(-100%, 0, 0);
+
+  &.visible {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .menu-container {
@@ -13,7 +22,13 @@
 
 .menu-item {
   cursor: pointer;
-  @apply bg-bg text-text flex items-center;
+  background-color: hsl(var(--bg-default));
+  color: hsl(var(--text-default));
+  display: flex;
+  align-items: center;
+  margin-top: 1px;
+  padding: 16px 32px;
+  position: relative;
 }
 
 @include dark-mode {

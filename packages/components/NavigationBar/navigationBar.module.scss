@@ -1,6 +1,7 @@
 .navigation-bar {
   position: fixed;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   align-items: center;
   top: 0;

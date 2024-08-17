@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import classNames from 'classnames'
+import classNames from 'classnames/bind'
 import {
   MenuHomeLayout,
   BottomNavigation,
@@ -8,6 +8,8 @@ import {
   AutoZoomModal,
 } from '@periodic-table-pro/components'
 import ZoomablePtTable from '@/components/ZoomablePtTable'
+
+const cx = classNames.bind({})
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home() {
   return (
-    <div className={classNames('index-page')}>
+    <div className={cx('')}>
       <MenuHomeLayout>
         <ZoomablePtTable />
         <BottomNavigation />

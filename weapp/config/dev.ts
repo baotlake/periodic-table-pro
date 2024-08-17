@@ -1,4 +1,5 @@
-const dotenv = require('dotenv')
+import dotenv from 'dotenv'
+import type { UserConfigExport } from '@tarojs/cli'
 
 const ENV_SUFFIX = process.env.ENV_SUFFIX || ''
 
@@ -11,7 +12,7 @@ dotenv.config({
 const PLATFORM =
   process.env.TARO_ENV === 'miniprogram' ? 'weapp' : process.env.TARO_ENV
 
-module.exports = {
+export default {
   env: {
     node_env: '"development"',
 
@@ -21,7 +22,6 @@ module.exports = {
     BUCKET_HOST: JSON.stringify(process.env.BUCKET_HOST),
     APP_ORIGIN: JSON.stringify(process.env.APP_ORIGIN),
     DEEP_READING_ORIGIN: JSON.stringify(process.env.DEEP_READING_ORIGIN),
-
 
     SEARCH_REWARDED_AD: JSON.stringify(process.env.SEARCH_REWARDED_AD),
     DETAIL_CUSTOM_AD: JSON.stringify(process.env.DETAIL_CUSTOM_AD),
@@ -37,4 +37,4 @@ module.exports = {
   ],
   mini: {},
   h5: {},
-}
+} satisfies UserConfigExport

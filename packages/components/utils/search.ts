@@ -1,10 +1,3 @@
-// import {
-//     symbol,
-//     enName,
-//     zhCNNames,
-//     formalShortAtomicWeights,
-// } from '../data/elements'
-// import { Property } from '../types/element'
 import {
   symbol,
   enName,

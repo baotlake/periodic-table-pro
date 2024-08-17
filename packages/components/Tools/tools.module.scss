@@ -17,7 +17,8 @@
   margin-bottom: 2em;
   border-radius: 6px;
   overflow: hidden;
-  @apply bg-bg;
+  background-color: hsl(var(--bg-default));
+  // @apply bg-bg;
 }
 
 .title {
@@ -29,7 +30,8 @@
   width: 100%;
   height: 120px;
   background: no-repeat center/450PX url('../assets/images/grid.png');
-  @apply bg-bg-deep/60;
+  background-color: hsl(var(--bg-deep) / 0.6);
+  // @apply bg-bg-deep/60;
 
   > img {
     width: 100%;

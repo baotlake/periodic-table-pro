@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import Script from 'next/script'
 import { Initialization } from '@periodic-table-pro/components'
-import { Provider } from '@periodic-table-pro/components/compat'
+import { CompatProvider } from '@periodic-table-pro/components/compat'
 import ProgressBar from '@/components/ProgressBar'
 import '../styles/globals.scss'
 import 'nprogress/nprogress.css'
@@ -111,13 +111,13 @@ export default function RootLayout({
         <meta property="og:url" content={APP_ORIGIN} />
       </head>
       <body>
-        <Suspense>
-          <ProgressBar />
-        </Suspense>
-        <Provider>
+        <CompatProvider>
           <Initialization />
+          <Suspense>
+            <ProgressBar />
+          </Suspense>
           {children}
-        </Provider>
+        </CompatProvider>
       </body>
     </html>
   )

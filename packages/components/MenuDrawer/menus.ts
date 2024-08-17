@@ -8,7 +8,8 @@ import likeIcon from '../assets/icons/like_outlined.svg'
 // import wechatIcon from '../assets/icons/wechat.svg'
 import shareIcon from '../assets/icons/share.svg'
 import periodicTableIcon from '../assets/icons/periodic-table.svg'
-import toolsIcon from '../assets/icons/tools.svg'
+import toolsSvg from '../assets/icons/tools.svg'
+import rulerSvg from '../assets/icons/ruler.svg'
 import settingIcon from '../assets/icons/setting.svg'
 import shopIcon from '../assets/icons/shop.svg'
 import buildSvg from '../assets/icons/build.svg'
@@ -20,7 +21,7 @@ const menus = [
     items: [
       {
         name: 'tools',
-        icon: buildSvg,
+        icon: rulerSvg,
         label: '工具栏',
         route: routes.tools,
       },

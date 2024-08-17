@@ -23,11 +23,11 @@ $sqrt2: 1.4142135624;
 }
 
 // "<"
-@mixin back-icon($size: 16PX, $stroke-width: 2PX) {
+@mixin back-icon($size: 16px, $stroke-width: 2px) {
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     width: $stroke-width;
     height: $size / $sqrt2;
     position: absolute;
@@ -41,14 +41,18 @@ $sqrt2: 1.4142135624;
   }
 
   &::after {
-    content: "";
+    content: '';
     width: $stroke-width;
     height: $size / $sqrt2 - $stroke-width;
     position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: top left;
-    transform: translate(($stroke-width / $sqrt2 - $size / 3), ($stroke-width / $sqrt2)) rotate(-45deg);
+    transform: translate(
+        ($stroke-width / $sqrt2 - $size / 3),
+        ($stroke-width / $sqrt2)
+      )
+      rotate(-45deg);
     background-color: currentColor;
     border: none;
     transition: var(--transition);
@@ -56,38 +60,40 @@ $sqrt2: 1.4142135624;
 }
 
 // ">"
-@mixin forward-icon($size: 16PX, $stroke-width: 2PX) {
+@mixin forward-icon($size: 16px, $stroke-width: 2px) {
   @include back-icon($size, $stroke-width);
   transform: rotate(180deg);
 }
 
 // "^"
-@mixin expand-icon($size: 16PX, $stroke-width: 2PX) {
+@mixin expand-icon($size: 16px, $stroke-width: 2px) {
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     height: $stroke-width;
     width: $size / $sqrt2;
     position: absolute;
     right: 50%;
     top: 50%;
     transform-origin: right center;
-    transform: translate($stroke-width / 2 / $sqrt2, -($size / 4)) rotate(-45deg);
+    transform: translate($stroke-width / 2 / $sqrt2, -($size / 4))
+      rotate(-45deg);
     background-color: currentColor;
     border: none;
     transition: var(--transition);
   }
 
   &::after {
-    content: "";
+    content: '';
     height: $stroke-width;
     width: $size / $sqrt2;
     position: absolute;
     left: 50%;
     top: 50%;
     transform-origin: left center;
-    transform: translate(-($stroke-width / 2 / $sqrt2), -($size / 4)) rotate(45deg);
+    transform: translate(-($stroke-width / 2 / $sqrt2), -($size / 4))
+      rotate(45deg);
     background-color: currentColor;
     border: none;
     transition: var(--transition);
@@ -95,7 +101,7 @@ $sqrt2: 1.4142135624;
 }
 
 // "⌄"
-@mixin collapse-icon($size: 16PX, $stroke-width: 2PX) {
+@mixin collapse-icon($size: 16px, $stroke-width: 2px) {
   @include expand-icon($size, $stroke-width);
 
   &::before {
@@ -103,17 +109,18 @@ $sqrt2: 1.4142135624;
   }
 
   &::after {
-    transform: translate(-($stroke-width / 2 / $sqrt2), $size / 4) rotate(-45deg);
+    transform: translate(-($stroke-width / 2 / $sqrt2), $size / 4)
+      rotate(-45deg);
   }
 }
 
 // "="
-@mixin menu-icon($size: 16PX, $stroke-width: 2PX) {
+@mixin menu-icon($size: 16px, $stroke-width: 2px) {
   position: relative;
 
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     width: $size;
     height: $stroke-width;
     top: 50%;
@@ -127,7 +134,7 @@ $sqrt2: 1.4142135624;
 
   &::after {
     position: absolute;
-    content: "";
+    content: '';
     width: $size;
     height: $stroke-width;
     top: 50%;
@@ -141,7 +148,7 @@ $sqrt2: 1.4142135624;
 }
 
 // "x"
-@mixin close-icon($size: 16PX, $stroke-width: 2PX) {
+@mixin close-icon($size: 16px, $stroke-width: 2px) {
   @include menu-icon($size, $stroke-width);
 
   &::before {
@@ -152,35 +159,6 @@ $sqrt2: 1.4142135624;
     transform: translate(-50%, 0) rotateZ(-45deg);
   }
 }
-
-@mixin _wechat_menu_more_dot($size: 4PX) {
-  width: $size;
-  height: $size;
-  border-radius: $size / 2;
-  background: currentColor;
-  position: absolute;
-}
-
-@mixin wechat-menu-more($size: 16PX) {
-  @include _wechat_menu_more_dot($size / 3);
-
-  &::before {
-    content: '';
-    left: -100%;
-    top: 50%;
-    transform: translate(-$size / 6, -50%);
-    @include _wechat_menu_more_dot($size / 5);
-  }
-
-  &::after {
-    content: '';
-    right: -100%;
-    top: 50%;
-    transform: translate($size / 6, -50%);
-    @include _wechat_menu_more_dot($size / 5);
-  }
-}
-
 
 @mixin clip-back-icon() {
   // background-clip: ;

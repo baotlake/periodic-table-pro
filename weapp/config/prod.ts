@@ -1,5 +1,6 @@
-const dotenv = require('dotenv')
-const path = require('path')
+import type { UserConfigExport } from '@tarojs/cli'
+import dotenv from 'dotenv'
+import path from 'path'
 
 const ENV_SUFFIX = process.env.ENV_SUFFIX || ''
 
@@ -20,7 +21,7 @@ if (!STATIC_BASE || /^["']/.test(STATIC_BASE)) {
   )
 }
 
-module.exports = {
+export default {
   env: {
     node_env: '"production"',
 
@@ -51,4 +52,4 @@ module.exports = {
      * }
      */
   },
-}
+} satisfies UserConfigExport

@@ -37,8 +37,9 @@ export default function NavigationBar({ children, className }: Props) {
           {
             paddingTop: rect.top + 'PX',
             paddingRight: rect.windowWidth - rect.left + 'PX',
-            height: rect.height + 'PX',
-            width: rect.left + 'PX',
+            // height: rect.height + 'PX',
+
+            // for children
             '--size': rect.height + 'PX',
             '--margin': rect.windowWidth - rect.right + 'PX',
           } as CSSProperties
@@ -50,10 +51,8 @@ export default function NavigationBar({ children, className }: Props) {
             style={{
               position: 'absolute',
               right: rect.windowWidth - rect.right + 'px',
-              background: 'rgba(0,0,0,0.15)',
               width: rect.width + 'px',
               height: rect.height + 'px',
-              borderRadius: rect.height / 2 + 'px',
             }}
           />
         )}

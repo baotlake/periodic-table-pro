@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import { use, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import NProgress from 'nprogress'
+import { CompatContext } from '@periodic-table-pro/components/compat'
 
 NProgress.configure({
   showSpinner: false,
@@ -10,6 +11,7 @@ NProgress.configure({
 export default function ProgressBar() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const { routerEvents } = use(CompatContext)
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -19,11 +21,17 @@ export default function ProgressBar() {
       }
     }
 
+    const handleRouterChange = () => {
+      NProgress.start()
+    }
+
     document.addEventListener('click', handleClick)
+    routerEvents?.on('changeStart', handleRouterChange)
     return () => {
       document.removeEventListener('click', handleClick)
+      routerEvents?.off('changeStart', handleRouterChange)
     }
-  }, [])
+  }, [routerEvents])
 
   useEffect(() => {
     NProgress.done()

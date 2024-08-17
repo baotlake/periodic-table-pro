@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'selector',
   presets: [],
   corePlugins: {
     preflight: false,
@@ -11,7 +12,7 @@ module.exports = {
     '../packages/**/*.{js,ts,jsx,tsx,mdx}',
 
     // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{html,js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     borderRadius: {

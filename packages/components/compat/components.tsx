@@ -160,6 +160,11 @@ if (isTaro) {
   Switch = S
 }
 
+/**
+ * 小程序性能优化：创建一个原生自定义组件，对后代节点的 setData 将由此自定义组件进行调用，达到局部更新的效果
+ * - flex 布局在跨原生自定义组件时会失效
+ * - SelectorQuery.select 方法的跨自定义组件的后代选择器写法需要增加 >>>
+ */
 let CustomWrapper = Fragment as typeof TaroCustomWrapper
 if (isTaro) {
   const { CustomWrapper: TaroCustomWrapper } = components

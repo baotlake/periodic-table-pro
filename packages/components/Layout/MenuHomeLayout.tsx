@@ -17,26 +17,26 @@ export function MenuHomeLayout({ children, className }: Props) {
   const [visible, setVisible] = useState(false)
 
   return (
-    <div className={cx('menu-home-layout', 'bg-bg text-text', className)}>
+    <div
+      className={cx(
+        'menu-home-layout',
+        'bg-bg text-text transition-colors duration-300',
+        className
+      )}
+    >
       <NavigationBar>
-        <div className="pointer-events-auto my-0 mx-[var(--margin)]">
-          <div
-            role="button"
-            className={cx('nav-btn')}
-            onClick={() => setVisible(visible ? false : true)}
-          >
-            <div className={cx('nav-icon', visible ? 'close' : 'menu')} />
-          </div>
+        <div
+          role="button"
+          className={cx('nav-btn', 'pointer-events-auto my-0')}
+          onClick={() => setVisible(visible ? false : true)}
+        >
+          <div className={cx('nav-icon', visible ? 'close' : 'menu')} />
         </div>
       </NavigationBar>
 
       {children}
 
-      <PersistentDrawer
-        className={className}
-        visible={visible}
-        onClose={() => setVisible(false)}
-      />
+      <PersistentDrawer visible={visible} onClose={() => setVisible(false)} />
     </div>
   )
 }
