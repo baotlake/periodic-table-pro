@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'selector',
   presets: [],
   corePlugins: {
     preflight: false,
@@ -11,7 +12,7 @@ module.exports = {
     '../packages/**/*.{js,ts,jsx,tsx,mdx}',
 
     // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{html,js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     borderRadius: {
@@ -100,13 +101,17 @@ module.exports = {
           800: 'hsl(var(--primary-hue) var(--primary-s) 20% / <alpha-value>)',
           900: 'hsl(var(--primary-hue) var(--primary-s) 15% / <alpha-value>)',
         },
-        background: {
-          DEFAULT: 'hsl(var(--bg-hsl) / <alpha-value>)',
-          soft: 'hsl(var(--bg-hue) var(--bg-s) var(--bg-soft-l) / <alpha-value>)',
-          mute: 'hsl(var(--bg-hue) var(--bg-s) var(--bg-mute-l) / <alpha-value>)',
+        bg: {
+          DEFAULT: 'hsl(var(--bg-default) / <alpha-value>)',
+          soft: 'hsl(var(--bg-soft) / <alpha-value>)',
+          mute: 'hsl(var(--bg-mute) / <alpha-value>)',
+          deep: 'hsl(var(--bg-deep) / <alpha-value>)',
         },
-        foreground: {
-          DEFAULT: 'hsl(var(--fg-hsl) / <alpha-value>)',
+        text: {
+          DEFAULT: 'hsl(var(--text-default) / <alpha-value>)',
+        },
+        border: {
+          DEFAULT: 'hsl(var(--border-default) / <alpha-value>)',
         },
       },
     },

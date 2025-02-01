@@ -10,14 +10,19 @@ const PLATFORM = process.env.PLATFORM
 
 type Props = {
   className?: string
-  themeClass?: string
 }
 
-export function MenuPageDrawer({ className, themeClass }: Props) {
+export function MenuPageDrawer({ className }: Props) {
   return (
-    <div className={cx('menu-page-drawer', className, themeClass)}>
+    <div
+      className={cx(
+        'menu-page-drawer',
+        'w-72 p-5 overflow-auto border-e border-solid border-border',
+        className
+      )}
+    >
       {menus.map((group) => (
-        <div key={group.key} className={cx('group')}>
+        <div key={group.key} className="overflow-hidden mb-5 rounded-md">
           {group.items.map((item) => {
             if (item.name == 'shop') {
               if (PLATFORM !== 'weapp') return
@@ -29,8 +34,11 @@ export function MenuPageDrawer({ className, themeClass }: Props) {
                     Taro.navigateToMiniProgram({ appId: item.route })
                   }
                 >
-                  <Image className={cx('icon', 'shop')} src={item.icon} />
-                  <span className={cx('title')}>{item.label}</span>
+                  <Image
+                    className={cx('size-5 me-3', 'shop')}
+                    src={item.icon}
+                  />
+                  <span className="text-lg">{item.label}</span>
                 </div>
               )
             }
@@ -46,11 +54,14 @@ export function MenuPageDrawer({ className, themeClass }: Props) {
                     } as any)
                   }
                 >
-                  <Image className={cx('icon')} src={item.icon} />
-                  <span className={cx('title')}>{item.label}</span>
+                  <Image
+                    className={cx('icon', 'size-5 me-3')}
+                    src={item.icon}
+                  />
+                  <span className="text-lg">{item.label}</span>
                   <Button
-                    className={cx('wx-open-type-button')}
                     openType="share"
+                    className="absolute inset-0 m-0 p-0 border-none outline-none w-full h-full opacity-0 box-border"
                   />
                 </div>
               )
@@ -64,8 +75,8 @@ export function MenuPageDrawer({ className, themeClass }: Props) {
                 openType="redirect"
                 replace
               >
-                <Image className={cx('icon')} src={item.icon} />
-                <span className={cx('title')}>{item.label}</span>
+                <Image className={cx('icon', 'size-5 me-3')} src={item.icon} />
+                <span className="text-lg">{item.label}</span>
               </Navigator>
             )
           })}

@@ -5,7 +5,7 @@ import { Image } from './components'
 const cx = classNames.bind(styles)
 
 type Props = {
-  current?: string
+  current?: string | number
   onClose?: () => void
 }
 

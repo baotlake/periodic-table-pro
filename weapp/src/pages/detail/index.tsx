@@ -61,17 +61,17 @@ export default function DetailPage() {
 
   return (
     <View className={classNames('detail page', theme)}>
-      <NavigationHeader themeClass={theme} />
+      <NavigationHeader />
 
       <DetailContent detailData={detailData} />
 
       <AdjacentNavigation
-        themeClass={theme}
-        previous={detailData.previous ? detailData.previous.symbol : '--'}
-        current={detailData.symbol}
-        next={detailData.next ? detailData.next.symbol : '--'}
-        onTapPrevious={handleTapPrevious}
-        onTapNext={handleTapNext}
+        previous={detailData.previous}
+        current={{
+          symbol: detailData.symbol,
+          atomicNumber: detailData.atomicNumber,
+        }}
+        next={detailData.next}
       />
     </View>
   )

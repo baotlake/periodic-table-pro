@@ -16,9 +16,16 @@
     "incremental": true,
     "paths": {
       "@periodic-table-pro/components/*": ["../packages/components/*"],
-      "@periodic-table-pro/data":["../packages/data/*"]
-    }
+      "@periodic-table-pro/data": ["../packages/data/*"],
+      "@/*": ["./*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

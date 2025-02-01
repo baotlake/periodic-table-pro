@@ -1,56 +1,60 @@
-@use "sass:color";
+@use 'sass:color';
 @import '../scss/theme';
 @import '../scss/media';
 
 .tools {
-    padding: 0 2em;
-    margin-top: 2em;
+  padding: 0 2em;
+  margin-top: 2em;
 
-    @include landscape {
-        margin-top: 0;
-    }
+  @include landscape {
+    margin-top: 0;
+  }
 }
 
 .item-box {
-    display: block;
-    background-color: $light-background;
-    margin-bottom: 2em;
-    border-radius: 6PX;
-    overflow: hidden;
+  display: block;
+  // background-color: $light-background;
+  margin-bottom: 2em;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: hsl(var(--bg-default));
+  // @apply bg-bg;
 }
 
 .title {
-    font-size: 20PX;
-    padding: 0.5em 1em 1em;
+  font-size: 20px;
+  padding: 0.5em 1em 1em;
 }
 
 .illus {
+  width: 100%;
+  height: 120px;
+  background: no-repeat center/450PX url('../assets/images/grid.png');
+  background-color: hsl(var(--bg-deep) / 0.6);
+  // @apply bg-bg-deep/60;
+
+  > img {
     width: 100%;
-    height: 120PX;
-    background: no-repeat center/450PX url("../assets/images/grid.png");
-    background-color: darken($light-background, 2%);
+    height: 100%;
+  }
 
-    >img {
-        width: 100%;
-        height: 100%;
-    }
-
-    &.cover {
-        object-fit: cover;
-    }
+  &.cover {
+    object-fit: cover;
+  }
 }
 
 // theme
 .tools {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        .item-box {
-            background-color: $dark-background;
-        }
-
-        .illus {
-            background-color: darken($dark-background, 2%);
-        }
+  &.dark {
+    .item-box {
+      background-color: $dark-background;
     }
+
+    .illus {
+      background-color: darken($dark-background, 2%);
+    }
+  }
 }

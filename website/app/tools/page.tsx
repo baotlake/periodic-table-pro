@@ -1,0 +1,18 @@
+import { Metadata } from 'next'
+import { MenuPageLayout, Tools } from '@periodic-table-pro/components'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: '工具栏 - 元素周期表PRO 高颜值化学必备小工具',
+  }
+}
+
+export default function ToolsPage() {
+  return (
+    <div>
+      <MenuPageLayout title="工具栏">
+        <Tools />
+      </MenuPageLayout>
+    </div>
+  )
+}

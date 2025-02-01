@@ -1,3 +1,5 @@
+'use client'
+
 import {
   useRef,
   useEffect,
@@ -8,7 +10,13 @@ import {
 } from 'react'
 import classNames from 'classnames/bind'
 import ZoomControl from '../utils/zoom'
-import { isTaro, getBoundingClientRect, useDidShow } from '../compat'
+import {
+  isTaro,
+  getBoundingClientRect,
+  useDidShow,
+  onWindowResize,
+  offWindowResize,
+} from '../compat'
 import { useAtom, useSetAtom } from 'jotai'
 import { periodicTableZoom, periodicTableZoomControl } from '../recoil/atom'
 import styles from './index.module.scss'
@@ -18,7 +26,6 @@ const PLATFORM = process.env.PLATFORM
 const cx = classNames.bind(styles)
 
 type Props = PropsWithChildren<{
-  themeClass?: string
   className?: string
   min: number
   max: number
@@ -28,7 +35,6 @@ type Props = PropsWithChildren<{
 
 export function PanPinch({
   children,
-  themeClass,
   className,
   min,
   max,
@@ -155,11 +161,19 @@ export function PanPinch({
 
   useEffect(() => {
     const wrapper = wrapperRef.current
-    const { handleWheel } = dataRef.current
+    const { handleWheel, scaleTo } = dataRef.current
+
+    const handleResize = () => {
+      const { scale } = dataRef.current
+      scaleTo(scale)
+    }
+
     if (wrapper) {
       wrapper.addEventListener('wheel', handleWheel, true)
+      onWindowResize(handleResize)
       return () => {
         wrapper?.removeEventListener('wheel', handleWheel, true)
+        offWindowResize(handleResize)
       }
     }
   }, [])
@@ -190,7 +204,7 @@ export function PanPinch({
   return (
     <div
       ref={wrapperRef}
-      className={cx('pan-pinch-wrapper', themeClass, className)}
+      className={cx('pan-pinch-wrapper', className)}
       onTouchStart={dataRef.current.handleTouchStart}
       onTouchMove={dataRef.current.handleTouchMove}
       onTouchEnd={dataRef.current.handleTouchEnd}

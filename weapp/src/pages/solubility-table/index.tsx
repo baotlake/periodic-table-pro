@@ -1,4 +1,4 @@
-import { useState, CSSProperties } from 'react'
+import { useState, CSSProperties, Fragment } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { NavigationHeader, RichText } from '@periodic-table-pro/components'
@@ -34,12 +34,7 @@ export default function SolubilityTable() {
 
   return (
     <View className={classNames('page', theme)}>
-      <NavigationHeader
-        background
-        themeClass={theme}
-        className="navigation"
-        title="溶解性表"
-      />
+      <NavigationHeader background className="navigation" title="溶解性表" />
       <View
         className="content"
         style={{
@@ -91,13 +86,13 @@ export default function SolubilityTable() {
         <View>
           <View className="key-table">
             {Object.keys(notes).map((key) => (
-              <>
+              <Fragment key={key}>
                 <View className={classNames('cell', key)}>
                   {zh ? notes[key].initial : key}
                 </View>
                 <View className="cell">{notes[key].value}</View>
                 <View className="cell">{notes[key].detail}</View>
-              </>
+              </Fragment>
             ))}
           </View>
         </View>

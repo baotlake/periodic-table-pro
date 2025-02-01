@@ -1,10 +1,12 @@
-import type * as TaroNS from '@tarojs/taro'
+'use client'
+
 import { isTaro, Taro } from './Taro'
-import { render, unmountComponentAtNode } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { useEffect } from 'react'
 import { PreviewImage } from './PreviewImage'
+import { router } from './Provider'
 
-type PreviewImageOption = Parameters<typeof TaroNS.previewImage>[0]
+type PreviewImageOption = Parameters<typeof Taro.previewImage>[0]
 
 export function previewImage(option: PreviewImageOption) {
   if (isTaro) {
@@ -15,15 +17,16 @@ export function previewImage(option: PreviewImageOption) {
   const id = 'preview-' + Date.now()
   div.id = id
   document.body.appendChild(div)
+  const root = createRoot(div)
 
   const handleClose = () => {
-    unmountComponentAtNode(div)
+    root.unmount()
     setTimeout(() => {
       document.querySelector('#' + id)?.remove()
     }, 1)
   }
 
-  render(<PreviewImage {...option} onClose={handleClose} />, div)
+  root.render(<PreviewImage {...option} onClose={handleClose} />)
 }
 
 type Theme = 'dark' | 'light'
@@ -107,13 +110,11 @@ export function redirectTo(url: string) {
     return Taro.redirectTo({ url: url })
   }
 
-  if (process.env.PLATFORM == 'next') {
-    const Router = require('next/router')
-    Router.replace(url)
-    return
+  if (router) {
+    router.replace(url)
+  } else {
+    window.location.replace(url)
   }
-
-  window.location.href = url
 }
 
 export function navigateTo(url: string) {
@@ -121,13 +122,11 @@ export function navigateTo(url: string) {
     return Taro.navigateTo({ url: url })
   }
 
-  if (process.env.PLATFORM == 'next') {
-    const Router = require('next/router')
-    Router.push(url)
-    return
+  if (router) {
+    router.replace(url)
+  } else {
+    window.location.replace(url)
   }
-
-  window.location.href = url
 }
 
 export function useReady(callback: () => void) {
@@ -164,7 +163,6 @@ export async function setStorage<T extends Record<string, any>>(data: T) {
     }
   } catch (e) {
     console.error(e)
-
     for (let [key, value] of Object.entries(data)) {
       fallbackStore[key] = structuredClone(value)
     }
@@ -188,7 +186,7 @@ export async function getStorage<T extends Record<string, any>>(
       }
       return data as T
     } catch (error) {
-      console.error(error)
+      console.warn('[api.getStorage]', String(error))
       for (let [key, defaultValue] of Object.entries(keys)) {
         data[key] = fallbackStore[key] ?? defaultValue
       }

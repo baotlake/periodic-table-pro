@@ -9,33 +9,40 @@ const wxacodeImg = STATIC_BASE + '/img/ui/wxacode.jpg'
 
 type Props = {
   style?: React.CSSProperties
-  themeClass?: string
+  className?: string
 }
 
-export default function MenuButton({ style, themeClass }: Props) {
+export default function MenuButton({ style, className }: Props) {
   const [visible, setVisible] = useState(false)
 
   return (
     <div
-      className={cx('menu-button', themeClass)}
-      style={
-        {
-          ...style,
-          '--radius': style?.borderRadius,
-        } as React.CSSProperties
-      }
+      className={cx(
+        'menu-button',
+        'absolute flex pointer-events-auto',
+        className
+      )}
+      style={style}
     >
       <div
-        className={cx('more')}
+        className={cx(
+          'more',
+          'relative w-1/2 h-full flex justify-center items-center cursor-pointer'
+        )}
         onClick={() => setVisible(visible ? false : true)}
       >
         <div className={cx('more-icon')} />
       </div>
       <div
-        className={cx('other')}
+        className={cx('dot', 'h-full flex items-center justify-center')}
         onClick={() => setVisible(visible ? false : true)}
       >
-        <div className={cx('other-icon')} />
+        <div
+          className={cx(
+            'other-icon',
+            'relative text-white size-4 rounded-full'
+          )}
+        />
       </div>
 
       <div
@@ -44,7 +51,7 @@ export default function MenuButton({ style, themeClass }: Props) {
         })}
       >
         <div className=""></div>
-        <img className={cx('qr-img')} src={wxacodeImg} />
+        <img className="w-full" src={wxacodeImg} />
       </div>
     </div>
   )

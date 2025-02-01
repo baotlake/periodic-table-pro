@@ -10,7 +10,7 @@ export default function SettingPage() {
 
   return (
     <View className={classNames('setting-page', theme)}>
-      <MenuPageLayout themeClass={theme} title="设置">
+      <MenuPageLayout className={theme} title="设置">
         <Setting />
       </MenuPageLayout>
     </View>

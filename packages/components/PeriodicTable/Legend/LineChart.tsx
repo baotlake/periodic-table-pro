@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Image, Canvas } from '../../compat'
+import { Image, Canvas, Taro } from '../../compat'
 import useReady from './useReady'
 import classNames from 'classnames'
 import { parseTrendValue } from '../../utils/trend'
-
 import type { CanvasContext } from '@tarojs/taro'
-import type * as Taro from '@tarojs/taro'
 
 const PLATFORM = process.env.PLATFORM
 
@@ -111,8 +109,7 @@ export default function LineChart({ className, width, height, data }: Props) {
     }
 
     if (PLATFORM == 'weapp') {
-      const { nextTick, createSelectorQuery, getSystemInfoSync } =
-        require('@tarojs/taro') as typeof Taro
+      const { nextTick, createSelectorQuery, getSystemInfoSync } = Taro
       // Canvas
       if (0) {
         nextTick(() => {
@@ -170,8 +167,7 @@ export default function LineChart({ className, width, height, data }: Props) {
     }
 
     if (PLATFORM === 'qq') {
-      const { nextTick, createCanvasContext, canvasToTempFilePath } =
-        require('@tarojs/taro') as typeof Taro
+      const { nextTick, createCanvasContext, canvasToTempFilePath } = Taro
       console.log('ready')
       nextTick(() => {
         console.log('ready nextTick')
@@ -210,8 +206,7 @@ export default function LineChart({ className, width, height, data }: Props) {
     }
 
     if (PLATFORM === 'alipay') {
-      const { nextTick, createSelectorQuery, getSystemInfoSync } =
-        require('@tarojs/taro') as typeof Taro
+      const { nextTick, createSelectorQuery, getSystemInfoSync } = Taro
       nextTick(() => {
         const query = createSelectorQuery()
         query.select('#canvas').fields({ node: true, size: true })
@@ -279,7 +274,7 @@ export default function LineChart({ className, width, height, data }: Props) {
       className={classNames(className)}
       id="canvas"
       type="2d"
-    // style={{ width: width + 'px', height: height + 'px' }}
+      // style={{ width: width + 'px', height: height + 'px' }}
     />
   )
 }

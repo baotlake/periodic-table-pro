@@ -39,20 +39,9 @@
     height: 100%;
     pointer-events: none;
     opacity: 0.3;
-    // @include shadow-border();
-    @include shadow-border(currentColor, 0.0625em);
+    @include shadow-border();
+    // @include shadow-border(currentColor, 0.0625em);
   }
-
-  // &:hover {
-  //   .mc {
-  //     transform: scale(1.2);
-  //   }
-  // }
-  // &:active {
-  //   .mc {
-  //     // transform: scale(1.1);
-  //   }
-  // }
 }
 
 .tl, .tr {

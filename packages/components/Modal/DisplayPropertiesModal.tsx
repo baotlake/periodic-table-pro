@@ -15,7 +15,7 @@ import styles from './displayPropertiesModal.module.scss'
 const cx = classNames.bind(styles)
 
 type Props = {
-  themeClass?: string
+  className?: string
   visible: boolean
   setVisible: (value: boolean) => void
   displayProperty: DisplayProperty
@@ -26,7 +26,7 @@ type Props = {
 export default function DisplayPropertiesModal({
   visible,
   setVisible,
-  themeClass,
+  className: themeClass,
   onSelect,
   colorSign,
   displayProperty,

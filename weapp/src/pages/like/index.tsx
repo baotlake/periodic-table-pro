@@ -32,7 +32,7 @@ export default function LikePage() {
 
   return (
     <View className={classNames('like-page', theme)}>
-      <MenuPageLayout themeClass={theme} title="支持">
+      <MenuPageLayout className={theme} title="支持">
         <View className="content">
           <View className="text">
             喜欢请转发给更多人，为「元素周期表Pro」加油！点击图片可保存

@@ -1,3 +1,5 @@
+'use client'
+
 import { CustomWrapper, RichText } from '../compat'
 import classNames from 'classnames/bind'
 import type { WikiData } from '@periodic-table-pro/data'
@@ -25,20 +27,20 @@ export function Content({ data, themeClass, adId }: Props) {
   return (
     <div className={cx('content', themeClass, PLATFORM) + ' content'}>
       {data &&
-        data.content.map((section) => (
-          <CustomWrapper>
+        data.content.map((section, i) => (
+          <CustomWrapper key={i}>
             {section.heading && (
               <div className={cx('h2')}>
                 <RichText nodes={r(section.heading)} />
               </div>
             )}
             <div className={cx('section')}>
-              {section.content.map((block) => {
+              {section.content.map((block, i) => {
                 count += block.html?.length || 0
                 switch (block.type) {
                   case 'div':
                     return (
-                      <div className={cx('scroll-view')}>
+                      <div key={i} className={cx('scroll-view')}>
                         <RichText
                           className={cx('block')}
                           nodes={r(block.html)}
@@ -47,7 +49,7 @@ export function Content({ data, themeClass, adId }: Props) {
                     )
                   default:
                     return (
-                      <RichText className={cx('block')} nodes={r(block.html)} />
+                      <RichText key={i} className={cx('block')} nodes={r(block.html)} />
                     )
                 }
               })}

@@ -19,7 +19,7 @@ export default function AboutPage() {
 
     return (
         <View className={classNames('about-page', theme)}>
-            <MenuPageLayout themeClass={theme} title="关于">
+            <MenuPageLayout className={theme} title="关于">
                 <View className="profile">
                     <Image className="logo" src={logoImg}></Image>
                     <View className="name">元素周期表PRO</View>

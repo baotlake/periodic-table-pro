@@ -72,6 +72,7 @@ export type DisplayProperty =
     | 'electronConfiguration'
     | 'density'
     | 'oxidationStates'
+    | 'enName'
 
 export type ColorSign = 'trend' | 'classification' | 'block' | 'state'
 

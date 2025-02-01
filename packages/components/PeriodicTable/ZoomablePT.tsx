@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, useEffect, useCallback } from 'react'
 import classNames from 'classnames/bind'
 import PeriodicTable from './PeriodicTable'

@@ -1,3 +1,4 @@
+'use client'
 import { useRef, useEffect } from 'react'
 
 type Properties = ReturnType<typeof parseProperties>

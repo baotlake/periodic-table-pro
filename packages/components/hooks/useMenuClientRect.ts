@@ -1,3 +1,4 @@
+'use client'
 import { useEffect } from 'react'
 import { Taro, isTaro, onWindowResize, offWindowResize } from '../compat'
 import { useAtom } from 'jotai'
@@ -6,8 +7,8 @@ import { menuButtonClientRect } from '../recoil/atom'
 const PLATFORM = process.env.PLATFORM
 
 export function useMenuClientRect() {
-  const [menuRect, setMenuButtonClientRect] =
-    useAtom(menuButtonClientRect)
+  const [menuRect, setMenuButtonClientRect] = useAtom(menuButtonClientRect)
+
   useEffect(() => {
     const getClientRect = async () => {
       if (isTaro && PLATFORM != 'h5') {
@@ -22,6 +23,7 @@ export function useMenuClientRect() {
           ...rect,
           windowWidth: ww,
           windowHeight: wh,
+          inited: true,
         }
       }
 
@@ -35,6 +37,7 @@ export function useMenuClientRect() {
         left: ww - rect.width - mr,
         windowWidth: ww,
         windowHeight: wh,
+        inited: true,
       }
     }
 

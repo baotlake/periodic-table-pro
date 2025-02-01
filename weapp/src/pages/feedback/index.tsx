@@ -13,7 +13,7 @@ export default function FeedbackPage() {
 
   return (
     <View className={classNames('feedback-page', theme)}>
-      <MenuPageLayout themeClass={theme} title="意见反馈">
+      <MenuPageLayout className={theme} title="意见反馈">
         <View className="card">
           <View className="top-container">
             <Image className="image" src={feedbackImg} />

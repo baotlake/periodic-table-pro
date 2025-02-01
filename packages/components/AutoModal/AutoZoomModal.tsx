@@ -1,3 +1,5 @@
+'use client'
+
 import ZoomModal from '../Modal/ZoomModal'
 import { useAtom } from 'jotai'
 import { themeModeState, zoomModalVisible } from '../recoil/atom'

@@ -115,7 +115,9 @@ class ZoomControl implements ZoomControlInterface {
     this.panningTY = ty
 
     this.target.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`
-    this.target.style.fontSize = '1em'
+    this.target.style.zoom = '1'
+
+    // this.target.style.fontSize = '1em'
 
     return {
       scale,
@@ -201,8 +203,10 @@ class ZoomControl implements ZoomControlInterface {
     const tscale = Math.min(scale, 1)
     const fscale = Math.max(scale, 1)
     this.wrapper.scrollTo?.(sl, st)
-    this.target.style.transform = `translate(${tx}px,${ty}px) scale(${tscale})`
-    this.target.style.fontSize = `${fscale}em`
+    this.target.style.transform = `translate(${tx}px,${ty}px)`
+    this.target.style.zoom = `${scale}`
+    // this.target.style.transform = `translate(${tx}px,${ty}px) scale(${tscale})`
+    // this.target.style.fontSize = `${fscale}em`
     this.wrapper.scrollTo?.(sl, st)
 
     // this.wrapper.style.overflow = 'auto'
@@ -235,6 +239,11 @@ class ZoomControl implements ZoomControlInterface {
 
   private parseScale(target: HTMLElement) {
     let scale = 1
+    let zoom = parseFloat(target.style.zoom)
+    if (isFinite(zoom)) {
+      scale = zoom
+      return scale
+    }
     let match = target.style.transform.match(/scale\(([-\d\.]+)\)/)
     let tscale = 1
     if (match) {

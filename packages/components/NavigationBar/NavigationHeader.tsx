@@ -1,14 +1,19 @@
+'use client'
+
 import { CSSProperties, PropsWithChildren } from 'react'
 import classNames from 'classnames/bind'
 import NavigationBar from './NavigationBar'
 import { Taro, isTaro } from '../compat'
 import { routes } from '../utils/routes'
+import { useAtom } from 'jotai'
+import { themeModeState } from '../recoil/atom'
+
 import styles from './navigationHeader.module.scss'
 
 const cx = classNames.bind(styles)
 
 type Props = PropsWithChildren<{
-  themeClass?: string
+  theme?: string
   title?: string
   className?: string
   color?: string
@@ -16,13 +21,15 @@ type Props = PropsWithChildren<{
 }>
 
 export default function NavigationHeader({
-  themeClass,
+  theme,
   title,
   children,
   className,
   color,
   background,
 }: Props) {
+  const [themeMode] = useAtom(themeModeState)
+
   const handleBack = () => {
     if (isTaro) {
       const path = Taro.getCurrentPages()
@@ -48,7 +55,7 @@ export default function NavigationHeader({
 
   return (
     <NavigationBar
-      className={cx('nav-header', themeClass, className, {
+      className={cx('nav-header', theme || themeMode, className, {
         background: background,
       })}
     >

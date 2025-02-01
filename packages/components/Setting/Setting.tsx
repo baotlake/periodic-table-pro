@@ -1,9 +1,10 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import { isTaro, Image } from '../compat'
 import { SettingItem } from './SettingItem'
 import { AutoDisplayPropertiesModal, AutoZoomModal } from '../AutoModal'
 import { propertiesLabels, DisplayProperty } from '@periodic-table-pro/data'
-import { reportEvent } from '../utils/analytics'
 import { getStorage, setStorage } from '../utils/storage'
 import { maxPtZoom, minPtZoom } from '../config'
 import { useAtom } from 'jotai'
@@ -40,8 +41,9 @@ export function Setting({}: Props) {
   const [followSystem, setFollowSystem] = useAtom(themeFollowSystem)
   const [displayProperty] = useAtom(periodicTableDisplayProperty)
   const [zoom, setZoom] = useAtom(periodicTableZoom)
-  const [displayPropertiesVisible, setDisplayPropertiesModalVisible] =
-    useAtom(displayPropertiesModalVisible)
+  const [displayPropertiesVisible, setDisplayPropertiesModalVisible] = useAtom(
+    displayPropertiesModalVisible
+  )
   const [zoomVisible, setZoomModalVisible] = useAtom(zoomModalVisible)
 
   const oneTermTheme = followSystem ? 'auto' : theme

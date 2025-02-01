@@ -1,8 +1,7 @@
-import { Image, Navigator, redirectTo } from '../compat'
-import { useState } from 'react'
+'use client'
+
+import { useState, Fragment } from 'react'
 import classNames from 'classnames/bind'
-import ElectronsShell from './ElectronsShell'
-import { RichText } from '../compat'
 import {
   DetailData,
   propertiesLabel,
@@ -10,6 +9,8 @@ import {
   elementsCategories,
   Categories,
 } from '@periodic-table-pro/data'
+import ElectronsShell from './ElectronsShell'
+import { Image, Navigator, redirectTo, RichText } from '../compat'
 import { getDetailPath, getWikiPath } from '../utils/routes'
 import { getDeepReadingWikipediaUrl } from '../utils/property'
 import { HighlightTable } from '../PeriodicTable'
@@ -107,7 +108,7 @@ export function PropsGroup({
           switch (key) {
             case 'electronsPerShell':
               return (
-                <div className={cx('props-item')} key={key}>
+                <div key={key} className={cx('props-item')}>
                   <div className={cx('item-title', 'center')}>{title}</div>
                   <ElectronsShell
                     className={cx('theme-filter')}
@@ -115,19 +116,19 @@ export function PropsGroup({
                   />
                   <div className={cx('electrons-per-shell')}>
                     {value.split(',').map((n, i) => (
-                      <>
+                      <Fragment key={i}>
                         <span className={cx('eps-name')}>
                           {shellNameList[i]}
                         </span>
                         <span className={cx('eps-number')}>{n + ' '}</span>
-                      </>
+                      </Fragment>
                     ))}
                   </div>
                 </div>
               )
             case 'spectralLines':
               return (
-                <div className={cx('props-item')} key={key}>
+                <div key={key} className={cx('props-item')}>
                   <div className={cx('item-title')}>{title}</div>
                   <Image
                     className={cx('spectral-lines')}
@@ -138,7 +139,7 @@ export function PropsGroup({
             case 'ionCharge':
               const charges = value.split(',').filter((t) => t !== '')
               return (
-                <div className={cx('props-item')} key={key}>
+                <div key={key} className={cx('props-item')}>
                   <div className={cx('item-title')}>{title}</div>
                   <div className={cx('item-value')}>
                     <RichText
@@ -166,6 +167,7 @@ export function PropsGroup({
               if (PLATFORM != 'next') return
               return (
                 <a
+                  key={key}
                   href={getDeepReadingWikipediaUrl(value.path)}
                   target="_blank"
                 >
@@ -178,7 +180,7 @@ export function PropsGroup({
               )
             case 'highlightTable':
               return (
-                <div className={cx('props-item', 'highlight-table')} key={key}>
+                <div key={key} className={cx('props-item', 'highlight-table')}>
                   {/* <div className={cx('item-title', 'center')}>{title}</div> */}
                   <HighlightTable
                     themeClass={themeClass}
@@ -189,7 +191,7 @@ export function PropsGroup({
               )
             case 'crystalStructure':
               return (
-                <div className={cx('props-item')} key={key}>
+                <div key={key} className={cx('props-item')}>
                   <div className={cx('item-title')}>{title}</div>
 
                   <div className={cx('crystal-structure')}>
@@ -203,7 +205,7 @@ export function PropsGroup({
               )
             default:
               return (
-                <div className={cx('props-item')} key={key}>
+                <div key={key} className={cx('props-item')}>
                   <div className={cx('item-title')}>{title}</div>
                   <RichText
                     className={cx('item-value')}

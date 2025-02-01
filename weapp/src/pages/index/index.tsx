@@ -31,17 +31,17 @@ export default function Index() {
   useShareMessage()
 
   return (
-    <View className={classNames('index page', theme)}>
-      <MenuHomeLayout themeClass={theme}>
+    <View className={classNames('text-text', theme)}>
+      <MenuHomeLayout className={theme}>
         <AddGuide themeClass={theme} />
         {/* <ZoomablePT /> */}
-        <PanPinch value={zoom} min={0.5} max={6} themeClass={theme}>
+        <PanPinch value={zoom} min={0.5} max={6} className={theme}>
           <CustomWrapper>
             <PeriodicTable />
           </CustomWrapper>
         </PanPinch>
 
-        <BottomNavigation themeClass={theme} />
+        <BottomNavigation className={theme} />
 
         <AutoDisplayPropertiesModal />
         <AutoZoomModal />

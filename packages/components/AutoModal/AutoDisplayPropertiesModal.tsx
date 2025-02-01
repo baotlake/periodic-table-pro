@@ -1,3 +1,5 @@
+'use client'
+
 import { DisplayPropertiesModal } from '../Modal'
 import { DisplayProperty } from '@periodic-table-pro/data'
 import { getTrendData } from '../utils/trend'
@@ -39,7 +41,7 @@ export function AutoDisplayPropertiesModal() {
 
   return (
     <DisplayPropertiesModal
-      themeClass={mode}
+      className={mode}
       visible={visible}
       setVisible={handleSetVisible}
       displayProperty={displayProperty}

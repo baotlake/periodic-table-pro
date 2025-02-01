@@ -4,97 +4,71 @@
 @import '../scss/style';
 
 .menu-page-drawer {
-    // --margin-top: 48PX;
-    // --margin-left: 20PX;
-    margin-left: env(safe-area-inset-left);
-    width: 280PX;
-    padding: 20PX;
-    padding-top: var(--margin-top);
-    padding-left: calc(var(--margin-left) + 20px);
-    overflow: auto;
-    border-right: 1PX solid darken($light-background, 10%);
-    @include light-scrollbar();
-}
-
-.group {
-    border-radius: 6PX;
-    overflow: hidden;
-    margin-bottom: 18PX;
+  // --margin-top: 48PX;
+  // --margin-left: 20PX;
+  margin-left: env(safe-area-inset-left);
+  padding-top: var(--margin-top);
+  padding-left: calc(var(--margin-left) + 20px);
+  @include light-scrollbar();
 }
 
 .item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 42PX;
-    padding: 0 18PX;
-    margin-top: 1PX;
-    background: white;
-    cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  margin-top: 1px;
+  cursor: pointer;
+  background-color: hsl(var(--bg-default));
+  color: hsl(var(--text-default));
+  // @apply bg-bg text-text;
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: calc(100% - 40PX);
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 40px);
+  }
 }
 
 .icon {
-    width: 22PX;
-    height: 22PX;
-    margin-right: 12PX;
-    @include filter-black;
+  @include filter-black;
 
-    >img {
-        display: block;
-    }
-
-    &.shop {
-        filter: none;
-    }
+  > img {
+    display: block;
+  }
 }
 
-.title {
-    font-size: 18PX;
-}
-
-.wx-open-type-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    box-sizing: border-box;
+@include dark-mode {
+  .icon {
+    @include filter-white(0.8);
+  }
 }
 
 // theme
 .menu-page-drawer {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        border-right: 1PX solid lighten($dark-background, 10%);
-        @include dark-scrollbar();
+  &.dark {
+    border-right: 1px solid lighten($dark-background, 10%);
+    @include dark-scrollbar();
 
-        .item {
-            background: $dark-background;
-            color: color.change($dark-foceground, $alpha: 0.85);
-        }
-
-        .icon {
-            @include filter-white(0.8);
-
-            &.shop {
-                filter: none;
-                background: lighten($dark-background, 20%);
-                border-radius: 50%;
-            }
-        }
+    .item {
+      background: $dark-background;
+      color: color.change($dark-foceground, $alpha: 0.85);
     }
+
+    .icon {
+      @include filter-white(0.8);
+
+      &.shop {
+        filter: none;
+        background: lighten($dark-background, 20%);
+        border-radius: 50%;
+      }
+    }
+  }
 }

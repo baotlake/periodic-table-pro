@@ -36,14 +36,14 @@ export default function ElementsEncyclopedia() {
     >
       <NavigationHeader
         background
-        themeClass={theme}
         className="navigation"
         title="元素百科"
       />
 
       <View className="content">
-        {itemList.map((item) => (
+        {itemList.map((item, i) => (
           <View
+            key={i}
             className={classNames('card-item', Categories[item.category])}
             onClick={() => {
               Taro.navigateTo({
