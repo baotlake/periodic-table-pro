@@ -10,7 +10,13 @@ import {
 } from 'react'
 import classNames from 'classnames/bind'
 import ZoomControl from '../utils/zoom'
-import { isTaro, getBoundingClientRect, useDidShow } from '../compat'
+import {
+  isTaro,
+  getBoundingClientRect,
+  useDidShow,
+  onWindowResize,
+  offWindowResize,
+} from '../compat'
 import { useAtom, useSetAtom } from 'jotai'
 import { periodicTableZoom, periodicTableZoomControl } from '../recoil/atom'
 import styles from './index.module.scss'
@@ -155,11 +161,19 @@ export function PanPinch({
 
   useEffect(() => {
     const wrapper = wrapperRef.current
-    const { handleWheel } = dataRef.current
+    const { handleWheel, scaleTo } = dataRef.current
+
+    const handleResize = () => {
+      const { scale } = dataRef.current
+      scaleTo(scale)
+    }
+
     if (wrapper) {
       wrapper.addEventListener('wheel', handleWheel, true)
+      onWindowResize(handleResize)
       return () => {
         wrapper?.removeEventListener('wheel', handleWheel, true)
+        offWindowResize(handleResize)
       }
     }
   }, [])

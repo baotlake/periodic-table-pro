@@ -7,7 +7,6 @@ import { HighlightTable } from '../PeriodicTable'
 import { ResultItem } from './ResultItem'
 import { NoResult } from './NoResult'
 import { search } from '../utils/search'
-// import { navigateTo } from '../utils/compat'
 
 import searchSvg from '../assets/icons/search.svg'
 import styles from './search.module.scss'

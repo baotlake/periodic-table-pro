@@ -255,7 +255,6 @@ export default function Legend({ themeClass, Z }: Props) {
             <div
               className={cx(
                 'switch',
-                'p-1',
                 'i'.repeat(colorSignData[colorSign])
               )}
             >
