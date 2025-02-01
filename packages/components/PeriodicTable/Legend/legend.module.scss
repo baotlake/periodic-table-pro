@@ -86,7 +86,8 @@
   gap: 0.2em;
   border-radius: 0.5em;
   padding: 0 0.5em;
-  background: darken($light-background, 3%);
+  // background: darken($light-background, 3%);
+  background: hsl(var(--bg-soft));
   @include buttonActionTransform;
 }
 
@@ -295,14 +296,14 @@
     }
 
     .switch-button {
-      background: lighten($dark-background, 3%);
+      // background: lighten($dark-background, 3%);
     }
 
     .switch {
-      background: lighten($dark-background, 3%);
+      // background: lighten($dark-background, 3%);
 
       &::before {
-        background: lighten($dark-background, 8%);
+        // background: lighten($dark-background, 8%);
       }
     }
 
