@@ -66,9 +66,9 @@ export function BottomNavigation({ className }: Props) {
       <div
         className={cx(
           'box',
-          'absolute text-base bottom-4 overflow-hidden transform-gpu transition',
+          { collapse },
+          'absolute text-base bottom-4 overflow-hidden left-1/2 -translate-x-1/2 transform-gpu transition',
           'h-14 shadow flex justify-between ',
-          { collapse }
         )}
         onPointerDown={handleTouchStart}
         onPointerUp={() => clearTimeout(timeoutId)}
