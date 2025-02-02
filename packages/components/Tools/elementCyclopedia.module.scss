@@ -12,7 +12,7 @@
     max-width: 800PX;
     margin-left: auto;
     margin-right: auto;
-    background-color: darken($light-background, 5%);
+    // background-color: darken($light-background, 5%);
 
     @include landscape {
         padding: 1.5em 1.5em 3em;
@@ -27,7 +27,8 @@
     overflow: hidden;
     width: 100%;
     max-width: 380PX;
-    background: $light-background;
+    background: hsl(var(--bg-soft));
+    // background: $light-background;
     justify-self: center;
 }
 
@@ -70,12 +71,12 @@
     &.light {}
 
     &.dark {
-        background-color: darken($dark-background, 3%);
+        // background-color: darken($dark-background, 3%);
         @include classification-dark;
 
         .card-item {
-            background: $dark-background;
-            color: color.adjust($color: $dark-foceground, $alpha: -0.2);
+            // background: $dark-background;
+            // color: color.adjust($color: $dark-foceground, $alpha: -0.2);
         }
     }
 }
