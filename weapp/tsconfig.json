@@ -23,7 +23,11 @@
       "../node_modules/@types",
       "global.d.ts"
     ],
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@periodic-table-pro/components": ["../packages/components/"],
+      "@periodic-table-pro/data": ["../packages/data/"],
+    }
   },
   "exclude": [
     "node_modules",

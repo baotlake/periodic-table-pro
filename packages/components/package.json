@@ -4,5 +4,8 @@
   "main": "index.ts",
   "types": "index.ts",
   "license": "UNLICENSED",
+  "scripts": {
+    "build": "tsup index.ts"
+  },
   "private": true
 }

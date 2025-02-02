@@ -106,6 +106,10 @@ export default defineConfig(async (merge, { command, mode }) => {
         },
       },
     },
+    // alias: {
+    //   '@periodic-table-pro/components': resolve(__dirname, '../../packages/components'),
+    //   '@periodic-table-pro/data': resolve(__dirname, '../../packages/data'),
+    // }
   }
 
   if (process.env.NODE_ENV === 'development') {
