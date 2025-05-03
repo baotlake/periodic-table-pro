@@ -22,8 +22,6 @@ export default function SplashScreen() {
     }, 100)
   }, [])
 
-  console.log('splash screen', visible)
-
   if (!visible) return null
 
   return (
