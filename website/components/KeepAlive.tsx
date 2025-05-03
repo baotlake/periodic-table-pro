@@ -2,38 +2,54 @@
 
 import classNames from 'classnames/bind'
 import { usePathname } from 'next/navigation'
-import { PropsWithChildren, ReactNode, useMemo } from 'react'
+import {
+  PropsWithChildren,
+  ReactNode,
+  Suspense,
+  useLayoutEffect,
+  useState,
+} from 'react'
 
 const cx = classNames.bind({})
 
-type Props = PropsWithChildren<{
-  pathnames: string[]
-}>
+const map = new Map<string, ReactNode>()
+let update = () => {}
 
-export default function KeepAlive({ children, pathnames = [] }: Props) {
-  const pathname = usePathname()
-  const map = useMemo<Record<string, ReactNode>>(() => ({}), [])
-  const keep = pathnames.includes(pathname)
-  if (keep && !map[pathname]) {
-    map[pathname] = children
-  }
-
-  console.log('KeepAlive', pathname, keep, map)
+export function KeepProvider({ children }: PropsWithChildren) {
+  const [counter, setCounter] = useState(0)
+  update = () => setCounter((c) => c + 1)
 
   return (
-    <>
-      {Object.keys(map).map((key) => (
-        <div
-          key={key}
-          data-keepalive={keep}
-          data-key={key}
-          className={cx({ hidden: pathname != key })}
-        >
-          {map[key]}
-        </div>
-      ))}
+    <div>
+      {children}
 
-      {!keep && children}
-    </>
+      <Suspense>
+        <Keeper counter={counter} />
+      </Suspense>
+    </div>
   )
+}
+
+function Keeper({ counter }: { counter: number }) {
+  const pathname = usePathname()
+
+  return Array.from(map.keys()).map((path, i) => (
+    <div key={path} style={{ display: pathname === path ? 'block' : 'none' }}>
+      {map.get(path)}
+    </div>
+  ))
+}
+
+type Props = PropsWithChildren<{
+  pathname: string
+}>
+
+export function KeepAlive({ pathname, children }: Props) {
+  map.set(pathname, children)
+
+  useLayoutEffect(() => {
+    update()
+  })
+
+  return null
 }

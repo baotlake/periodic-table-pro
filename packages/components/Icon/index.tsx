@@ -1,5 +1,1 @@
-import MaskIcon from "./MaskIcon"
-
-export {
-    MaskIcon
-}
+export { MaskInlineIcon, MaskIcon } from './MaskIcon'

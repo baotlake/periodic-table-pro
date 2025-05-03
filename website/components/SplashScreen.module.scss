@@ -1,0 +1,25 @@
+@property --splash-r {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+@keyframes splash {
+  0% {
+    --splash-r: 0%;
+  }
+  100% {
+    --splash-r: 100%;
+  }
+}
+
+.splash-screen {
+  // --splash-r: 50%;
+
+  mask-image: radial-gradient(
+    circle,
+    transparent var(--splash-r),
+    black var(--splash-r)
+  );
+  animation: splash 300ms ease-in-out forwards paused;
+}

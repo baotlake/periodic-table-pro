@@ -30,7 +30,7 @@ module.exports = {
       xs: ['12PX', { lineHeight: '16PX' }],
       sm: ['14PX', { lineHeight: '20PX' }],
       base: ['16PX', { lineHeight: '24PX' }],
-      lg: ['18.PX', { lineHeight: '28PX' }],
+      lg: ['18PX', { lineHeight: '28PX' }],
       xl: ['20PX', { lineHeight: '28PX' }],
       '2xl': ['24PX', { lineHeight: '32PX' }],
       '3xl': ['30PX', { lineHeight: '36PX' }],

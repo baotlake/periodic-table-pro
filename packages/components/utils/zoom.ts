@@ -1,22 +1,22 @@
-import { ZoomControlInterface } from '../type'
+import { ZoomControllerInterface } from '../type'
 import { getBoundingClientRect } from '../compat/dom'
 import { maxPtZoom, minPtZoom } from '../config'
 
 const PLATFORM = process.env.PLATFORM
 
-class ZoomControl implements ZoomControlInterface {
-  private wrapper: HTMLElement
+class ZoomController implements ZoomControllerInterface {
+  private container: HTMLElement
   private target: HTMLElement
 
   private panning: boolean = false
-  private clientX: number = 0
-  private clientY: number = 0
   private count: number
 
-  private wrapperRect: DOMRect | null = null
+  private containerRect: DOMRect | null = null
   private targetRect: DOMRect | null = null
 
+  /** 缩放焦点 x 坐标，不包含缩放（event 或者 DOMRect） */
   private focalX: number = 0
+  /** 缩放焦点 y 坐标，不包含缩放（event 或者 DOMRect） */
   private focalY: number = 0
 
   private scale1: number = 1
@@ -24,14 +24,17 @@ class ZoomControl implements ZoomControlInterface {
 
   private offset1 = { tx: 0, ty: 0, mt: 0, ml: 0, st: 0, sl: 0 }
 
-  private panningScale: number = 1
+  private panningScale: number = 0
   private panningTX: number = 0
   private panningTY: number = 0
 
-  private wrapperStyle1 = {} as Record<string, string>
+  private containerInfo = {
+    contentWidth: 0,
+    contentHeight: 0,
+  }
 
   constructor({ wrapper, target }) {
-    this.wrapper = wrapper
+    this.container = wrapper
     this.target = target
 
     this.count = 0
@@ -39,43 +42,41 @@ class ZoomControl implements ZoomControlInterface {
     this.scaleTo = this.scaleTo.bind(this)
   }
 
+  /**
+   * @param delta 双指之间的距离，不考虑缩放
+   * @param _x    缩放焦点 x 坐标，不包含缩放（event 或者 DOMRect）
+   * @param _y    缩放焦点 y 坐标，不包含缩放（event 或者 DOMRect）
+   * @returns
+   */
   public async start(delta: number, _x?: number, _y?: number) {
     let count = ++this.count
-    this.wrapperRect = await getBoundingClientRect(this.wrapper)
+    this.containerRect = await getBoundingClientRect(this.container)
     this.targetRect = await getBoundingClientRect(this.target)
 
-    if (this.count != count || !this.wrapperRect || !this.targetRect) {
+    if (this.count != count || !this.containerRect || !this.targetRect) {
       return {}
     }
 
     let x = _x ?? this.targetRect.left + this.targetRect.width / 2
     let y = _y ?? this.targetRect.top + this.targetRect.height / 2
 
-    this.clientX = x
-    this.clientY = y
-
     this.scale1 = this.parseScale(this.target)
     this.delta1 = delta
 
-    this.offset1 = await this.parseInitalOffset(this.wrapper, this.target)
+    this.offset1 = await this.parseInitalOffset(this.container, this.target)
     if (this.count !== count) {
       return {}
     }
     console.log('start: ', this.offset1, this.scale1)
 
-    const [focalX, focalY] = this.calcFocalXY(
-      this.wrapperRect,
-      this.targetRect,
-      x,
-      y,
-      this.scale1
-    )
-    this.focalX = focalX
-    this.focalY = focalY
+    // 以 transform-origin 为原点，计算缩放焦点坐标
+    this.focalX = x - this.targetRect.left
+    this.focalY = y - this.targetRect.top
 
-    this.wrapperStyle1 = {
-      scrollBehavior: this.wrapper.style.scrollBehavior,
-      willChange: this.wrapper.style.willChange,
+    this.containerInfo = {
+      // padding top & padding bottom
+      contentHeight: this.containerRect.height - 60 - 80,
+      contentWidth: this.containerRect.width,
     }
 
     // this.wrapper.style.overflow = 'hidden'
@@ -89,22 +90,41 @@ class ZoomControl implements ZoomControlInterface {
   }
 
   public move(delta: number) {
-    if (!this.panning || !this.targetRect || !this.wrapperRect) {
+    const wrapperRect = this.containerRect
+    const rect = this.targetRect
+    if (!this.panning || !rect || !wrapperRect) {
       return null
     }
 
-    const rate = delta / this.delta1
-    let scale = this.scale1 * rate
+    const { contentWidth, contentHeight } = this.containerInfo
+    const { delta1, scale1, focalX, focalY } = this
+    const rate = delta / delta1
+    const scale = Math.max(Math.min(scale1 * rate, maxPtZoom), minPtZoom)
 
-    if (scale < minPtZoom) {
-      scale = minPtZoom
-    }
-    if (scale > maxPtZoom) {
-      scale = maxPtZoom
-    }
+    // tx, ty 会被缩放，focalX, focalY 不包含缩放
+    // let tx = this.offset1.tx / scale1 //+ focalX * (1 / scale - 1 / scale1)
+    // let ty = this.offset1.ty / scale1 //+ focalY * (1 / scale - 1 / scale1)
 
-    let tx = this.offset1.tx - this.focalX * (scale / this.scale1 - 1)
-    let ty = this.offset1.ty - this.focalY * (scale / this.scale1 - 1)
+    /**
+     * 如果 x 或 y 方向出现滚动条，那么偏移值应该是 0
+     * 反之，如果偏移值不是 0，那么说明没有滚动条
+     * */
+    const w = (rect.width / scale1) * scale
+    const h = (rect.height / scale1) * scale
+
+    let tx = focalX * (1 / scale - 1 / scale1)
+    let ty = focalY * (1 / scale - 1 / scale1)
+
+    // 避免出现滚动条时跳变：刚出现滚动条时 ty 应该刚好是 0
+    ty = ty * Math.min(1, (h - contentHeight) / 100)
+
+    // 缩小时居中，以 scale 缩放的方式计算，scale 会影响 tx, ty
+    if (w < contentWidth) {
+      tx = (contentWidth / scale - rect.width / scale1) / 2
+    }
+    if (h < contentHeight) {
+      ty = (contentHeight / scale - rect.height / scale1) / 2
+    }
 
     // console.log('move', this.offset1.tx, this.focalX, this.scale1, scale, tx)
 
@@ -114,7 +134,7 @@ class ZoomControl implements ZoomControlInterface {
     this.panningTX = tx
     this.panningTY = ty
 
-    this.target.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`
+    this.target.style.transform = `scale(${scale}) translate(${tx}px,${ty}px)`
     this.target.style.zoom = '1'
 
     // this.target.style.fontSize = '1em'
@@ -129,85 +149,60 @@ class ZoomControl implements ZoomControlInterface {
   }
 
   public end() {
-    // console.log('end: ', this.panning, this.targetRect, this.wrapperRect)
-    if (!this.panning) {
+    if (!this.panning || !this.targetRect || !this.containerRect) {
       return
     }
     this.panning = false
-    if (!this.targetRect || !this.wrapperRect) {
-      return null
-    }
 
-    let tx = this.panningTX,
-      ty = this.panningTY
+    let tx = this.panningTX
+    let ty = this.panningTY
     let scale = this.panningScale
+    const wrapperRect = this.containerRect
+    const rect = this.targetRect
 
     let { mt, ml, sl, st } = this.offset1
-    // let mt = 0, ml = 0, pr = 0, pb = 0
-    let dt = 0,
-      dl = 0,
-      dr = 0,
-      db = 0
+    const { contentWidth, contentHeight } = this.containerInfo
 
-    dt = ty
-    dl = tx
-    dr = this.targetRect.width * (scale - 1) + dl
-    db = this.targetRect.height * (scale - 1) + dt
+    console.log('end', this.offset1, { sl, st, tx, ty })
 
-    // console.log('d-> ', { dt, dl, dr, db })
-
-    if (dt > 0 && st > 0) {
-      ty += -st
+    // 将 translate 转换为 scroll (移除掉空白滚动区域)
+    // translate 会受缩放影响，scroll 不会
+    if (ty > 0 && st > 0) {
+      ty -= st / scale
       st = 0
     }
-    if (dl > 0 && sl > 0) {
-      tx += -sl
+    if (tx > 0 && sl > 0) {
+      tx -= sl / scale
       sl = 0
     }
-
     if (ty < 0) {
-      st += -ty
+      st -= ty * scale
       ty = 0
     }
-
     if (tx < 0) {
-      sl += -tx
+      sl -= tx * scale
       tx = 0
     }
 
-    // 缩小时居中
-    if (
-      (this.targetRect.width * scale) / this.scale1 <
-      this.wrapperRect.width
-    ) {
-      const x =
-        (this.wrapperRect.width -
-          (this.targetRect.width * scale) / this.scale1) /
-        2
-      tx = x
+    // 缩小时居中，以 zoom 缩放的方式计算，zoom 会影响 tx, ty
+    if ((rect.width / this.scale1) * scale < contentWidth) {
+      tx = (contentWidth / scale - rect.width / this.scale1) / 2
       sl = 0
     }
-    if (
-      (this.targetRect.height * scale) / this.scale1 <
-      this.wrapperRect.height
-    ) {
-      const y =
-        (this.wrapperRect.height -
-          (this.targetRect.height * scale) / this.scale1) /
-        2
-      ty = y
+    if ((rect.height / this.scale1) * scale < contentHeight) {
+      ty = (contentHeight / scale - rect.height / this.scale1) / 2
       st = 0
     }
 
-    // console.log({ scale, tx, ty, sl, st })
+    console.log('end', { scale, tx, ty, sl, st })
     const tscale = Math.min(scale, 1)
     const fscale = Math.max(scale, 1)
-    this.wrapper.scrollTo?.(sl, st)
-    this.target.style.transform = `translate(${tx}px,${ty}px)`
+    this.container.scrollTo?.(sl, st)
     this.target.style.zoom = `${scale}`
+    this.target.style.transform = `translate(${tx}px,${ty}px)`
     // this.target.style.transform = `translate(${tx}px,${ty}px) scale(${tscale})`
     // this.target.style.fontSize = `${fscale}em`
-    this.wrapper.scrollTo?.(sl, st)
+    this.container.scrollTo?.(sl, st)
 
     // this.wrapper.style.overflow = 'auto'
     // this.wrapper.style.scrollBehavior = this.wrapperStyle1.scrollBehavior
@@ -259,24 +254,24 @@ class ZoomControl implements ZoomControlInterface {
   }
 
   private async parseInitalOffset(wrapper: HTMLElement, target: HTMLElement) {
-    let tx = 0,
-      ty = 0
-    let match = target.style.transform.match(
+    let tx = 0
+    let ty = 0
+    const trMatch = target.style.transform.match(
       /translate\(([-\d\.]+)px,\s*([-\d\.]+)px\)/
     )
-    if (match) {
-      tx = parseFloat(match[1])
-      ty = parseFloat(match[2])
+    if (trMatch) {
+      tx = parseFloat(trMatch[1])
+      ty = parseFloat(trMatch[2])
     }
-    let mt = 0,
-      ml = 0
-    match = target.style.marginTop.match(/([-\d\.]+)px/)
-    if (match) {
-      mt = parseFloat(match[1])
+    let mt = 0
+    let ml = 0
+    const mtMatch = target.style.marginTop.match(/([-\d\.]+)px/)
+    if (mtMatch) {
+      mt = parseFloat(mtMatch[1])
     }
-    match = target.style.marginLeft.match(/([-\d\.]+)px/)
-    if (match) {
-      ml = parseFloat(match[1])
+    const mlMatch = target.style.marginLeft.match(/([-\d\.]+)px/)
+    if (mlMatch) {
+      ml = parseFloat(mlMatch[1])
     }
 
     let [sl, st] = await this.getScrollOffset(tx, ty)
@@ -291,19 +286,6 @@ class ZoomControl implements ZoomControlInterface {
     }
   }
 
-  // 以 transform-origin 为原点，计算缩放焦点坐标
-  private calcFocalXY(
-    wrapperRect: DOMRect,
-    rect: DOMRect,
-    x: number,
-    y: number,
-    scale: number
-  ) {
-    let focalX = x - rect.left
-    let focalY = y - rect.top
-    return [focalX, focalY]
-  }
-
   public get isPanning() {
     return this.panning
   }
@@ -314,11 +296,11 @@ class ZoomControl implements ZoomControlInterface {
 
   private async getScrollOffset(tx: number, ty: number) {
     if (PLATFORM == 'h5' || PLATFORM == 'next') {
-      return [this.wrapper.scrollLeft, this.wrapper.scrollTop]
+      return [this.container.scrollLeft, this.container.scrollTop]
     }
 
-    let sl = this.wrapperRect!.left + tx - this.targetRect!.left
-    let st = this.wrapperRect!.top + ty - this.targetRect!.top
+    let sl = this.containerRect!.left + tx - this.targetRect!.left
+    let st = this.containerRect!.top + ty - this.targetRect!.top
 
     sl = isFinite(sl) ? sl : 0
     st = isFinite(st) ? st : 0
@@ -327,4 +309,4 @@ class ZoomControl implements ZoomControlInterface {
   }
 }
 
-export default ZoomControl
+export default ZoomController

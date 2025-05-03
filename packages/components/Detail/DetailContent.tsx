@@ -72,7 +72,14 @@ export function DetailContent({ detailData }: Props) {
   }
 
   return (
-    <div className={cx('detail-content', themeMode, Categories[category])}>
+    <div
+      className={cx(
+        'detail-content',
+        'bg-deeper',
+        themeMode,
+        Categories[category]
+      )}
+    >
       <div
         className={cx('drawer')}
         style={
@@ -96,7 +103,7 @@ export function DetailContent({ detailData }: Props) {
           {Object.keys(detailData.properties).map((key) => (
             <div
               key={key}
-              className={cx('drawer-item')}
+              className={cx('drawer-item', 'bg-card')}
               onClick={() => handleScrollInto(key)}
             >
               <Image className={cx('drawer-item-icon')} src={icon[key]} />

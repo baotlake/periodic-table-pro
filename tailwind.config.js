@@ -98,7 +98,7 @@ module.exports = {
           mute: 'hsl(var(--bg-mute) / <alpha-value>)',
           deep: 'hsl(var(--bg-deep) / <alpha-value>)',
         },
-        text: {
+        fg: {
           DEFAULT: 'hsl(var(--text-default) / <alpha-value>)',
         },
         border: {

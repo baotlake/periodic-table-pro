@@ -13,6 +13,7 @@ import searchSvg from '../assets/icons/search.svg'
 import styles from './search.module.scss'
 import { useAtom } from 'jotai'
 import { menuButtonClientRect } from '../recoil/atom'
+import { MaskIcon } from '../Icon'
 
 const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
@@ -88,9 +89,16 @@ export function Search({ themeClass, onSearchChange }: Props) {
           }}
         />
 
-        <div className={cx('search-input-wrapper')}>
+        <div className={cx('search-input-wrapper', 'bg-background-soft')}>
+          <div
+            className={cx('search-button')}
+            onClick={() => setList(search(input))}
+          >
+            <MaskIcon className="size-6 text-foreground/60" src={searchSvg} />
+          </div>
+
           <Input
-            className={cx('input')}
+            className={cx('input', 'text-foreground')}
             placeholder="搜索元素"
             autoFocus
             value={input}
@@ -106,12 +114,6 @@ export function Search({ themeClass, onSearchChange }: Props) {
               <div className={cx('css-icon')} />
             </div>
           )}
-          <div
-            className={cx('search-button')}
-            onClick={() => setList(search(input))}
-          >
-            <Image className={cx('search-icon')} src={searchSvg} />
-          </div>
         </div>
 
         {list &&

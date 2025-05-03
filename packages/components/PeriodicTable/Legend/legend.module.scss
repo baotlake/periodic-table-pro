@@ -85,15 +85,7 @@
   align-items: center;
   gap: 0.2em;
   border-radius: 0.5em;
-  padding: 0 0.5em;
-  background: darken($light-background, 3%);
   @include buttonActionTransform;
-}
-
-.switch-icon {
-  font-size: 1em;
-  width: 1.2em;
-  height: 1.2em;
 }
 
 .color-sign-container {
@@ -292,18 +284,6 @@
     .arrow-icon,
     .icon {
       @include filter-white(0.8);
-    }
-
-    .switch-button {
-      background: lighten($dark-background, 3%);
-    }
-
-    .switch {
-      background: lighten($dark-background, 3%);
-
-      &::before {
-        background: lighten($dark-background, 8%);
-      }
     }
 
     .classification-item {

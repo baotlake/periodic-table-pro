@@ -29,7 +29,7 @@ module.exports = {
       xs: ['12px', { lineHeight: '16px' }],
       sm: ['14px', { lineHeight: '20px' }],
       base: ['16px', { lineHeight: '24px' }],
-      lg: ['18.px', { lineHeight: '28px' }],
+      lg: ['18px', { lineHeight: '28px' }],
       xl: ['20px', { lineHeight: '28px' }],
       '2xl': ['24px', { lineHeight: '32px' }],
       '3xl': ['30px', { lineHeight: '36px' }],
@@ -100,17 +100,26 @@ module.exports = {
           800: 'hsl(var(--primary-hue) var(--primary-s) 20% / <alpha-value>)',
           900: 'hsl(var(--primary-hue) var(--primary-s) 15% / <alpha-value>)',
         },
-        bg: {
+        background: {
           DEFAULT: 'hsl(var(--bg-default) / <alpha-value>)',
           soft: 'hsl(var(--bg-soft) / <alpha-value>)',
           mute: 'hsl(var(--bg-mute) / <alpha-value>)',
-          deep: 'hsl(var(--bg-deep) / <alpha-value>)',
         },
-        text: {
-          DEFAULT: 'hsl(var(--text-default) / <alpha-value>)',
+        deeper: {
+          DEFAULT: 'hsl(var(--bg-deep) / <alpha-value>)',
+        },
+        lighter: {
+          DEFAULT: 'hsl(var(--bg-light) / <alpha-value>)',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        foreground: {
+          DEFAULT: 'hsl(var(--fg-default) / <alpha-value>)',
         },
         border: {
-          DEFAULT: 'hsl(var(--border-default) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--border) / <alpha-value>)',
         },
       },
     },

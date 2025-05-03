@@ -32,7 +32,7 @@ export default function PersistentDrawer({ visible, onClose }: Props) {
     <div
       className={cx(
         'menu-drawer-wrapper',
-        'fixed w-screen h-0 top-0 left-0 z-50'
+        'fixed w-screen h-0 top-0 left-0 z-40'
       )}
     >
       <div
@@ -47,29 +47,31 @@ export default function PersistentDrawer({ visible, onClose }: Props) {
         className={cx(
           'menu-drawer',
           'transition max-w-full h-screen w-64',
-          'bg-bg-soft overflow-x-hidden overflow-y-auto',
+          'bg-deeper overflow-x-hidden overflow-y-auto',
           { visible }
         )}
       >
-        <div className="relative w-full h-72">
+        <div className="relative w-full h-36">
           <Image
             className={cx('background-image', 'w-full h-full object-cover')}
             mode="aspectFill"
             src={backgroundImg}
           />
-          <div className="absolute bottom-0">
+        </div>
+
+        <div className={cx('menu-container', 'text-base bg-deeper')}>
+          <div className="">
             <div className="flex items-center py-3 px-8">
               <Image
-                className="size-10 rounded-full overflow-hidden me-3"
+                className="size-5 rounded-full overflow-hidden me-3"
                 src={logoImg}
               />
-              <span className="text-xl font-bold truncate text-nowrap text-black/80">
+              <span className="text-base font-bold truncate">
                 元素周期表PRO
               </span>
             </div>
           </div>
-        </div>
-        <div className={cx('menu-container', 'text-base')}>
+
           {menus.map((group) => (
             <div key={group.key}>
               {group.items.map((item) => {
@@ -78,7 +80,7 @@ export default function PersistentDrawer({ visible, onClose }: Props) {
                   return (
                     <div
                       key={item.name}
-                      className={cx('menu-item')}
+                      className={cx('menu-item', 'bg-background')}
                       onClick={() =>
                         Taro.navigateToMiniProgram({ appId: item.route })
                       }
@@ -93,7 +95,7 @@ export default function PersistentDrawer({ visible, onClose }: Props) {
                   return (
                     <div
                       key={item.name}
-                      className={cx('menu-item')}
+                      className={cx('menu-item', 'bg-background')}
                       onClick={handleShare}
                     >
                       <Image
@@ -112,7 +114,7 @@ export default function PersistentDrawer({ visible, onClose }: Props) {
                 return (
                   <Navigator
                     key={item.name}
-                    className={cx('menu-item')}
+                    className={cx('menu-item', 'bg-background')}
                     url={item.route}
                     href={item.route}
                   >

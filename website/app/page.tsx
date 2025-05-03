@@ -8,6 +8,9 @@ import {
   AutoZoomModal,
 } from '@periodic-table-pro/components'
 import ZoomablePtTable from '@/components/ZoomablePtTable'
+import SplashScreen from '@/components/SplashScreen'
+import { KeepAlive } from '@/components/KeepAlive'
+import { usePathname } from 'next/navigation'
 
 const cx = classNames.bind({})
 
@@ -20,15 +23,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home() {
   return (
-    <div className={cx('')}>
-      <MenuHomeLayout>
-        <ZoomablePtTable />
-        <BottomNavigation />
+    <KeepAlive pathname="/">
+      <div className={cx('')}>
+        <MenuHomeLayout>
+          <ZoomablePtTable />
+          <BottomNavigation />
 
-        <AutoDisplayPropertiesModal />
-        <AutoZoomModal />
-      </MenuHomeLayout>
-      {/* <RedirectModal /> */}
-    </div>
+          <AutoDisplayPropertiesModal />
+          <AutoZoomModal />
+        </MenuHomeLayout>
+
+        <SplashScreen />
+      </div>
+    </KeepAlive>
   )
 }

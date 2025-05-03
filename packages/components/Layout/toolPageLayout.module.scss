@@ -1,19 +1,14 @@
-@use "sass:color";
-@import "../scss/theme";
-@import "../scss/media";
+@use 'sass:color';
+@import '../scss/theme';
+@import '../scss/media';
 
 .layout {
-    background: darken($light-background, 5%);
-    color: $light-foceground;
-    min-height: 100vh;
 }
 
-
 .layout {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        background: darken($dark-background, 3%);
-        color: color.change($dark-foceground, $alpha: 0.85);
-    }
+  &.dark {
+  }
 }

@@ -6,6 +6,7 @@ import { CompatProvider } from '@periodic-table-pro/components/compat'
 import ProgressBar from '@/components/ProgressBar'
 import '../styles/globals.scss'
 import 'nprogress/nprogress.css'
+import { KeepProvider } from '@/components/KeepAlive'
 
 const APP_ORIGIN = process.env.APP_ORIGIN
 
@@ -110,13 +111,13 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
         <meta property="og:url" content={APP_ORIGIN} />
       </head>
-      <body>
+      <body className="text-foreground bg-background">
         <CompatProvider>
           <Initialization />
           <Suspense>
             <ProgressBar />
           </Suspense>
-          {children}
+          <KeepProvider>{children}</KeepProvider>
         </CompatProvider>
       </body>
     </html>

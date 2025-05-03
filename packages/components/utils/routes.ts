@@ -21,7 +21,7 @@ export const weappRoutes = {
 export const webRoutes = {
   home: '/',
   detail: '/element',
-  wiki: '/wiki',
+  wiki: '/wiki/',
   search: '/search',
   tools: '/tools',
   setting: '/setting',

@@ -7,7 +7,7 @@ import { useState, useRef } from 'react'
 import { minPtZoom, maxPtZoom } from '../config'
 import { setStorage } from '../utils/storage'
 import { useAtom } from 'jotai'
-import { periodicTableZoom, periodicTableZoomControl } from '../recoil/atom'
+import { periodicTableZoom, ptZoomControler } from '../recoil/atom'
 import { throttle } from 'lodash-es'
 import styles from './zoomModal.module.scss'
 
@@ -23,7 +23,7 @@ type Props = {
 
 export default function ZoomModal({ visible, onClose, themeClass }: Props) {
   const [zoom, setZoom] = useAtom(periodicTableZoom)
-  const [zoomControl, setZoomControl] = useAtom(periodicTableZoomControl)
+  const [zoomControl, setZoomControl] = useAtom(ptZoomControler)
 
   const [value, setValue] = useState<null | number>(null)
   const scale = typeof value === 'number' ? value : zoom

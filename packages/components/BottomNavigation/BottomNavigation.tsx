@@ -14,6 +14,7 @@ import likeSvg from '../assets/icons/like_outlined.svg'
 import shareSvg from '../assets/icons/share.svg'
 import circleSvg from '../assets/icons/circle.svg'
 import chevronsSvg from '../assets/icons/chevrons.svg'
+import atomImg from '../assets/icons/atom_2.svg'
 
 import styles from './bottomNavigation.module.scss'
 
@@ -95,16 +96,24 @@ export function BottomNavigation({ className }: Props) {
         </Navigator>
         <Navigator
           className={cx('item')}
+          href={routes.elementsCyclopedia}
+          url={routes.elementsCyclopedia}
+        >
+          <Image className={cx('icon')} src={atomImg} />
+          <div className={cx('label')}>百科</div>
+        </Navigator>
+        <Navigator
+          className={cx('item')}
           href={routes.setting}
           url={routes.setting}
         >
           <Image className={cx('icon')} src={tuneSvg} />
           <div className={cx('label')}>设置</div>
         </Navigator>
-        <Navigator className={cx('item')} href={routes.like} url={routes.like}>
+        {/* <Navigator className={cx('item')} href={routes.like} url={routes.like}>
           <Image className={cx('icon')} src={likeSvg} />
           <div className={cx('label')}>喜欢</div>
-        </Navigator>
+        </Navigator> */}
         <div className={cx('item')} onClick={handleShare}>
           <Image className={cx('icon')} src={shareSvg} />
           <div className={cx('label')}>分享</div>

@@ -26,36 +26,51 @@ $sqrt2: 1.4142135624;
 @mixin back-icon($size: 16px, $stroke-width: 2px) {
   position: relative;
 
+  // &::before {
+  //   content: '';
+  //   width: $stroke-width;
+  //   height: $size / $sqrt2;
+  //   position: absolute;
+  //   bottom: 50%;
+  //   left: 50%;
+  //   transform-origin: bottom left;
+  //   transform: translate(-($size / 3), 0) rotate(45deg);
+  //   background-color: currentColor;
+  //   border: none;
+  //   transition: var(--transition);
+  // }
+
+  // &::after {
+  //   content: '';
+  //   width: $stroke-width;
+  //   height: $size / $sqrt2 - $stroke-width;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform-origin: top left;
+  //   transform: translate(
+  //       ($stroke-width / $sqrt2 - $size / 3),
+  //       ($stroke-width / $sqrt2)
+  //     )
+  //     rotate(-45deg);
+  //   background-color: currentColor;
+  //   border: none;
+  //   transition: var(--transition);
+  // }
+
   &::before {
     content: '';
-    width: $stroke-width;
-    height: $size / $sqrt2;
     position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: bottom left;
-    transform: translate(-($size / 3), 0) rotate(45deg);
-    background-color: currentColor;
-    border: none;
-    transition: var(--transition);
-  }
-
-  &::after {
-    content: '';
-    width: $stroke-width;
-    height: $size / $sqrt2 - $stroke-width;
-    position: absolute;
+    width: $size;
+    height: $size;
     top: 50%;
     left: 50%;
-    transform-origin: top left;
-    transform: translate(
-        ($stroke-width / $sqrt2 - $size / 3),
-        ($stroke-width / $sqrt2)
-      )
-      rotate(-45deg);
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
     background-color: currentColor;
-    border: none;
-    transition: var(--transition);
+    clip-path: path(
+      'M12.6436 1.28711L5.93164 8L12.6436 14.7119L11.3564 16L3.35645 8L11.3564 0L12.6436 1.28711Z'
+    );
   }
 }
 

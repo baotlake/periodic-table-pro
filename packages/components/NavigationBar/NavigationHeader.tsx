@@ -7,6 +7,7 @@ import { Taro, isTaro } from '../compat'
 import { routes } from '../utils/routes'
 import { useAtom } from 'jotai'
 import { themeModeState } from '../recoil/atom'
+import { useRouter } from '../compat/next'
 
 import styles from './navigationHeader.module.scss'
 
@@ -30,6 +31,8 @@ export default function NavigationHeader({
 }: Props) {
   const [themeMode] = useAtom(themeModeState)
 
+  const router = useRouter()
+
   const handleBack = () => {
     if (isTaro) {
       const path = Taro.getCurrentPages()
@@ -43,6 +46,12 @@ export default function NavigationHeader({
       }
       return
     }
+
+    if (!window.navigation?.canGoBack) {
+      router.replace(routes.home)
+      return
+    }
+
     history.back()
   }
 
@@ -56,7 +65,7 @@ export default function NavigationHeader({
   return (
     <NavigationBar
       className={cx('nav-header', theme || themeMode, className, {
-        background: background,
+        'bg-background': background,
       })}
     >
       <div

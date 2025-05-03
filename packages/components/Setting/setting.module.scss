@@ -2,35 +2,31 @@
 @import '../scss/style';
 @import '../scss/icon';
 
-.setting {}
-
-.theme-switch {
-    @include switch($isColumn: false);
+.setting {
 }
 
-.minus.icon, .add.icon {
-    width: 2.6em;
-    height: 2.6em;
-    margin:0 0.5em;
-    cursor: pointer;
-    @include filter-black;
+.theme-switch {
+  @include switch($isColumn: false);
+}
+
+.minus.icon,
+.add.icon {
+  width: 2.6em;
+  height: 2.6em;
+  margin: 0 0.5em;
+  cursor: pointer;
+  @include filter-black;
 }
 
 // theme
 .setting {
-    &.light {}
+  &.light {
+  }
 
-    &.dark {
-        .theme-switch {
-            background: lighten($dark-background, 3%);
-
-            &::before {
-                background: lighten($dark-background, 8%);
-            }
-        }
-        
-        .minus.icon, .add.icon {
-            @include filter-white;
-        }
+  &.dark {
+    .minus.icon,
+    .add.icon {
+      @include filter-white;
     }
+  }
 }

@@ -10,18 +10,14 @@
   touch-action: pan-x pan-y;
   padding-top: 3.75em;
   padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
-  @include light-scrollbar;
+  @include no-scrollbar;
 }
 
 .pan-pinch {
-  padding-top: 3.75em;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 5em);
   height: fit-content;
   width: fit-content;
   transform-origin: 0% 0%;
-  // margin: auto;
-  // will-change: transform, margin, font-size;
-  will-change: transform, font-size;
+  will-change: transform, zoom;
   user-select: none;
   -webkit-user-drag: none;
 
@@ -32,6 +28,5 @@
 
 @include dark-mode {
   .pan-pinch-wrapper {
-    @include dark-scrollbar;
   }
 }

@@ -54,28 +54,18 @@ export function useTheme() {
 
   useEffect(() => {
     const getSetting = async () => {
-      const { theme: oldTheme } = (await getStorage('theme' as any)) as any
-      let { themeMode: storageTheme } = await getStorage('themeMode')
+      const { themeMode } = await getStorage('themeMode')
       const { followSystemTheme } = await getStorage('followSystemTheme')
 
-      if (!storageTheme && oldTheme) {
-        storageTheme = oldTheme
-        setStorage({ theme: undefined } as any)
-      }
-
-      let systemTheme = 'dark'
-
       const { theme } = await getAppBaseInfo()
-      systemTheme = theme || systemTheme
+      const systemTheme = theme || 'dark'
 
       const mode =
         followSystemTheme === true && systemTheme
           ? systemTheme
-          : storageTheme
-          ? storageTheme
-          : defaultValue.themeMode
+          : themeMode || defaultValue.themeMode
 
-      return [mode, followSystemTheme] as [ThemeMode, boolean]
+      return [mode, followSystemTheme] as const
     }
 
     const setSetting = async () => {
@@ -114,8 +104,10 @@ export function useTheme() {
       theme !== mode && theme && setThemeMode(theme)
     }
 
-    setBackground(mode)
-    toggleTheme(mode)
+    if (initialized) {
+      setBackground(mode)
+      toggleTheme(mode)
+    }
 
     return () => {
       offThemeChange(handleThemeChange)

@@ -49,7 +49,7 @@
   align-items: center;
   font-size: 18PX;
   line-height: 54PX;
-  background: white;
+  // background: white;
 }
 
 .props-icon {
@@ -92,7 +92,7 @@
 
 .props-item {
   // margin-top: 1PX;
-  background: white;
+  // background: white;
   padding: 8PX 48PX;
   line-height: 1.6;
   font-size: 14PX;
@@ -194,8 +194,8 @@
 
   &.dark {
     .props-headline {
-      background: $dark-background;
-      color: color.change($dark-foceground, $alpha: 0.85);
+      // background: $dark-background;
+      // color: color.change($dark-foceground, $alpha: 0.85);
     }
 
     .props-icon {
@@ -203,8 +203,8 @@
     }
 
     .props-item {
-      background: $dark-background;
-      color: color.change($dark-foceground, $alpha: 0.85);
+      // background: $dark-background;
+      // color: color.change($dark-foceground, $alpha: 0.85);
     }
 
     .crystal-structure-img {

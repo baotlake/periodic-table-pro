@@ -6,21 +6,39 @@ import styles from './maskIcon.module.scss'
 const cx = classNames.bind(styles)
 
 type Props = {
-    url: string | { src: string }
-    className?: string
+  src: string | { src: string }
+  className?: string
 }
-export default function MaskIcon({ url, className }: Props) {
-    if (typeof url == 'object') {
-        url = url.src
-    }
-    return (
-        <div className={cx(className, 'mask-icon')}>
-            <div
-                className={cx('mask-bg')}
-                style={{
-                    '--mask': 'url(' + url + ')',
-                } as CSSProperties}
-            />
-        </div>
-    )
+export function MaskInlineIcon({ src, className }: Props) {
+  if (typeof src == 'object') {
+    src = src.src
+  }
+  return (
+    <div className={cx('inline-block', className)}>
+      <div
+        className={cx('mask-icon', 'inline-icon')}
+        style={
+          {
+            '--mask': 'url(' + src + ')',
+          } as CSSProperties
+        }
+      />
+    </div>
+  )
+}
+
+export function MaskIcon({ src, className }: Props) {
+  if (typeof src == 'object') {
+    src = src.src
+  }
+  return (
+    <div
+      className={cx('mask-icon', className)}
+      style={
+        {
+          '--mask': 'url(' + src + ')',
+        } as CSSProperties
+      }
+    />
+  )
 }

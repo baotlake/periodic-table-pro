@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Page() {
   return (
-    <div className={cx('search-page')}>
+    <div className={cx('min-h-screen min-h-svh')}>
       <NavigationHeader title="搜索" />
       <SearchPage />
     </div>

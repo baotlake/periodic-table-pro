@@ -20,7 +20,7 @@ export function MenuHomeLayout({ children, className }: Props) {
     <div
       className={cx(
         'menu-home-layout',
-        'bg-bg text-text transition-colors duration-300',
+        'bg-background text-foreground',
         className
       )}
     >
@@ -33,10 +33,9 @@ export function MenuHomeLayout({ children, className }: Props) {
           <div className={cx('nav-icon', visible ? 'close' : 'menu')} />
         </div>
       </NavigationBar>
+      <PersistentDrawer visible={visible} onClose={() => setVisible(false)} />
 
       {children}
-
-      <PersistentDrawer visible={visible} onClose={() => setVisible(false)} />
     </div>
   )
 }

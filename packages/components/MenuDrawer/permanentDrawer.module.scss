@@ -20,8 +20,6 @@
   padding: 0 18px;
   margin-top: 1px;
   cursor: pointer;
-  background-color: hsl(var(--bg-default));
-  color: hsl(var(--text-default));
   // @apply bg-bg text-text;
 
   &::before {
@@ -57,8 +55,8 @@
     @include dark-scrollbar();
 
     .item {
-      background: $dark-background;
-      color: color.change($dark-foceground, $alpha: 0.85);
+      // background: $dark-background;
+      // color: color.change($dark-foceground, $alpha: 0.85);
     }
 
     .icon {

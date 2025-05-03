@@ -20,7 +20,7 @@ export function ToolPageLayout({ title, children }: Props) {
 
   return (
     <div
-      className={cx('layout', themeMode)}
+      className={cx('layout', 'bg-deeper min-h-screen', themeMode)}
       style={{
         paddingTop: rect.bottom + 8 + 'px',
       }}

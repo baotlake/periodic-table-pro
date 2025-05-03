@@ -1,5 +1,5 @@
 import { atom } from 'jotai'
-import type { ThemeMode, TrendData, ZoomControlInterface } from '../type'
+import type { ThemeMode, TrendData, ZoomControllerInterface } from '../type'
 import {
   type Emphasize,
   type ColorSign,
@@ -41,9 +41,7 @@ export const periodicTableDisplayProperty = atom(
 
 export const periodicTableZoom = atom(1)
 
-export const periodicTableZoomControl = atom(
-  null as ZoomControlInterface | null
-)
+export const ptZoomControler = atom(null as ZoomControllerInterface | null)
 
 export const displayPropertiesModalVisible = atom(false)
 

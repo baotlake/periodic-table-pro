@@ -6,6 +6,7 @@ import styles from './menuButton.module.scss'
 const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
 const wxacodeImg = STATIC_BASE + '/img/ui/wxacode.jpg'
+const qrcodeImg = STATIC_BASE + '/img/ui/pt.ziziyi.svg'
 
 type Props = {
   style?: React.CSSProperties
@@ -46,12 +47,30 @@ export default function MenuButton({ style, className }: Props) {
       </div>
 
       <div
-        className={cx('dropdown', {
-          visible,
-        })}
+        className={cx(
+          'absolute top-[150%] right-0 w-64 p-4 bg-background-mute',
+          'shadow-2xl rounded-xl',
+          visible ? 'block' : 'hidden'
+        )}
       >
-        <div className=""></div>
-        <img className="w-full" src={wxacodeImg} />
+        <div className="flex gap-3">
+          <div className="w-1/2">
+            <div className="w-full rounded-xl overflow-hidden">
+              <img className="block w-full p-2 bg-white" src={wxacodeImg} />
+            </div>
+            <div className="text-center text-base mt-2 font-bold">
+              微信扫码打开
+            </div>
+          </div>
+          <div className="w-1/2">
+            <div className="w-full rounded-xl overflow-hidden">
+              <img className="block w-full p-2 bg-white" src={qrcodeImg} />
+            </div>
+            <div className="text-center text-base mt-2 font-bold">
+              手机扫码打开
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

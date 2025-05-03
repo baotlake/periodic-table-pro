@@ -39,6 +39,7 @@ export function Article({
     <div
       className={cx(
         'article',
+        'pt-32 px-8 pb-16 leading-loose mx-auto box-border',
         themeMode,
         Categories[elementsCategories[atomicNumber - 1]],
         { loading }

@@ -3,7 +3,7 @@
 @import '../scss/icon';
 
 .search-paper {
-  font-size: 16PX;
+  font-size: 16px;
 }
 
 .container {
@@ -19,12 +19,11 @@
   font-size: inherit;
   width: 100%;
   border-radius: (6em / 16);
-  padding-left: (20em /16);
+  padding-right: (6em /16);
   box-sizing: border-box;
   overflow: hidden;
   margin: (50em / 16) auto;
   height: (50em / 16);
-  background: darken($light-background, 10%);
 }
 
 .input {
@@ -45,12 +44,10 @@
   height: (20em / 16);
   margin: 0 (5em / 16);
   border-radius: 50%;
-  background: color.adjust($light-foceground, $alpha: -0.6);
-  color: $light-background;
   flex: none;
 
-  >.css-icon {
-    @include close-icon(12PX, 1PX);
+  > .css-icon {
+    @include close-icon(12px, 1px);
   }
 }
 
@@ -62,43 +59,18 @@
   justify-content: center;
   align-items: center;
 
-  &:hover {}
-}
-
-.search-icon {
-  font-size: inherit;
-  width: (24em / 16);
-  height: (24em / 16);
-
-  @include filter-black(0.6);
-
-  >img {
-    display: block;
+  &:hover {
   }
 }
 
 // theme
 .search-paper {
-  &.light {}
+  &.light {
+  }
 
   &.dark {
-    color: color.adjust($dark-foceground, $alpha: -0.2);
-
-    .search-input-wrapper {
-      background: lighten($dark-background, 8%);
-    }
-
     .input {
       color-scheme: dark;
-    }
-
-    .clean-button {
-      background: color.adjust($dark-foceground, $alpha: -0.6);
-      color: $dark-background;
-    }
-
-    .search-icon {
-      @include filter-white(0.8);
     }
   }
 }

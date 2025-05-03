@@ -38,6 +38,7 @@ import arrowDownUp from '../../assets/icons/arrow-down-up.svg'
 import panZoomImg from '../../assets/icons/pan_zoom.svg'
 import maximizeImg from '../../assets/icons/maximize.svg'
 import styles from './legend.module.scss'
+import { MaskIcon } from '../../Icon'
 
 const cx = classNames.bind(styles)
 
@@ -156,25 +157,22 @@ export default function Legend({ themeClass, Z }: Props) {
               onClick={() => setDisplayPropertiesModalVisible(true)}
             >
               {propertiesLabels[displayProperty]}
-              <Image className={cx('icon', 'arrow-icon')} src={arrowImg} />
+              <MaskIcon className="size-3 ms-1" src={arrowImg} />
             </div>
             <div className={cx('switch-container')}>
-              <div className={cx('switch-button')} onClick={handleEmphasize}>
+              <div
+                className={cx('switch-button', 'bg-background-mute px-2')}
+                onClick={handleEmphasize}
+              >
                 <div>{emphasizeLabel[emphasize]}</div>
-                <Image
-                  className={cx('icon', 'switch-icon')}
-                  src={arrowDownUp}
-                />
+                <MaskIcon className="size-4 ms-1" src={arrowDownUp} />
               </div>
               <div
-                className={cx('switch-button')}
+                className={cx('switch-button', 'bg-background-mute px-2')}
                 onClick={() => setZoomModalVisible(true)}
               >
                 <div>缩放</div>
-                <Image
-                  className={cx('icon', 'switch-icon')}
-                  src={maximizeImg}
-                />
+                <MaskIcon className="size-4 ms-1" src={maximizeImg} />
               </div>
             </div>
           </div>
@@ -186,7 +184,7 @@ export default function Legend({ themeClass, Z }: Props) {
                   onClick={() => setDisplayPropertiesModalVisible(true)}
                 >
                   {propertiesLabels[displayProperty]}
-                  <Image className={cx('arrow-icon')} src={arrowImg} />
+                  <MaskIcon className="size-3 ms-1" src={arrowImg} />
                 </div>
                 <div>
                   小
@@ -255,29 +253,33 @@ export default function Legend({ themeClass, Z }: Props) {
             <div
               className={cx(
                 'switch',
-                'p-1',
-                'i'.repeat(colorSignData[colorSign])
+                'i'.repeat(colorSignData[colorSign]),
+                'p-1 bg-background-soft rounded-lg before:bg-lighter before:rounded'
               )}
             >
               <div
+                role="button"
                 className={cx('item')}
                 onClick={() => handleColorSign('trend')}
               >
                 趋势
               </div>
               <div
+                role="button"
                 className={cx('item')}
                 onClick={() => handleColorSign('classification')}
               >
                 类别
               </div>
               <div
+                role="button"
                 className={cx('item')}
                 onClick={() => handleColorSign('block')}
               >
                 区块
               </div>
               <div
+                role="button"
                 className={cx('item')}
                 onClick={() => handleColorSign('state')}
               >

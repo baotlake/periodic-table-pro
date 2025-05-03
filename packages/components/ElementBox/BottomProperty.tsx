@@ -20,7 +20,7 @@ import {
 } from '@periodic-table-pro/data'
 import classNames from 'classnames/bind'
 import { chineseName } from '../utils/utils'
-import { MaskIcon } from '../Icon'
+import { MaskInlineIcon } from '../Icon'
 import { RichText } from '../compat'
 
 // const cx = classNames.bind({})
@@ -44,7 +44,11 @@ export function BottomProperty({ property, Z }: Props) {
       const zhName = chineseName(zhCNNames[index], index + 1)
       return (
         <>
-          {typeof zhName == 'string' ? zhName : <MaskIcon url={zhName.url} />}{' '}
+          {typeof zhName == 'string' ? (
+            zhName
+          ) : (
+            <MaskInlineIcon src={zhName.url} />
+          )}{' '}
           {pinyin[index]}
         </>
       )

@@ -78,6 +78,7 @@ export function PropsGroup({
       className={cx(
         'props-group',
         'landscape',
+        'bg-card',
         themeClass,
         Categories[elementsCategories[Z - 1]]
       )}

@@ -1,12 +1,15 @@
+'use client'
+
 import { Metadata } from 'next'
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   MenuHomeLayout,
-  ZoomablePT,
   BottomNavigation,
-  weappPath2Web,
+  AutoDisplayPropertiesModal,
+  AutoZoomModal,
 } from '@periodic-table-pro/components'
+import ZoomablePtTable from '@/components/ZoomablePtTable'
+import { useEffect } from 'react'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,18 +21,20 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 export default function Home() {
-  // const router = useRouter()
+  const router = useRouter()
 
-  // useEffect(() => {
-  //   const path = weappPath2Web(location.href)
-  //   router.replace(path)
-  // }, [router])
+  useEffect(() => {
+    router.replace('/')
+  }, [])
 
   return (
     <div className="">
       <MenuHomeLayout>
-        <ZoomablePT />
+        <ZoomablePtTable />
         <BottomNavigation />
+
+        <AutoDisplayPropertiesModal />
+        <AutoZoomModal />
       </MenuHomeLayout>
     </div>
   )

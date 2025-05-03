@@ -49,7 +49,11 @@ export function Content({ data, themeClass, adId }: Props) {
                     )
                   default:
                     return (
-                      <RichText key={i} className={cx('block')} nodes={r(block.html)} />
+                      <RichText
+                        key={i}
+                        className={cx('block')}
+                        nodes={r(block.html)}
+                      />
                     )
                 }
               })}

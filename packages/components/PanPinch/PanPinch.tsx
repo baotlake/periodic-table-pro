@@ -1,21 +1,17 @@
 'use client'
 
-import {
-  useRef,
-  useEffect,
-  useContext,
-  PropsWithChildren,
-  useState,
-  CSSProperties,
-} from 'react'
+import { useRef, useEffect, PropsWithChildren } from 'react'
 import classNames from 'classnames/bind'
-import ZoomControl from '../utils/zoom'
-import { isTaro, getBoundingClientRect, useDidShow } from '../compat'
-import { useAtom, useSetAtom } from 'jotai'
-import { periodicTableZoom, periodicTableZoomControl } from '../recoil/atom'
+import ZoomController from '../utils/zoom'
+import {
+  getBoundingClientRect,
+  offWindowResize,
+  onWindowResize,
+  useDidShow,
+} from '../compat'
+import { useSetAtom } from 'jotai'
+import { periodicTableZoom, ptZoomControler } from '../recoil/atom'
 import styles from './index.module.scss'
-
-const PLATFORM = process.env.PLATFORM
 
 const cx = classNames.bind(styles)
 
@@ -39,11 +35,11 @@ export function PanPinch({
   const targetRef = useRef<HTMLDivElement>(null)
   const innerRef = useRef<HTMLDivElement>(null)
 
-  const setZoomControl = useSetAtom(periodicTableZoomControl)
+  const setZoomControl = useSetAtom(ptZoomControler)
   const setZoom = useSetAtom(periodicTableZoom)
 
   const dataRef = useRef({
-    zoom: null as null | ZoomControl,
+    controller: null as null | ZoomController,
     delat: 0,
     scale: 1,
     panningTimeoutId: -1,
@@ -56,15 +52,14 @@ export function PanPinch({
 
       const self = dataRef.current
 
-      const t1 = e.touches[0],
-        t2 = e.touches[1]
-      const x1 = t1.clientX,
-        y1 = t1.clientY
-      const x2 = t2.clientX,
-        y2 = t2.clientY
+      const p1 = e.touches[0]
+      const p2 = e.touches[1]
+
+      const { clientX: x1, clientY: y1 } = p1
+      const { clientX: x2, clientY: y2 } = p2
 
       const d1 = Math.hypot(x2 - x1, y2 - y1)
-      self.zoom?.start(d1, (x1 + x2) / 2, (y1 + y2) / 2)
+      self.controller?.start(d1, (x1 + x2) / 2, (y1 + y2) / 2)
     },
     handleTouchMove(e: React.TouchEvent | TouchEvent) {
       const self = dataRef.current
@@ -72,19 +67,17 @@ export function PanPinch({
         return
       }
 
-      const p1 = e.touches[0],
-        p2 = e.touches[1]
-      const x1 = p1.clientX,
-        y1 = p1.clientY
-      const x2 = p2.clientX,
-        y2 = p2.clientY
+      const p1 = e.touches[0]
+      const p2 = e.touches[1]
+      const { clientX: x1, clientY: y1 } = p1
+      const { clientX: x2, clientY: y2 } = p2
       const d = Math.hypot(x2 - x1, y2 - y1)
 
-      self.zoom?.move(d)
+      self.controller?.move(d)
     },
     handleTouchEnd(e: React.TouchEvent | TouchEvent) {
       const self = dataRef.current
-      const data = self.zoom?.end()
+      const data = self.controller?.end()
       if (data?.scale) {
         setZoom(data.scale)
       }
@@ -93,16 +86,16 @@ export function PanPinch({
       const { deltaY, clientX, clientY } = e
       const self = dataRef.current
 
-      if (!e.ctrlKey || !self.zoom) {
+      if (!e.ctrlKey || !self.controller) {
         return
       }
 
       e.preventDefault()
       e.stopPropagation()
 
-      if (!self.zoom.isPanning) {
+      if (!self.controller.isPanning) {
         self.delat = 100
-        self.zoom.start(100, clientX, clientY)
+        self.controller.start(100, clientX, clientY)
       }
 
       let dy = -deltaY
@@ -111,11 +104,11 @@ export function PanPinch({
       }
 
       self.delat = self.delat + dy / 10
-      self.zoom.move(self.delat)
+      self.controller.move(self.delat)
 
       clearTimeout(self.panningTimeoutId)
       self.panningTimeoutId = setTimeout(() => {
-        const data = self.zoom?.end()
+        const data = self.controller?.end()
         if (data?.scale) {
           setZoom(data.scale)
         }
@@ -138,7 +131,9 @@ export function PanPinch({
       const x = rect.left
       const y = rect.top
 
-      self.zoom?.scaleTo(value, x, y)
+      self.controller?.scaleTo(value, x, y)
+
+      console.log('scaleTo', value, x, y, rect, wrapperRect)
     },
     handleMouseMove(e: React.MouseEvent | MouseEvent) {
       const wrapper = wrapperRef.current
@@ -155,12 +150,19 @@ export function PanPinch({
 
   useEffect(() => {
     const wrapper = wrapperRef.current
+    if (!wrapper) return
+
     const { handleWheel } = dataRef.current
-    if (wrapper) {
-      wrapper.addEventListener('wheel', handleWheel, true)
-      return () => {
-        wrapper?.removeEventListener('wheel', handleWheel, true)
-      }
+
+    const handleResize = () => {
+      // 重新居中
+      dataRef.current.scaleTo(dataRef.current.value)
+    }
+    wrapper.addEventListener('wheel', handleWheel, true)
+    onWindowResize(handleResize)
+    return () => {
+      wrapper?.removeEventListener('wheel', handleWheel, true)
+      offWindowResize(handleResize)
     }
   }, [])
 
@@ -169,13 +171,12 @@ export function PanPinch({
     const wrapper = wrapperRef.current
     const target = targetRef.current
 
-    if (!self.zoom && wrapper && target) {
-      self.zoom = new ZoomControl({ wrapper, target })
-      setZoomControl(self.zoom)
-      self.scaleTo(value)
+    if (!self.controller && wrapper && target) {
+      self.controller = new ZoomController({ wrapper, target })
+      setZoomControl(self.controller)
     }
 
-    const lastScale = self.zoom?.scale ?? 0
+    const lastScale = self.controller?.scale ?? 0
 
     if (Math.abs(value - lastScale) > 0.001 && wrapper && target) {
       self.scaleTo(value)
@@ -183,8 +184,9 @@ export function PanPinch({
   }, [value])
 
   useDidShow(() => {
-    const { value } = dataRef.current
-    dataRef.current.scaleTo(value)
+    // const { value } = dataRef.current
+    // dataRef.current.scaleTo(value)
+    // console.log('useDidShow', value)
   })
 
   return (

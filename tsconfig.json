@@ -19,19 +19,13 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "strict": true,
-    "typeRoots": [
-      "../node_modules/@types",
-      "global.d.ts"
-    ],
-    // "types": ["node"],
+    // "typeRoots": ["../node_modules/@types", "global.d.ts"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "paths": {
       "@periodic-table-pro/components/*": ["./packages/components/*"],
-      "@periodic-table-pro/data":["./packages/data/*"]
+      "@periodic-table-pro/data": ["./packages/data/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
+  "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }

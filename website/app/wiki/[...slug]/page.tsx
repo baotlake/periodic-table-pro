@@ -28,7 +28,7 @@ export default async function Wiki({ params }: Props) {
   const data: WikiData = wikiJson.default
 
   return (
-    <div className={cx('wiki-page', 'bg-bg')}>
+    <div className={cx('wiki-page', '')}>
       <NavigationHeader />
 
       <Article

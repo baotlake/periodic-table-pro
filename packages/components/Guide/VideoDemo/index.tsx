@@ -12,13 +12,14 @@ type Props = {
 export function VideoDemo({ src, ratio = 16 / 9 }: Props) {
   return (
     <div
-      className={cx('video-demo')}
+      className={cx('relative max-w-full m-auto h-0')}
       style={{
         paddingBottom: (1 / ratio) * 100 + '%',
       }}
     >
-      <div className={cx('container')}>
+      <div className="absolute w-full h-full top-0 left-0">
         <Video
+          className="w-full h-full"
           loop={true}
           muted={true}
           autoPlay={true}

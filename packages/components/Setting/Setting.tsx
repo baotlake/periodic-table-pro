@@ -71,7 +71,8 @@ export function Setting({}: Props) {
           <div
             className={cx(
               'theme-switch',
-              'i'.repeat(themeSwitchData[oneTermTheme])
+              'i'.repeat(themeSwitchData[oneTermTheme]),
+              'p-1 -my-1 bg-deeper rounded-lg before:bg-lighter before:rounded'
             )}
           >
             <div

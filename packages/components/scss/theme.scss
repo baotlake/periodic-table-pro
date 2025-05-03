@@ -9,20 +9,28 @@ $dark-foceground: #efefef;
 
 @mixin dark {
   --bg-default: 210 4% 11%;
-  --bg-soft: 210 4% 12%;
+  --bg-soft: 210 4% 13%;
   --bg-mute: 210 4% 15%;
-  --bg-deep: 210 4% 8%;
-  --text-default: 0 0 100%;
-  --border-default: 210 4% 20%;
+  --bg-deep: 210 4% 10%;
+  --bg-light: 210 4% 18%;
+  --fg-default: 0 0 100%;
+  --border: 210 4% 20%;
+  --card: 210 4% 15%;
+  --card-foreground: 0 0 100%;
+
+  color-scheme: dark light;
 }
 
 @mixin light {
   --bg-default: 0 0% 100%;
-  --bg-soft: 0 0% 98%;
+  --bg-soft: 0 0% 96%;
   --bg-mute: 0 0% 95%;
-  --bg-deep: 0 0% 90%;
-  --text-default: 0 0 0%;
-  --border-default: 0 0% 95%;
+  --bg-deep: 0 0% 95%;
+  --bg-light: 0 0% 100%;
+  --fg-default: 0 0 0%;
+  --border: 0 0% 85%;
+  --card: 0 0 100%;
+  --card-foreground: 0 0 0%;
 }
 
 @mixin dark-mode {

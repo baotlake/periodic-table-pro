@@ -2,8 +2,8 @@ import classNames from 'classnames/bind'
 import { Taro, Navigator, Image } from '../compat'
 import { routes } from '../utils/routes'
 
-import solubilitySvg from '../assets/illus/solubility.svg'
-import wikiSvg from '../assets/illus/wiki.svg'
+import solubilityTableImg from '../assets/illus/solubility-table.jpg'
+import wikiImg from '../assets/illus/wiki.jpg'
 import deepReadingImg from '../assets/illus/deep-reading.png'
 import styles from './tools.module.scss'
 
@@ -17,41 +17,47 @@ type Props = {
 
 export function Tools({ className }: Props) {
   return (
-    <div className={cx('tools', className)}>
+    <div className={cx('tools', 'px-8 mt-8 sm:mt-0', className)}>
       <Navigator
-        className={cx('item-box')}
+        className="block mb-8 rounded-md overflow-hidden bg-card"
         href={routes.solubilityTable}
         url={routes.solubilityTable}
       >
         <Image
-          className={cx('illus')}
+          className={cx('w-full aspect-video object-cover')}
           mode="aspectFit"
-          src={solubilitySvg}
+          src={solubilityTableImg}
         ></Image>
-        <div className={cx('title')}>溶解性表</div>
+        <div className="text-xl px-4 pt-2 pb-4">溶解性表</div>
       </Navigator>
 
       <Navigator
-        className={cx('item-box')}
+        className="block mb-8 rounded-md overflow-hidden bg-card"
         href={routes.elementsCyclopedia}
         url={routes.elementsCyclopedia}
       >
-        <Image className={cx('illus')} mode="aspectFit" src={wikiSvg}></Image>
-        <div className={cx('title')}>元素百科</div>
+        <Image
+          className={cx('w-full aspect-video object-cover')}
+          mode="aspectFit"
+          src={wikiImg}
+        ></Image>
+        <div className="text-xl px-4 pt-2 pb-4">元素百科</div>
       </Navigator>
 
       {PLATFORM == 'next' && (
         <a
-          className={cx('item-box')}
+          className="block mb-8 rounded-md overflow-hidden bg-card"
           href={`${DEEP_READING_ORIGIN}/start`}
           target="_blank"
         >
           <Image
-            className={cx('illus', 'cover')}
+            className={cx('w-full aspect-video object-contain')}
             mode="aspectFit"
             src={deepReadingImg}
           />
-          <div className={cx('title')}>秒查词秒翻译，轻松阅读英语</div>
+          <div className="text-xl px-4 pt-2 pb-4">
+            秒查词秒翻译，轻松阅读英语
+          </div>
         </a>
       )}
 

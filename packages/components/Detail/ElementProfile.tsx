@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { Image, previewImage } from '../compat'
 import classNames from 'classnames/bind'
 import previewImg from '../assets/icons/preview.svg'
-import { MaskIcon } from '../Icon'
+import { MaskInlineIcon } from '../Icon'
 import { zhCNCategories, Categories } from '@periodic-table-pro/data'
 import { chineseName } from '../utils/utils'
 import { STATIC_BASE } from '../config'
@@ -79,7 +79,7 @@ export function ElementProfile({
             {typeof zhName == 'string' ? (
               zhName
             ) : (
-              <MaskIcon url={zhName.url} />
+              <MaskInlineIcon src={zhName.url} />
             )}{' '}
             {pinyin}
             {/* {atomicNumber + " " + name + " " + pinyin} */}

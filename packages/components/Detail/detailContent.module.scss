@@ -13,8 +13,6 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  background: darken($light-background, 5%);
-  color: $light-foceground;
 }
 
 .drawer {
@@ -42,7 +40,7 @@
   padding: 0 18px;
   border-radius: 6px;
   line-height: 42px;
-  background: white;
+  // background: white;
 
   @include buttonActionTransform;
 }
@@ -102,8 +100,6 @@
   }
 
   &.dark {
-    background: darken($dark-background, 3%);
-    color: $dark-foceground;
     @include classification-dark;
 
     .drawer {
@@ -112,8 +108,8 @@
     }
 
     .drawer-item {
-      background: $dark-background;
-      color: color.change($dark-foceground, $alpha: 0.85);
+      // background: $dark-background;
+      // color: color.change($dark-foceground, $alpha: 0.85);
     }
 
     .drawer-item-icon {

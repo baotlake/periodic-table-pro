@@ -28,7 +28,7 @@ export function MenuPageDrawer({ className }: Props) {
               if (PLATFORM !== 'weapp') return
               return (
                 <div
-                  className={cx('item')}
+                  className={cx('item', 'bg-card')}
                   key={item.name}
                   onClick={() =>
                     Taro.navigateToMiniProgram({ appId: item.route })
@@ -46,7 +46,7 @@ export function MenuPageDrawer({ className }: Props) {
               if (PLATFORM == 'h5' || PLATFORM == 'next') return
               return (
                 <div
-                  className={cx('item')}
+                  className={cx('item', 'bg-card')}
                   key={item.name}
                   onClick={() =>
                     Taro.showShareMenu({
@@ -68,7 +68,7 @@ export function MenuPageDrawer({ className }: Props) {
             }
             return (
               <Navigator
-                className={cx('item')}
+                className={cx('item', 'bg-card')}
                 key={item.name}
                 href={item.route}
                 url={item.route}

@@ -21,7 +21,7 @@ export function ElementCyclopedia({ themeClass }: Props) {
     <div className={cx('elements-encyclopedia', themeClass)}>
       {itemList.map((item) => (
         <Navigator
-          className={cx('card-item', Categories[item.category])}
+          className={cx('card-item', 'bg-card', Categories[item.category])}
           href={getWikiPath(item.Z)}
           url={getWikiPath(item.Z)}
         >

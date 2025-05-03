@@ -6,17 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "svgr": "npx @svgr/cli --out-dir components/svg --typescript --ignore-existing --no-dimensions -- public/svg",
     "lint": "next lint"
   },
   "dependencies": {
+    "@tarojs/helper": "^4.0.12",
+    "@tarojs/runtime": "^4.0.12",
     "classnames": "^2.3.2",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
+    "eslint-plugin-react-hooks": "0.0.0-experimental-f7396427-20250501",
     "lodash-es": "^4.17.21",
-    "next": "^14.2.5",
+    "next": "^15.3.1",
     "next-pwa": "^5.6.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "0.0.0-experimental-f7396427-20250501",
+    "react-dom": "0.0.0-experimental-f7396427-20250501",
     "typescript": "4.9.4"
   },
   "devDependencies": {
