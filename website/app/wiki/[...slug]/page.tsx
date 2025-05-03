@@ -7,7 +7,7 @@ import '@periodic-table-pro/components/wiki.scss'
 const cx = classNames.bind({})
 
 type Props = {
-  params: { slug: string[] }
+  params: Promise<{ slug: string[] }>
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Wiki({ params }: Props) {
-  const id = params.slug[0]
+  const { slug } = await params
+  const id = slug[0]
   const i = symbol.findIndex((s) => s == id)
   const Z = i + 1
   const wikiJson = await import('../../../public/json/wiki/' + Z + '.json')
