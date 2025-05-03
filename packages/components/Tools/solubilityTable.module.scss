@@ -50,7 +50,8 @@ $box-height: 50PX;
 }
 
 .solubility-table {
-    background-color: $light-background;
+    background-color: hsl(var(--bg-default));
+    color: hsl(var(--text-default));
 }
 
 .table-wrapper {
@@ -75,13 +76,13 @@ $box-height: 50PX;
     padding: 10PX;
     width: fit-content;
     height: fit-content;
-    color: $light-foceground;
     margin: auto;
     @include solubility;
 }
 
 .head {
-    background: color.adjust($light-background, $alpha: -0.4);
+    // background: color.adjust($light-background, $alpha: -0.4);
+    background: hsl(var(--bg-soft));
     backdrop-filter: blur(10PX);
     z-index: 1;
 
@@ -146,7 +147,7 @@ $box-height: 50PX;
     font-size: 16PX;
     margin: auto;
     padding: 60PX 20PX;
-    color: $light-foceground;
+    // color: $light-foceground;
     max-width: min(90%, 600PX);
 
     @include solubility;
@@ -163,7 +164,8 @@ $box-height: 50PX;
 
     &::after {
         @include pseudo-table-border;
-        color: darken($light-background, 20%);
+        // color: darken($light-background, 20%);
+        color: hsl(var(--text-default) / 10%);
     }
 }
 
@@ -172,22 +174,22 @@ $box-height: 50PX;
     &.light {}
 
     &.dark {
-        background: $dark-background;
+        // background: $dark-background;
 
         .table {
-            color: $dark-foceground;
+            // color: $dark-foceground;
         }
 
         .head {
-            background: color.adjust($dark-background, $alpha: -0.4);
+            // background: color.adjust($dark-background, $alpha: -0.4);
         }
 
         .key-table {
-            color: $dark-foceground;
+            // color: $dark-foceground;
         }
 
         .cell::after {
-            color: lighten($dark-background, 20%);
+            // color: lighten($dark-background, 20%);
         }
     }
 }

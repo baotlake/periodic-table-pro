@@ -4,7 +4,7 @@ import Script from 'next/script'
 import { Initialization } from '@periodic-table-pro/components'
 import { CompatProvider } from '@periodic-table-pro/components/compat'
 import ProgressBar from '@/components/ProgressBar'
-import '../styles/globals.scss'
+import './globals.scss'
 import 'nprogress/nprogress.css'
 import { KeepProvider } from '@/components/KeepAlive'
 
