@@ -8,7 +8,7 @@ import {
   weappPath2Web,
   AutoDisplayPropertiesModal,
   AutoZoomModal,
-} from '@periodic-table-pro/components'
+} from '@packages/components'
 import Redirect from './Redirect'
 
 export async function generateMetadata(): Promise<Metadata> {

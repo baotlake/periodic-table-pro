@@ -8,7 +8,7 @@ import {
   propertiesGroupLabel,
   elementsCategories,
   Categories,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import ElectronsShell from './ElectronsShell'
 import { Image, Navigator, redirectTo, RichText } from '../compat'
 import { getDetailPath, getWikiPath } from '../utils/routes'

@@ -4,7 +4,7 @@ import {
   zhCNNames,
   formalShortAtomicWeights,
   Property,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 
 type ResultData = {
   Z: number

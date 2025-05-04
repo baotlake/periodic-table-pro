@@ -6,7 +6,7 @@ import {
   Categories,
   elementsCategories,
   WikiData,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import { CustomWrapper } from '../compat'
 import { useAtom } from 'jotai'
 

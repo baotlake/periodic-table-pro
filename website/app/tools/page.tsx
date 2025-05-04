@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { MenuPageLayout, Tools } from '@periodic-table-pro/components'
+import { MenuPageLayout, Tools } from '@packages/components'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

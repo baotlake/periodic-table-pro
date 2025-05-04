@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { useEffect } from 'react'
 // import { initStorage } from './utils/storage'
-import { Initialization } from '@periodic-table-pro/components'
+import { Initialization } from '@packages/components'
 
 import './app.scss'
 

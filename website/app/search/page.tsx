@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { NavigationHeader } from '@periodic-table-pro/components'
+import { NavigationHeader } from '@packages/components'
 import classNames from 'classnames/bind'
 import SearchPage from '@/components/SearchPage'
 import styles from './index.module.scss'

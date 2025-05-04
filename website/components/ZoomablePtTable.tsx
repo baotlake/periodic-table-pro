@@ -1,9 +1,12 @@
 'use client'
 
-import { PanPinch } from '@periodic-table-pro/components/PanPinch'
-import { PeriodicTable } from '@periodic-table-pro/components/PeriodicTable'
-import { periodicTableZoom } from '@periodic-table-pro/components/recoil/atom'
-import { maxPtZoom, minPtZoom } from '@periodic-table-pro/components/config'
+import {
+  PanPinch,
+  PeriodicTable,
+  periodicTableZoom,
+  maxPtZoom,
+  minPtZoom,
+} from '@packages/components'
 import { useAtom } from 'jotai'
 
 export default function ZoomablePtTable() {

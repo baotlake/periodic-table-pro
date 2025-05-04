@@ -4,7 +4,7 @@ import {
   elements,
   Categories,
   elementsCategories,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import type { search } from '../utils/search'
 import { navigateTo } from '../compat'
 import { getDetailPath } from '../utils/routes'

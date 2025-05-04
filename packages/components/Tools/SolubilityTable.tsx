@@ -3,7 +3,7 @@
 import { useState, CSSProperties } from 'react'
 import classNames from 'classnames/bind'
 import { RichText } from '../compat'
-import { chartData, notes } from '@periodic-table-pro/data'
+import { chartData, notes } from '@packages/data'
 
 import styles from './solubilityTable.module.scss'
 const cx = classNames.bind(styles)

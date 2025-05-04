@@ -11,7 +11,7 @@ import {
   Categories,
   elementsCategories,
   mediumLongForm,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import Groups from './Groups'
 import Periods from './Periods'
 import Legend from './Legend'

@@ -2,7 +2,7 @@
 
 import classNames from 'classnames/bind'
 import { Taro, RichText, Image, Navigator } from '../compat'
-import { Categories, getElementsCyclopedia } from '@periodic-table-pro/data'
+import { Categories, getElementsCyclopedia } from '@packages/data'
 import styles from './elementCyclopedia.module.scss'
 import { getWikiPath } from '../utils/routes'
 import { STATIC_BASE } from '../config'

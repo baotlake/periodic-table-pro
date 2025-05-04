@@ -6,7 +6,7 @@ import {
   properties,
   propertiesLabels,
   type ColorSign,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import trendImg from '../assets/icons/trend.svg'
 import propertyImg from '../assets/icons/property.svg'
 

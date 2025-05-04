@@ -1,7 +1,7 @@
 import { DisplayProperty } from 'types/element'
 import {
   elements,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 
 type TrendData =
   | number

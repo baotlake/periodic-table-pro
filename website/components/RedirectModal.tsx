@@ -1,5 +1,4 @@
-import Modal from '@periodic-table-pro/components/Modal/Modal'
-import { getStorage, setStorage } from '@periodic-table-pro/components/compat'
+import { Modal, getStorage, setStorage } from '@packages/components'
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 

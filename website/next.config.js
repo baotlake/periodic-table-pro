@@ -19,8 +19,8 @@ const nextConfig = {
     esmExternals: true,
     optimizePackageImports: [
       'lodash-es',
-      '@periodic-table-pro/data',
-      '@periodic-table-pro/components',
+      '@packages/data',
+      '@packages/components',
     ],
   },
   env: {

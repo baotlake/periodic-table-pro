@@ -15,8 +15,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@periodic-table-pro/components/*": ["../packages/components/*"],
-      "@periodic-table-pro/data": ["../packages/data/*"],
+      "@packages/components": ["../packages/components/index.ts"],
+      "@packages/components/*": ["../packages/components/*"],
+      "@packages/data": ["../packages/data/index.ts"],
       "@/*": ["./*"]
     },
     "plugins": [

@@ -1,10 +1,9 @@
 import { View, Text, Button } from '@tarojs/components'
 import classNames from 'classnames'
-import { MenuPageLayout, VideoDemo } from '@periodic-table-pro/components'
+import { MenuPageLayout, VideoDemo } from '@packages/components'
 import useShareMessage from '../../hooks/useShareMessage'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
-import { STATIC_BASE } from '@periodic-table-pro/components/config'
+import { STATIC_BASE, themeModeState } from '@packages/components'
 import './index.scss'
 
 const videosPath = STATIC_BASE + '/videos/'

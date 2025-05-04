@@ -1,5 +1,5 @@
 import { isTaro } from '../compat'
-import { symbol } from '@periodic-table-pro/data'
+import { symbol } from '@packages/data'
 
 const APP_ORIGIN = process.env.APP_ORIGIN
 

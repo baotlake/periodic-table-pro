@@ -13,8 +13,8 @@ import {
   atomicRadius,
   density,
   oxidationStates,
-} from '@periodic-table-pro/data'
-import { RichText, MaskInlineIcon } from '@periodic-table-pro/components'
+} from '@packages/data'
+import { RichText, MaskInlineIcon } from '@packages/components'
 import { DisplayProperty } from '../types/element'
 import { chineseName } from './utils'
 

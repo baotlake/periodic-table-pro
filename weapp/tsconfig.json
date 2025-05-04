@@ -19,15 +19,19 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "strict": true,
-    "typeRoots": [
-      "../node_modules/@types",
-      "global.d.ts"
-    ],
-    "types": ["node"]
+    "paths": {
+      "@packages/components": ["../../packages/components/index.ts"],
+      "@packages/components/*": ["../../packages/components/*"],
+      "@packages/data": ["../../packages/data/index.ts"]
+      // "@packages/data/*": ["../packages/data/*"]
+    },
+    "types": ["node", "./global.d.ts"]
   },
-  "exclude": [
-    "node_modules",
-    "dist"
+  "references": [
+    { "path": "../packages/components/" },
+    { "path": "../packages/data/" }
   ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }

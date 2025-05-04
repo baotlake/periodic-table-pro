@@ -5,7 +5,7 @@ import {
   type ColorSign,
   type DisplayProperty,
   formalShortAtomicWeights,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import { parseTrendValue } from '../utils/trend'
 
 export const themeModeState = atom('dark' as ThemeMode)

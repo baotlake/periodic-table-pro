@@ -1,11 +1,10 @@
 import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 import { View, Image, Button } from '@tarojs/components'
-import { MenuPageLayout } from '@periodic-table-pro/components'
+import { MenuPageLayout } from '@packages/components'
 import useShareMessage from '../../hooks/useShareMessage'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
-import { STATIC_BASE } from '@periodic-table-pro/components/config'
+import { STATIC_BASE, themeModeState } from '@packages/components'
 import './index.scss'
 
 const PLATFORM = process.env.PLATFORM

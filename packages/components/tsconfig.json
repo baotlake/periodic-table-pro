@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "composite": true,
+    "paths": {
+      "@packages/data": ["../data/index.ts"]
+    }
+  }
+}

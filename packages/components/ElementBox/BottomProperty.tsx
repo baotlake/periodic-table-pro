@@ -17,7 +17,7 @@ import {
   density,
   oxidationStates,
   DisplayProperty,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import classNames from 'classnames/bind'
 import { chineseName } from '../utils/utils'
 import { MaskInlineIcon } from '../Icon'

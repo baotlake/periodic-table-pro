@@ -2,7 +2,7 @@
 
 import { CustomWrapper, RichText } from '../compat'
 import classNames from 'classnames/bind'
-import type { WikiData } from '@periodic-table-pro/data'
+import type { WikiData } from '@packages/data'
 import { STATIC_BASE } from '../config'
 
 import styles from './content.module.scss'

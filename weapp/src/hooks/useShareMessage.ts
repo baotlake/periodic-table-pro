@@ -1,4 +1,4 @@
-import { STATIC_BASE } from '@periodic-table-pro/components/config'
+import { STATIC_BASE } from '@packages/components'
 import { useShareAppMessage } from '@tarojs/taro'
 
 const posterImg = STATIC_BASE + '/img/ui/poster.png'

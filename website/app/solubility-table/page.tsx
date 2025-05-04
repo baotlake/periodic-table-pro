@@ -1,4 +1,4 @@
-import { ToolPageLayout, SolubilityTable } from '@periodic-table-pro/components'
+import { ToolPageLayout, SolubilityTable } from '@packages/components'
 
 export default function ToolsPage() {
   return (

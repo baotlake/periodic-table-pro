@@ -1,7 +1,7 @@
 import {
   ElementCyclopedia,
   ToolPageLayout,
-} from '@periodic-table-pro/components'
+} from '@packages/components'
 
 export default function ToolsPage() {
   return (

@@ -3,7 +3,7 @@ import {
     enName,
     zhCNNames,
     formalShortAtomicWeights,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import { Property } from '../types/element'
 
 

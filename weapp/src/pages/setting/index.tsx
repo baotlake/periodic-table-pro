@@ -1,8 +1,8 @@
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
-import { MenuPageLayout, Setting } from '@periodic-table-pro/components'
+import { MenuPageLayout, Setting } from '@packages/components'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { themeModeState } from '@packages/components'
 import './index.scss'
 
 export default function SettingPage() {

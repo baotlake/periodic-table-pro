@@ -3,7 +3,7 @@ import {
     mediumLongForm,
     Categories,
     elementsCategories,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 
 import styles from './highlightTable.module.scss'
 

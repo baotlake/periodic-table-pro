@@ -1,15 +1,12 @@
 import { useState, CSSProperties, Fragment } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
-import { NavigationHeader, RichText } from '@periodic-table-pro/components'
-import { chartData, notes } from '@periodic-table-pro/data'
+import { NavigationHeader, RichText } from '@packages/components'
+import { chartData, notes } from '@packages/data'
 import useShareMessage from '../../hooks/useShareMessage'
 import useShareTimeline from '../../hooks/useShareTimeline'
 import { useAtom } from 'jotai'
-import {
-  menuButtonClientRect,
-  themeModeState,
-} from '@periodic-table-pro/components/recoil/atom'
+import { menuButtonClientRect, themeModeState } from '@packages/components'
 import './index.scss'
 
 const classMap = {

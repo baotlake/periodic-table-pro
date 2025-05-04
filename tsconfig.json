@@ -13,19 +13,28 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": "./src/",
     "rootDir": ".",
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
     "strict": true,
-    // "typeRoots": ["../node_modules/@types", "global.d.ts"],
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "paths": {
-      "@periodic-table-pro/components/*": ["./packages/components/*"],
-      "@periodic-table-pro/data": ["./packages/data/*"]
+      "@packages/components": ["./packages/components/index.ts"],
+      "@packages/data": ["./packages/data/index.ts"]
     }
   },
+  // "references": [
+  //   { "@packages/components": "./packages/components" },
+  //   { "@packages/data": "./packages/data" }
+  // ],
+  // "include": [
+  //   // "packages/components/**/*",
+  //   // "packages/data/**/*",
+  //   // "weapp/src/**/*",
+  //   // "website/app/**/*",
+  //   // "website/components/**/*"
+  // ],
   "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }

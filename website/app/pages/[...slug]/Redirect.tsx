@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { weappPath2Web } from '@periodic-table-pro/components'
+import { weappPath2Web } from '@packages/components'
 
 export default function Redirect() {
   // const router = useRouter()

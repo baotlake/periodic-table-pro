@@ -1,6 +1,6 @@
 'use client'
 
-import { Search } from '@periodic-table-pro/components/Search'
+import { Search } from '@packages/components'
 import { useRouter, usePathname } from 'next/navigation'
 
 export default function SearchPage() {

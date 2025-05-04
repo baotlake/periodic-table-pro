@@ -1,6 +1,6 @@
 import { View, Image, Text } from '@tarojs/components'
 import classNames from 'classnames'
-import { MenuPageLayout } from '@periodic-table-pro/components'
+import { MenuPageLayout } from '@packages/components'
 import useShareMessage from '../../hooks/useShareMessage'
 
 import logoImg from '../../assets/images/logo.png'
@@ -8,7 +8,7 @@ import githubSvg from '../../assets/icons/github.svg'
 
 import './index.scss'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { themeModeState } from '@packages/components'
 
 const PLATFORM = process.env.PLATFORM
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { DisplayPropertiesModal } from '../Modal'
-import { DisplayProperty } from '@periodic-table-pro/data'
+import { DisplayProperty } from '@packages/data'
 import { getTrendData } from '../utils/trend'
 import { setStorage } from '../utils/storage'
 import { reportEvent } from '../utils/analytics'

@@ -17,7 +17,7 @@ import {
   propertiesGroupLabel,
   DetailData,
   Categories,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import { useAtom } from 'jotai'
 import { menuButtonClientRect, themeModeState } from '../recoil/atom'
 import { AdCustom } from '../compat/components'

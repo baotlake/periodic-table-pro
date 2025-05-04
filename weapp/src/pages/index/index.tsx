@@ -14,13 +14,10 @@ import {
   AutoDisplayPropertiesModal,
   AutoZoomModal,
   usePageMeta,
-} from '@periodic-table-pro/components'
+} from '@packages/components'
 import { useShareMessage } from '../../hooks'
 import { useAtom } from 'jotai'
-import {
-  periodicTableZoom,
-  themeModeState,
-} from '@periodic-table-pro/components/recoil/atom'
+import { periodicTableZoom, themeModeState } from '@packages/components'
 import './index.scss'
 
 export default function Index() {

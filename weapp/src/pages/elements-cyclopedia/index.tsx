@@ -1,16 +1,18 @@
 import Taro from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
 import classNames from 'classnames'
-import { NavigationHeader, RichText } from '@periodic-table-pro/components'
-import { Categories, getElementsCyclopedia } from '@periodic-table-pro/data'
-import { STATIC_BASE } from '@periodic-table-pro/components/config'
+import {
+  NavigationHeader,
+  RichText,
+  menuButtonClientRect,
+  themeModeState,
+  STATIC_BASE,
+} from '@packages/components'
+import { Categories, getElementsCyclopedia } from '@packages/data'
 import useShareMessage from '../../hooks/useShareMessage'
 import useShareTimeline from '../../hooks/useShareTimeline'
 import { useAtom } from 'jotai'
-import {
-  menuButtonClientRect,
-  themeModeState,
-} from '@periodic-table-pro/components/recoil/atom'
+
 import './index.scss'
 
 export default function ElementsEncyclopedia() {
@@ -34,11 +36,7 @@ export default function ElementsEncyclopedia() {
         paddingTop: rect.bottom + 8 + 'px',
       }}
     >
-      <NavigationHeader
-        background
-        className="navigation"
-        title="元素百科"
-      />
+      <NavigationHeader background className="navigation" title="元素百科" />
 
       <View className="content">
         {itemList.map((item, i) => (

@@ -2,7 +2,7 @@
 
 import { Button } from '../compat'
 import classNames from 'classnames/bind'
-import { DetailData } from '@periodic-table-pro/data'
+import { DetailData } from '@packages/data'
 import { getDetailPath } from '../utils/routes'
 import { redirectTo } from '../compat'
 import { useAtom } from 'jotai'

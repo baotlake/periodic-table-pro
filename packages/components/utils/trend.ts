@@ -1,4 +1,4 @@
-import { elements, DisplayProperty } from '@periodic-table-pro/data'
+import { elements, DisplayProperty } from '@packages/data'
 import { TrendData } from '../type'
 
 export function parseTrendValue(dataList: number[] | string[]): TrendData[] {

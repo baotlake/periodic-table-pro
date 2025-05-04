@@ -15,7 +15,7 @@ import {
   StateOfMatter,
   zhCNNames,
   Emphasize,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import { chineseName } from '../../utils/utils'
 import { getTrendData } from '../../utils/trend'
 import { reportEvent } from '../../utils/analytics'

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { MenuPageLayout, Feedback } from '@periodic-table-pro/components'
+import { MenuPageLayout, Feedback } from '@packages/components'
 
 export const metadata: Metadata = {
   title: '意见反馈 - 元素周期表PRO 高颜值化学必备小工具',

@@ -15,8 +15,6 @@
     "packages/data"
   ],
   "dependencies": {
-    "@tarojs/components": "^3.6.8",
-    "@tarojs/taro": "^3.6.23",
     "classnames": "^2.3.2",
     "jotai": "^2.9.2",
     "lodash-es": "^4.17.21",
@@ -25,6 +23,10 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@tarojs/components": "3.6.23",
+    "@tarojs/plugin-platform-weapp": "3.6.23",
+    "@tarojs/react": "3.6.23",
+    "@tarojs/taro": "3.6.23",
     "@types/dom-navigation": "^1.0.5",
     "@types/node": "^22.2.0",
     "@types/react": "^18.3.3",

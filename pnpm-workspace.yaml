@@ -1,4 +1,3 @@
 packages:
   - "weapp"
   - "website"
-  - "packages/*"

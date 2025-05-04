@@ -3,7 +3,7 @@
 import { use, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import NProgress from 'nprogress'
-import { CompatContext } from '@periodic-table-pro/components/compat'
+import { CompatContext } from '@packages/components'
 
 NProgress.configure({
   showSpinner: false,

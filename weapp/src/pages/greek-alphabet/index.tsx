@@ -1,5 +1,5 @@
 import { View } from '@tarojs/components'
-import { MenuPageLayout } from '@periodic-table-pro/components'
+import { MenuPageLayout } from '@packages/components'
 
 export default function GreekAlphabet() {
   return (

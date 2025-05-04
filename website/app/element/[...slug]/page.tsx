@@ -2,8 +2,8 @@ import {
   NavigationHeader,
   DetailContent,
   AdjacentNavigation,
-} from '@periodic-table-pro/components'
-import { getDetailData, symbol } from '@periodic-table-pro/data'
+} from '@packages/components'
+import { getDetailData, symbol } from '@packages/data'
 import { Metadata } from 'next'
 
 type Props = {

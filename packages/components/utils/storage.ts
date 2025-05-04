@@ -1,5 +1,5 @@
 import { getStorage as get, setStorage as set } from '../compat'
-import { DisplayProperty } from '@periodic-table-pro/data'
+import { DisplayProperty } from '@packages/data'
 import { ThemeMode } from '../type'
 
 export const defaultValue = {

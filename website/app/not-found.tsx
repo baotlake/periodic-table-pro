@@ -5,7 +5,7 @@ import {
   BottomNavigation,
   AutoDisplayPropertiesModal,
   AutoZoomModal,
-} from '@periodic-table-pro/components'
+} from '@packages/components'
 import ZoomablePtTable from '@/components/ZoomablePtTable'
 import { useEffect } from 'react'
 

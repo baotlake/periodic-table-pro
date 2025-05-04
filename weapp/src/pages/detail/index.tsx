@@ -7,13 +7,13 @@ import {
   AdjacentNavigation,
   DetailContent,
   usePageMeta,
-} from '@periodic-table-pro/components'
-import { DetailData, getDetailData } from '@periodic-table-pro/data'
+} from '@packages/components'
+import { DetailData, getDetailData } from '@packages/data'
 import { useShareMessage } from '../../hooks'
 
 import './index.scss'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { themeModeState } from '@packages/components'
 
 const PLATFORM = process.env.PLATFORM
 const DETAIL_CUSTOM_AD = process.env.DETAIL_CUSTOM_AD

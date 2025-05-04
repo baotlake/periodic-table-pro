@@ -1,11 +1,11 @@
 import Taro from '@tarojs/taro'
-import { View, Button, Image } from '@tarojs/components'
 import classNames from 'classnames'
-import { MenuPageLayout } from '@periodic-table-pro/components'
+import { useAtom } from 'jotai'
+import { View, Button, Image } from '@tarojs/components'
+import { MenuPageLayout, themeModeState } from '@packages/components'
+
 import solubilitySvg from '../../assets/illus/solubility.svg'
 import wikiSvg from '../../assets/illus/wiki.svg'
-import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
 import './index.scss'
 
 export default function ToolsPage() {

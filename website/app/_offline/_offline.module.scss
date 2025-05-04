@@ -1,7 +1,7 @@
 @use 'sass:color';
-@import '@periodic-table-pro/components/scss/color-sign';
-@import '@periodic-table-pro/components/scss/theme';
-@import '@periodic-table-pro/components/scss/icon';
+@import '@packages/components/scss/color-sign';
+@import '@packages/components/scss/theme';
+@import '@packages/components/scss/icon';
 
 .network-disconnected{
     color: $light-foceground;

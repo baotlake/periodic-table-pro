@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import classNames from 'classnames/bind'
-import { NavigationHeader, Article } from '@periodic-table-pro/components'
-import { symbol, WikiData } from '@periodic-table-pro/data'
-import '@periodic-table-pro/components/wiki.scss'
+import { NavigationHeader, Article } from '@packages/components'
+import { symbol, WikiData } from '@packages/data'
+import '@packages/components/wiki.scss'
 
 const cx = classNames.bind({})
 

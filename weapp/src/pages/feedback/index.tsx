@@ -1,8 +1,8 @@
 import { View, Image, Button } from '@tarojs/components'
 import classNames from 'classnames'
-import { MenuPageLayout } from '@periodic-table-pro/components'
+import { MenuPageLayout } from '@packages/components'
 import { useAtom } from 'jotai'
-import { themeModeState } from '@periodic-table-pro/components/recoil/atom'
+import { themeModeState } from '@packages/components'
 import feedbackImg from '../../assets/images/feedback.png'
 import './index.scss'
 

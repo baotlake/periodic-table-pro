@@ -2,24 +2,24 @@ import {
   ElementBox,
   NavigationHeader,
   ToolPageLayout,
-} from '@periodic-table-pro/components'
+} from '@packages/components'
 import {
   Categories,
   elementsCategories,
   shortAbridgedAtomicWeights,
   symbol,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 import classNames from 'classnames/bind'
 import styles from './_offline.module.scss'
 import { useAtom } from 'jotai'
 import {
   menuButtonClientRect,
   themeModeState,
-} from '@periodic-table-pro/components/recoil/atom'
+} from '@packages/components'
 import { CSSProperties } from 'react'
-import { Image } from '@periodic-table-pro/components/compat'
+import { Image } from '@packages/components'
 
-import wifiOffImg from '@periodic-table-pro/components/assets/icons/wifi_off.svg'
+import wifiOffImg from '@packages/components/assets/icons/wifi_off.svg'
 import { useRouter } from 'next/router'
 
 const cx = classNames.bind(styles)

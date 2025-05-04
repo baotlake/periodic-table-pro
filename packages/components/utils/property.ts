@@ -2,7 +2,7 @@ import {
   StateOfMatter,
   meltingPoints,
   boilingPoints,
-} from '@periodic-table-pro/data'
+} from '@packages/data'
 
 const DEEP_READING_ORIGIN = process.env.DEEP_READING_ORIGIN
 

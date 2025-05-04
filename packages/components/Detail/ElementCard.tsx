@@ -2,7 +2,7 @@ import classNames from 'classnames/bind'
 import { MaskInlineIcon } from '../Icon'
 // import { zhCNCategories, Categories } from "../../data/classification"
 import { chineseName } from '../utils/utils'
-import { zhCNCategories, Categories } from '@periodic-table-pro/data'
+import { zhCNCategories, Categories } from '@packages/data'
 
 import styles from './elementCard.module.scss'
 

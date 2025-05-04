@@ -5,7 +5,7 @@ import { Image, previewImage } from '../compat'
 import classNames from 'classnames/bind'
 import previewImg from '../assets/icons/preview.svg'
 import { MaskInlineIcon } from '../Icon'
-import { zhCNCategories, Categories } from '@periodic-table-pro/data'
+import { zhCNCategories, Categories } from '@packages/data'
 import { chineseName } from '../utils/utils'
 import { STATIC_BASE } from '../config'
 

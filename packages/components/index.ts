@@ -4,7 +4,7 @@ export { ElementCard, ElementProfile, DetailContent } from './Detail'
 export { AddGuide, VideoDemo, Guide } from './Guide'
 export { MenuPageLayout, MenuHomeLayout, ToolPageLayout } from './Layout'
 export { PersistentDrawer, PermanentDrawer } from './MenuDrawer'
-export { DisplayPropertiesModal, SelectModal } from './Modal'
+export { Modal, DisplayPropertiesModal } from './Modal'
 export { NavigationBar, NavigationHeader } from './NavigationBar'
 export { PeriodicTable, ZoomablePT } from './PeriodicTable'
 export { PremiumFeatureGuard } from './PremiumFeatureGuard'
@@ -18,16 +18,31 @@ export { Feedback } from './Feedback'
 export { Like } from './Like'
 export { Setting } from './Setting'
 export { MaskInlineIcon } from './Icon'
-export { RichText, CustomWrapper } from './compat'
+export {
+  RichText,
+  CustomWrapper,
+  CompatProvider,
+  CompatContext,
+  Image,
+  getStorage,
+  setStorage,
+} from './compat'
 export { PanPinch } from './PanPinch'
 export { AutoDisplayPropertiesModal, AutoZoomModal } from './AutoModal'
 export { Initialization } from './Initialization'
 export { weappPath2Web } from './utils/routes'
 
 export {
-    useMenuClientRect,
-    useTheme,
-    usePinchZoom,
-    useInitialization,
-    usePageMeta,
+  useMenuClientRect,
+  useTheme,
+  usePinchZoom,
+  useInitialization,
+  usePageMeta,
 } from './hooks'
+
+export {
+  themeModeState,
+  menuButtonClientRect,
+  periodicTableZoom,
+} from './recoil/atom'
+export { STATIC_BASE } from './config'

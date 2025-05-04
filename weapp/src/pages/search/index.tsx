@@ -4,13 +4,10 @@ import {
   NavigationHeader,
   Search,
   PremiumFeatureGuard,
-} from '@periodic-table-pro/components'
+} from '@packages/components'
 import useShareMessage from '../../hooks/useShareMessage'
 import { useAtom } from 'jotai'
-import {
-  menuButtonClientRect,
-  themeModeState,
-} from '@periodic-table-pro/components/recoil/atom'
+import { menuButtonClientRect, themeModeState } from '@packages/components'
 import './index.scss'
 
 export default function SearchPage() {

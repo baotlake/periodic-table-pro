@@ -1,8 +1,0 @@
-{
-  "name": "@periodic-table-pro/data",
-  "version": "1.0.0",
-  "main": "index.ts",
-  "types": "index.ts",
-  "license": "UNLICENSED",
-  "private": true
-}

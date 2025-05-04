@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { MenuPageLayout, Like } from '@periodic-table-pro/components'
+import { MenuPageLayout, Like } from '@packages/components'
 
 export const metadata: Metadata = {
   title: '支持 - 元素周期表PRO 高颜值化学必备小工具',
