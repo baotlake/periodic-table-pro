@@ -134,8 +134,8 @@ $sqrt2: 1.4142135624;
   position: relative;
 
   &::before {
-    position: absolute;
     content: '';
+    position: absolute;
     width: $size;
     height: $stroke-width;
     top: 50%;
@@ -148,8 +148,8 @@ $sqrt2: 1.4142135624;
   }
 
   &::after {
-    position: absolute;
     content: '';
+    position: absolute;
     width: $size;
     height: $stroke-width;
     top: 50%;

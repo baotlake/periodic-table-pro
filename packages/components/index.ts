@@ -45,4 +45,4 @@ export {
   menuButtonClientRect,
   periodicTableZoom,
 } from './recoil/atom'
-export { STATIC_BASE } from './config'
+export { STATIC_BASE, maxPtZoom, minPtZoom } from './config'

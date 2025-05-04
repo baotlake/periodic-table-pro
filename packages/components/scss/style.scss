@@ -54,8 +54,8 @@
   // background: #f6f6f6;
 
   &::before {
-    display: block;
     content: '';
+    display: block;
     position: absolute;
     width: $width;
     height: $height;

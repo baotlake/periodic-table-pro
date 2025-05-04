@@ -8,7 +8,7 @@ const cx = classNames.bind(styles)
 
 type Props<T = string | boolean | number | null> = {
   themeClass?: string
-  icon: string
+  icon: string | { src: string }
   title: string
   value?: T
   onChange?: (value: T) => void
