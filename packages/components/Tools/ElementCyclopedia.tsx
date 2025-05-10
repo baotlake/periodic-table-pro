@@ -10,20 +10,22 @@ import { STATIC_BASE } from '../config'
 const cx = classNames.bind(styles)
 
 type Props = {
-  themeClass?: string
+  className?: string
+  openType?: 'navigate' | 'redirect'
 }
 
-export function ElementCyclopedia({ themeClass }: Props) {
+export function ElementCyclopedia({ className, openType }: Props) {
   const itemList = getElementsCyclopedia()
   const imageDir = STATIC_BASE + '/img/1920p/'
 
   return (
-    <div className={cx('elements-encyclopedia', themeClass)}>
+    <div className={cx('elements-encyclopedia', className)}>
       {itemList.map((item) => (
         <Navigator
           className={cx('card-item', 'bg-card', Categories[item.category])}
           href={getWikiPath(item.Z)}
           url={getWikiPath(item.Z)}
+          openType={openType}
         >
           <div className={cx('image-wrapper')}>
             <Image

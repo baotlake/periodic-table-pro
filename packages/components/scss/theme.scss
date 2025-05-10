@@ -13,10 +13,10 @@ $dark-foceground: #efefef;
   --bg-mute: 210 4% 15%;
   --bg-deep: 210 4% 10%;
   --bg-light: 210 4% 18%;
-  --fg-default: 0 0 100%;
+  --fg-default: 0 0% 100%;
   --border: 210 4% 20%;
   --card: 210 4% 15%;
-  --card-foreground: 0 0 100%;
+  --card-foreground: 0 0% 100%;
 
   color-scheme: dark light;
 }
@@ -27,10 +27,10 @@ $dark-foceground: #efefef;
   --bg-mute: 0 0% 95%;
   --bg-deep: 0 0% 95%;
   --bg-light: 0 0% 100%;
-  --fg-default: 0 0 0%;
+  --fg-default: 0 0% 0%;
   --border: 0 0% 85%;
-  --card: 0 0 100%;
-  --card-foreground: 0 0 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
 }
 
 @mixin dark-mode {

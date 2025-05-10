@@ -1,6 +1,7 @@
 'use client'
 import classNames from 'classnames/bind'
 import { Image } from '../compat'
+import { MaskIcon } from '../Icon'
 
 import logoImg from '../assets/images/logo.png'
 import githubSvg from '../assets/icons/github.svg'
@@ -10,18 +11,18 @@ const cx = classNames.bind(styles)
 const PLATFORM = process.env.PLATFORM
 
 type Props = {
-  themeClass?: string
+  className?: string
 }
 
-export function About({ themeClass }: Props) {
+export function About({ className }: Props) {
   return (
-    <div className={cx('about', 'bg-bg py-16 rounded-md', themeClass)}>
+    <div className={cx('about', 'py-16 rounded-md', className)}>
       <div className="pb-5">
         <Image
           className="size-20 rounded-full m-auto block mb-6 border border-solid border-border"
           src={logoImg}
         />
-        <div className="text-center text-lg font-bold">元素周期表PRO</div>
+        <div className="text-center text-lg font-bold">元素周期表 PRO</div>
       </div>
 
       <div className={cx('section')}>
@@ -39,7 +40,10 @@ export function About({ themeClass }: Props) {
           href="https://github.com/baotlake/periodic-table-pro"
           target="_blank"
         >
-          <Image className={cx('icon')} src={githubSvg} />
+          <MaskIcon
+            className="size-5 inline-block align-sub me-1"
+            src={githubSvg}
+          />
           <span className={cx('text')}>
             https://github.com/baotlake/periodic-table-pro
           </span>

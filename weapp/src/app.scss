@@ -1,10 +1,14 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@use 'tailwindcss/base' as *;
+@use 'tailwindcss/components' as *;
+@use 'tailwindcss/utilities' as *;
+
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
 @import '../../packages/components/index.scss';
 // patch tailwind
-@import './output.css';
+@import './tailwind.css';
 
 .taro_page {
   overflow-y: auto;
@@ -34,4 +38,9 @@
       @include light;
     }
   }
+}
+
+.page {
+  background-color: hsl(var(--bg-default));
+  color: hsl(var(--fg-default));
 }

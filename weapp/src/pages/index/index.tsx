@@ -20,6 +20,8 @@ import { useAtom } from 'jotai'
 import { periodicTableZoom, themeModeState } from '@packages/components'
 import './index.scss'
 
+const cx = classNames
+
 export default function Index() {
   const [theme] = useAtom(themeModeState)
   const [zoom] = useAtom(periodicTableZoom)
@@ -28,7 +30,7 @@ export default function Index() {
   useShareMessage()
 
   return (
-    <View className={classNames('text-text', theme)}>
+    <View className={cx('text-foreground bg-background', theme)}>
       <MenuHomeLayout className={theme}>
         <AddGuide themeClass={theme} />
         {/* <ZoomablePT /> */}

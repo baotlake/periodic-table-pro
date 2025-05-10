@@ -134,8 +134,13 @@ class ZoomController implements ZoomControllerInterface {
     this.panningTX = tx
     this.panningTY = ty
 
-    this.target.style.transform = `scale(${scale}) translate(${tx}px,${ty}px)`
-    this.target.style.zoom = '1'
+    if (PLATFORM == 'weapp') {
+      this.target.style.fontSize = `1em`
+      this.target.style.transform = `scale(${scale}) translate(${tx}px,${ty}px)`
+    } else {
+      this.target.style.zoom = '1'
+      this.target.style.transform = `scale(${scale}) translate(${tx}px,${ty}px)`
+    }
 
     // this.target.style.fontSize = '1em'
 
@@ -198,8 +203,15 @@ class ZoomController implements ZoomControllerInterface {
     const tscale = Math.min(scale, 1)
     const fscale = Math.max(scale, 1)
     this.container.scrollTo?.(sl, st)
-    this.target.style.zoom = `${scale}`
-    this.target.style.transform = `translate(${tx}px,${ty}px)`
+
+    if (PLATFORM == 'weapp') {
+      this.target.style.fontSize = `${scale}em`
+      this.target.style.transform = `translate(${tx}px,${ty}px)`
+    } else {
+      this.target.style.zoom = `${scale}`
+      this.target.style.transform = `translate(${tx}px,${ty}px)`
+    }
+
     // this.target.style.transform = `translate(${tx}px,${ty}px) scale(${tscale})`
     // this.target.style.fontSize = `${fscale}em`
     this.container.scrollTo?.(sl, st)

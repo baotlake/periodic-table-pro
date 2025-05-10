@@ -7,6 +7,8 @@ import {
   menuButtonClientRect,
   themeModeState,
   STATIC_BASE,
+  ToolPageLayout,
+  ElementCyclopedia,
 } from '@packages/components'
 import { Categories, getElementsCyclopedia } from '@packages/data'
 import useShareMessage from '../../hooks/useShareMessage'
@@ -32,39 +34,13 @@ export default function ElementsEncyclopedia() {
   return (
     <View
       className={classNames('elements-encyclopedia-page', theme)}
-      style={{
-        paddingTop: rect.bottom + 8 + 'px',
-      }}
+      // style={{
+      //   paddingTop: rect.bottom + 8 + 'px',
+      // }}
     >
-      <NavigationHeader background className="navigation" title="元素百科" />
-
-      <View className="content">
-        {itemList.map((item, i) => (
-          <View
-            key={i}
-            className={classNames('card-item', Categories[item.category])}
-            onClick={() => {
-              Taro.navigateTo({
-                url: '/pages/wiki/index?Z=' + item.Z,
-              })
-            }}
-          >
-            <View className="image-wrapper">
-              <Image
-                className="image"
-                mode="aspectFill"
-                src={imageDir + item.symbol + '.jpg'}
-              />
-            </View>
-            <View className="text-wrapper">
-              <View className="card-title">{item.title}</View>
-              <View className="card-summary">
-                <RichText nodes={item.summary} />
-              </View>
-            </View>
-          </View>
-        ))}
-      </View>
+      <ToolPageLayout title="元素百科">
+        <ElementCyclopedia />
+      </ToolPageLayout>
     </View>
   )
 }

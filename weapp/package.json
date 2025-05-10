@@ -26,7 +26,8 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "postinstall": "weapp-tw patch"
   },
   "browserslist": [
     "last 3 versions",
@@ -36,6 +37,7 @@
   "author": "baotlake <baotlake@gmail.com>",
   "dependencies": {
     "@babel/runtime": "^7.18.6",
+    "@tailwindcss/postcss": "^4.1.5",
     "@tarojs/cli": "3.6.23",
     "@tarojs/components": "3.6.23",
     "@tarojs/plugin-html": "3.6.23",
@@ -48,8 +50,8 @@
     "classnames": "^2.3.2",
     "lodash-es": "^4.17.21",
     "mini-html-parser2": "^0.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
@@ -65,7 +67,7 @@
     "@types/webpack-env": "^1.17.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "babel-preset-taro": "3.6.23",
     "dotenv": "^16.0.3",
     "eslint": "^6.8.0",
@@ -73,17 +75,17 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "postcss": "^8.4.41",
+    "postcss": "^8.5.3",
     "prettier": "^2.7.1",
     "react-refresh": "^0.14.0",
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended": "^6.0.0",
     "stylelint-prettier": "^2.0.0",
-    "tailwindcss": "^3.4.9",
+    "tailwindcss": "^3.4.17",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^4.7.4",
-    "weapp-tailwindcss": "^3.4.0",
+    "weapp-tailwindcss": "^3.7.0",
     "webpack": "5.90.3"
   }
 }

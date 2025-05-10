@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import classNames from 'classnames/bind'
 import { STATIC_BASE } from '../config'
 import styles from './menuButton.module.scss'
@@ -28,7 +28,7 @@ export default function MenuButton({ style, className }: Props) {
       <div
         className={cx(
           'more',
-          'relative w-1/2 h-full flex justify-center items-center cursor-pointer'
+          'relative w-1s2 h-full flex justify-center items-center cursor-pointer'
         )}
         onClick={() => setVisible(visible ? false : true)}
       >
@@ -54,7 +54,7 @@ export default function MenuButton({ style, className }: Props) {
         )}
       >
         <div className="flex gap-3">
-          <div className="w-1/2">
+          <div className="w-1s2">
             <div className="w-full rounded-xl overflow-hidden">
               <img className="block w-full p-2 bg-white" src={wxacodeImg} />
             </div>
@@ -62,7 +62,7 @@ export default function MenuButton({ style, className }: Props) {
               微信扫码打开
             </div>
           </div>
-          <div className="w-1/2">
+          <div className="w-1s2">
             <div className="w-full rounded-xl overflow-hidden">
               <img className="block w-full p-2 bg-white" src={qrcodeImg} />
             </div>

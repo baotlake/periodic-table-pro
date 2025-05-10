@@ -13,29 +13,29 @@ importers:
         version: 2.5.1
       jotai:
         specifier: ^2.9.2
-        version: 2.12.3(@types/react@18.3.20)(react@19.1.0)
+        version: 2.12.3(@types/react@18.3.20)(react@18.3.1)
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
       next:
         specifier: ^14.2.5
-        version: 14.2.28(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.50.0)
+        version: 14.2.28(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.50.0)
       react:
-        specifier: ^19.0.0
-        version: 19.1.0
+        specifier: ^18.3.1
+        version: 18.3.1
       react-dom:
-        specifier: ^19.0.0
-        version: 19.1.0(react@19.1.0)
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@tarojs/components':
         specifier: 3.6.23
-        version: 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@19.1.0)
+        version: 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.23
-        version: 3.6.23(@swc/helpers@0.5.15)(@tarojs/components@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@19.1.0))(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))
+        version: 3.6.23(@swc/helpers@0.5.15)(@tarojs/components@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1))(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))
       '@tarojs/react':
         specifier: 3.6.23
-        version: 3.6.23(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(react@19.1.0)
+        version: 3.6.23(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(react@18.3.1)
       '@tarojs/taro':
         specifier: 3.6.23
         version: 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3)
@@ -54,6 +54,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.21(postcss@8.5.3)
+      mini-html-parser2:
+        specifier: ^0.3.0
+        version: 0.3.0
       postcss:
         specifier: ^8.4.39
         version: 8.5.3
@@ -72,6 +75,9 @@ importers:
       '@babel/runtime':
         specifier: ^7.18.6
         version: 7.27.1
+      '@tailwindcss/postcss':
+        specifier: ^4.1.5
+        version: 4.1.5
       '@tarojs/cli':
         specifier: 3.6.23
         version: 3.6.23(@swc/helpers@0.5.15)(@tarojs/taro@3.6.23(@tarojs/helper@3.6.23(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.23(@tarojs/shared@3.6.23))(@types/react@18.3.20)(@types/webpack@4.41.40)(postcss@8.5.3))
@@ -109,10 +115,10 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       react:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1
       react-dom:
-        specifier: ^18.2.0
+        specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@babel/core':
@@ -155,7 +161,7 @@ importers:
         specifier: ^4.33.0
         version: 4.33.0(eslint@6.8.0)(typescript@4.9.4)
       autoprefixer:
-        specifier: ^10.4.20
+        specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.3)
       babel-preset-taro:
         specifier: 3.6.23
@@ -179,7 +185,7 @@ importers:
         specifier: ^4.6.0
         version: 4.6.2(eslint@6.8.0)
       postcss:
-        specifier: ^8.4.41
+        specifier: ^8.5.3
         version: 8.5.3
       prettier:
         specifier: ^2.7.1
@@ -200,7 +206,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(prettier@2.8.8)(stylelint@14.16.1)
       tailwindcss:
-        specifier: ^3.4.9
+        specifier: ^3.4.17
         version: 3.4.17
       tsconfig-paths-webpack-plugin:
         specifier: ^4.1.0
@@ -209,7 +215,7 @@ importers:
         specifier: ^4.7.4
         version: 4.9.4
       weapp-tailwindcss:
-        specifier: ^3.4.0
+        specifier: ^3.7.0
         version: 3.7.0(tailwindcss@3.4.17)
       webpack:
         specifier: 5.90.3
@@ -1860,6 +1866,94 @@ packages:
 
   '@tailwindcss-mangle/shared@4.0.2':
     resolution: {integrity: sha512-gteSOKjrr2b6ifFix4fdSAhgw8knq0R1o4NVRJt+mAEMgTSpIkar9gRb9n9DD3xH55MWgyBJ5hw08vtutkq59w==}
+
+  '@tailwindcss/node@4.1.5':
+    resolution: {integrity: sha512-CBhSWo0vLnWhXIvpD0qsPephiaUYfHUX3U9anwDaHZAeuGpTiB3XmsxPAN6qX7bFhipyGBqOa1QYQVVhkOUGxg==}
+
+  '@tailwindcss/oxide-android-arm64@4.1.5':
+    resolution: {integrity: sha512-LVvM0GirXHED02j7hSECm8l9GGJ1RfgpWCW+DRn5TvSaxVsv28gRtoL4aWKGnXqwvI3zu1GABeDNDVZeDPOQrw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+
+  '@tailwindcss/oxide-darwin-arm64@4.1.5':
+    resolution: {integrity: sha512-//TfCA3pNrgnw4rRJOqavW7XUk8gsg9ddi8cwcsWXp99tzdBAZW0WXrD8wDyNbqjW316Pk2hiN/NJx/KWHl8oA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@tailwindcss/oxide-darwin-x64@4.1.5':
+    resolution: {integrity: sha512-XQorp3Q6/WzRd9OalgHgaqgEbjP3qjHrlSUb5k1EuS1Z9NE9+BbzSORraO+ecW432cbCN7RVGGL/lSnHxcd+7Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@tailwindcss/oxide-freebsd-x64@4.1.5':
+    resolution: {integrity: sha512-bPrLWbxo8gAo97ZmrCbOdtlz/Dkuy8NK97aFbVpkJ2nJ2Jo/rsCbu0TlGx8joCuA3q6vMWTSn01JY46iwG+clg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.5':
+    resolution: {integrity: sha512-1gtQJY9JzMAhgAfvd/ZaVOjh/Ju/nCoAsvOVJenWZfs05wb8zq+GOTnZALWGqKIYEtyNpCzvMk+ocGpxwdvaVg==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@tailwindcss/oxide-linux-arm64-gnu@4.1.5':
+    resolution: {integrity: sha512-dtlaHU2v7MtdxBXoqhxwsWjav7oim7Whc6S9wq/i/uUMTWAzq/gijq1InSgn2yTnh43kR+SFvcSyEF0GCNu1PQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@tailwindcss/oxide-linux-arm64-musl@4.1.5':
+    resolution: {integrity: sha512-fg0F6nAeYcJ3CriqDT1iVrqALMwD37+sLzXs8Rjy8Z1ZHshJoYceodfyUwGJEsQoTyWbliFNRs2wMQNXtT7MVA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@tailwindcss/oxide-linux-x64-gnu@4.1.5':
+    resolution: {integrity: sha512-SO+F2YEIAHa1AITwc8oPwMOWhgorPzzcbhWEb+4oLi953h45FklDmM8dPSZ7hNHpIk9p/SCZKUYn35t5fjGtHA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@tailwindcss/oxide-linux-x64-musl@4.1.5':
+    resolution: {integrity: sha512-6UbBBplywkk/R+PqqioskUeXfKcBht3KU7juTi1UszJLx0KPXUo10v2Ok04iBJIaDPkIFkUOVboXms5Yxvaz+g==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@tailwindcss/oxide-wasm32-wasi@4.1.5':
+    resolution: {integrity: sha512-hwALf2K9FHuiXTPqmo1KeOb83fTRNbe9r/Ixv9ZNQ/R24yw8Ge1HOWDDgTdtzntIaIUJG5dfXCf4g9AD4RiyhQ==}
+    engines: {node: '>=14.0.0'}
+    cpu: [wasm32]
+    bundledDependencies:
+      - '@napi-rs/wasm-runtime'
+      - '@emnapi/core'
+      - '@emnapi/runtime'
+      - '@tybys/wasm-util'
+      - '@emnapi/wasi-threads'
+      - tslib
+
+  '@tailwindcss/oxide-win32-arm64-msvc@4.1.5':
+    resolution: {integrity: sha512-oDKncffWzaovJbkuR7/OTNFRJQVdiw/n8HnzaCItrNQUeQgjy7oUiYpsm9HUBgpmvmDpSSbGaCa2Evzvk3eFmA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@tailwindcss/oxide-win32-x64-msvc@4.1.5':
+    resolution: {integrity: sha512-WiR4dtyrFdbb+ov0LK+7XsFOsG+0xs0PKZKkt41KDn9jYpO7baE3bXiudPVkTqUEwNfiglCygQHl2jklvSBi7Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@tailwindcss/oxide@4.1.5':
+    resolution: {integrity: sha512-1n4br1znquEvyW/QuqMKQZlBen+jxAbvyduU87RS8R3tUSvByAkcaMTkJepNIrTlYhD+U25K4iiCIxE6BGdRYA==}
+    engines: {node: '>= 10'}
+
+  '@tailwindcss/postcss@4.1.5':
+    resolution: {integrity: sha512-5lAC2/pzuyfhsFgk6I58HcNy6vPK3dV/PoPxSDuOTVbDvCddYHzHiJZZInGIY0venvzzfrTEUAXJFULAfFmObg==}
 
   '@tarojs/api@3.6.23':
     resolution: {integrity: sha512-lY6+S5P3rVMM7wmsQ1XEtE5o7haS/08G3Haz4EJrg7hmg3IKrC/ju4hypEq+wd4vfPY6hC3AlqMm1zcOyjuDZg==}
@@ -6381,10 +6475,22 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
+  lightningcss-darwin-arm64@1.29.2:
+    resolution: {integrity: sha512-cK/eMabSViKn/PG8U/a7aCorpeKLMlK0bQeNHmdb7qUnBkNPnL+oV5DjJUo0kqWsJUapZsM4jCfYItbqBDvlcA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
   lightningcss-darwin-arm64@1.29.3:
     resolution: {integrity: sha512-fb7raKO3pXtlNbQbiMeEu8RbBVHnpyqAoxTyTRMEWFQWmscGC2wZxoHzZ+YKAepUuKT9uIW5vL2QbFivTgprZg==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
+    os: [darwin]
+
+  lightningcss-darwin-x64@1.29.2:
+    resolution: {integrity: sha512-j5qYxamyQw4kDXX5hnnCKMf3mLlHvG44f24Qyi2965/Ycz829MYqjrVg2H8BidybHBp9kom4D7DR5VqCKDXS0w==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
     os: [darwin]
 
   lightningcss-darwin-x64@1.29.3:
@@ -6393,11 +6499,23 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  lightningcss-freebsd-x64@1.29.2:
+    resolution: {integrity: sha512-wDk7M2tM78Ii8ek9YjnY8MjV5f5JN2qNVO+/0BAGZRvXKtQrBC4/cn4ssQIpKIPP44YXw6gFdpUF+Ps+RGsCwg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [freebsd]
+
   lightningcss-freebsd-x64@1.29.3:
     resolution: {integrity: sha512-VUWeVf+V1UM54jv9M4wen9vMlIAyT69Krl9XjI8SsRxz4tdNV/7QEPlW6JASev/pYdiynUCW0pwaFquDRYdxMw==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [freebsd]
+
+  lightningcss-linux-arm-gnueabihf@1.29.2:
+    resolution: {integrity: sha512-IRUrOrAF2Z+KExdExe3Rz7NSTuuJ2HvCGlMKoquK5pjvo2JY4Rybr+NrKnq0U0hZnx5AnGsuFHjGnNT14w26sg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm]
+    os: [linux]
 
   lightningcss-linux-arm-gnueabihf@1.29.3:
     resolution: {integrity: sha512-UhgZ/XVNfXQVEJrMIWeK1Laj8KbhjbIz7F4znUk7G4zeGw7TRoJxhb66uWrEsonn1+O45w//0i0Fu0wIovYdYg==}
@@ -6405,8 +6523,20 @@ packages:
     cpu: [arm]
     os: [linux]
 
+  lightningcss-linux-arm64-gnu@1.29.2:
+    resolution: {integrity: sha512-KKCpOlmhdjvUTX/mBuaKemp0oeDIBBLFiU5Fnqxh1/DZ4JPZi4evEH7TKoSBFOSOV3J7iEmmBaw/8dpiUvRKlQ==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
   lightningcss-linux-arm64-gnu@1.29.3:
     resolution: {integrity: sha512-Pqau7jtgJNmQ/esugfmAT1aCFy/Gxc92FOxI+3n+LbMHBheBnk41xHDhc0HeYlx9G0xP5tK4t0Koy3QGGNqypw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  lightningcss-linux-arm64-musl@1.29.2:
+    resolution: {integrity: sha512-Q64eM1bPlOOUgxFmoPUefqzY1yV3ctFPE6d/Vt7WzLW4rKTv7MyYNky+FWxRpLkNASTnKQUaiMJ87zNODIrrKQ==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
@@ -6417,8 +6547,20 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+  lightningcss-linux-x64-gnu@1.29.2:
+    resolution: {integrity: sha512-0v6idDCPG6epLXtBH/RPkHvYx74CVziHo6TMYga8O2EiQApnUPZsbR9nFNrg2cgBzk1AYqEd95TlrsL7nYABQg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+
   lightningcss-linux-x64-gnu@1.29.3:
     resolution: {integrity: sha512-ySZTNCpbfbK8rqpKJeJR2S0g/8UqqV3QnzcuWvpI60LWxnFN91nxpSSwCbzfOXkzKfar9j5eOuOplf+klKtINg==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  lightningcss-linux-x64-musl@1.29.2:
+    resolution: {integrity: sha512-rMpz2yawkgGT8RULc5S4WiZopVMOFWjiItBT7aSfDX4NQav6M44rhn5hjtkKzB+wMTRlLLqxkeYEtQ3dd9696w==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
@@ -6429,10 +6571,22 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  lightningcss-win32-arm64-msvc@1.29.2:
+    resolution: {integrity: sha512-nL7zRW6evGQqYVu/bKGK+zShyz8OVzsCotFgc7judbt6wnB2KbiKKJwBE4SGoDBQ1O94RjW4asrCjQL4i8Fhbw==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [arm64]
+    os: [win32]
+
   lightningcss-win32-arm64-msvc@1.29.3:
     resolution: {integrity: sha512-VRnkAvtIkeWuoBJeGOTrZxsNp4HogXtcaaLm8agmbYtLDOhQdpgxW6NjZZjDXbvGF+eOehGulXZ3C1TiwHY4QQ==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
+    os: [win32]
+
+  lightningcss-win32-x64-msvc@1.29.2:
+    resolution: {integrity: sha512-EdIUW3B2vLuHmv7urfzMI/h2fmlnOQBk1xlsDxkN1tCWKjNFjfLhGxYk8C8mzpSfr+A6jFFIi8fU6LbQGsRWjA==}
+    engines: {node: '>= 12.0.0'}
+    cpu: [x64]
     os: [win32]
 
   lightningcss-win32-x64-msvc@1.29.3:
@@ -6440,6 +6594,10 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [win32]
+
+  lightningcss@1.29.2:
+    resolution: {integrity: sha512-6b6gd/RUXKaw5keVdSEtqFVdzWnU5jMxTUjA2bVcMNPLwSQ08Sv/UodBVtETLCn7k4S1Ibxwh7k68IwLZPgKaA==}
+    engines: {node: '>= 12.0.0'}
 
   lightningcss@1.29.3:
     resolution: {integrity: sha512-GlOJwTIP6TMIlrTFsxTerwC0W6OpQpCGuX1ECRLBUVRh6fpJH3xTqjCjRgQHTb4ZXexH9rtHou1Lf03GKzmhhQ==}
@@ -8030,11 +8188,6 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-dom@19.1.0:
-    resolution: {integrity: sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==}
-    peerDependencies:
-      react: ^19.1.0
-
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -8065,10 +8218,6 @@ packages:
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
-    engines: {node: '>=0.10.0'}
-
-  react@19.1.0:
-    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -8430,9 +8579,6 @@ packages:
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
-
-  scheduler@0.26.0:
-    resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
 
   schema-utils@1.0.0:
     resolution: {integrity: sha512-i27Mic4KovM/lnGsy8whRCHhc7VicJajAjTrYg11K9zfZXnYIt4k5F+kZkwjnrhKzLic/HLU4j11mjsz2G/75g==}
@@ -9091,6 +9237,9 @@ packages:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
     engines: {node: '>=14.0.0'}
     hasBin: true
+
+  tailwindcss@4.1.5:
+    resolution: {integrity: sha512-nYtSPfWGDiWgCkwQG/m+aX83XCwf62sBgg3bIlNiiOcggnS1x3uVRDAuyelBFL+vJdOPPCGElxv9DjHJjRHiVA==}
 
   tapable@1.1.3:
     resolution: {integrity: sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==}
@@ -11646,6 +11795,72 @@ snapshots:
 
   '@tailwindcss-mangle/shared@4.0.2': {}
 
+  '@tailwindcss/node@4.1.5':
+    dependencies:
+      enhanced-resolve: 5.18.1
+      jiti: 2.4.2
+      lightningcss: 1.29.2
+      tailwindcss: 4.1.5
+
+  '@tailwindcss/oxide-android-arm64@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-darwin-arm64@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-darwin-x64@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-freebsd-x64@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-linux-arm-gnueabihf@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-linux-arm64-gnu@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-linux-arm64-musl@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-linux-x64-gnu@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-linux-x64-musl@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-wasm32-wasi@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-win32-arm64-msvc@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide-win32-x64-msvc@4.1.5':
+    optional: true
+
+  '@tailwindcss/oxide@4.1.5':
+    optionalDependencies:
+      '@tailwindcss/oxide-android-arm64': 4.1.5
+      '@tailwindcss/oxide-darwin-arm64': 4.1.5
+      '@tailwindcss/oxide-darwin-x64': 4.1.5
+      '@tailwindcss/oxide-freebsd-x64': 4.1.5
+      '@tailwindcss/oxide-linux-arm-gnueabihf': 4.1.5
+      '@tailwindcss/oxide-linux-arm64-gnu': 4.1.5
+      '@tailwindcss/oxide-linux-arm64-musl': 4.1.5
+      '@tailwindcss/oxide-linux-x64-gnu': 4.1.5
+      '@tailwindcss/oxide-linux-x64-musl': 4.1.5
+      '@tailwindcss/oxide-wasm32-wasi': 4.1.5
+      '@tailwindcss/oxide-win32-arm64-msvc': 4.1.5
+      '@tailwindcss/oxide-win32-x64-msvc': 4.1.5
+
+  '@tailwindcss/postcss@4.1.5':
+    dependencies:
+      '@alloc/quick-lru': 5.2.0
+      '@tailwindcss/node': 4.1.5
+      '@tailwindcss/oxide': 4.1.5
+      postcss: 8.5.3
+      tailwindcss: 4.1.5
+
   '@tarojs/api@3.6.23':
     dependencies:
       '@babel/runtime': 7.27.1
@@ -11719,9 +11934,9 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
 
-  '@tarojs/components-advanced@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(react@19.1.0)':
+  '@tarojs/components-advanced@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(react@18.3.1)':
     dependencies:
-      '@tarojs/components': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@19.1.0)
+      '@tarojs/components': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1)
       '@tarojs/runtime': 4.0.12
       '@tarojs/shared': 3.6.23
       '@tarojs/taro': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3)
@@ -11731,7 +11946,7 @@ snapshots:
       postcss: 8.5.3
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.1.0
+      react: 18.3.1
     transitivePeerDependencies:
       - '@tarojs/helper'
       - '@types/react'
@@ -11780,10 +11995,10 @@ snapshots:
       - postcss
       - react
 
-  '@tarojs/components@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@19.1.0)':
+  '@tarojs/components@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1)':
     dependencies:
       '@stencil/core': 2.22.3
-      '@tarojs/components-advanced': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(react@19.1.0)
+      '@tarojs/components-advanced': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(react@18.3.1)
       '@tarojs/taro': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3)
       classnames: 2.5.1
       hls.js: 1.6.2
@@ -12106,9 +12321,9 @@ snapshots:
       - '@tarojs/taro'
       - supports-color
 
-  '@tarojs/plugin-platform-weapp@3.6.23(@swc/helpers@0.5.15)(@tarojs/components@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@19.1.0))(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))':
+  '@tarojs/plugin-platform-weapp@3.6.23(@swc/helpers@0.5.15)(@tarojs/components@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1))(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))':
     dependencies:
-      '@tarojs/components': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@19.1.0)
+      '@tarojs/components': 3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1)
       '@tarojs/service': 3.6.23(@swc/helpers@0.5.15)(@tarojs/shared@3.6.23)(@tarojs/taro@3.6.23(@tarojs/helper@4.0.12(@swc/helpers@0.5.15))(@tarojs/runtime@4.0.12)(@types/react@18.3.20)(postcss@8.5.3))
       '@tarojs/shared': 3.6.23
     transitivePeerDependencies:
@@ -12145,11 +12360,11 @@ snapshots:
     transitivePeerDependencies:
       - react
 
-  '@tarojs/react@3.6.23(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(react@19.1.0)':
+  '@tarojs/react@3.6.23(@tarojs/runtime@4.0.12)(@tarojs/shared@3.6.23)(react@18.3.1)':
     dependencies:
       '@tarojs/runtime': 4.0.12
       '@tarojs/shared': 3.6.23
-      react-reconciler: 0.27.0(react@19.1.0)
+      react-reconciler: 0.27.0(react@18.3.1)
     transitivePeerDependencies:
       - react
 
@@ -17416,10 +17631,10 @@ snapshots:
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
 
-  jotai@2.12.3(@types/react@18.3.20)(react@19.1.0):
+  jotai@2.12.3(@types/react@18.3.20)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.20
-      react: 19.1.0
+      react: 18.3.1
 
   joycon@3.1.1: {}
 
@@ -17640,35 +17855,80 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
+  lightningcss-darwin-arm64@1.29.2:
+    optional: true
+
   lightningcss-darwin-arm64@1.29.3:
+    optional: true
+
+  lightningcss-darwin-x64@1.29.2:
     optional: true
 
   lightningcss-darwin-x64@1.29.3:
     optional: true
 
+  lightningcss-freebsd-x64@1.29.2:
+    optional: true
+
   lightningcss-freebsd-x64@1.29.3:
+    optional: true
+
+  lightningcss-linux-arm-gnueabihf@1.29.2:
     optional: true
 
   lightningcss-linux-arm-gnueabihf@1.29.3:
     optional: true
 
+  lightningcss-linux-arm64-gnu@1.29.2:
+    optional: true
+
   lightningcss-linux-arm64-gnu@1.29.3:
+    optional: true
+
+  lightningcss-linux-arm64-musl@1.29.2:
     optional: true
 
   lightningcss-linux-arm64-musl@1.29.3:
     optional: true
 
+  lightningcss-linux-x64-gnu@1.29.2:
+    optional: true
+
   lightningcss-linux-x64-gnu@1.29.3:
+    optional: true
+
+  lightningcss-linux-x64-musl@1.29.2:
     optional: true
 
   lightningcss-linux-x64-musl@1.29.3:
     optional: true
 
+  lightningcss-win32-arm64-msvc@1.29.2:
+    optional: true
+
   lightningcss-win32-arm64-msvc@1.29.3:
+    optional: true
+
+  lightningcss-win32-x64-msvc@1.29.2:
     optional: true
 
   lightningcss-win32-x64-msvc@1.29.3:
     optional: true
+
+  lightningcss@1.29.2:
+    dependencies:
+      detect-libc: 2.0.4
+    optionalDependencies:
+      lightningcss-darwin-arm64: 1.29.2
+      lightningcss-darwin-x64: 1.29.2
+      lightningcss-freebsd-x64: 1.29.2
+      lightningcss-linux-arm-gnueabihf: 1.29.2
+      lightningcss-linux-arm64-gnu: 1.29.2
+      lightningcss-linux-arm64-musl: 1.29.2
+      lightningcss-linux-x64-gnu: 1.29.2
+      lightningcss-linux-x64-musl: 1.29.2
+      lightningcss-win32-arm64-msvc: 1.29.2
+      lightningcss-win32-x64-msvc: 1.29.2
 
   lightningcss@1.29.3:
     dependencies:
@@ -18276,7 +18536,7 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  next@14.2.28(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.50.0):
+  next@14.2.28(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.50.0):
     dependencies:
       '@next/env': 14.2.28
       '@swc/helpers': 0.5.5
@@ -18284,9 +18544,9 @@ snapshots:
       caniuse-lite: 1.0.30001716
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      styled-jsx: 5.1.1(react@19.1.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      styled-jsx: 5.1.1(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.28
       '@next/swc-darwin-x64': 14.2.28
@@ -19457,11 +19717,6 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-dom@19.1.0(react@19.1.0):
-    dependencies:
-      react: 19.1.0
-      scheduler: 0.26.0
-
   react-is@16.13.1: {}
 
   react-is@17.0.2: {}
@@ -19470,12 +19725,6 @@ snapshots:
     dependencies:
       loose-envify: 1.4.0
       react: 18.3.1
-      scheduler: 0.21.0
-
-  react-reconciler@0.27.0(react@19.1.0):
-    dependencies:
-      loose-envify: 1.4.0
-      react: 19.1.0
       scheduler: 0.21.0
 
   react-refresh@0.11.0: {}
@@ -19489,8 +19738,6 @@ snapshots:
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
-
-  react@19.1.0: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -19904,8 +20151,6 @@ snapshots:
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
-
-  scheduler@0.26.0: {}
 
   schema-utils@1.0.0:
     dependencies:
@@ -20563,10 +20808,10 @@ snapshots:
 
   style-search@0.1.0: {}
 
-  styled-jsx@5.1.1(react@19.1.0):
+  styled-jsx@5.1.1(react@18.3.1):
     dependencies:
       client-only: 0.0.1
-      react: 19.1.0
+      react: 18.3.1
 
   styled-jsx@5.1.6(@babel/core@7.27.1)(react@0.0.0-experimental-f7396427-20250501):
     dependencies:
@@ -20792,6 +21037,8 @@ snapshots:
       sucrase: 3.35.0
     transitivePeerDependencies:
       - ts-node
+
+  tailwindcss@4.1.5: {}
 
   tapable@1.1.3: {}
 

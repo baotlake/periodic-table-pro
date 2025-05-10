@@ -12,36 +12,7 @@
   margin-bottom: 22px;
 }
 
-.icon {
-  line-height: 1.6;
-  @include icon(1.2em);
-  @include filter-black;
-}
-
 .text {
   user-select: all;
   letter-spacing: -0.5px;
-}
-
-@include dark-mode {
-  .icon {
-    @include filter-white;
-  }
-}
-
-// theme
-.about {
-  &.light {
-  }
-
-  &.dark {
-    background: darken($dark-background, 3%);
-    color: color.change($dark-foceground, $alpha: 0.85);
-
-    .section {
-      .icon {
-        @include filter-white;
-      }
-    }
-  }
 }

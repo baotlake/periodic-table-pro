@@ -76,6 +76,8 @@ export default defineConfig(async (merge, { command, mode }) => {
               args: [
                 {
                   appType: 'taro',
+                  // rem2rpx: true,
+                  injectAdditionalCssVarScope: true,
                 },
               ],
             },

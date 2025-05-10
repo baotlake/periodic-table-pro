@@ -68,8 +68,8 @@ export function BottomNavigation({ className }: Props) {
         className={cx(
           'box',
           { collapse },
-          'absolute text-base bottom-4 overflow-hidden left-1/2 -translate-x-1/2 transform-gpu transition',
-          'h-14 shadow flex justify-between ',
+          'absolute text-base bottom-4 overflow-hidden left-1s2 -translate-x-1s2 transform-gpu transition',
+          'h-14 shadow flex justify-between '
         )}
         onPointerDown={handleTouchStart}
         onPointerUp={() => clearTimeout(timeoutId)}
