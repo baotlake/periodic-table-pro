@@ -7,10 +7,10 @@
   max-width: 600px;
 
   @include classification-light;
-  --skeleton-color: #{color.adjust($color: $light-background, $lightness: -8%)};
-  --table-border-color: rgba(0, 0, 0, 0.2);
-  --secondary-background-color: whitesmoke;
-  --inline-math-image-filter: invert(0);
+  // --skeleton-color: #{color.adjust($color: $light-background, $lightness: -8%)};
+  // --table-border-color: rgba(0, 0, 0, 0.2);
+  // --secondary-background-color: whitesmoke;
+  // --inline-math-image-filter: invert(0);
 }
 
 .heading {
@@ -81,9 +81,9 @@
     // background-color: $dark-background;
 
     @include classification-dark;
-    --skeleton-color: #{color.adjust($color: $dark-background, $lightness: 5%)};
-    --table-border-color: rgba(255, 255, 255, 0.2);
-    --secondary-background-color: #{lighten($dark-background, 5%)};
-    --inline-math-image-filter: invert(1);
+    // --skeleton-color: #{color.adjust($color: $dark-background, $lightness: 5%)};
+    // --table-border-color: rgba(255, 255, 255, 0.2);
+    // --secondary-background-color: #{lighten($dark-background, 5%)};
+    // --inline-math-image-filter: invert(1);
   }
 }

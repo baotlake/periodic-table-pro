@@ -5,6 +5,7 @@ import {
   HTMLAttributes,
   AllHTMLAttributes,
   Fragment,
+  useMemo,
 } from 'react'
 import type {
   Button as TaroButtonType,
@@ -123,11 +124,14 @@ if (isTaro) {
 }
 
 let RichText: typeof TaroRichText = (props: RichTextProps) => {
+  const html = useMemo(() => {
+    if (typeof props.nodes == 'string') {
+      return props.nodes.replace(/<a /g, '<span ').replace(/<\/a>/g, '</span>')
+    }
+    return ''
+  }, [props.nodes])
   return (
-    <div
-      {...omit(props, ['nodes'])}
-      dangerouslySetInnerHTML={{ __html: props.nodes as string }}
-    >
+    <div {...omit(props, ['nodes'])} dangerouslySetInnerHTML={{ __html: html }}>
       {props.children}
     </div>
   )

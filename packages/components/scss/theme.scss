@@ -1,5 +1,3 @@
-//
-
 $light-background: #ffffff;
 $light-foceground: #000000;
 
@@ -19,6 +17,12 @@ $dark-foceground: #efefef;
   --card-foreground: 0 0% 100%;
 
   color-scheme: dark light;
+
+  // Wiki
+  --skeleton-color: #27292a;
+  --table-border-color: rgba(255, 255, 255, 0.2);
+  --secondary-background-color: #27292a;
+  --inline-math-image-filter: invert(1);
 }
 
 @mixin light {
@@ -31,6 +35,12 @@ $dark-foceground: #efefef;
   --border: 0 0% 85%;
   --card: 0 0% 100%;
   --card-foreground: 0 0% 0%;
+
+  // Wiki
+  --skeleton-color: #ebebeb;
+  --table-border-color: rgba(0, 0, 0, 0.2);
+  --secondary-background-color: whitesmoke;
+  --inline-math-image-filter: invert(0);
 }
 
 @mixin dark-mode {
